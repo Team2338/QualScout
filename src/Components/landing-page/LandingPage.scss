@@ -1,0 +1,77 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    background-color: #02243E;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+.header {
+    background-color: black;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+.main-title  {
+    color: #fe5000;
+}
+.subtitlechange .wrappers .center .main-title {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root.Mui-selected:focus {
+    background-color: rgba(254, 80, 0, 0.495);
+    transition: .3s;
+}
+.css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root:hover {
+    background-color: #BABFB78E !important;
+    color: #02243E;
+    transition: .3s;
+}
+.points-landingpage {
+    color: #02243E;
+}
+.login-title {
+    color: #02243E;
+}
+.button {
+    color:#fe5000;
+    background-color: #BABFB78E;
+    margin-top: 30px;
+    margin-left: 600px; 
+    margin-right: 600px;
+    margin-bottom: 3rem !important;
+}
+.landingpage-forms {
+    margin-bottom: 1rem !important;
+}
+#outlined-basic {
+    min-width: 18rem !important;
+    color: #02243E;
+}
+#lang {
+    border: solid #02243E;
+    width: 64px
+}
+.landingpage-logo {
+    height: rem7;
+}
+@media only screen and (max-width: 700px) {
+    .button {
+        width: 50% !important;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .main-title {
+        font-size: 30px;
+    }
+    .landingpage-logo {
+         height: 6rem;
+    }
+}
