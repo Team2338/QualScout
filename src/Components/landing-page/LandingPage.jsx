@@ -20,7 +20,7 @@ render() {
         <div className='wrapper'>
             <div className='header'>
                 <div className='left'>
-                    <div>placeholder text for image</div>
+                    <img src='https://placekitten.com/100/100' alt="cute cat used as a placeholder" />
                 </div>
                 <h1 className='Title'>2338 Gear It Forward</h1>
                 <span>

@@ -10,7 +10,7 @@ $pumice: rgb(186, 191, 183);
     width: 100vw;
     height: 100vh;
     align-items: center;
-    background-color: $tangaroa;
+    background-color: white;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -18,7 +18,8 @@ $pumice: rgb(186, 191, 183);
     box-sizing: border-box;
 }
 .header {
-    background-color: black;
+    background-color: $tangaroa;
+    color: $orange;    
     margin-bottom: 10px;
     padding: 10px 10px;
     display: flex;
