@@ -1,8 +1,9 @@
 import './App.css';
+import Teleop from './Components/teleop-page/Teleop'
 
 function App() {
   return(
-    <div>sup world</div>
+    <Teleop />
   );
 }
 
