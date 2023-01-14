@@ -1,8 +1,16 @@
+
+$orange: rgb(254, 80, 0) ;
+$tangaroa: rgb(2, 36, 62);
+$pumice: rgb(186, 191, 183);
+
+
+
+
 .wrapper {
     width: 100vw;
     height: 100vh;
     align-items: center;
-    background-color: #02243E;
+    background-color: $tangaroa;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -20,7 +28,7 @@
     box-sizing: border-box;
 }
 .main-title  {
-    color: #fe5000;
+    color: $orange;
 }
 .subtitlechange .wrappers .center .main-title {
     font-family: Arial, Helvetica, sans-serif;
@@ -30,19 +38,19 @@
     transition: .3s;
 }
 .css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root:hover {
-    background-color: #BABFB78E !important;
-    color: #02243E;
+    background-color: $pumice !important;
+    color: $tangaroa;
     transition: .3s;
 }
 .points-landingpage {
-    color: #02243E;
+    color: $tangaroa;
 }
 .login-title {
-    color: #02243E;
+    color: $tangaroa
 }
 .button {
-    color:#fe5000;
-    background-color: #BABFB78E;
+    color: $orange;
+    background-color: $pumice;
     margin-top: 30px;
     margin-left: 600px; 
     margin-right: 600px;
@@ -53,10 +61,10 @@
 }
 #outlined-basic {
     min-width: 18rem !important;
-    color: #02243E;
+    color: $tangaroa;
 }
 #lang {
-    border: solid #02243E;
+    border: solid $tangaroa;
     width: 64px
 }
 .landingpage-logo {
