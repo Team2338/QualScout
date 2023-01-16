@@ -9,23 +9,23 @@ import './Teleop.scss';
 class Teleop extends React.Component {
     render() {
         return ( 
-            <div>
-         <h1>Teleop</h1>
+            <div class='background'>
+         <h1 class='text'>Teleop</h1>
       
-         <h3>Bottom Row</h3>
+         <h3 class='bottom-row'>Bottom Row</h3>
          <Button variant='contained'>Add</Button>
          <Button variant='outlined'>Remove</Button>
-         <h3>Middle Row</h3>
+         <h3 class='middle-row'>Middle Row</h3>
          <Button variant='contained'>Add</Button>
          <Button variant='outlined'>Remove</Button>
-         <h3>Top Row</h3>
+         <h3 class='top-row'>Top Row</h3>
          <Button variant='contained'>Add</Button>
          <Button variant='outlined'>Remove</Button>
-         <h3>Link Bonus</h3>
+         <h3 class='link'>Link Bonus</h3>
          <Button variant='contained'>Add</Button>
          <Button variant='outlined'>Remove</Button>
 
-         <h3>Docked</h3>
+         <h3 class='dock'>Docked</h3>
          <Button variant='outlined'>None</Button>
          <Button variant='contained'>Parked</Button>
          <Button variant='contained'>Docked Unengaged</Button>
