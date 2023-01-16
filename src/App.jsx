@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
-import Auto from './Components/auto-page/Auto.jsx';
 import LandingPage from './Components/landing-page/LandingPage.jsx'
-import Teleop from'./Components/teleop-page/Teleop.jsx'
+import DataCollectionPage from './Components/data-collection-page/DataCollectionPage.jsx'
 
 function App() {
 
@@ -11,11 +10,8 @@ function App() {
 	  case "/":
 		Component = LandingPage
 		break
-	  case "/auto":
-		Component = Auto
-		break
-	  case "/teleop":
-		Component = Teleop
+	  case "/data":
+		Component = DataCollectionPage
 		break
 	}
   
