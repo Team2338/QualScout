@@ -1,9 +1,7 @@
 import React from 'react';
-import Button from '@mui/material/Button'
-import ButtonCheck from './ButtonCheck'
-
-
+import Button from '@mui/material/Button';
 import './Teleop.scss';
+import CombinedButtons from './CombinedButtons';
 
 
 
@@ -12,45 +10,9 @@ class Teleop extends React.Component {
         return ( 
             <div class='background'>
          <h1 class='text'>Teleop</h1>
-      
-    {/*     <h3 class='bottom-row'>Bottom Row</h3>
-         <Button variant='contained'>Add</Button>
-         <Button variant='outlined'>Remove</Button>
-         <h3 class='middle-row'>Middle Row</h3>
-         <Button variant='contained'>Add</Button>
-         <Button variant='outlined'>Remove</Button>
-         <h3 class='top-row'>Top Row</h3>
-         <Button variant='contained'>Add</Button>
-         <Button variant='outlined'>Remove</Button>   */}
 
             <h3 class='placed'>Game Piece Placement</h3>
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
-            <ButtonCheck />
+            <CombinedButtons />
             
 
             
