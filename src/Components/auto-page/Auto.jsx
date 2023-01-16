@@ -2,6 +2,7 @@ import React from 'react';
 import Button  from '@mui/material/Button';
 
 import './Auto.scss';
+import CombinedButtons from './CombinedButtons';
 
 
 class Auto extends React.Component { 
@@ -12,15 +13,8 @@ class Auto extends React.Component {
                 <h3>Mobile</h3>
                 <Button variant='contained'>Yes</Button>
                 <Button variant='outlined'>No</Button>
-                <h3>Bottom Row</h3>
-                <Button variant='contained'>Add</Button>
-                <Button variant='outlined'>Remove</Button>
-                <h3>Middle Row</h3>
-                <Button variant='contained'>Add</Button>
-                <Button variant='outlined'>Remove</Button>
-                <h3>Top Row</h3>
-                <Button variant='contained'>Add</Button>
-                <Button variant='outlined'>Remove</Button>
+               <h3>Game Piece Placement</h3>
+                <CombinedButtons />
                 <h3>Docked</h3>
                 <Button variant='outlined'>None</Button>
                 <Button variant='contained'>Docked Unengaged</Button>
