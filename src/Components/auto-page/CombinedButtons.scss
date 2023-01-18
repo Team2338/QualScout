@@ -1,0 +1,8 @@
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-gap: 8px; /* can change if needed */
+    /* max-width: 1200px */ /* can implement if the buttons are too w     i     d     e */
+
+}

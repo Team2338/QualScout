@@ -1,11 +1,11 @@
 import React from 'react';
 import ButtonCheck from './ButtonCheck';
-
+import './CombinedButtons.scss';
 
 class CombinedButtons extends React.Component {
         render() {
             return (
-                <div>
+                <div class='grid'>
                 <ButtonCheck />
                 <ButtonCheck />
                 <ButtonCheck />
