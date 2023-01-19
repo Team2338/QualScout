@@ -2,8 +2,12 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    grid-gap: 12px; /* can change if needed */
-     max-width: 1200px  /* can implement if the buttons are too w     i     d     e */
+    grid-gap: 4px; /* can change if needed */
+      /* can implement if the buttons are too w     i     d     e */
      /* TODO make the grid more centered and thicker buttons */
+}
 
+.flex {
+    display: flex;
+    justify-content: center;
 }

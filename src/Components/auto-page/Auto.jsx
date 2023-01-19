@@ -8,7 +8,7 @@ import CombinedButtons from './CombinedButtons';
 class Auto extends React.Component { 
     render() {
         return(
-            <div>
+            <div class='background'>
                 <h1>Auto</h1>
                 <h3>Mobile</h3>
                 <Button variant='contained'>Yes</Button>
