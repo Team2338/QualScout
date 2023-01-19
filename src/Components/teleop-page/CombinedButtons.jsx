@@ -1,39 +1,43 @@
 import React from 'react';
-import ButtonCheck from './ButtonCheck';
 import './CombinedButtons.scss';
+import Checkbox  from '@mui/material/Checkbox';
+
 
 class CombinedButtons extends React.Component {
         render() {
             return (
+                <div class='flex'>
                 <div class='grid'>
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
-                <ButtonCheck />
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
+                <Checkbox size='large'/>
                 </div>
+                </div>
+                
             )
         }
 }
