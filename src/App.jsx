@@ -4,7 +4,6 @@ import LandingPage from './Components/landing-page/LandingPage.jsx'
 import DataCollectionPage from './Components/data-collection-page/DataCollectionPage.jsx'
 
 function App() {
-
 	let Component
 	switch (window.location.pathname) {
 	  case "/":
