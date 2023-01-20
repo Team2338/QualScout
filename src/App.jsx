@@ -5,7 +5,6 @@ import LandingPage from './Components/landing-page/LandingPage.jsx'
 import Teleop from'./Components/teleop-page/Teleop.jsx'
 
 function App() {
-
 	let Component
 	switch (window.location.pathname) {
 	  case "/":
