@@ -1,13 +1,26 @@
 import React from 'react';
 import './App.css';
-import LandingPage from './Components/landing-page/LandingPage.jsx';
+import LandingPage from './Components/landing-page/LandingPage.jsx'
+import DataCollectionPage from './Components/data-collection-page/DataCollectionPage.jsx'
+
 function App() {
-  return (
-  <div>
-    <LandingPage />
-  </div>
-  )
-}
 
+	let Component
+	switch (window.location.pathname) {
+	  case "/":
+		Component = LandingPage
+		break
+	  case "/data":
+		Component = DataCollectionPage
+		break
+	}
+  
+	return (
 
-export default App;
+		<div className="App">
+		  <Component/>
+		</div>
+	);
+  }
+  
+  export default App;
