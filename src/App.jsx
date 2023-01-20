@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
+import React from 'react';
 import './App.css';
-import LandingPage from './Components/landing-page/LandingPage';
+import LandingPage from './Components/landing-page/LandingPage.jsx';
 function App() {
   return (
   <div>

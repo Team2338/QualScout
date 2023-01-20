@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from  '@mui/material/Button';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
@@ -19,6 +19,7 @@ class LandingPage extends React.Component {
             scouterName: '',
         };
     }
+
     handleClick = (event) => {
         localStorage.setItem('teamNumber', this.state.teamNumber.toString());
         localStorage.setItem('eventCode', this.state.eventCode.toString());
@@ -49,7 +50,7 @@ class LandingPage extends React.Component {
     }
 
     render() {
-        return ( /* error here */
+        return (
             <div className='wrapper'>
                 <div className='header'>
                     <div className='left'>
@@ -57,10 +58,9 @@ class LandingPage extends React.Component {
                     </div>
                     <h1 className='Title'>2338 Gear It Forward</h1>
                     <span>
-        <Select>
-                    Future Language Button 
-        </Select>
-      </span> 
+                        <Select>
+                        </Select>
+                    </span> 
                 </div>
 
                 <h1 className="login-title">SIGN IN: </h1>
@@ -98,12 +98,27 @@ class LandingPage extends React.Component {
                                 }}
                         />
                 </div>
-
+                
+                <div className="landingpage-forms">
+                        <TextField
+                                name="scouterName"
+                                id="outlined-basic"
+                                label="SCOUTER NAME"
+                                variant="filled"
+                                type="text"
+                                onChange={this.handleChange}
+                                value={this.state.scouterName}
+                                placeholder="SCOUTER NAME"
+                                inputProps={{
+                                    maxLength: 32
+                                }}
+                        />
+                </div>
                 <div className="landingpage-forms">
                         <TextField
                                 name="secretCode"
                                 id="outlined-basic"
-                                label="SECRET_CODE"
+                                label="SECRET CODE"
                                 variant="filled"
                                 type="text"
                                 onChange={this.handleChange}
@@ -113,22 +128,13 @@ class LandingPage extends React.Component {
                                     maxLength: 32
                                 }}
                         />
-                </div>
+                            </div>
 
                 <div className="points-landingpage">*"SECRET CODE HELPER 1"*</div>
                 <div className="points-landingpage">*"SECRET CODE HELPER 2"*</div>
                 <div className="points-landingpage">*"SECRET CODE HELPER 3"*</div>
-                <button
-                        name="submit"
-                        className="button"
-                        type="button"
-                        variant="contained"
-                        size="medium"
-                        onClick={this.handleClick}
-                    >
-                        "SUBMIT 1"
-                    </button>
-                <button
+
+                <Button
                         name="red"
                         className="button"
                         type="button"
@@ -137,8 +143,8 @@ class LandingPage extends React.Component {
                         onClick={this.handleClick}
                     >
                         "RED ALLIANCE"
-                    </button>
-                <button
+                    </Button>
+                <Button
                         name="blue"
                         className="button"
                         type="button"
@@ -147,7 +153,17 @@ class LandingPage extends React.Component {
                         onClick={this.handleClick}
                     >
                         "BLUE ALLIANCE"
-                    </button>
+                    </Button>
+                    <Button
+                        name="submit"
+                        className="button"
+                        type="button"
+                        variant="contained"
+                        size="medium"
+                        onClick={this.handleClick}
+                    >
+                        "SUBMIT 1"
+                    </Button>
             </div>        
         )
     }
