@@ -1,6 +1,5 @@
 import React from 'react';
 import './CombinedButtons.scss';
-import './ButtonChange'
 import ButtonChange from './ButtonChange';
 
 
