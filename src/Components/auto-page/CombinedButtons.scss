@@ -2,7 +2,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    grid-gap: 4px; /* can change if needed */
+    grid-gap: 14px; /* can change if needed */
       /* can implement if the buttons are too w     i     d     e */
      /* TODO make the grid more centered and thicker buttons */
 }

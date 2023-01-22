@@ -14,19 +14,11 @@ class Teleop extends React.Component {
             <h3 class='placed'>Game Piece Placement</h3>
             <CombinedButtons />
             
-
-            
-
-
-         <h3 class='link'>Link Bonus</h3>
-         <Button variant='contained'>Add</Button>
-         <Button variant='outlined'>Remove</Button>
-
          <h3 class='dock'>Docked</h3>
-         <Button variant='outlined'>None</Button>
-         <Button variant='contained'>Parked</Button>
-         <Button variant='contained'>Docked Unengaged</Button>
-         <Button variant='contained'>Docked Engaged</Button>
+         <Button variant='contained'>None</Button>
+         <Button variant='outlined'>Parked</Button>
+         <Button variant='outlined'>Docked Unengaged</Button>
+         <Button variant='outlined'>Docked Engaged</Button>
         </div>
 
         )

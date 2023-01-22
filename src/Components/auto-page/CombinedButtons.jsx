@@ -1,38 +1,38 @@
 import React from 'react';
 import './CombinedButtons.scss';
-import { Checkbox } from '@mui/material';
+import Button from '@mui/material/Button'
 class CombinedButtons extends React.Component {
         render() {
             return (
                 <div class='flex'>
                 <div class='grid'>
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
-                <Checkbox size='large' />
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
+                <Button variant='outlined'>.</Button>
                 </div>
                 </div>
             )
