@@ -1,8 +1,8 @@
 import React from 'react';
-import Button  from '@mui/material/Button';
-
+import Mobility from './Mobility';
 import './Auto.scss';
 import CombinedButtons from './CombinedButtons';
+import Docked from './Docked';
 
 
 class Auto extends React.Component { 
@@ -13,13 +13,10 @@ class Auto extends React.Component {
                 
                 <h3>Game Piece Placement</h3>
                 <CombinedButtons />
-                <h3>Mobile</h3>
-                <Button variant='contained'>Yes</Button>
-                <Button variant='outlined'>No</Button>
+                <h3>Mobility</h3>
+                <Mobility />
                 <h3>Docked</h3>
-                <Button variant='contained'>None</Button>
-                <Button variant='outlined'>Docked Unengaged</Button>
-                <Button variant='outlined'>Docked Engaged</Button>
+                <Docked />
             </div>
         )
     }
