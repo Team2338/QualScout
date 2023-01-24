@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import LandingPage from './Components/landing-page/LandingPage.jsx'
 import DataCollectionPage from './Components/data-collection-page/DataCollectionPage.jsx'
 

@@ -2,7 +2,6 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
-import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
 import './LandingPage.scss';
@@ -54,7 +53,7 @@ class LandingPage extends React.Component {
             <div className='wrapper'>
                 <div className='header'>
                     <div className='left'>
-                        <img src='https://placekitten.com/100/100' alt="cute cat used as a placeholder" />
+                        <img src='2338-logo.png' alt="2338 logo" height='100rem' />
                     </div>
                     <h1 className='Title'>2338 Gear It Forward</h1>
                     <span>
@@ -63,12 +62,12 @@ class LandingPage extends React.Component {
                     </span> 
                 </div>
 
-                <h1 className="login-title">SIGN IN: </h1>
+                <h1 className="login-title">Sign In:</h1>
                 <div className="landingpage-forms">
                     <TextField
                         name="teamNumber"
                         id="outlined-basic"
-                        label="YOUR TEAM NUMBER"
+                        label="Your Team Number"
                         variant="filled"
                         type="number"
                         onChange={this.handleChange}
@@ -87,7 +86,7 @@ class LandingPage extends React.Component {
                         <TextField
                                 name="eventCode"
                                 id="outlined-basic"
-                                label="EVENT CODE"
+                                label="Event Code"
                                 variant="filled"
                                 type="text"
                                 onChange={this.handleChange}
@@ -103,7 +102,7 @@ class LandingPage extends React.Component {
                         <TextField
                                 name="scouterName"
                                 id="outlined-basic"
-                                label="SCOUTER NAME"
+                                label="Scouter Name"
                                 variant="filled"
                                 type="text"
                                 onChange={this.handleChange}
@@ -118,7 +117,7 @@ class LandingPage extends React.Component {
                         <TextField
                                 name="secretCode"
                                 id="outlined-basic"
-                                label="SECRET CODE"
+                                label="Secret Code"
                                 variant="filled"
                                 type="text"
                                 onChange={this.handleChange}
@@ -130,39 +129,44 @@ class LandingPage extends React.Component {
                         />
                             </div>
 
-                <div className="points-landingpage">*"SECRET CODE HELPER 1"*</div>
-                <div className="points-landingpage">*"SECRET CODE HELPER 2"*</div>
-                <div className="points-landingpage">*"SECRET CODE HELPER 3"*</div>
-
-                <Button
-                        name="red"
-                        className="button"
-                        type="button"
-                        variant="contained"
-                        size="medium"
-                        onClick={this.handleClick}
-                    >
-                        "RED ALLIANCE"
-                    </Button>
-                <Button
-                        name="blue"
-                        className="button"
-                        type="button"
-                        variant="contained"
-                        size="medium"
-                        onClick={this.handleClick}
-                    >
-                        "BLUE ALLIANCE"
-                    </Button>
+                <div className="points-landingpage">*Enter team specific password to store data*</div>
+                <div className="points-landingpage">*This code will be used to view your analytics*</div>
+                <div className="points-landingpage">*Make sure all scouters from the same team use the same code*</div>
+                <div>
+                    <Button
+                            name="red"
+                            className="buttons"
+                            type="button"
+                            variant="contained"
+                            size="medium"
+                            style={{backgroundColor: "red", margin: 5, textTransform: 'capitalize'}}
+                            onClick={this.handleClick}
+                        >
+                            Red Alliance
+                        </Button>
+                    <Button
+                            name="blue"
+                            className="buttons"
+                            type="button"
+                            variant="contained"
+                            size="medium"
+                            style={{backgroundColor: "blue", margin: 5, textTransform: 'capitalize'}}
+                            onClick={this.handleClick}
+                        >
+                            Blue Alliance
+                        </Button>
+                    </div>
                     <Button
                         name="submit"
                         className="button"
                         type="button"
                         variant="contained"
                         size="medium"
+                        style={{textTransform: 'capitalize'}}
                         onClick={this.handleClick}
+                        href="/data"
                     >
-                        "SUBMIT 1"
+                        Submit
                     </Button>
             </div>        
         )
