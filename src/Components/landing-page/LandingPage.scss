@@ -2,13 +2,6 @@ $orange: rgb(254, 80, 0) ;
 $tangaroa: rgb(2, 36, 62);
 $pumice: rgb(186, 191, 183);
 
-
-
-
-
-
-
-
 .text {
     color: $orange;
 }
@@ -16,12 +9,13 @@ $pumice: rgb(186, 191, 183);
     width: 100vw;
     height: 100vh;
     align-items: center;
-    background-color: white;
+    background-color: $pumice;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     text-align: center;
     box-sizing: border-box;
+    font-family: "Segoe UI";
 }
 .header {
     background-color: $tangaroa;
