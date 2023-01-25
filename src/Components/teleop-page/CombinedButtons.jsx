@@ -1,48 +1,46 @@
 import React from 'react';
 import './CombinedButtons.scss';
-import Checkbox  from '@mui/material/Checkbox';
+import ButtonChange from './ButtonChange';
 
 
-class CombinedButtons extends React.Component {
-        render() {
-            return (
-                <div class='flex'>
+
+  class CombinedButtons extends React.Component {
+    render() {
+        return (
+            <div class='flex'>
                 <div class='grid'>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
-                <Checkbox size='large'/>
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
+                    <ButtonChange />
                 </div>
-                </div>
-                
-            )
-        }
-}
-
-
-
+            </div>
+        )
+    }
+  }
+        
 
 export default CombinedButtons;

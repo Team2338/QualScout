@@ -1,28 +1,22 @@
 import React from 'react';
-import Button  from '@mui/material/Button';
-
+import Mobility from './Mobility';
 import './Auto.scss';
 import CombinedButtons from './CombinedButtons';
+import Docked from './Docked';
 
 
 class Auto extends React.Component { 
     render() {
         return(
             <div class='background'>
-                <h1 className='text'>Auto</h1>
-                <h3>Mobile</h3>
-                <div>
-                    <Button variant='contained'>Yes</Button>
-                    <Button variant='outlined'>No</Button>
-                </div>
-               <h3>Game Piece Placement</h3>
+                <h1 class='title'>Auto</h1>
+                
+                <h3>Game Piece Placement</h3>
                 <CombinedButtons />
+                <h3>Mobility</h3>
+                <Mobility />
                 <h3>Docked</h3>
-                <div>
-                    <Button variant='outlined'>None</Button>
-                    <Button variant='contained'>Docked Unengaged</Button>
-                    <Button variant='contained'>Docked Engaged</Button>
-                </div>
+                <Docked />
             </div>
         )
     }

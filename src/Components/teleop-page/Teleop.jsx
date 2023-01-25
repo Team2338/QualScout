@@ -1,8 +1,7 @@
 import React from 'react';
-import Button from '@mui/material/Button';
 import './Teleop.scss';
 import CombinedButtons from './CombinedButtons';
-
+import DockedTeleop from './DockedTeleop';
 
 
 class Teleop extends React.Component {
@@ -13,14 +12,9 @@ class Teleop extends React.Component {
 
             <h3 class='placed'>Game Piece Placement</h3>
             <CombinedButtons />
-
+            
          <h3 class='dock'>Docked</h3>
-         <div>
-            <Button variant='outlined'>None</Button>
-            <Button variant='contained'>Parked</Button>
-            <Button variant='contained'>Docked Unengaged</Button>
-            <Button variant='contained'>Docked Engaged</Button>
-         </div>
+         <DockedTeleop /> 
         </div>
 
         )
