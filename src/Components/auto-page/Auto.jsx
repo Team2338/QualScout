@@ -9,16 +9,20 @@ class Auto extends React.Component {
     render() {
         return(
             <div class='background'>
-                <h1>Auto</h1>
+                <h1 className='text'>Auto</h1>
                 <h3>Mobile</h3>
-                <Button variant='contained'>Yes</Button>
-                <Button variant='outlined'>No</Button>
+                <div>
+                    <Button variant='contained'>Yes</Button>
+                    <Button variant='outlined'>No</Button>
+                </div>
                <h3>Game Piece Placement</h3>
                 <CombinedButtons />
                 <h3>Docked</h3>
-                <Button variant='outlined'>None</Button>
-                <Button variant='contained'>Docked Unengaged</Button>
-                <Button variant='contained'>Docked Engaged</Button>
+                <div>
+                    <Button variant='outlined'>None</Button>
+                    <Button variant='contained'>Docked Unengaged</Button>
+                    <Button variant='contained'>Docked Engaged</Button>
+                </div>
             </div>
         )
     }
