@@ -4,8 +4,8 @@ import { Button } from '@mui/material';
 
 function Mobility() {
 
-const [YesVariant, setYesVariant] = useState("contained");
-const [NoVariant, setNoVariant] = useState("outlined");
+const [YesVariant, setYesVariant] = useState("outlined");
+const [NoVariant, setNoVariant] = useState("contained");
 
 const handleYesClick = () => {
      if (YesVariant === 'outlined') {
@@ -28,8 +28,8 @@ const handleNoClick = () => {
 
     return (
         <div>
-            <Button variant={YesVariant} onClick={handleYesClick}>Yes</Button>
             <Button variant={NoVariant} onClick={handleNoClick}>No</Button>
+            <Button variant={YesVariant} onClick={handleYesClick}>Yes</Button>
         </div>
     )
 }
