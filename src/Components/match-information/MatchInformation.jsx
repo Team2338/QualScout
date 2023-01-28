@@ -15,7 +15,7 @@ class MatchInformation extends React.Component {
 						// id="robot-number-input"
 						label="Team Number"
 						variant="standard"
-						sx={{"& .MuiFormLabel-root": {color: 'primary.main'}}}
+						sx={{"& .MuiFormLabel-root": {color: 'primary.main'}, m: 0.5}}
 						// sx={{"& .MuiFormLabel-root": {color: 'secondary.main'}}}
 						// name="scoutingTeamNumber"
 						// type="number"
@@ -35,7 +35,7 @@ class MatchInformation extends React.Component {
 						// id="match-number-input"
 						label="Match Number"
 						variant="standard"
-						sx={{"& .MuiFormLabel-root": {color: 'primary.main'}}}
+						sx={{"& .MuiFormLabel-root": {color: 'primary.main'}, m: 0.5}}
 						// sx={{"& .MuiFormLabel-root": {color: 'secondary.main'}}}
 						// name="matchNumber"
 						// type="number"
@@ -54,8 +54,8 @@ class MatchInformation extends React.Component {
 					/>
 				</div>
 				<div>
-					<Button variant='contained' href='https://data.gearitforward.com/'>Analytics</Button>
-					<Button variant='contained'>Nullify Data</Button>
+					<Button sx={{ m: 0.5 }} variant='contained' href='https://data.gearitforward.com/'>Analytics</Button>
+					<Button sx={{ m: 0.5 }} variant='contained'>Nullify Data</Button>
 				</div>
             </div>
         )

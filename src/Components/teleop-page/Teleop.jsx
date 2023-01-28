@@ -8,14 +8,12 @@ class Teleop extends React.Component {
     render() {
         return ( 
             <div class='background'>
-         <h1 class='text'>Teleop</h1>
-
-            <h3 class='placed'>Game Piece Placement</h3>
-            <CombinedButtons />
-            
-         <h3 class='dock'>Docked</h3>
-         <DockedTeleop /> 
-        </div>
+                <h1 class='text'>Teleop</h1>
+                <h3 class='placed'>Grid</h3>
+                <CombinedButtons />   
+                <h3 class='dock'>Charge Station</h3>
+                <DockedTeleop /> 
+            </div>
 
         )
     }

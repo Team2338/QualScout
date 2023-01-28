@@ -10,11 +10,11 @@ class Auto extends React.Component {
         return(
             <div class='background'>
                 <h1 class='text'>Auto</h1>
-                <h3>Game Piece Placement</h3>
+                <h3>Grid</h3>
                 <CombinedButtons />
                 <h3>Mobility</h3>
                 <Mobility />
-                <h3>Docked</h3>
+                <h3>Charge Station</h3>
                 <Docked />
             </div>
         )
