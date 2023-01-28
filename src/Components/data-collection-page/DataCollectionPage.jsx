@@ -1,4 +1,5 @@
 import React from 'react';
+import './DataCollectionPage.scss'
 import Button from '@mui/material/Button'
 import MatchInfo from '../match-information/MatchInformation.jsx'
 import Auto from '../auto-page/Auto.jsx';
@@ -8,11 +9,14 @@ class DataCollectionPage extends React.Component {
     
     render() {
         return (
-          <div>
+          <div className='background'>
             <MatchInfo />
             <Auto />
             <Teleop />
-            <Button variant='contained' href='/'>Back</Button>
+            <div className='submit'>
+              <Button variant='outlined' className='submit' href='/'>Back</Button>
+              <Button variant='contained' className='submit'>Submit</Button>
+            </div>
           </div>
         );
       }

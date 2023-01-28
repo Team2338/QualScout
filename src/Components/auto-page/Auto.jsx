@@ -9,8 +9,7 @@ class Auto extends React.Component {
     render() {
         return(
             <div class='background'>
-                <h1 class='title'>Auto</h1>
-                
+                <h1 class='text'>Auto</h1>
                 <h3>Game Piece Placement</h3>
                 <CombinedButtons />
                 <h3>Mobility</h3>
