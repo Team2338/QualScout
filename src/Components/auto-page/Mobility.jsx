@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
+import "./ButtonSpacing.scss"
 
 
 function Mobility() {
@@ -27,9 +28,9 @@ const handleNoClick = () => {
 }
 
     return (
-        <div>
-            <Button variant={NoVariant} onClick={handleNoClick}>No</Button>
-            <Button variant={YesVariant} onClick={handleYesClick}>Yes</Button>
+        <div className='spacing'>
+            <Button sx={{ m: 0.5 }} variant={NoVariant} onClick={handleNoClick}>No</Button>
+            <Button sx={{ m: 0.5 }} variant={YesVariant} onClick={handleYesClick}>Yes</Button>
         </div>
     )
 }

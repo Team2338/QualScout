@@ -52,11 +52,11 @@ function DockedTeleop() {
 
 
     return (
-        <div>
-            <Button variant={NoneVariant} onClick={handleNoneClick}>None</Button>
-            <Button variant={ParkedVariant} onClick={handleParkedClick}>Parked</Button>
-            <Button variant={UnengagedVariant} onClick={handleUnengagedClick}>Docked Unengaged</Button>
-            <Button variant={EngagedVariant} onClick={handleEngagedClick}>Docked Engaged </Button>
+        <div className="spacing">
+            <Button sx={{ m: 0.5 }} variant={NoneVariant} onClick={handleNoneClick}>None</Button>
+            <Button sx={{ m: 0.5 }} variant={ParkedVariant} onClick={handleParkedClick}>Parked</Button>
+            <Button sx={{ m: 0.5 }} variant={UnengagedVariant} onClick={handleUnengagedClick}>Docked Unengaged</Button>
+            <Button sx={{ m: 0.5 }} variant={EngagedVariant} onClick={handleEngagedClick}>Docked Engaged </Button>
         </div>
     )
 }

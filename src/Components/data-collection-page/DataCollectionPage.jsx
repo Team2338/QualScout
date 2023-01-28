@@ -14,8 +14,8 @@ class DataCollectionPage extends React.Component {
             <Auto />
             <Teleop />
             <div className='submit'>
-              <Button variant='outlined' className='submit' href='/'>Back</Button>
-              <Button variant='contained' className='submit'>Submit</Button>
+              <Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
+              <Button sx={{ m: 0.5 }} variant='contained' className='submit'>Submit</Button>
             </div>
           </div>
         );
