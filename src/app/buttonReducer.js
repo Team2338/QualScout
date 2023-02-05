@@ -43,6 +43,16 @@ const initialState = {
             return button
           })
         }
+        case 'ENABLE_BUTTON':
+          return {
+            ...state, 
+            buttons: state.buttons.map(button => {
+              if(button.id === action.payload) {
+                return { ...button, disabled: false}
+              }
+              return button 
+            })
+          }
       default:
         return state;
     }

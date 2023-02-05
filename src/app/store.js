@@ -1,10 +1,7 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import { buttonReducer } from './buttonReducer';
 
-const rootReducer = combineReducers({
-  button: buttonReducer
-});
 
-const store = createStore(rootReducer);
+const store = createStore(buttonReducer);
 
 export default store;
