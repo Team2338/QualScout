@@ -5,7 +5,8 @@ import {
 } from '@mui/material/styles';
 import ReactDOM from 'react-dom';
 import App from './App';
-
+import store from './app/store';
+import { Provider } from 'react-redux';
 export const themeOptions = {
 	palette: {
 		type: 'dark',
@@ -30,8 +31,10 @@ export const themeOptions = {
 
 const theme = createTheme(themeOptions);
 ReactDOM.render(
+	<Provider store={store}>
 	<ThemeProvider theme={theme}>
 		<App/>
-	</ThemeProvider>,
-	document.getElementById('root')
+	</ThemeProvider>
+	</Provider>,
+	document.getElementById('root')	
 );
