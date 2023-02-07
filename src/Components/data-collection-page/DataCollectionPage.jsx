@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './DataCollectionPage.scss'
 import Button from '@mui/material/Button'
 import MatchInfo from '../match-information/MatchInformation.jsx'
 import Auto from '../auto-page/Auto.jsx';
-import Teleop from'../teleop-page/Teleop.jsx'
+import Teleop from'../teleop-page/Teleop.jsx';
+import Mobility from '../auto-page/Mobility.jsx';
 
 const INITIAL_STATE = {
   autoGrid: 0,
   autoMobility: 0,
   autoChargeStation: 0,
   teleopGrid: 0,
-  teleopLink: 0,
   teleopChargeStation: 0
 }
 
@@ -21,102 +21,122 @@ class DataCollectionPage extends React.Component {
 	}
 
   addPieceTopAuto = (event) => {
-		console.log(event);
-		this.setState({
-			[event.target.name]: this.state[event.target.name] + 6
-		});
-	};
+    this.setState(prevstate => ({ 
+        autoGrid: prevstate.autoGrid + 6
+    }));
+};
 
-  addPieceMiddleAuto = (event) => {
-		console.log(event);
-		this.setState({
-			[event.target.name]: this.state[event.target.name] + 4
-		});
+  addPieceMiddleAuto = (event) => { 
+		this.setState(prevstate => ({ 
+      autoGrid: prevstate.autoGrid + 4
+  }));
 	};
 
   addPieceBottomAuto = (event) => {
-		console.log(event);
+		this.setState(prevstate => ({ 
+      autoGrid: prevstate.autoGrid + 4
+  }));
+	};
+
+  addMobilityAuto = (event) => {
 		this.setState({
-			[event.target.name]: this.state[event.target.name] + 3
+			autoMobility: 3
 		});
 	};
 
-  mobilityAuto = (event) => {
-		console.log(event);
+  removeMobilityAuto = (event) => {
 		this.setState({
-			[event.target.name]: this.state[event.target.name] + 3
+			autoMobility: 0
 		});
 	};
+
+	noDockAuto = (event) => {
+		this.setState({
+			autoChargeStation: 0
+		})
+	}
 
   dockedAuto = (event) => {
-		console.log(event);
 		this.setState({
-			[event.target.name]: this.state[event.target.name] + 8
+			autoChargeStation: 8
 		});
 	};
 
   engagedAuto = (event) => {
-		console.log(event);
 		this.setState({
-			[event.target.name]: this.state[event.target.name] + 12
+			autoChargeStation: 12
 		});
 	};
 
   addPieceTopTeleop = (event) => {
-		console.log(event);
-		this.setState({
-			[event.target.name]: this.state[event.target.name] + 5
-		});
+		this.setState(prevstate => ({ 
+      autoGrid: prevstate.autoGrid + 5
+  }));
 	};
 
   addPieceMiddleTeleop = (event) => {
-		console.log(event);
-		this.setState({
-			[event.target.name]: this.state[event.target.name] + 3
-		});
+		this.setState(prevstate => ({ 
+      autoGrid: prevstate.autoGrid + 3
+  }));
 	};
 
   addPieceBottomTeleop = (event) => {
-		console.log(event);
-		this.setState({
-			[event.target.name]: this.state[event.target.name] + 2
-		});
+		this.setState(prevstate => ({ 
+      autoGrid: prevstate.autoGrid + 2
+  }));
 	};
 
   addLink = (event) => {
-		console.log(event);
 		this.setState({
 			[event.target.name]: this.state[event.target.name] + 5
 		});
 	};
 
+
+  noDockTeleop = (event) => {
+	this.setStete({
+		teleopChargeStation: 0
+	})
+  }
   parkedTeleop = (event) => {
-		console.log(event);
 		this.setState({
-			[event.target.name]: this.state[event.target.name] + 2
+			teleopChargeStation: 2
 		});
 	};
 
   dockedTeleop = (event) => {
-		console.log(event);
 		this.setState({
-			[event.target.name]: this.state[event.target.name] + 6
+			teleopChargeStation: 6
 		});
 	};
 
   engagedTeleop = (event) => {
-		console.log(event);
 		this.setState({
-			[event.target.name]: this.state[event.target.name] + 10
+			teleopChargeStation: 10
 		});
 	};
 
     render() {
         return (
           <div className='background'>
-            <MatchInfo />
-            <Auto />
-            <Teleop />
+  			 <div>{console.log("Auto Griddy:\t\t", this.state.autoGrid)} </div>
+			 <div>{console.log("Auto Mobility:\t\t", this.state.autoMobility)} </div>
+			 <div>{console.log("Auto Charge Station:\t", this.state.autoChargeStation)} </div>
+			 <div>{console.log("Teleop Griddy:\t\t", this.state.teleopGrid)} </div>
+			 <div>{console.log("Teleop Charge Station:\t", this.state.teleopChargeStation)} </div>
+            <MatchInfo />            
+            <Auto 
+  			addMobilityAuto={this.addMobilityAuto}
+ 			removeMobilityAuto={this.removeMobilityAuto}
+			noDockAuto={this.noDockAuto}
+			dockedAuto={this.dockedAuto}
+			engagedAuto={this.engagedAuto}/>
+            <Teleop
+			noDockTeleop={this.noDockTeleop}
+			parkedTeleop={this.parkedTeleop}
+			dockedTeleop={this.dockedTeleop}
+			engagedTeleop={this.engagedTeleop}
+			/>
             <div className='submit'>
               <Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
               <Button sx={{ m: 0.5 }} variant='contained' className='submit'>Submit</Button>

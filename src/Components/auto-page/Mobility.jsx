@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
+import "./Auto.jsx"
 import { Button } from '@mui/material';
 import "./ButtonSpacing.scss"
 
 
-function Mobility() {
+function Mobility(props) {
 
 const [YesVariant, setYesVariant] = useState("outlined");
 const [NoVariant, setNoVariant] = useState("contained");
 
 const handleYesClick = () => {
      if (YesVariant === 'outlined') {
-        setYesVariant('contained')
-        setNoVariant('outlined')
+        setYesVariant('contained');
+        setNoVariant('outlined');
+        props.addMobilityAuto();
 
     }
     
@@ -21,11 +23,13 @@ const handleYesClick = () => {
 const handleNoClick = () => {
      if (NoVariant === 'outlined') {
         setNoVariant('contained');
-        setYesVariant('outlined')
-
+        setYesVariant('outlined');
+        props.removeMobilityAuto();
+        
     }
     
 }
+
 
     return (
         <div className='spacing'>

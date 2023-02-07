@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 
 
 
-function DockedTeleop() {
+function DockedTeleop(props) {
     const [NoneVariant, SetNoneVariant] = useState("contained");
     const [UnengagedVariant, SetUnengagedVariant] = useState("outlined");
     const [EngagedVariant, SetEngagedVariant] = useState("outlined");
@@ -16,6 +16,7 @@ function DockedTeleop() {
             SetUnengagedVariant('outlined');
             SetEngagedVariant('outlined');
             SetParkedVariant('outlined');
+            props.noDockTeleop();
         }
         
     }
@@ -25,6 +26,7 @@ function DockedTeleop() {
             SetNoneVariant('outlined');
             SetEngagedVariant('outlined');
             SetParkedVariant('outlined');
+            props.dockedTeleop();
         }
     }
     const handleEngagedClick = () => {
@@ -33,6 +35,7 @@ function DockedTeleop() {
             SetNoneVariant('outlined');
             SetUnengagedVariant('outlined');
             SetParkedVariant('outlined');
+            props.engagedTeleop();
         }
    
 
@@ -44,6 +47,7 @@ function DockedTeleop() {
                 SetEngagedVariant('outlined');
                 SetNoneVariant('outlined');
                 SetUnengagedVariant('outlined');
+                props.parkedTeleop();
     }
     
     

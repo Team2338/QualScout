@@ -12,7 +12,11 @@ class Teleop extends React.Component {
                 <h3 class='placed'>Grid</h3>
                 <CombinedButtons />   
                 <h3 class='dock'>Charge Station</h3>
-                <DockedTeleop /> 
+                <DockedTeleop
+                noDockTeleop={this.props.noDockTeleop}
+                parkedTeleop={this.props.parkedTeleop}
+                dockedTeleop={this.props.dockedTeleop}
+                engagedTeleop={this.props.engagedTeleop}/> 
             </div>
 
         )
