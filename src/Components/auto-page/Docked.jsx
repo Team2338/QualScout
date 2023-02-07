@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import "./Auto.jsx";
 import { Button } from "@mui/material";
 import "./ButtonSpacing.scss"
 
 
 
-function Docked() {
+function Docked(props) {
     const [NoneVariant, SetNoneVariant] = useState("contained");
     const [UnengagedVariant, SetUnengagedVariant] = useState("outlined");
     const [EngagedVariant, SetEngagedVariant] = useState("outlined");
@@ -15,6 +16,7 @@ function Docked() {
             SetNoneVariant('contained');
             SetUnengagedVariant('outlined');
             SetEngagedVariant('outlined');
+            props.noDockAuto();
         }
         
     }
@@ -23,6 +25,7 @@ function Docked() {
             SetUnengagedVariant('contained');
             SetNoneVariant('outlined');
             SetEngagedVariant('outlined');
+            props.dockedAuto();
         }
     }
     const handleEngagedClick = () => {
@@ -30,6 +33,7 @@ function Docked() {
             SetEngagedVariant('contained');
             SetNoneVariant('outlined');
             SetUnengagedVariant('outlined');
+            props.engagedAuto();
         }
     }
 

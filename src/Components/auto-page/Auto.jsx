@@ -13,9 +13,14 @@ class Auto extends React.Component {
                 <h3>Grid</h3>
                 <CombinedButtons />
                 <h3>Mobility</h3>
-                <Mobility />
+                <Mobility 
+                addMobilityAuto={this.props.addMobilityAuto}
+                removeMobilityAuto={this.props.removeMobilityAuto}/>
                 <h3>Charge Station</h3>
-                <Docked />
+                <Docked
+                noDockAuto={this.props.noDockAuto}
+                dockedAuto={this.props.dockedAuto}
+                engagedAuto={this.props.engagedAuto}/>
             </div>
         )
     }

@@ -55,7 +55,7 @@ class LandingPage extends React.Component {
                     <div className='left'>
                         <img src='2338-logo.png' alt="2338 logo" height='100rem' />
                     </div>
-                    <h1 className='Title'>2338 Gear It Forward</h1>
+                    <h1 className='Title'>GearScout</h1>
                     <span>
                         <Select>
                         </Select>
