@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import Select from '@mui/material/Select';
-
+import { MenuItem } from '@mui/material';
 import './LandingPage.scss';
 
 
@@ -53,12 +53,18 @@ class LandingPage extends React.Component {
             <div className='wrapper'>
                 <div className='header'>
                     <div className='left'>
-                        <img src='2338-logo.png' alt="2338 logo" height='100rem' />
+                        <a href='https://twitter.com/FIRST2338'>
+                        <img src='2338-logo.png' alt="2338 logo" height='100rem'  />
+                        </a>
                     </div>
                     <h1 className='Title'>GearScout</h1>
                     <span>
-                        <Select>
-                        </Select>
+                    <Select name="language" id="lang" onChange={this.props.changeLanguage} value={this.props.language} size="medium">
+              <MenuItem value="english">English</MenuItem>
+              <MenuItem value="spanish">Español</MenuItem>
+              <MenuItem value="french">Français</MenuItem>
+              <MenuItem value="hindi">हिन्दी</MenuItem>
+            </Select>
                     </span> 
                 </div>
 
