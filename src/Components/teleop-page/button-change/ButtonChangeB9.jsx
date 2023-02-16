@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { prepareAutoBatched } from '@reduxjs/toolkit';
 
 
 function ButtonChange(props) {
@@ -12,16 +13,20 @@ function ButtonChange(props) {
     const ChangeStyle = () => {
         if (variant === 'outlined') {
             setVariant('contained');
+            props.addPieceMiddleTeleop();
+            props.gridB9Teleop()
         }
         else {
             setVariant('outlined');
+            props.removePieceMiddleTeleop();
+            props.gridB9Teleop()
         }
     }
     
     
     return (
             <div>
-                <Button size='large' sx={{ m: -0.25 }} variant={variant} onClick={ChangeStyle} disabled={disabled}>.</Button>
+                <Button variant={variant} onClick={ChangeStyle} disabled={disabled}>.</Button>
             </div>
     )
 }
