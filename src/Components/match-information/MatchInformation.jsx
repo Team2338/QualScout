@@ -9,7 +9,9 @@ class MatchInformation extends React.Component {
     render() {
         return(
             <div className='wrap'>
+				<div className='logo'>
 				<img src='2338-logo.png' alt="2338 logo" height='100rem' />
+				</div>
 				<div className='textboxes'>
 					<TextField
 						// id="robot-number-input"
@@ -53,9 +55,9 @@ class MatchInformation extends React.Component {
 						// }}
 					/>
 				</div>
-				<div>
+				<div className='analytics'>
 					<Button sx={{ m: 0.5 }} variant='contained' href='https://data.gearitforward.com/'>Analytics</Button>
-					<Button sx={{ m: 0.5 }} variant='contained'>Nullify Data</Button>
+					<Button sx={{ m: 0.5 }} variant='contained'>Nullify</Button>
 				</div>
             </div>
         )

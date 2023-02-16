@@ -26,7 +26,7 @@ function ButtonChange(props) {
     
     return (
             <div>
-                <Button variant={variant} onClick={ChangeStyle} disabled={disabled}>.</Button>
+                <Button size='large' sx={{ m: -0.25 }} variant={variant} onClick={ChangeStyle} disabled={disabled}>.</Button>
             </div>
     )
 }
