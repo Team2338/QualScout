@@ -65,7 +65,8 @@ const INITIAL_STATE = {
   teleopGridC6: false,
   teleopGridC7: false,
   teleopGridC8: false,
-  teleopGridC9: false
+  teleopGridC9: false,
+  nullifyData: false
 }
 
 class DataCollectionPage extends React.Component {
@@ -531,10 +532,17 @@ class DataCollectionPage extends React.Component {
 		});
 	};
 
+	nullify = event => {
+		this.setState(prevstate => ({
+			nullifyData: !prevstate.nullifyData	
+		}))
+	}
+
     render(props) {
         return (
           <div className='background'>
 			<div>
+				<div>{console.log("Nullify Data:\t\t", this.state.nullifyData)}</div>
 				<div>{console.log("A1 Auto:\t\t", this.state.autoGridA1)}</div>
 				<div>{console.log("A2 Auto:\t\t", this.state.autoGridA2)}</div>
 				<div>{console.log("A3 Auto:\t\t", this.state.autoGridA3)}</div>
@@ -597,7 +605,8 @@ class DataCollectionPage extends React.Component {
 			 </div>
 			 <div>{console.log("Teleop Griddy:\t\t", this.state.teleopGrid)} </div>
 			 <div>{console.log("Teleop Charge Station:\t", this.state.teleopChargeStation)} </div>
-            <MatchInfo />
+            <MatchInfo 
+			nullify={this.nullify} />
             <Auto
 			gridA1Auto={this.gridA1Auto}
 			gridA2Auto={this.gridA2Auto}
