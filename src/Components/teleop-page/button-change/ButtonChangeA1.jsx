@@ -19,14 +19,14 @@ function ButtonChange(props) {
         else {
             setVariant('outlined');
             props.removePieceTopTeleop();
-            props.gridA1Teleop()
+            props.removeGridA1Teleop()
         }
     }
     
     
     return (
             <div>
-                <Button size='large' sx={{ m: -0.25 }} variant={variant} onClick={ChangeStyle} disabled={disabled}>.</Button>
+                <Button  sx={{ m: -0.25 }} variant={variant} onClick={ChangeStyle} disabled={disabled}>.</Button>
             </div>
     )
 }

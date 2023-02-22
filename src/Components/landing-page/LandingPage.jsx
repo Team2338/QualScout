@@ -16,6 +16,7 @@ class LandingPage extends React.Component {
             eventCode: '',
             secretCode: '',
             scouterName: '',
+            teamColor: ''
         };
     }
 
@@ -24,7 +25,8 @@ class LandingPage extends React.Component {
         localStorage.setItem('eventCode', this.state.eventCode.toString());
         localStorage.setItem('secretCode', this.state.secretCode.toString());
         localStorage.setItem('scouterName', this.state.scouterName.toString());
-        this.props.parentCallback(event, this.state.teamNumber, this.state.eventCode, this.state.secretCode, this.state.scouterName);
+        localStorage.setItem('teamColor', this.state.teamColor.toString());
+        this.props.parentCallback(event, this.state.teamNumber, this.state.eventCode, this.state.secretCode, this.state.scouterName, this.state.teamColor);
     };
 
     handleChange = (event) => {
@@ -39,12 +41,14 @@ class LandingPage extends React.Component {
         const eventCode = localStorage.getItem('eventCode') ?? '';
         const secretCode = localStorage.getItem('secretCode') ?? '';
         const scouterName = localStorage.getItem('scouterName') ?? '';
+        const teamColor = localStorage.getItem('teamColor') ?? '';
 
         this.setState(({
             teamNumber: teamNumber,
             eventCode: eventCode,
             secretCode: secretCode,
-            scouterName: scouterName
+            scouterName: scouterName,
+            teamColor: teamColor
         }))
     }
 
@@ -59,12 +63,12 @@ class LandingPage extends React.Component {
                     </div>
                     <h1 className='Title'>GearScout</h1>
                     <span>
-                    <Select name="language" id="lang" onChange={this.props.changeLanguage} value={this.props.language} size="medium">
-              <MenuItem value="english">English</MenuItem>
-              <MenuItem value="spanish">Español</MenuItem>
-              <MenuItem value="french">Français</MenuItem>
-              <MenuItem value="hindi">हिन्दी</MenuItem>
-            </Select>
+                        <Select name="language" id="lang" onChange={this.props.changeLanguage} value={this.props.language} size="medium">
+                            <MenuItem value="english">English</MenuItem>
+                            <MenuItem value="spanish">Español</MenuItem>
+                            <MenuItem value="french">Français</MenuItem>
+                            <MenuItem value="hindi">हिन्दी</MenuItem>
+                        </Select>
                     </span> 
                 </div>
 
@@ -97,7 +101,7 @@ class LandingPage extends React.Component {
                                 type="text"
                                 onChange={this.handleChange}
                                 value={this.state.eventCode}
-                                placeholder="EVENT CODE"
+                                placeholder="Event Code"
                                 inputProps={{
                                     maxlength: 32
                                 }}
@@ -113,7 +117,7 @@ class LandingPage extends React.Component {
                                 type="text"
                                 onChange={this.handleChange}
                                 value={this.state.scouterName}
-                                placeholder="SCOUTER NAME"
+                                placeholder="Scouter Name"
                                 inputProps={{
                                     maxLength: 32
                                 }}
@@ -128,7 +132,7 @@ class LandingPage extends React.Component {
                                 type="text"
                                 onChange={this.handleChange}
                                 value={this.state.secretCode}
-                                placeholder="SCOUTER NAME"
+                                placeholder="Secret Code"
                                 inputProps={{
                                     maxLength: 32
                                 }}
@@ -146,7 +150,7 @@ class LandingPage extends React.Component {
                             variant="contained"
                             size="medium"
                             style={{backgroundColor: "red", margin: 5, textTransform: 'capitalize'}}
-                            onClick={this.handleClick}
+                            onClick={this.state.teamColor="red"}
                         >
                             Red Alliance
                         </Button>
@@ -157,7 +161,7 @@ class LandingPage extends React.Component {
                             variant="contained"
                             size="medium"
                             style={{backgroundColor: "blue", margin: 5, textTransform: 'capitalize'}}
-                            onClick={this.handleClick}
+                            onClick={this.state.teamColor="blue"}
                         >
                             Blue Alliance
                         </Button>

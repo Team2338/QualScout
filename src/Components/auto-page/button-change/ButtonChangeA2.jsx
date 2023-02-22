@@ -19,7 +19,7 @@ function ButtonChange(props) {
             setVariant('outlined');
             dispatch(enableButton(props.id))
             props.removePieceTopAuto()
-            props.gridA2Auto()
+            props.removeGridA2Auto()
         }
     }
 
@@ -27,7 +27,7 @@ function ButtonChange(props) {
    
     return (
             <div>
-                <Button size='large' sx={{ m: -0.25 }} variant={variant} onClick={ChangeStyle}>.</Button>
+                <Button  sx={{ m: -0.25 }} variant={variant} onClick={ChangeStyle}>.</Button>
             </div>
     )
 }

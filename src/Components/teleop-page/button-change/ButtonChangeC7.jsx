@@ -19,7 +19,7 @@ function ButtonChange(props) {
         else {
             setVariant('outlined');
             props.removePieceBottomTeleop();
-            props.gridC7Teleop()
+            props.removeGridC7Teleop()
         }
     }
     

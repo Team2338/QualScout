@@ -19,7 +19,7 @@ function ButtonChange(props) {
             setVariant('outlined');
             dispatch(enableButton(props.id))
             props.removePieceMiddleAuto();
-            props.gridB1Auto();
+            props.removeGridB1Auto();
         }
     }
 

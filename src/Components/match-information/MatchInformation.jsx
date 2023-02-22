@@ -28,12 +28,14 @@ function MatchInformation(props) {
 						label="Team Number"
 						variant="standard"
 						sx={{"& .MuiFormLabel-root": {color: 'primary.main'}, m: 0.5}}
+						value={props.scoutingTeamNumber}
 						placeholder="Team Number"
 					/>
 					<TextField
 						label="Match Number"
 						variant="standard"
 						sx={{"& .MuiFormLabel-root": {color: 'primary.main'}, m: 0.5}}
+						value={props.matchNumber}
 						placeholder="Match Number"
 					/>
 				</div>
