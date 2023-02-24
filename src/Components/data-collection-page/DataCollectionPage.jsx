@@ -8,72 +8,72 @@ import GearscoutService from '../../Services/GearscoutService.js'
 import Mobility from '../auto-page/Mobility.jsx';
 
 const INITIAL_STATE = {
-  autoGrid: 0,
-  autoMobility: 0,
-  autoChargeStation: 0,
-  teleopGrid: 0,
-  teleopChargeStation: 0,
-  autoGridA1: 0,
-  autoGridA2: 0,
-  autoGridA3: 0,
-  autoGridA4: 0,
-  autoGridA5: 0,
-  autoGridA6: 0,
-  autoGridA7: 0,
-  autoGridA8: 0,
-  autoGridA9: 0,
-  autoGridB1: 0,
-  autoGridB2: 0,
-  autoGridB3: 0,
-  autoGridB4: 0,
-  autoGridB5: 0,
-  autoGridB6: 0,
-  autoGridB7: 0,
-  autoGridB8: 0,
-  autoGridB9: 0,
-  autoGridC1: 0,
-  autoGridC2: 0,
-  autoGridC3: 0,
-  autoGridC4: 0,
-  autoGridC5: 0,
-  autoGridC6: 0,
-  autoGridC7: 0,
-  autoGridC8: 0,
-  autoGridC9: 0,
-  teleopGridA1: 0,
-  teleopGridA2: 0,
-  teleopGridA3: 0,
-  teleopGridA4: 0,
-  teleopGridA5: 0,
-  teleopGridA6: 0,
-  teleopGridA7: 0,
-  teleopGridA8: 0,
-  teleopGridA9: 0,
-  teleopGridB1: 0,
-  teleopGridB2: 0,
-  teleopGridB3: 0,
-  teleopGridB4: 0,
-  teleopGridB5: 0,
-  teleopGridB6: 0,
-  teleopGridB7: 0,
-  teleopGridB8: 0,
-  teleopGridB9: 0,
-  teleopGridC1: 0,
-  teleopGridC2: 0,
-  teleopGridC3: 0,
-  teleopGridC4: 0,
-  teleopGridC5: 0,
-  teleopGridC6: 0,
-  teleopGridC7: 0,
-  teleopGridC8: 0,
-  teleopGridC9: 0,
-  nullifyData: false,
-  scoutingTeamNumber: 0,
-  matchNumber: 0
+	autoGrid: 0,
+	autoMobility: 0,
+	autoChargeStation: 0,
+	teleopGrid: 0,
+	teleopChargeStation: 0,
+	autoGridA1: 0,
+	autoGridA2: 0,
+	autoGridA3: 0,
+	autoGridA4: 0,
+	autoGridA5: 0,
+	autoGridA6: 0,
+	autoGridA7: 0,
+	autoGridA8: 0,
+	autoGridA9: 0,
+	autoGridB1: 0,
+	autoGridB2: 0,
+	autoGridB3: 0,
+	autoGridB4: 0,
+	autoGridB5: 0,
+	autoGridB6: 0,
+	autoGridB7: 0,
+	autoGridB8: 0,
+	autoGridB9: 0,
+	autoGridC1: 0,
+	autoGridC2: 0,
+	autoGridC3: 0,
+	autoGridC4: 0,
+	autoGridC5: 0,
+	autoGridC6: 0,
+	autoGridC7: 0,
+	autoGridC8: 0,
+	autoGridC9: 0,
+	teleopGridA1: 0,
+	teleopGridA2: 0,
+	teleopGridA3: 0,
+	teleopGridA4: 0,
+	teleopGridA5: 0,
+	teleopGridA6: 0,
+	teleopGridA7: 0,
+	teleopGridA8: 0,
+	teleopGridA9: 0,
+	teleopGridB1: 0,
+	teleopGridB2: 0,
+	teleopGridB3: 0,
+	teleopGridB4: 0,
+	teleopGridB5: 0,
+	teleopGridB6: 0,
+	teleopGridB7: 0,
+	teleopGridB8: 0,
+	teleopGridB9: 0,
+	teleopGridC1: 0,
+	teleopGridC2: 0,
+	teleopGridC3: 0,
+	teleopGridC4: 0,
+	teleopGridC5: 0,
+	teleopGridC6: 0,
+	teleopGridC7: 0,
+	teleopGridC8: 0,
+	teleopGridC9: 0,
+	nullifyData: false,
+	scoutingTeamNumber: 0,
+	matchNumber: 0
 }
 
 class DataCollectionPage extends React.Component {
-  constructor(props) {
+	constructor(props) {
 		super(props);
 		this.state = INITIAL_STATE;
 	}
@@ -402,10 +402,10 @@ class DataCollectionPage extends React.Component {
 		}))
 	}
 
-  	addPieceTopAuto = (event) => {
-    this.setState(prevstate => ({ 
-        autoGrid: prevstate.autoGrid + 1
-    }));
+		addPieceTopAuto = (event) => {
+		this.setState(prevstate => ({ 
+				autoGrid: prevstate.autoGrid + 1
+		}));
 	};
 
 	removePieceTopAuto = (event) => {
@@ -414,37 +414,37 @@ class DataCollectionPage extends React.Component {
 		}));
 		}
 
-  addPieceMiddleAuto = (event) => { 
+	addPieceMiddleAuto = (event) => { 
 		this.setState(prevstate => ({ 
-      autoGrid: prevstate.autoGrid + 1
-  }));
+			autoGrid: prevstate.autoGrid + 1
+	}));
 	};
 
 	removePieceMiddleAuto = (event) => { 
 		this.setState(prevstate => ({ 
-      autoGrid: prevstate.autoGrid - 1
-  }));
+			autoGrid: prevstate.autoGrid - 1
+	}));
 	};
 
-  addPieceBottomAuto = (event) => {
+	addPieceBottomAuto = (event) => {
 		this.setState(prevstate => ({ 
-      autoGrid: prevstate.autoGrid + 1
-  }));
+			autoGrid: prevstate.autoGrid + 1
+	}));
 	};
 
 	removePieceBottomAuto = (event) => { 
 		this.setState(prevstate => ({ 
-      autoGrid: prevstate.autoGrid - 1
-  }));
+			autoGrid: prevstate.autoGrid - 1
+	}));
 	};
 
-  addMobilityAuto = (event) => {
+	addMobilityAuto = (event) => {
 		this.setState({
 			autoMobility: 3
 		});
 	};
 
-  removeMobilityAuto = (event) => {
+	removeMobilityAuto = (event) => {
 		this.setState({
 			autoMobility: 0
 		});
@@ -456,13 +456,13 @@ class DataCollectionPage extends React.Component {
 		})
 	}
 
-  dockedAuto = (event) => {
+	dockedAuto = (event) => {
 		this.setState({
 			autoChargeStation: 8
 		});
 	};
 
-  engagedAuto = (event) => {
+	engagedAuto = (event) => {
 		this.setState({
 			autoChargeStation: 12
 		});
@@ -792,22 +792,22 @@ class DataCollectionPage extends React.Component {
 		}))
 	}
 
-  addPieceTopTeleop = (event) => {
+	addPieceTopTeleop = (event) => {
 	this.setState(prevstate => ({ 
-      teleopGrid: prevstate.teleopGrid + 1
-  	}));
-  };
+			teleopGrid: prevstate.teleopGrid + 1
+		}));
+	};
 
-  removePieceTopTeleop = (event) => {
+	removePieceTopTeleop = (event) => {
 	this.setState(prevstate => ({ 
 		teleopGrid: prevstate.teleopGrid - 1
 	}));
 	}
 
-  addPieceMiddleTeleop = (event) => {
+	addPieceMiddleTeleop = (event) => {
 		this.setState(prevstate => ({ 
-      teleopGrid: prevstate.teleopGrid + 1
-  }));
+			teleopGrid: prevstate.teleopGrid + 1
+	}));
 	};
 
 	removePieceMiddleTeleop = (event) => {
@@ -816,10 +816,10 @@ class DataCollectionPage extends React.Component {
 		}));
 		}
 
-  addPieceBottomTeleop = (event) => {
+	addPieceBottomTeleop = (event) => {
 		this.setState(prevstate => ({ 
-      teleopGrid: prevstate.teleopGrid + 1
-  }));
+			teleopGrid: prevstate.teleopGrid + 1
+	}));
 	};
 
 	removePieceBottomTeleop = (event) => {
@@ -828,7 +828,7 @@ class DataCollectionPage extends React.Component {
 		}));
 		}
 
-  addLink = (event) => {
+	addLink = (event) => {
 		this.setState({
 			[event.target.name]: this.state[event.target.name] + 5
 		});
@@ -841,19 +841,19 @@ class DataCollectionPage extends React.Component {
 		});
 	};
 
-  parkedTeleop = (event) => {
+	parkedTeleop = (event) => {
 		this.setState({
 			teleopChargeStation: 2
 		});
 	};
 
-  dockedTeleop = (event) => {
+	dockedTeleop = (event) => {
 		this.setState({
 			teleopChargeStation: 6
 		});
 	};
 
-  engagedTeleop = (event) => {
+	engagedTeleop = (event) => {
 		this.setState({
 			teleopChargeStation: 10
 		});
@@ -866,7 +866,7 @@ class DataCollectionPage extends React.Component {
 	}
 
 	submit = () => {
-		alert('Data Submited!');
+		alert('Data Submitted!');
 		const url = '/team/' + this.props.teamNumber;
 		const config = {
 			headers: {
@@ -907,8 +907,6 @@ class DataCollectionPage extends React.Component {
 					count: this.state.teleopGrid,
 					list: [this.teleopGridA1, this.teleopGridA2, this.teleopGridA3, this.teleopGridA4, this.teleopGridA5, this.teleopGridA6, this.teleopGridA7, this.teleopGridA8, this.teleopGridA9, this.teleopGridB1, this.teleopGridB2, this.teleopGridB3, this.teleopGridB4, this.teleopGridB5, this.teleopGridB6, this.teleopGridB7, this.teleopGridB8, this.teleopGridB9, this.teleopGridC1, this.teleopGridC2, this.teleopGridC3, this.teleopGridC4, this.teleopGridC5, this.teleopGridC6, this.teleopGridC7, this.teleopGridC8, this.teleopGridC9]
 				}
-
-
 			]
 		};
 		GearscoutService.post(url, body, config);
@@ -917,219 +915,217 @@ class DataCollectionPage extends React.Component {
 	};
 
 
-    render(props) {
-        return (
-          <div className='background'>
-			<div>{console.log("Robot Number:\t\t", this.state.scoutingTeamNumber)}</div>
-			<div>{console.log("Match Number:\t\t", this.state.matchNumber)}</div>
-			<div>
-				<div>{console.log("Nullify Data:\t\t", this.state.nullifyData)}</div>
-				<div>{console.log("A1 Auto:\t\t", this.state.autoGridA1)}</div>
-				<div>{console.log("A2 Auto:\t\t", this.state.autoGridA2)}</div>
-				<div>{console.log("A3 Auto:\t\t", this.state.autoGridA3)}</div>
-				<div>{console.log("A4 Auto:\t\t", this.state.autoGridA4)}</div>
-				<div>{console.log("A5 Auto:\t\t", this.state.autoGridA5)}</div>
-				<div>{console.log("A6 Auto:\t\t", this.state.autoGridA6)}</div>
-				<div>{console.log("A7 Auto:\t\t", this.state.autoGridA7)}</div>
-				<div>{console.log("A8 Auto:\t\t", this.state.autoGridA8)}</div>
-				<div>{console.log("A9 Auto:\t\t", this.state.autoGridA9)}</div>
-				<div>{console.log("B1 Auto:\t\t", this.state.autoGridB1)}</div>
-				<div>{console.log("B2 Auto:\t\t", this.state.autoGridB2)}</div>
-				<div>{console.log("B3 Auto:\t\t", this.state.autoGridB3)}</div>
-				<div>{console.log("B4 Auto:\t\t", this.state.autoGridB4)}</div>
-				<div>{console.log("B5 Auto:\t\t", this.state.autoGridB5)}</div>
-				<div>{console.log("B6 Auto:\t\t", this.state.autoGridB6)}</div>
-				<div>{console.log("B7 Auto:\t\t", this.state.autoGridB7)}</div>
-				<div>{console.log("B8 Auto:\t\t", this.state.autoGridB8)}</div>
-				<div>{console.log("B9 Auto:\t\t", this.state.autoGridB9)}</div>
-				<div>{console.log("C1 Auto:\t\t", this.state.autoGridC1)}</div>
-				<div>{console.log("C2 Auto:\t\t", this.state.autoGridC2)}</div>
-				<div>{console.log("C3 Auto:\t\t", this.state.autoGridC3)}</div>
-				<div>{console.log("C4 Auto:\t\t", this.state.autoGridC4)}</div>
-				<div>{console.log("C5 Auto:\t\t", this.state.autoGridC5)}</div>
-				<div>{console.log("C6 Auto:\t\t", this.state.autoGridC6)}</div>
-				<div>{console.log("C7 Auto:\t\t", this.state.autoGridC7)}</div>
-				<div>{console.log("C8 Auto:\t\t", this.state.autoGridC8)}</div>
-				<div>{console.log("C9 Auto:\t\t", this.state.autoGridC9)}</div>
-				<div>{console.log("Auto Grid:\t\t", this.state.autoGrid)} </div>
-				<div>{console.log("Auto Mobility:\t\t", this.state.autoMobility)} </div>
-				<div>{console.log("Auto Charge Station:\t", this.state.autoChargeStation)} </div>
+	render() {
+		console.log("Robot Number:\t\t", this.state.scoutingTeamNumber);
+		console.log("Match Number:\t\t", this.state.matchNumber);
+		console.log("Nullify Data:\t\t", this.state.nullifyData);
+		console.log("A1 Auto:\t\t", this.state.autoGridA1);
+		console.log("A2 Auto:\t\t", this.state.autoGridA2);
+		console.log("A3 Auto:\t\t", this.state.autoGridA3);
+		console.log("A4 Auto:\t\t", this.state.autoGridA4);
+		console.log("A5 Auto:\t\t", this.state.autoGridA5);
+		console.log("A6 Auto:\t\t", this.state.autoGridA6);
+		console.log("A7 Auto:\t\t", this.state.autoGridA7);
+		console.log("A8 Auto:\t\t", this.state.autoGridA8);
+		console.log("A9 Auto:\t\t", this.state.autoGridA9);
+		console.log("B1 Auto:\t\t", this.state.autoGridB1);
+		console.log("B2 Auto:\t\t", this.state.autoGridB2);
+		console.log("B3 Auto:\t\t", this.state.autoGridB3);
+		console.log("B4 Auto:\t\t", this.state.autoGridB4);
+		console.log("B5 Auto:\t\t", this.state.autoGridB5);
+		console.log("B6 Auto:\t\t", this.state.autoGridB6);
+		console.log("B7 Auto:\t\t", this.state.autoGridB7);
+		console.log("B8 Auto:\t\t", this.state.autoGridB8);
+		console.log("B9 Auto:\t\t", this.state.autoGridB9);
+		console.log("C1 Auto:\t\t", this.state.autoGridC1);
+		console.log("C2 Auto:\t\t", this.state.autoGridC2);
+		console.log("C3 Auto:\t\t", this.state.autoGridC3);
+		console.log("C4 Auto:\t\t", this.state.autoGridC4);
+		console.log("C5 Auto:\t\t", this.state.autoGridC5);
+		console.log("C6 Auto:\t\t", this.state.autoGridC6);
+		console.log("C7 Auto:\t\t", this.state.autoGridC7);
+		console.log("C8 Auto:\t\t", this.state.autoGridC8);
+		console.log("C9 Auto:\t\t", this.state.autoGridC9);
+		console.log("Auto Grid:\t\t", this.state.autoGrid);
+		console.log("Auto Mobility:\t\t", this.state.autoMobility);
+		console.log("Auto Charge Station:\t", this.state.autoChargeStation);
+		console.log("A1 Teleop:\t\t", this.state.teleopGridA1);
+		console.log("A2 Teleop:\t\t", this.state.teleopGridA2);
+		console.log("A3 Teleop:\t\t", this.state.teleopGridA3);
+		console.log("A4 Teleop:\t\t", this.state.teleopGridA4);
+		console.log("A5 Teleop:\t\t", this.state.teleopGridA5);
+		console.log("A6 Teleop:\t\t", this.state.teleopGridA6);
+		console.log("A7 Teleop:\t\t", this.state.teleopGridA7);
+		console.log("A8 Teleop:\t\t", this.state.teleopGridA8);
+		console.log("A9 Teleop:\t\t", this.state.teleopGridA9);
+		console.log("B1 Teleop:\t\t", this.state.teleopGridB1);
+		console.log("B2 Teleop:\t\t", this.state.teleopGridB2);
+		console.log("B3 Teleop:\t\t", this.state.teleopGridB3);
+		console.log("B4 Teleop:\t\t", this.state.teleopGridB4);
+		console.log("B5 Teleop:\t\t", this.state.teleopGridB5);
+		console.log("B6 Teleop:\t\t", this.state.teleopGridB6);
+		console.log("B7 Teleop:\t\t", this.state.teleopGridB7);
+		console.log("B8 Teleop:\t\t", this.state.teleopGridB8);
+		console.log("B9 Teleop:\t\t", this.state.teleopGridB9);
+		console.log("C1 Teleop:\t\t", this.state.teleopGridC1);
+		console.log("C2 Teleop:\t\t", this.state.teleopGridC2);
+		console.log("C3 Teleop:\t\t", this.state.teleopGridC3);
+		console.log("C4 Teleop:\t\t", this.state.teleopGridC4);
+		console.log("C5 Teleop:\t\t", this.state.teleopGridC5);
+		console.log("C6 Teleop:\t\t", this.state.teleopGridC6);
+		console.log("C7 Teleop:\t\t", this.state.teleopGridC7);
+		console.log("C8 Teleop:\t\t", this.state.teleopGridC8);
+		console.log("C9 Teleop:\t\t", this.state.teleopGridC9);
+		console.log("Teleop Grid:\t\t", this.state.teleopGrid);
+		console.log("Teleop Charge Station:\t", this.state.teleopChargeStation);
+		
+		return (
+			<div className='background'>
+				<MatchInfo
+					nullify={this.nullify}
+					scoutingTeamNumber={this.state.scoutingTeamNumber}
+					matchNumber={this.state.matchNumber}
+				/>
+				<Auto
+					gridA1Auto={this.gridA1Auto}
+					gridA2Auto={this.gridA2Auto}
+					gridA3Auto={this.gridA3Auto}
+					gridA4Auto={this.gridA4Auto}
+					gridA5Auto={this.gridA5Auto}
+					gridA6Auto={this.gridA6Auto}
+					gridA7Auto={this.gridA7Auto}
+					gridA8Auto={this.gridA8Auto}
+					gridA9Auto={this.gridA9Auto}
+					gridB1Auto={this.gridB1Auto}
+					gridB2Auto={this.gridB2Auto}
+					gridB3Auto={this.gridB3Auto}
+					gridB4Auto={this.gridB4Auto}
+					gridB5Auto={this.gridB5Auto}
+					gridB6Auto={this.gridB6Auto}
+					gridB7Auto={this.gridB7Auto}
+					gridB8Auto={this.gridB8Auto}
+					gridB9Auto={this.gridB9Auto}
+					gridC1Auto={this.gridC1Auto}
+					gridC2Auto={this.gridC2Auto}
+					gridC3Auto={this.gridC3Auto}
+					gridC4Auto={this.gridC4Auto}
+					gridC5Auto={this.gridC5Auto}
+					gridC6Auto={this.gridC6Auto}
+					gridC7Auto={this.gridC7Auto}
+					gridC8Auto={this.gridC8Auto}
+					gridC9Auto={this.gridC9Auto}
+					removeGridA1Auto={this.removeGridA1Auto}
+					removeGridA2Auto={this.removeGridA2Auto}
+					removeGridA3Auto={this.removeGridA3Auto}
+					removeGridA4Auto={this.removeGridA4Auto}
+					removeGridA5Auto={this.removeGridA5Auto}
+					removeGridA6Auto={this.removeGridA6Auto}
+					removeGridA7Auto={this.removeGridA7Auto}
+					removeGridA8Auto={this.removeGridA8Auto}
+					removeGridA9Auto={this.removeGridA9Auto}
+					removeGridB1Auto={this.removeGridB1Auto}
+					removeGridB2Auto={this.removeGridB2Auto}
+					removeGridB3Auto={this.removeGridB3Auto}
+					removeGridB4Auto={this.removeGridB4Auto}
+					removeGridB5Auto={this.removeGridB5Auto}
+					removeGridB6Auto={this.removeGridB6Auto}
+					removeGridB7Auto={this.removeGridB7Auto}
+					removeGridB8Auto={this.removeGridB8Auto}
+					removeGridB9Auto={this.removeGridB9Auto}
+					removeGridC1Auto={this.removeGridC1Auto}
+					removeGridC2Auto={this.removeGridC2Auto}
+					removeGridC3Auto={this.removeGridC3Auto}
+					removeGridC4Auto={this.removeGridC4Auto}
+					removeGridC5Auto={this.removeGridC5Auto}
+					removeGridC6Auto={this.removeGridC6Auto}
+					removeGridC7Auto={this.removeGridC7Auto}
+					removeGridC8Auto={this.removeGridC8Auto}
+					removeGridC9Auto={this.removeGridC9Auto}
+					addPieceTopAuto={this.addPieceTopAuto}
+					removePieceTopAuto={this.removePieceTopAuto}
+					addPieceMiddleAuto={this.addPieceMiddleAuto}
+					removePieceMiddleAuto={this.removePieceMiddleAuto}
+					addPieceBottomAuto={this.addPieceBottomAuto}
+					removePieceBottomAuto={this.removePieceBottomAuto}
+					addMobilityAuto={this.addMobilityAuto}
+					removeMobilityAuto={this.removeMobilityAuto}
+					noDockAuto={this.noDockAuto}
+					dockedAuto={this.dockedAuto}
+					engagedAuto={this.engagedAuto}
+				/>
+				<Teleop
+					gridA1Teleop={this.gridA1Teleop}
+					gridA2Teleop={this.gridA2Teleop}
+					gridA3Teleop={this.gridA3Teleop}
+					gridA4Teleop={this.gridA4Teleop}
+					gridA5Teleop={this.gridA5Teleop}
+					gridA6Teleop={this.gridA6Teleop}
+					gridA7Teleop={this.gridA7Teleop}
+					gridA8Teleop={this.gridA8Teleop}
+					gridA9Teleop={this.gridA9Teleop}
+					gridB1Teleop={this.gridB1Teleop}
+					gridB2Teleop={this.gridB2Teleop}
+					gridB3Teleop={this.gridB3Teleop}
+					gridB4Teleop={this.gridB4Teleop}
+					gridB5Teleop={this.gridB5Teleop}
+					gridB6Teleop={this.gridB6Teleop}
+					gridB7Teleop={this.gridB7Teleop}
+					gridB8Teleop={this.gridB8Teleop}
+					gridB9Teleop={this.gridB9Teleop}
+					gridC1Teleop={this.gridC1Teleop}
+					gridC2Teleop={this.gridC2Teleop}
+					gridC3Teleop={this.gridC3Teleop}
+					gridC4Teleop={this.gridC4Teleop}
+					gridC5Teleop={this.gridC5Teleop}
+					gridC6Teleop={this.gridC6Teleop}
+					gridC7Teleop={this.gridC7Teleop}
+					gridC8Teleop={this.gridC8Teleop}
+					gridC9Teleop={this.gridC9Teleop}
+					removeGridA1Teleop={this.removeGridA1Teleop}
+					removeGridA2Teleop={this.removeGridA2Teleop}
+					removeGridA3Teleop={this.removeGridA3Teleop}
+					removeGridA4Teleop={this.removeGridA4Teleop}
+					removeGridA5Teleop={this.removeGridA5Teleop}
+					removeGridA6Teleop={this.removeGridA6Teleop}
+					removeGridA7Teleop={this.removeGridA7Teleop}
+					removeGridA8Teleop={this.removeGridA8Teleop}
+					removeGridA9Teleop={this.removeGridA9Teleop}
+					removeGridB1Teleop={this.removeGridB1Teleop}
+					removeGridB2Teleop={this.removeGridB2Teleop}
+					removeGridB3Teleop={this.removeGridB3Teleop}
+					removeGridB4Teleop={this.removeGridB4Teleop}
+					removeGridB5Teleop={this.removeGridB5Teleop}
+					removeGridB6Teleop={this.removeGridB6Teleop}
+					removeGridB7Teleop={this.removeGridB7Teleop}
+					removeGridB8Teleop={this.removeGridB8Teleop}
+					removeGridB9Teleop={this.removeGridB9Teleop}
+					removeGridC1Teleop={this.removeGridC1Teleop}
+					removeGridC2Teleop={this.removeGridC2Teleop}
+					removeGridC3Teleop={this.removeGridC3Teleop}
+					removeGridC4Teleop={this.removeGridC4Teleop}
+					removeGridC5Teleop={this.removeGridC5Teleop}
+					removeGridC6Teleop={this.removeGridC6Teleop}
+					removeGridC7Teleop={this.removeGridC7Teleop}
+					removeGridC8Teleop={this.removeGridC8Teleop}
+					removeGridC9Teleop={this.removeGridC9Teleop}
+					addPieceTopTeleop={this.addPieceTopTeleop}
+					removePieceTopTeleop={this.removePieceTopTeleop}
+					addPieceMiddleTeleop={this.addPieceMiddleTeleop}
+					removePieceMiddleTeleop={this.removePieceMiddleTeleop}
+					addPieceBottomTeleop={this.addPieceBottomTeleop}
+					removePieceBottomTeleop={this.removePieceBottomTeleop}
+					noDockTeleop={this.noDockTeleop}
+					parkedTeleop={this.parkedTeleop}
+					dockedTeleop={this.dockedTeleop}
+					engagedTeleop={this.engagedTeleop}
+				/>
+				<div className='submit'>
+					<Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
+					<Button sx={{ m: 0.5 }} variant='contained' className='submit' onClick={this.submit}>Submit</Button>
+				</div>
 			</div>
-  			 
-			 <div>
-				<div>{console.log("A1 Teleop:\t\t", this.state.teleopGridA1)}</div>
-				<div>{console.log("A2 Teleop:\t\t", this.state.teleopGridA2)}</div>
-				<div>{console.log("A3 Teleop:\t\t", this.state.teleopGridA3)}</div>
-				<div>{console.log("A4 Teleop:\t\t", this.state.teleopGridA4)}</div>
-				<div>{console.log("A5 Teleop:\t\t", this.state.teleopGridA5)}</div>
-				<div>{console.log("A6 Teleop:\t\t", this.state.teleopGridA6)}</div>
-				<div>{console.log("A7 Teleop:\t\t", this.state.teleopGridA7)}</div>
-				<div>{console.log("A8 Teleop:\t\t", this.state.teleopGridA8)}</div>
-				<div>{console.log("A9 Teleop:\t\t", this.state.teleopGridA9)}</div>
-				<div>{console.log("B1 Teleop:\t\t", this.state.teleopGridB1)}</div>
-				<div>{console.log("B2 Teleop:\t\t", this.state.teleopGridB2)}</div>
-				<div>{console.log("B3 Teleop:\t\t", this.state.teleopGridB3)}</div>
-				<div>{console.log("B4 Teleop:\t\t", this.state.teleopGridB4)}</div>
-				<div>{console.log("B5 Teleop:\t\t", this.state.teleopGridB5)}</div>
-				<div>{console.log("B6 Teleop:\t\t", this.state.teleopGridB6)}</div>
-				<div>{console.log("B7 Teleop:\t\t", this.state.teleopGridB7)}</div>
-				<div>{console.log("B8 Teleop:\t\t", this.state.teleopGridB8)}</div>
-				<div>{console.log("B9 Teleop:\t\t", this.state.teleopGridB9)}</div>
-				<div>{console.log("C1 Teleop:\t\t", this.state.teleopGridC1)}</div>
-				<div>{console.log("C2 Teleop:\t\t", this.state.teleopGridC2)}</div>
-				<div>{console.log("C3 Teleop:\t\t", this.state.teleopGridC3)}</div>
-				<div>{console.log("C4 Teleop:\t\t", this.state.teleopGridC4)}</div>
-				<div>{console.log("C5 Teleop:\t\t", this.state.teleopGridC5)}</div>
-				<div>{console.log("C6 Teleop:\t\t", this.state.teleopGridC6)}</div>
-				<div>{console.log("C7 Teleop:\t\t", this.state.teleopGridC7)}</div>
-				<div>{console.log("C8 Teleop:\t\t", this.state.teleopGridC8)}</div>
-				<div>{console.log("C9 Teleop:\t\t", this.state.teleopGridC9)}</div>
-				<div>{console.log("Teleop Grid:\t\t", this.state.teleopGrid)} </div>
-				<div>{console.log("Teleop Charge Station:\t", this.state.teleopChargeStation)} </div>
-			 </div>
-			 
-            <MatchInfo 
-			nullify={this.nullify} 
-			scoutingTeamNumber={this.state.scoutingTeamNumber}
-			matchNumber={this.state.matchNumber} />
-            <Auto
-			gridA1Auto={this.gridA1Auto}
-			gridA2Auto={this.gridA2Auto}
-			gridA3Auto={this.gridA3Auto}
-			gridA4Auto={this.gridA4Auto}
-			gridA5Auto={this.gridA5Auto}
-			gridA6Auto={this.gridA6Auto}
-			gridA7Auto={this.gridA7Auto}
-			gridA8Auto={this.gridA8Auto}
-			gridA9Auto={this.gridA9Auto}
-			gridB1Auto={this.gridB1Auto}
-			gridB2Auto={this.gridB2Auto}
-			gridB3Auto={this.gridB3Auto}
-			gridB4Auto={this.gridB4Auto}
-			gridB5Auto={this.gridB5Auto}
-			gridB6Auto={this.gridB6Auto}
-			gridB7Auto={this.gridB7Auto}
-			gridB8Auto={this.gridB8Auto}
-			gridB9Auto={this.gridB9Auto}
-			gridC1Auto={this.gridC1Auto}
-			gridC2Auto={this.gridC2Auto}
-			gridC3Auto={this.gridC3Auto}
-			gridC4Auto={this.gridC4Auto}
-			gridC5Auto={this.gridC5Auto}
-			gridC6Auto={this.gridC6Auto}
-			gridC7Auto={this.gridC7Auto}
-			gridC8Auto={this.gridC8Auto}
-			gridC9Auto={this.gridC9Auto}
-			removeGridA1Auto={this.removeGridA1Auto}
-			removeGridA2Auto={this.removeGridA2Auto}
-			removeGridA3Auto={this.removeGridA3Auto}
-			removeGridA4Auto={this.removeGridA4Auto}
-			removeGridA5Auto={this.removeGridA5Auto}
-			removeGridA6Auto={this.removeGridA6Auto}
-			removeGridA7Auto={this.removeGridA7Auto}
-			removeGridA8Auto={this.removeGridA8Auto}
-			removeGridA9Auto={this.removeGridA9Auto}
-			removeGridB1Auto={this.removeGridB1Auto}
-			removeGridB2Auto={this.removeGridB2Auto}
-			removeGridB3Auto={this.removeGridB3Auto}
-			removeGridB4Auto={this.removeGridB4Auto}
-			removeGridB5Auto={this.removeGridB5Auto}
-			removeGridB6Auto={this.removeGridB6Auto}
-			removeGridB7Auto={this.removeGridB7Auto}
-			removeGridB8Auto={this.removeGridB8Auto}
-			removeGridB9Auto={this.removeGridB9Auto}
-			removeGridC1Auto={this.removeGridC1Auto}
-			removeGridC2Auto={this.removeGridC2Auto}
-			removeGridC3Auto={this.removeGridC3Auto}
-			removeGridC4Auto={this.removeGridC4Auto}
-			removeGridC5Auto={this.removeGridC5Auto}
-			removeGridC6Auto={this.removeGridC6Auto}
-			removeGridC7Auto={this.removeGridC7Auto}
-			removeGridC8Auto={this.removeGridC8Auto}
-			removeGridC9Auto={this.removeGridC9Auto}
-			addPieceTopAuto={this.addPieceTopAuto}
-			removePieceTopAuto={this.removePieceTopAuto}
-			addPieceMiddleAuto={this.addPieceMiddleAuto}
-			removePieceMiddleAuto={this.removePieceMiddleAuto}
-			addPieceBottomAuto={this.addPieceBottomAuto}
-			removePieceBottomAuto={this.removePieceBottomAuto}
-  			addMobilityAuto={this.addMobilityAuto}
- 			removeMobilityAuto={this.removeMobilityAuto}
-			noDockAuto={this.noDockAuto}
-			dockedAuto={this.dockedAuto}
-			engagedAuto={this.engagedAuto}/>
-            <Teleop
-			gridA1Teleop={this.gridA1Teleop}
-			gridA2Teleop={this.gridA2Teleop}
-			gridA3Teleop={this.gridA3Teleop}
-			gridA4Teleop={this.gridA4Teleop}
-			gridA5Teleop={this.gridA5Teleop}
-			gridA6Teleop={this.gridA6Teleop}
-			gridA7Teleop={this.gridA7Teleop}
-			gridA8Teleop={this.gridA8Teleop}
-			gridA9Teleop={this.gridA9Teleop}
-			gridB1Teleop={this.gridB1Teleop}
-			gridB2Teleop={this.gridB2Teleop}
-			gridB3Teleop={this.gridB3Teleop}
-			gridB4Teleop={this.gridB4Teleop}
-			gridB5Teleop={this.gridB5Teleop}
-			gridB6Teleop={this.gridB6Teleop}
-			gridB7Teleop={this.gridB7Teleop}
-			gridB8Teleop={this.gridB8Teleop}
-			gridB9Teleop={this.gridB9Teleop}
-			gridC1Teleop={this.gridC1Teleop}
-			gridC2Teleop={this.gridC2Teleop}
-			gridC3Teleop={this.gridC3Teleop}
-			gridC4Teleop={this.gridC4Teleop}
-			gridC5Teleop={this.gridC5Teleop}
-			gridC6Teleop={this.gridC6Teleop}
-			gridC7Teleop={this.gridC7Teleop}
-			gridC8Teleop={this.gridC8Teleop}
-			gridC9Teleop={this.gridC9Teleop}
-			removeGridA1Teleop={this.removeGridA1Teleop}
-			removeGridA2Teleop={this.removeGridA2Teleop}
-			removeGridA3Teleop={this.removeGridA3Teleop}
-			removeGridA4Teleop={this.removeGridA4Teleop}
-			removeGridA5Teleop={this.removeGridA5Teleop}
-			removeGridA6Teleop={this.removeGridA6Teleop}
-			removeGridA7Teleop={this.removeGridA7Teleop}
-			removeGridA8Teleop={this.removeGridA8Teleop}
-			removeGridA9Teleop={this.removeGridA9Teleop}
-			removeGridB1Teleop={this.removeGridB1Teleop}
-			removeGridB2Teleop={this.removeGridB2Teleop}
-			removeGridB3Teleop={this.removeGridB3Teleop}
-			removeGridB4Teleop={this.removeGridB4Teleop}
-			removeGridB5Teleop={this.removeGridB5Teleop}
-			removeGridB6Teleop={this.removeGridB6Teleop}
-			removeGridB7Teleop={this.removeGridB7Teleop}
-			removeGridB8Teleop={this.removeGridB8Teleop}
-			removeGridB9Teleop={this.removeGridB9Teleop}
-			removeGridC1Teleop={this.removeGridC1Teleop}
-			removeGridC2Teleop={this.removeGridC2Teleop}
-			removeGridC3Teleop={this.removeGridC3Teleop}
-			removeGridC4Teleop={this.removeGridC4Teleop}
-			removeGridC5Teleop={this.removeGridC5Teleop}
-			removeGridC6Teleop={this.removeGridC6Teleop}
-			removeGridC7Teleop={this.removeGridC7Teleop}
-			removeGridC8Teleop={this.removeGridC8Teleop}
-			removeGridC9Teleop={this.removeGridC9Teleop}
-			addPieceTopTeleop={this.addPieceTopTeleop}
-			removePieceTopTeleop={this.removePieceTopTeleop}
-			addPieceMiddleTeleop={this.addPieceMiddleTeleop}
-			removePieceMiddleTeleop={this.removePieceMiddleTeleop}
-			addPieceBottomTeleop={this.addPieceBottomTeleop}
-			removePieceBottomTeleop={this.removePieceBottomTeleop}
-			noDockTeleop={this.noDockTeleop}
-			parkedTeleop={this.parkedTeleop}
-			dockedTeleop={this.dockedTeleop}
-			engagedTeleop={this.engagedTeleop}
-			/>
-            <div className='submit'>
-              <Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
-              <Button sx={{ m: 0.5 }} variant='contained' className='submit' onClick={this.submit}>Submit</Button>
-            </div>
-          </div>
-        );
-      }
+		);
+	}
 }
+
 export default DataCollectionPage;

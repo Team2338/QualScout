@@ -3,93 +3,93 @@ $tangaroa: rgb(2, 36, 62);
 $pumice: rgb(186, 191, 183);
 
 .text {
-    color: $orange;
+	color: $orange;
 }
 .wrapper {
-    width: 100vw;
-    height: 100vh;
-    align-items: center;
-    background-color: $pumice;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    text-align: center;
-    box-sizing: border-box;
-    font-family: "Segoe UI";
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	background-color: $pumice;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	text-align: center;
+	box-sizing: border-box;
+	font-family: "Segoe UI";
 }
 .header {
-    background-color: $tangaroa;
-    color: $orange;    
-    margin-bottom: 10px;
-    padding: 10px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    box-sizing: border-box;
+	background-color: $tangaroa;
+	color: $orange;
+	margin-bottom: 10px;
+	padding: 10px 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	box-sizing: border-box;
 }
 .main-title  {
-    color: $orange;
+	color: $orange;
 }
 .subtitlechange .wrappers .center .main-title {
-    font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 .css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root.Mui-selected:focus {
-    background-color: rgba(254, 80, 0, 0.495);
-    transition: .3s;
+	background-color: rgba(254, 80, 0, 0.495);
+	transition: .3s;
 }
 .css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root:hover {
-    background-color: $pumice !important;
-    color: $tangaroa;
-    transition: .3s;
+	background-color: $pumice !important;
+	color: $tangaroa;
+	transition: .3s;
 }
 .points-landingpage {
-    color: $tangaroa;
+	color: $tangaroa;
 }
 .login-title {
-    color: $tangaroa
+	color: $tangaroa
 }
 .button {
-    color: $orange;
-    background-color: $pumice;
-    margin-top: 30px;
-    margin-left: 600px; 
-    margin-right: 600px;
-    margin-bottom: 3rem !important;
+	color: $orange;
+	background-color: $pumice;
+	margin-top: 30px;
+	margin-left: 600px;
+	margin-right: 600px;
+	margin-bottom: 3rem !important;
 }
 .landingpage-forms {
-    margin-bottom: 1rem !important;
+	margin-bottom: 1rem !important;
 }
 #outlined-basic {
-    min-width: 18rem !important;
-    color: $tangaroa;
+	min-width: 18rem !important;
+	color: $tangaroa;
 }
 #lang {
-    border: solid $tangaroa;
-    width: 64px
+	border: solid $tangaroa;
+	width: 64px
 }
 .landingpage-logo {
-    height: rem7;
+	height: rem7;
 }
 @media only screen and (max-width: 700px) {
-    .button {
-        width: 50% !important;
-    }
+	.button {
+		width: 50% !important;
+	}
 }
 @media only screen and (max-width: 400px) {
-    .main-title {
-        font-size: 30px;
-    }
-    .landingpage-logo {
-         height: 6rem;
-    }
+	.main-title {
+		font-size: 30px;
+	}
+	.landingpage-logo {
+		height: 6rem;
+	}
 }
 
 
 .Title {
-     display: flex;
-     text-align: center;
-     margin-left: 20px; 
-   
+	display: flex;
+	text-align: center;
+	margin-left: 20px;
+
 
 }

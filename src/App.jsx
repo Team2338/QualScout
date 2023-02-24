@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import LandingPage from './Components/landing-page/LandingPage.jsx'
 import DataCollectionPage from './Components/data-collection-page/DataCollectionPage.jsx'
 
 function App() {
-	let Component
+	const [userInfo, setUserInfo] = useState({
+		teamNumber: '',
+		eventCode: '',
+		secretCode: '',
+		scouterName: ''
+	});
+
+	const setUserInfoCallback = (teamNumber, evenCode, secretCode, scouterName) => {
+		setUserInfo({
+			teamNumber: teamNumber,
+			eventCode: evenCode,
+			secretCode: secretCode,
+			scouterName: scouterName
+		});
+	};
+
+	let component;
 	switch (window.location.pathname) {
-	  case "/":
-		Component = LandingPage
-		break
-	  case "/data":
-		Component = DataCollectionPage
-		break
+	  case '/':
+			component = <LandingPage parentCallback={setUserInfoCallback}/>;
+			break;
+	  case '/data':
+			component = <DataCollectionPage/>;
+			break;
 	}
   
 	return (
-
 		<div className="App">
-		  <Component/>
+			{ component }
 		</div>
 	);
-  }
+}
   
-  export default App;
+export default App;
