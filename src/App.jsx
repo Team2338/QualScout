@@ -4,6 +4,7 @@ import LandingPage from './Components/landing-page/LandingPage.jsx'
 import DataCollectionPage from './Components/data-collection-page/DataCollectionPage.jsx'
 
 function App() {
+	const [hasLoggedIn, setLoggedIn] = useState(false);
 	const [userInfo, setUserInfo] = useState({
 		teamNumber: '',
 		eventCode: '',
@@ -19,24 +20,20 @@ function App() {
 			secretCode: secretCode,
 			scouterName: scouterName
 		});
+		setLoggedIn(true);
 	};
 
-	let component;
-	switch (window.location.pathname) {
-	  case '/':
-			component = <LandingPage parentCallback={setUserInfoCallback}/>;
-			break;
-	  case '/data':
-			component = <DataCollectionPage
-				teamNumber={userInfo.teamNumber}
-				eventCode={userInfo.eventCode}
-				secretCode={userInfo.secretCode}
-				scouterName={userInfo.scouterName}
-				teamColor={'RED'}
-			/>;
-			break;
+	let component = <LandingPage parentCallback={setUserInfoCallback}/>;
+	if (hasLoggedIn){
+		component = <DataCollectionPage
+			teamNumber={userInfo.teamNumber}
+			eventCode={userInfo.eventCode}
+			secretCode={userInfo.secretCode}
+			scouterName={userInfo.scouterName}
+			teamColor={'RED'}
+		/>;
 	}
-  
+
 	return (
 		<div className="App">
 			{ component }

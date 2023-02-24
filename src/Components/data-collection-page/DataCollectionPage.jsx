@@ -859,6 +859,18 @@ class DataCollectionPage extends React.Component {
 		});
 	};
 
+	setRobotNumber = (robotNumber) => {
+		this.setState({
+			scoutingTeamNumber: robotNumber
+		});
+	};
+
+	setMatchNumber = (matchNumber) => {
+		this.setState({
+			matchNumber: matchNumber
+		});
+	};
+
 	nullify = event => {
 		this.setState(prevstate => ({
 			nullifyData: !prevstate.nullifyData	
@@ -894,7 +906,7 @@ class DataCollectionPage extends React.Component {
 					gamemode: 'AUTO',
 					objective: 'GRID_2023',
 					count: this.state.autoGrid,
-					list: [this.autoGridA1, this.autoGridA2, this.autoGridA3, this.autoGridA4, this.autoGridA5, this.autoGridA6, this.autoGridA7, this.autoGridA8, this.autoGridA9, this.autoGridB1, this.autoGridB2, this.autoGridB3, this.autoGridB4, this.autoGridB5, this.autoGridB6, this.autoGridB7, this.autoGridB8, this.autoGridB9, this.autoGridC1, this.autoGridC2, this.autoGridC3, this.autoGridC4, this.autoGridC5, this.autoGridC6, this.autoGridC7, this.autoGridC8, this.autoGridC9]
+					list: [this.state.autoGridA1, this.state.autoGridA2, this.state.autoGridA3, this.state.autoGridA4, this.state.autoGridA5, this.state.autoGridA6, this.state.autoGridA7, this.state.autoGridA8, this.state.autoGridA9, this.state.autoGridB1, this.state.autoGridB2, this.state.autoGridB3, this.state.autoGridB4, this.state.autoGridB5, this.state.autoGridB6, this.state.autoGridB7, this.state.autoGridB8, this.state.autoGridB9, this.state.autoGridC1, this.state.autoGridC2, this.state.autoGridC3, this.state.autoGridC4, this.state.autoGridC5, this.state.autoGridC6, this.state.autoGridC7, this.state.autoGridC8, this.state.autoGridC9]
 				},
 				{
 					gamemode: 'TELEOP',
@@ -905,7 +917,7 @@ class DataCollectionPage extends React.Component {
 					gamemode: 'TELEOP',
 					objective: 'GRID_2023',
 					count: this.state.teleopGrid,
-					list: [this.teleopGridA1, this.teleopGridA2, this.teleopGridA3, this.teleopGridA4, this.teleopGridA5, this.teleopGridA6, this.teleopGridA7, this.teleopGridA8, this.teleopGridA9, this.teleopGridB1, this.teleopGridB2, this.teleopGridB3, this.teleopGridB4, this.teleopGridB5, this.teleopGridB6, this.teleopGridB7, this.teleopGridB8, this.teleopGridB9, this.teleopGridC1, this.teleopGridC2, this.teleopGridC3, this.teleopGridC4, this.teleopGridC5, this.teleopGridC6, this.teleopGridC7, this.teleopGridC8, this.teleopGridC9]
+					list: [this.state.teleopGridA1, this.state.teleopGridA2, this.state.teleopGridA3, this.state.teleopGridA4, this.state.teleopGridA5, this.state.teleopGridA6, this.state.teleopGridA7, this.state.teleopGridA8, this.state.teleopGridA9, this.state.teleopGridB1, this.state.teleopGridB2, this.state.teleopGridB3, this.state.teleopGridB4, this.state.teleopGridB5, this.state.teleopGridB6, this.state.teleopGridB7, this.state.teleopGridB8, this.state.teleopGridB9, this.state.teleopGridC1, this.state.teleopGridC2, this.state.teleopGridC3, this.state.teleopGridC4, this.state.teleopGridC5, this.state.teleopGridC6, this.state.teleopGridC7, this.state.teleopGridC8, this.state.teleopGridC9]
 				}
 			]
 		};

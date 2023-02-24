@@ -21,6 +21,7 @@ class LandingPage extends React.Component {
 	}
 
 	handleClick = (event) => {
+		event.preventDefault();
 		localStorage.setItem('teamNumber', this.state.teamNumber.toString());
 		localStorage.setItem('eventCode', this.state.eventCode.toString());
 		localStorage.setItem('secretCode', this.state.secretCode.toString());
@@ -174,7 +175,6 @@ class LandingPage extends React.Component {
 					size="medium"
 					style={{textTransform: 'capitalize'}}
 					onClick={this.handleClick}
-					href="/data"
 				>
 					Submit
 				</Button>
