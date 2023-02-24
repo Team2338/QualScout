@@ -83,7 +83,8 @@ class LandingPage extends React.Component {
 						onChange={this.handleChange}
 						value={this.state.teamNumber}
 						InputProp={{
-							startAdornment: <InputAdornment position="start">#</InputAdornment>
+							startAdornment: <InputAdornment position="start">#</InputAdornment>,
+							min: 0
 						}}
 						inputProps={{
 							min: 0,
@@ -150,7 +151,7 @@ class LandingPage extends React.Component {
 						variant="contained"
 						size="medium"
 						style={{backgroundColor: "red", margin: 5, textTransform: 'capitalize'}}
-						onClick={this.state.teamColor="red"}
+						// onClick={this.state.teamColor="red"}
 					>
 						Red Alliance
 					</Button>
@@ -161,7 +162,7 @@ class LandingPage extends React.Component {
 						variant="contained"
 						size="medium"
 						style={{backgroundColor: "blue", margin: 5, textTransform: 'capitalize'}}
-						onClick={this.state.teamColor="blue"}
+						// onClick={this.state.teamColor="blue"}
 					>
 						Blue Alliance
 					</Button>

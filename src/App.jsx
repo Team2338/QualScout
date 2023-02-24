@@ -11,10 +11,11 @@ function App() {
 		scouterName: ''
 	});
 
-	const setUserInfoCallback = (teamNumber, evenCode, secretCode, scouterName) => {
+	const setUserInfoCallback = (teamNumber, eventCode, secretCode, scouterName) => {
+		console.log('team number', teamNumber)
 		setUserInfo({
 			teamNumber: teamNumber,
-			eventCode: evenCode,
+			eventCode: eventCode,
 			secretCode: secretCode,
 			scouterName: scouterName
 		});
@@ -26,7 +27,13 @@ function App() {
 			component = <LandingPage parentCallback={setUserInfoCallback}/>;
 			break;
 	  case '/data':
-			component = <DataCollectionPage/>;
+			component = <DataCollectionPage
+				teamNumber={userInfo.teamNumber}
+				eventCode={userInfo.eventCode}
+				secretCode={userInfo.secretCode}
+				scouterName={userInfo.scouterName}
+				teamColor={'RED'}
+			/>;
 			break;
 	}
   
