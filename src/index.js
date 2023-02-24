@@ -3,10 +3,11 @@ import {
 	ThemeProvider,
 	createTheme
 } from '@mui/material/styles';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import store from './app/store';
 import { Provider } from 'react-redux';
+
 export const themeOptions = {
 	palette: {
 		type: 'dark',
@@ -30,11 +31,12 @@ export const themeOptions = {
 };
 
 const theme = createTheme(themeOptions);
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(
 	<Provider store={store}>
-	<ThemeProvider theme={theme}>
-		<App/>
-	</ThemeProvider>
-	</Provider>,
-	document.getElementById('root')	
+		<ThemeProvider theme={theme}>
+			<App />
+		</ThemeProvider>
+	</Provider>
 );

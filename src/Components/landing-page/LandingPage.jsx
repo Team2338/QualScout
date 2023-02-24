@@ -82,9 +82,8 @@ class LandingPage extends React.Component {
 						type="number"
 						onChange={this.handleChange}
 						value={this.state.teamNumber}
-						InputProp={{
+						InputProps={{
 							startAdornment: <InputAdornment position="start">#</InputAdornment>,
-							min: 0
 						}}
 						inputProps={{
 							min: 0,
@@ -104,7 +103,7 @@ class LandingPage extends React.Component {
 						value={this.state.eventCode}
 						placeholder="Event Code"
 						inputProps={{
-							maxlength: 32
+							maxLength: 32
 						}}
 					/>
 				</div>
