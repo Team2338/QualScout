@@ -1,4 +1,5 @@
 import React from 'react';
+import Nullify from './Nullify.jsx'
 import './Teleop.scss';
 import CombinedButtons from './CombinedButtons';
 import DockedTeleop from './DockedTeleop';
@@ -11,6 +12,9 @@ class Teleop extends React.Component {
         return ( 
             <div class='background'>
                 <h1 class='text'>Teleop</h1>
+                <div class='gridflex'>
+                <Nullify />
+                </div>
                 <h3 class='placed'>Grid</h3>
                 <TeleopGridInfoButton />
                 <CombinedButtons

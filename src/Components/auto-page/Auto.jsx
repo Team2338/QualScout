@@ -1,3 +1,4 @@
+import Nullify from './Nullify.jsx';
 import React from 'react';
 import Mobility from './Mobility';
 import './Auto.scss';
@@ -14,6 +15,7 @@ class Auto extends React.Component {
             <div class='background'>
                 <h1 class='text'>Auto</h1>
                 <div class='grid-flex'>
+                <Nullify />
                 <h3>Grid</h3>
                 <AutoGridInfoButton />
                 </div>
