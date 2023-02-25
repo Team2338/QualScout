@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './DataCollectionPage.scss'
 import Button from '@mui/material/Button'
-import MatchInfo from '../match-information/MatchInformation.jsx'
+import MatchInformation from '../match-information/MatchInformation.jsx'
 import Auto from '../auto-page/Auto.jsx';
 import Teleop from'../teleop-page/Teleop.jsx';
 import GearscoutService from '../../Services/GearscoutService.js'
@@ -993,10 +993,12 @@ class DataCollectionPage extends React.Component {
 		
 		return (
 			<div className='background'>
-				<MatchInfo
+				<MatchInformation
 					nullify={this.nullify}
 					scoutingTeamNumber={this.state.scoutingTeamNumber}
 					matchNumber={this.state.matchNumber}
+					setScoutingTeamNumber={this.setRobotNumber}
+					setMatchNumber={this.setMatchNumber}
 				/>
 				<Auto
 					gridA1Auto={this.gridA1Auto}
