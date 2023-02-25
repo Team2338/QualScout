@@ -885,6 +885,7 @@ class DataCollectionPage extends React.Component {
 
 	submit = () => {
 		alert('Data Submitted!');
+		window.location.reload();
 		const url = '/team/' + this.props.teamNumber;
 		const config = {
 			headers: {
@@ -931,6 +932,7 @@ class DataCollectionPage extends React.Component {
 
 		this.setState(INITIAL_STATE);
 	};
+	
 
 
 	render() {
