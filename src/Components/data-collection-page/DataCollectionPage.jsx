@@ -68,7 +68,8 @@ const INITIAL_STATE = {
 	teleopGridC9: 0,
 	nullifyData: false,
 	scoutingTeamNumber: 0,
-	matchNumber: 0
+	matchNumber: 0,
+	allianceColor: 'blue'
 }
 
 class DataCollectionPage extends React.Component {
@@ -870,6 +871,12 @@ class DataCollectionPage extends React.Component {
 		});
 	};
 
+	setAllianceColor = (color) => {
+		this.setState({
+			allianceColor: color
+		});
+	};
+
 	nullify = event => {
 		this.setState(prevstate => ({
 			nullifyData: !prevstate.nullifyData	
@@ -889,7 +896,7 @@ class DataCollectionPage extends React.Component {
 			matchNumber: this.state.matchNumber,
 			robotNumber: this.state.scoutingTeamNumber,
 			creator: this.props.scouterName,
-			teamColor: this.props.teamColor,
+			allianceColor: this.state.allianceColor,
 			objectives: [
 				{
 					gamemode: 'AUTO',
@@ -999,6 +1006,30 @@ class DataCollectionPage extends React.Component {
 					setScoutingTeamNumber={this.setRobotNumber}
 					setMatchNumber={this.setMatchNumber}
 				/>
+				<div>
+					<Button
+						name="red"
+						className="buttons"
+						type="button"
+						variant="contained"
+						size="medium"
+						style={{backgroundColor: '#ee4444', margin: 5, textTransform: 'capitalize'}}
+						onClick={() => this.setAllianceColor('red')}
+					>
+						Red Alliance
+					</Button>
+					<Button
+						name="blue"
+						className="buttons"
+						type="button"
+						variant="contained"
+						size="medium"
+						style={{backgroundColor: '#5577ff', margin: 5, textTransform: 'capitalize'}}
+						onClick={() => this.setAllianceColor('blue')}
+					>
+						Blue Alliance
+					</Button>
+				</div>
 				<Auto
 					gridA1Auto={this.gridA1Auto}
 					gridA2Auto={this.gridA2Auto}

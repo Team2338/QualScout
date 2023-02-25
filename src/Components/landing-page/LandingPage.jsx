@@ -143,30 +143,6 @@ class LandingPage extends React.Component {
 				<div className="points-landingpage">*Enter team specific password to store data*</div>
 				<div className="points-landingpage">*This code will be used to view your analytics*</div>
 				<div className="points-landingpage">*Make sure all scouters from the same team use the same code*</div>
-				<div>
-					<Button
-						name="red"
-						className="buttons"
-						type="button"
-						variant="contained"
-						size="medium"
-						style={{backgroundColor: "red", margin: 5, textTransform: 'capitalize'}}
-						// onClick={this.state.teamColor="red"}
-					>
-						Red Alliance
-					</Button>
-					<Button
-						name="blue"
-						className="buttons"
-						type="button"
-						variant="contained"
-						size="medium"
-						style={{backgroundColor: "blue", margin: 5, textTransform: 'capitalize'}}
-						// onClick={this.state.teamColor="blue"}
-					>
-						Blue Alliance
-					</Button>
-				</div>
 				<Button
 					name="submit"
 					className="button"
