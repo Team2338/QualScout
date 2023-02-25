@@ -30,8 +30,8 @@ function Mobility(props) {
 
 	return (
 		<div className='spacing'>
-			<Button sx={{ m: 0.5 }} variant={NoVariant} onClick={handleNoClick}>No</Button>
-			<Button sx={{ m: 0.5 }} variant={YesVariant} onClick={handleYesClick}>Yes</Button>
+			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant={NoVariant} onClick={handleNoClick}>No</Button>
+			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant={YesVariant} onClick={handleYesClick}>Yes</Button>
 		</div>
 	);
 }

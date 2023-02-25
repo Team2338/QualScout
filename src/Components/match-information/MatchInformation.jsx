@@ -41,8 +41,8 @@ function MatchInformation(props) {
 				/>
 			</div>
 			<div className='analytics'>
-				<Button sx={{ m: 0.5 }} variant='contained' href='https://data.gearitforward.com/'>Analytics</Button>
-				<Button sx={{ m: 0.5 }} variant={variant} onClick={handleNullifyClick}>Nullify</Button>
+				<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='contained' href='https://data.gearitforward.com/'>Analytics</Button>
+				<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant={variant} onClick={handleNullifyClick}>Nullify</Button>
 			</div>
 		</div>
 	);

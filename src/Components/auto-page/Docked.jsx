@@ -40,9 +40,9 @@ function Docked(props) {
 
 	return (
 		<div className="spacing">
-			<Button sx={{ m: 0.5 }} variant={NoneVariant} onClick={handleNoneClick}>None</Button>
-			<Button sx={{ m: 0.5 }} variant={UnengagedVariant} onClick={handleUnengagedClick}>Docked Unengaged</Button>
-			<Button sx={{ m: 0.5 }} variant={EngagedVariant} onClick={handleEngagedClick}>Docked Engaged</Button>
+			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant={NoneVariant} onClick={handleNoneClick}>None</Button>
+			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant={UnengagedVariant} onClick={handleUnengagedClick}>Docked Only</Button>
+			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}}variant={EngagedVariant} onClick={handleEngagedClick}>Docked Engaged</Button>
 		</div>
 	)
 }

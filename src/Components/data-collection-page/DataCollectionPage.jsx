@@ -1164,8 +1164,8 @@ class DataCollectionPage extends React.Component {
 					engagedTeleop={this.engagedTeleop}
 				/>
 				<div className='submit'>
-					<Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
-					<Button sx={{ m: 0.5 }} variant='contained' className='submit' onClick={this.submit}>Submit</Button>
+					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='outlined' className='submit' href='/'>Back</Button>
+					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='contained' className='submit' onClick={this.submit}>Submit</Button>
 				</div>
 			</div>
 		);
