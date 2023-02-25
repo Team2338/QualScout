@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './DataCollectionPage.scss'
 import Button from '@mui/material/Button'
 import MatchInformation from '../match-information/MatchInformation.jsx'
 import Auto from '../auto-page/Auto.jsx';
 import Teleop from'../teleop-page/Teleop.jsx';
 import GearscoutService from '../../Services/GearscoutService.js'
-import Mobility from '../auto-page/Mobility.jsx';
 
 const INITIAL_STATE = {
 	autoGrid: 0,
@@ -399,8 +398,8 @@ class DataCollectionPage extends React.Component {
 	removeGridC9Auto = event => {
 		this.setState(prevstate => ({
 			autoGridC9: 0
-		}))
-	}
+		}));
+	};
 
 		addPieceTopAuto = (event) => {
 		this.setState(prevstate => ({ 
@@ -412,30 +411,30 @@ class DataCollectionPage extends React.Component {
 		this.setState(prevstate => ({ 
 			autoGrid: prevstate.autoGrid - 1
 		}));
-		}
+	};
 
 	addPieceMiddleAuto = (event) => { 
 		this.setState(prevstate => ({ 
 			autoGrid: prevstate.autoGrid + 1
-	}));
+		}));
 	};
 
 	removePieceMiddleAuto = (event) => { 
 		this.setState(prevstate => ({ 
 			autoGrid: prevstate.autoGrid - 1
-	}));
+		}));
 	};
 
 	addPieceBottomAuto = (event) => {
 		this.setState(prevstate => ({ 
 			autoGrid: prevstate.autoGrid + 1
-	}));
+		}));
 	};
 
 	removePieceBottomAuto = (event) => { 
 		this.setState(prevstate => ({ 
 			autoGrid: prevstate.autoGrid - 1
-	}));
+		}));
 	};
 
 	addMobilityAuto = (event) => {
@@ -453,8 +452,8 @@ class DataCollectionPage extends React.Component {
 	noDockAuto = (event) => {
 		this.setState({
 			autoChargeStation: 0
-		})
-	}
+		});
+	};
 
 	dockedAuto = (event) => {
 		this.setState({
@@ -471,212 +470,212 @@ class DataCollectionPage extends React.Component {
 	gridA1Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA1: 1
-		}))
-	}
+		}));
+	};
 
 	gridA2Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA2: 1
-		}))
-	}
+		}));
+	};
 
 	gridA3Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA3: 1
-		}))
-	}
+		}));
+	};
 
 	gridA4Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA4: 1
-		}))
-	}
+		}));
+	};
 
 	gridA5Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA5: 1
-		}))
-	}
+		}));
+	};
 
 	gridA6Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA6: 1
-		}))
-	}
+		}));
+	};
 
 	gridA7Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA7: 1
-		}))
-	}
+		}));
+	};
 
 	gridA8Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA8: 1
-		}))
-	}
+		}));
+	};
 
 	gridA9Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA9: 1
-		}))
-	}
+		}));
+	};
 
 	gridB1Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB1: 1
-		}))
-	}
+		}));
+	};
 
 	gridB2Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB2: 1
-		}))
-	}
+		}));
+	};
 
 	gridB3Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB3: 1
-		}))
-	}
+		}));
+	};
 
 	gridB4Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB4: 1
-		}))
-	}
+		}));
+	};
 
 	gridB5Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB5: 1
-		}))
-	}
+		}));
+	};
 
 	gridB6Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB6: 1
-		}))
-	}
+		}));
+	};
 
 	gridB7Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB7: 1
-		}))
-	}
+		}));
+	};
 
 	gridB8Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB8: 1
-		}))
-	}
+		}));
+	};
 
 	gridB9Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB9: 1
-		}))
-	}
+		}));
+	};
 
 	gridC1Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC1: 1
-		}))
-	}
+		}));
+	};
 
 	gridC2Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC2: 1
-		}))
-	}
+		}));
+	};
 
 	gridC3Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC3: 1
-		}))
-	}
+		}));
+	};
 
 	gridC4Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC4: 1
-		}))
-	}
+		}));
+	};
 
 	gridC5Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC5: 1
-		}))
-	}
+		}));
+	};
 
 	gridC6Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC6: 1
-		}))
-	}
+		}));
+	};
 
 	gridC7Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC7: 1
-		}))
-	}
+		}));
+	};
 
 	gridC8Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC8: 1
-		}))
-	}
+		}));
+	};
 
 	gridC9Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC9: 1
-		}))
-	}
+		}));
+	};
 
 	removeGridA1Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA1: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridA2Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA2: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridA3Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA3: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridA4Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA4: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridA5Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA5: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridA6Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA6: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridA7Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA7: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridA8Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridA8: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridA9Teleop = event => {
 		this.setState(prevstate => ({
@@ -687,110 +686,110 @@ class DataCollectionPage extends React.Component {
 	removeGridB1Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB1: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridB2Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB2: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridB3Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB3: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridB4Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB4: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridB5Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB5: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridB6Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB6: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridB7Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB7: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridB8Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB8: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridB9Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridB9: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridC1Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC1: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridC2Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC2: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridC3Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC3: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridC4Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC4: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridC5Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC5: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridC6Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC6: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridC7Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC7: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridC8Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC8: 0
-		}))
-	}
+		}));
+	};
 
 	removeGridC9Teleop = event => {
 		this.setState(prevstate => ({
 			teleopGridC9: 0
-		}))
-	}
+		}));
+	};
 
 	addPieceTopTeleop = (event) => {
 	this.setState(prevstate => ({ 
@@ -801,20 +800,20 @@ class DataCollectionPage extends React.Component {
 	removePieceTopTeleop = (event) => {
 	this.setState(prevstate => ({ 
 		teleopGrid: prevstate.teleopGrid - 1
-	}));
-	}
+		}));
+	};
 
 	addPieceMiddleTeleop = (event) => {
 		this.setState(prevstate => ({ 
 			teleopGrid: prevstate.teleopGrid + 1
-	}));
+		}));
 	};
 
 	removePieceMiddleTeleop = (event) => {
 		this.setState(prevstate => ({ 
 			teleopGrid: prevstate.teleopGrid - 1
 		}));
-		}
+	};
 
 	addPieceBottomTeleop = (event) => {
 		this.setState(prevstate => ({ 
@@ -826,7 +825,7 @@ class DataCollectionPage extends React.Component {
 		this.setState(prevstate => ({ 
 			teleopGrid: prevstate.teleopGrid - 1
 		}));
-		}
+	};
 
 	addLink = (event) => {
 		this.setState({
