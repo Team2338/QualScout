@@ -5,6 +5,7 @@ import MatchInformation from '../match-information/MatchInformation.jsx'
 import Auto from '../auto-page/Auto.jsx';
 import Teleop from'../teleop-page/Teleop.jsx';
 import GearscoutService from '../../Services/GearscoutService.js'
+import AllianceSelection from './AllianceSelection';
 
 const INITIAL_STATE = {
 	autoGrid: 0,
@@ -1009,7 +1010,8 @@ class DataCollectionPage extends React.Component {
 					setMatchNumber={this.setMatchNumber}
 				/>
 				<div>
-					<Button
+					<AllianceSelection />
+		{/*				<Button
 						name="red"
 						className="buttons"
 						type="button"
@@ -1021,7 +1023,7 @@ class DataCollectionPage extends React.Component {
 						Red Alliance
 					</Button>
 					<Button
-						name="blue"
+					name="blue"
 						className="buttons"
 						type="button"
 						variant="contained"
@@ -1030,7 +1032,7 @@ class DataCollectionPage extends React.Component {
 						onClick={() => this.setAllianceColor('blue')}
 					>
 						Blue Alliance
-					</Button>
+					</Button>     */}
 				</div>
 				<Auto
 					gridA1Auto={this.gridA1Auto}
