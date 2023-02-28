@@ -1,5 +1,6 @@
 import './Auto.scss';
 import React from 'react';
+import Grid from '../shared/grid/Grid.jsx';
 import Nullify from './Nullify';
 import Mobility from './Mobility';
 import Docked from './Docked';
@@ -17,6 +18,7 @@ class Auto extends React.Component {
 					<Nullify />
 					<h3>Grid</h3>
 					<AutoGridInfoButton />
+					<Grid gamemode="auto"/>
 				</div>
 				<h3>Mobility</h3>
 				<MobilityInfoButton />
@@ -35,10 +37,7 @@ class Auto extends React.Component {
 
 }
 
-
-
 export default Auto;
-
 
 /*
 	Points for auto is as follows:

@@ -1,12 +1,17 @@
-import React from 'react';
 import './DataCollectionPage.scss'
+import React from 'react';
+import { connect } from 'react-redux';
 import Button from '@mui/material/Button'
 import MatchInformation from '../match-information/MatchInformation.jsx'
 import Auto from '../auto-page/Auto.jsx';
-import Grid from '../shared/grid/Grid.jsx';
 import Teleop from'../teleop-page/Teleop.jsx';
 import GearscoutService from '../../Services/GearscoutService.js'
 import AllianceSelection from './AllianceSelection';
+
+const selector = (state) => ({
+	autoGrid: state.auto.grid.map((node) => node.value),
+	teleopGrid: state.teleop.grid.map((node) => node.value),
+});
 
 const INITIAL_STATE = {
 	autoMobility: 0,
@@ -18,7 +23,7 @@ const INITIAL_STATE = {
 	allianceColor: 'blue'
 }
 
-class DataCollectionPage extends React.Component {
+class ConnectedDataCollectionPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = INITIAL_STATE;
@@ -104,7 +109,6 @@ class DataCollectionPage extends React.Component {
 
 	submit = () => {
 		alert('Data Submitted!');
-		window.location.reload();
 		const url = '/team/' + this.props.teamNumber;
 		const config = {
 			headers: {
@@ -131,8 +135,8 @@ class DataCollectionPage extends React.Component {
 				{
 					gamemode: 'AUTO',
 					objective: 'GRID_2023',
-					count: this.state.autoGrid,
-					list: [this.state.autoGridA1, this.state.autoGridA2, this.state.autoGridA3, this.state.autoGridA4, this.state.autoGridA5, this.state.autoGridA6, this.state.autoGridA7, this.state.autoGridA8, this.state.autoGridA9, this.state.autoGridB1, this.state.autoGridB2, this.state.autoGridB3, this.state.autoGridB4, this.state.autoGridB5, this.state.autoGridB6, this.state.autoGridB7, this.state.autoGridB8, this.state.autoGridB9, this.state.autoGridC1, this.state.autoGridC2, this.state.autoGridC3, this.state.autoGridC4, this.state.autoGridC5, this.state.autoGridC6, this.state.autoGridC7, this.state.autoGridC8, this.state.autoGridC9]
+					count: this.props.autoGrid.reduce((sum, value) => sum + value),
+					list: this.props.autoGrid
 				},
 				{
 					gamemode: 'TELEOP',
@@ -142,8 +146,8 @@ class DataCollectionPage extends React.Component {
 				{
 					gamemode: 'TELEOP',
 					objective: 'GRID_2023',
-					count: this.state.teleopGrid,
-					list: [this.state.teleopGridA1, this.state.teleopGridA2, this.state.teleopGridA3, this.state.teleopGridA4, this.state.teleopGridA5, this.state.teleopGridA6, this.state.teleopGridA7, this.state.teleopGridA8, this.state.teleopGridA9, this.state.teleopGridB1, this.state.teleopGridB2, this.state.teleopGridB3, this.state.teleopGridB4, this.state.teleopGridB5, this.state.teleopGridB6, this.state.teleopGridB7, this.state.teleopGridB8, this.state.teleopGridB9, this.state.teleopGridC1, this.state.teleopGridC2, this.state.teleopGridC3, this.state.teleopGridC4, this.state.teleopGridC5, this.state.teleopGridC6, this.state.teleopGridC7, this.state.teleopGridC8, this.state.teleopGridC9]
+					count: this.props.teleopGrid.reduce((sum, value) => sum + value),
+					list: this.props.teleopGrid
 				}
 			]
 		};
@@ -158,10 +162,8 @@ class DataCollectionPage extends React.Component {
 		// console.log("Robot Number:\t\t", this.state.scoutingTeamNumber);
 		// console.log("Match Number:\t\t", this.state.matchNumber);
 		// console.log("Nullify Data:\t\t", this.state.nullifyData);
-		// console.log("Auto Grid:\t\t", this.state.autoGrid);
 		// console.log("Auto Mobility:\t\t", this.state.autoMobility);
 		// console.log("Auto Charge Station:\t", this.state.autoChargeStation);
-		// console.log("Teleop Grid:\t\t", this.state.teleopGrid);
 		// console.log("Teleop Charge Station:\t", this.state.teleopChargeStation);
 		
 		return (
@@ -220,4 +222,5 @@ class DataCollectionPage extends React.Component {
 	}
 }
 
+const DataCollectionPage = connect(selector, null)(ConnectedDataCollectionPage);
 export default DataCollectionPage;
