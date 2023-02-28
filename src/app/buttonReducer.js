@@ -1,60 +1,101 @@
+import { ActionTypes } from './buttonActions.js';
+
+function generateNodeStates() {
+  const states = [];
+  for (let i = 0; i < 27; i++) {
+    states.push({
+      disabled: false,
+      value: 0
+    });
+  }
+
+  return states;
+}
 
 const initialState = {
-    buttons: [
-      { id: 1, disabled: false },
-      { id: 2, disabled: false },
-      { id: 3, disabled: false },
-      { id: 4, disabled: false },
-      { id: 5, disabled: false },
-      { id: 6, disabled: false },
-      { id: 7, disabled: false },
-      { id: 8, disabled: false },
-      { id: 9, disabled: false },
-      { id: 10, disabled: false },
-      { id: 11, disabled: false },
-      { id: 12, disabled: false },
-      { id: 13, disabled: false },
-      { id: 14, disabled: false },
-      { id: 15, disabled: false },
-      { id: 16, disabled: false },
-      { id: 17, disabled: false },
-      { id: 18, disabled: false },
-      { id: 19, disabled: false },
-      { id: 20, disabled: false },
-      { id: 21, disabled: false },
-      { id: 22, disabled: false },
-      { id: 23, disabled: false },
-      { id: 24, disabled: false },
-      { id: 25, disabled: false },
-      { id: 26, disabled: false },
-      { id: 27, disabled: false },
-    ]
+  teleop: {
+    grid: generateNodeStates()
+  },
+  auto: {
+    grid: generateNodeStates()
   }
-  
-  export function buttonReducer(state = initialState, action) {
-    switch (action.type) {
-      case 'DISABLE_BUTTON':
-        return {
-          ...state,
-          buttons: state.buttons.map(button => {
-            if (button.id === action.payload) {
-              return { ...button, disabled: true }
-            }
-            return button
-          })
-        }
-        case 'ENABLE_BUTTON':
-          return {
-            ...state, 
-            buttons: state.buttons.map(button => {
-              if(button.id === action.payload) {
-                return { ...button, disabled: false}
-              }
-              return button 
-            })
-          }
-      default:
-        return state;
+};
+
+export function reducer(state = initialState, action) {
+  switch (action.type) {
+    case ActionTypes.RESET_STATE:
+      return initialState;
+    case ActionTypes.ACTIVATE_NODE:
+      return handleActivateNode(state, action);
+    case ActionTypes.DEACTIVATE_NODE:
+      return handleDeactivateNode(state, action);
+  }
+
+  return state;
+}
+
+function getOtherMode(gamemode) {
+  if (gamemode === 'auto') {
+    return 'teleop';
+  }
+
+  return 'auto';
+}
+
+function handleActivateNode(state, action) {
+  const gamemode = action.payload.gamemode;
+  const otherMode = getOtherMode(gamemode);
+
+  const gamemodeGrid = state[gamemode].grid.slice();
+  gamemodeGrid[action.payload.index] = {
+    disabled: false,
+    value: 1
+  };
+
+  const otherGrid = state[otherMode].grid.slice();
+  otherGrid[action.payload.index] = {
+    disabled: true,
+    value: 0
+  };
+
+  return {
+    ...state,
+    [gamemode]: {
+      ...state[gamemode],
+      grid: gamemodeGrid
+    },
+    [otherMode]: {
+      ...state[otherMode],
+      grid: otherGrid
     }
-  }
-  
+  };
+}
+
+function handleDeactivateNode(state, action) {
+  const gamemode = action.payload.gamemode;
+  const otherMode = getOtherMode(gamemode);
+
+  const gamemodeGrid = state[gamemode].grid.slice();
+  gamemodeGrid[action.payload.index] = {
+    disabled: false,
+    value: 0
+  };
+
+  const otherGrid = state[otherMode].grid.slice();
+  otherGrid[action.payload.index] = {
+    disabled: false,
+    value: 0
+  };
+
+  return {
+    ...state,
+    [gamemode]: {
+      ...state[gamemode],
+      grid: gamemodeGrid
+    },
+    [otherMode]: {
+      ...state[otherMode],
+      grid: otherGrid
+    }
+  };
+}

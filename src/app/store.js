@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
-import { buttonReducer } from './buttonReducer';
+import { reducer } from './buttonReducer';
 
 
-const store = createStore(buttonReducer);
+const store = createStore(reducer);
 
 export default store;
