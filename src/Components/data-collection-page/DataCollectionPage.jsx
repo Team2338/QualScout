@@ -886,7 +886,6 @@ class DataCollectionPage extends React.Component {
 
 	submit = () => {
 		alert('Data Submitted!');
-		window.location.reload();
 		const url = '/team/' + this.props.teamNumber;
 		const config = {
 			headers: {
