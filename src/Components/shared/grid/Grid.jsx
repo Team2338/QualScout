@@ -5,13 +5,13 @@ import {
 	useDispatch,
 	useSelector
 } from 'react-redux';
-import { activateNode, deactivateNode } from '../../../app/buttonActions.js';
+import { activateNode, deactivateNode } from '../../../app/Actions';
 
 function Grid(props) {
 
 	const dispatch = useDispatch();
 	const addNode = (index) => dispatch(activateNode(props.gamemode, index));
-	const removeNode = (index) => dispatch(deactivateNode(props.gamemode, index));
+	const removeNode = (index) => dispatch(deactivateNode(index));
 	const grid = useSelector(state => state[props.gamemode].grid);
 
 	const elements = grid.map((node, index) => {

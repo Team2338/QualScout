@@ -1,7 +1,8 @@
 export const ActionTypes = {
   RESET_STATE: '[GLOBAL] Reset state',
-  ACTIVATE_NODE: '[GRID] Activate node',
-  DEACTIVATE_NODE: '[GRID] Deactivate node',
+  ACTIVATE_AUTO_NODE: '[GRID] Activate auto node',
+  ACTIVATE_TELEOP_NODE: '[GRID] Activate teleop node',
+  DEACTIVATE_NODE: '[GRID] Deactivate auto node',
 };
 
 export const disableButton = (id) => {
@@ -27,21 +28,16 @@ export const resetState = () => {
 };
 
 export const activateNode = (gamemode, index) => {
+  const type = (gamemode === 'teleop') ? ActionTypes.ACTIVATE_TELEOP_NODE : ActionTypes.ACTIVATE_AUTO_NODE;
   return {
-    type: ActionTypes.ACTIVATE_NODE,
-    payload: {
-      gamemode: gamemode,
-      index: index
-    }
+    type: type,
+    payload: index
   };
 };
 
-export const deactivateNode = (gamemode, index) => {
+export const deactivateNode = (index) => {
   return {
     type: ActionTypes.DEACTIVATE_NODE,
-    payload: {
-      gamemode: gamemode,
-      index: index
-    }
+    payload: index
   };
 };

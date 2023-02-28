@@ -2,15 +2,20 @@ import './DataCollectionPage.scss'
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@mui/material/Button'
-import MatchInformation from '../match-information/MatchInformation.jsx'
-import Auto from '../auto-page/Auto.jsx';
-import Teleop from'../teleop-page/Teleop.jsx';
-import GearscoutService from '../../Services/GearscoutService.js'
+import { resetState } from '../../app/Actions';
+import MatchInformation from '../match-information/MatchInformation'
+import Auto from '../auto-page/Auto';
+import Teleop from'../teleop-page/Teleop';
+import GearscoutService from '../../Services/GearscoutService'
 import AllianceSelection from './AllianceSelection';
 
 const selector = (state) => ({
 	autoGrid: state.auto.grid.map((node) => node.value),
 	teleopGrid: state.teleop.grid.map((node) => node.value),
+});
+
+const connectDispatch = (dispatch) => ({
+	resetState: () => dispatch(resetState())
 });
 
 const INITIAL_STATE = {
@@ -108,7 +113,6 @@ class ConnectedDataCollectionPage extends React.Component {
 	}
 
 	submit = () => {
-		alert('Data Submitted!');
 		const url = '/team/' + this.props.teamNumber;
 		const config = {
 			headers: {
@@ -152,7 +156,9 @@ class ConnectedDataCollectionPage extends React.Component {
 			]
 		};
 		GearscoutService.post(url, body, config);
+		alert('Data Submitted!');
 
+		this.props.resetState();
 		this.setState(INITIAL_STATE);
 	};
 	
@@ -200,5 +206,5 @@ class ConnectedDataCollectionPage extends React.Component {
 	}
 }
 
-const DataCollectionPage = connect(selector, null)(ConnectedDataCollectionPage);
+const DataCollectionPage = connect(selector, connectDispatch)(ConnectedDataCollectionPage);
 export default DataCollectionPage;
