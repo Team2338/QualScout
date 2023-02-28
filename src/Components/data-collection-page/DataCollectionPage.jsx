@@ -20,7 +20,7 @@ const INITIAL_STATE = {
 	nullifyData: false,
 	scoutingTeamNumber: 0,
 	matchNumber: 0,
-	allianceColor: 'blue'
+	allianceColor: 'UNKNOWN'
 }
 
 class ConnectedDataCollectionPage extends React.Component {
@@ -176,29 +176,7 @@ class ConnectedDataCollectionPage extends React.Component {
 					setMatchNumber={this.setMatchNumber}
 				/>
 				<div>
-					<AllianceSelection />
-		{/*				<Button
-						name="red"
-						className="buttons"
-						type="button"
-						variant="contained"
-						size="medium"
-						style={{backgroundColor: '#ee4444', margin: 5, textTransform: 'capitalize'}}
-						onClick={() => this.setAllianceColor('red')}
-					>
-						Red Alliance
-					</Button>
-					<Button
-					name="blue"
-						className="buttons"
-						type="button"
-						variant="contained"
-						size="medium"
-						style={{backgroundColor: '#5577ff', margin: 5, textTransform: 'capitalize'}}
-						onClick={() => this.setAllianceColor('blue')}
-					>
-						Blue Alliance
-					</Button>     */}
+					<AllianceSelection selectAlliance={this.setAllianceColor}/>
 				</div>
 				<Auto
 					addMobilityAuto={this.addMobilityAuto}
