@@ -29,12 +29,18 @@ function MatchInformation(props) {
 						variant="standard"
 						sx={{"& .MuiFormLabel-root": {color: 'primary.main'}, m: 0.5}}
 						placeholder="Team Number"
+						value={props.scoutingTeamNumber}
+						onChange={(event) => {
+							return props.setScoutingTeamNumber(event.target.value);
+						}}
 					/>
 					<TextField
 						label="Match Number"
 						variant="standard"
 						sx={{"& .MuiFormLabel-root": {color: 'primary.main'}, m: 0.5}}
 						placeholder="Match Number"
+						value={props.matchNumber}
+						onChange={(event) => props.setMatchNumber(event.target.value)}
 					/>
 				</div>
 				<div className='analytics'>
