@@ -27,7 +27,7 @@ function TeleopGridInfoButton({text, showOnHover}) {
     return (
         <div>
              <Button onClick={handleClick}>
-             🛈
+             ?
              </Button>
              <Popover
   open={isOpen}
