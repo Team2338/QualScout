@@ -5,7 +5,7 @@ import {
 } from '@mui/material/styles';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import store from './app/store';
+import store from './app/Store';
 import { Provider } from 'react-redux';
 
 export const themeOptions = {
