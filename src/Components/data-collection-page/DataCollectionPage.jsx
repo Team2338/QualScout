@@ -182,7 +182,7 @@ class ConnectedDataCollectionPage extends React.Component {
 					setMatchNumber={this.setMatchNumber}
 				/>
 				<div>
-					<AllianceSelection selectAlliance={this.setAllianceColor}/>
+					<AllianceSelection selectAlliance={this.setAllianceColor} selected={this.state.allianceColor}/>
 				</div>
 				<Auto
 					addMobilityAuto={this.addMobilityAuto}
