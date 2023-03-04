@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('src\fonts\Segoe UI.ttf') format('woff'), 
+       url('src\fonts\Segoe UI.woff') format('truetype'); 
+}
