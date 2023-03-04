@@ -2,8 +2,6 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
-import Select from '@mui/material/Select';
-import { MenuItem } from '@mui/material';
 import './LandingPage.scss';
 
 
@@ -63,14 +61,6 @@ class LandingPage extends React.Component {
 						</a>
 					</div>
 					<h1 className='Title'>GearScout</h1>
-					<span>
-            <Select name="language" id="lang" onChange={this.props.changeLanguage} value={this.props.language} size="medium">
-              <MenuItem value="english">English</MenuItem>
-              <MenuItem value="spanish">Español</MenuItem>
-              <MenuItem value="french">Français</MenuItem>
-              <MenuItem value="hindi">हिन्दी</MenuItem>
-            </Select>
-          </span>
 				</div>
 
 				<h1 className="login-title">Sign In:</h1>
