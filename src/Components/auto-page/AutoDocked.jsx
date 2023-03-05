@@ -29,8 +29,10 @@ function AutoDocked() {
 	};
 
 	const setValue = (status) => {
+		console.log('Status: ', status)
 		const points = ChargeStationValues[status];
-		dispatch(setChargeStation(points));
+		console.log('Points: ', points);
+		dispatch(setChargeStation('auto', points));
 	};
 
 

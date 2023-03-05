@@ -1,22 +1,10 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import React, { useState } from 'react';
+import React from 'react';
 import './MatchInformation.scss';
 
 
 function MatchInformation(props) {
-	const [variant, setVariant] = useState('outlined');
-
-	const handleNullifyClick = () => {
-		if (variant === 'outlined') {
-			setVariant('contained');
-			props.nullify();
-		} else {
-			setVariant('outlined');
-			props.nullify();
-		}
-	};
-
 	return (
 		<div className="wrap">
 			<div className="logo">

@@ -28,7 +28,7 @@ function DockedTeleop() {
 
 	const setValue = (status) => {
 		const points = ChargeStationValues[status];
-		dispatch(setChargeStation(points));
+		dispatch(setChargeStation('teleop', points));
 	};
 
 

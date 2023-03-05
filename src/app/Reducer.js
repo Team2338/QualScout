@@ -57,9 +57,9 @@ export function reducer(state = INITIAL_STATE, action) {
 					chargeStation: action.payload
 				}
 			};
+		default:
+			return state;
 	}
-
-	return state;
 }
 
 function handleActivateAutoNode(state, index) {

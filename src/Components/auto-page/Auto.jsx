@@ -1,9 +1,9 @@
 import './Auto.scss';
 import React from 'react';
-import Grid from '../shared/grid/Grid.jsx';
+import Grid from '../shared/grid/Grid';
 import Nullify from './Nullify';
 import Mobility from './Mobility';
-import AutoDocked from './AutoDocked.jsx';
+import AutoDocked from './AutoDocked';
 import AutoGridInfoButton from './AutoGridInfoButton';
 import MobilityInfoButton from './MobilityInfoButton';
 import AutoChargeStationInfoButton from './AutoChargeStationInfoButton';

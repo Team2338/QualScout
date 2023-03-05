@@ -1,6 +1,6 @@
 import React from 'react';
-import Grid from '../shared/grid/Grid.jsx';
-import Nullify from './Nullify.jsx';
+import Grid from '../shared/grid/Grid';
+import Nullify from './Nullify';
 import './Teleop.scss';
 import DockedTeleop from './DockedTeleop';
 import TeleopGridInfoButton from './TeleopGridInfoButton';
