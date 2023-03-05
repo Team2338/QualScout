@@ -22,9 +22,6 @@ const connectDispatch = (dispatch) => ({
 });
 
 const INITIAL_STATE = {
-	autoMobility: 0,
-	autoChargeStation: 0,
-	teleopChargeStation: 0,
 	nullifyData: false,
 	scoutingTeamNumber: 0,
 	matchNumber: 0,
@@ -36,48 +33,6 @@ class ConnectedDataCollectionPage extends React.Component {
 		super(props);
 		this.state = INITIAL_STATE;
 	}
-
-	noDockAuto = (event) => {
-		this.setState({
-			autoChargeStation: 0
-		});
-	};
-
-	dockedAuto = (event) => {
-		this.setState({
-			autoChargeStation: 8
-		});
-	};
-
-	engagedAuto = (event) => {
-		this.setState({
-			autoChargeStation: 12
-		});
-	};
-
-	noDockTeleop = (event) => {
-		this.setState({
-			teleopChargeStation: 0
-		});
-	};
-
-	parkedTeleop = (event) => {
-		this.setState({
-			teleopChargeStation: 2
-		});
-	};
-
-	dockedTeleop = (event) => {
-		this.setState({
-			teleopChargeStation: 6
-		});
-	};
-
-	engagedTeleop = (event) => {
-		this.setState({
-			teleopChargeStation: 10
-		});
-	};
 
 	setRobotNumber = (robotNumber) => {
 		this.setState({
@@ -136,7 +91,7 @@ class ConnectedDataCollectionPage extends React.Component {
 				{
 					gamemode: 'TELEOP',
 					objective: 'CHARGE_STATION_2023',
-					count: this.state.teleopChargeStation
+					count: this.props.teleopChargeStation
 				},
 				{
 					gamemode: 'TELEOP',
@@ -176,12 +131,7 @@ class ConnectedDataCollectionPage extends React.Component {
 					<AllianceSelection selectAlliance={this.setAllianceColor} selected={this.state.allianceColor}/>
 				</div>
 				<Auto />
-				<Teleop
-					noDockTeleop={this.noDockTeleop}
-					parkedTeleop={this.parkedTeleop}
-					dockedTeleop={this.dockedTeleop}
-					engagedTeleop={this.engagedTeleop}
-				/>
+				<Teleop />
 				<div className='submit'>
 					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='outlined' className='submit' href='/'>Back</Button>
 					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='contained' className='submit' onClick={this.submit}>Submit</Button>

@@ -7,27 +7,21 @@ import TeleopGridInfoButton from './TeleopGridInfoButton';
 import TeleopChargeStationInfoButton from './TeleopChargeStationInfoButton';
 
 
-class Teleop extends React.Component {
-	render() {
-		return (
-			<div className="background">
-				<h1 className="text">Teleop</h1>
-				<div className="gridflex">
-					<Nullify/>
-				</div>
-				<h3 className="placed">Grid</h3>
-				<TeleopGridInfoButton/>
-				<Grid gamemode="teleop"/>
-				<h3 className="dock">Charge Station</h3>
-				<TeleopChargeStationInfoButton/>
-				<DockedTeleop
-					noDockTeleop={this.props.noDockTeleop}
-					parkedTeleop={this.props.parkedTeleop}
-					dockedTeleop={this.props.dockedTeleop}
-					engagedTeleop={this.props.engagedTeleop}/>
+function Teleop() {
+	return (
+		<div className="background">
+			<h1 className="text">Teleop</h1>
+			<div className="gridflex">
+				<Nullify/>
 			</div>
-		);
-	}
+			<h3 className="placed">Grid</h3>
+			<TeleopGridInfoButton/>
+			<Grid gamemode="teleop"/>
+			<h3 className="dock">Charge Station</h3>
+			<TeleopChargeStationInfoButton/>
+			<DockedTeleop />
+		</div>
+	);
 }
 
 

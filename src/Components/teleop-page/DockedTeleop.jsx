@@ -1,66 +1,74 @@
 import { Button } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
+import {
+	useDispatch,
+	useSelector
+} from 'react-redux';
+import { setChargeStation } from '../../app/Actions.js';
 
+const ChargeStationValues = {
+	none: 0,
+	parked: 2,
+	docked: 6,
+	engaged: 10
+};
 
-function DockedTeleop(props) {
-	const [NoneVariant, SetNoneVariant] = useState('contained');
-	const [UnengagedVariant, SetUnengagedVariant] = useState('outlined');
-	const [EngagedVariant, SetEngagedVariant] = useState('outlined');
-	const [ParkedVariant, SetParkedVariant] = useState('outlined');
+function DockedTeleop() {
 
+	const dispatch = useDispatch();
+	const chargeStationValue = useSelector(state => state.teleop.chargeStation);
 
-	const handleNoneClick = () => {
-		if (NoneVariant === 'outlined') {
-			SetNoneVariant('contained');
-			SetUnengagedVariant('outlined');
-			SetEngagedVariant('outlined');
-			SetParkedVariant('outlined');
-			props.noDockTeleop();
+	const getButtonStyle = (status) => {
+		if (chargeStationValue === ChargeStationValues[status]) {
+			return 'contained';
 		}
 
+		return 'outlined';
 	};
 
-	const handleUnengagedClick = () => {
-		if (UnengagedVariant === 'outlined') {
-			SetUnengagedVariant('contained');
-			SetNoneVariant('outlined');
-			SetEngagedVariant('outlined');
-			SetParkedVariant('outlined');
-			props.dockedTeleop();
-		}
-	};
-
-	const handleEngagedClick = () => {
-		if (EngagedVariant === 'outlined') {
-			SetEngagedVariant('contained');
-			SetNoneVariant('outlined');
-			SetUnengagedVariant('outlined');
-			SetParkedVariant('outlined');
-			props.engagedTeleop();
-		}
-	};
-
-	const handleParkedClick = () => {
-		if (ParkedVariant === 'outlined') {
-			SetParkedVariant('contained');
-			SetEngagedVariant('outlined');
-			SetNoneVariant('outlined');
-			SetUnengagedVariant('outlined');
-			props.parkedTeleop();
-		}
+	const setValue = (status) => {
+		const points = ChargeStationValues[status];
+		dispatch(setChargeStation(points));
 	};
 
 
 	return (
 		<div className="spacing">
-			<Button sx={{ m: 0.5 }} style={{ textTransform: 'capitalize' }} variant={NoneVariant} onClick={handleNoneClick}>None</Button>
-			<Button sx={{ m: 0.5 }} style={{ textTransform: 'capitalize' }} variant={ParkedVariant} onClick={handleParkedClick}>Parked</Button>
-			<Button sx={{ m: 0.5 }} style={{ textTransform: 'capitalize' }} variant={UnengagedVariant} onClick={handleUnengagedClick}>Docked Only</Button>
-			<Button sx={{ m: 0.5 }} style={{ textTransform: 'capitalize' }} variant={EngagedVariant} onClick={handleEngagedClick}>Docked Engaged </Button>
+			<Button
+				sx={{ m: 0.5 }}
+				style={{ textTransform: 'capitalize' }}
+				variant={getButtonStyle('none')}
+				onClick={() => setValue('none')}
+			>
+				None
+			</Button>
+			<Button
+				sx={{ m: 0.5 }}
+				style={{ textTransform: 'capitalize' }}
+				variant={getButtonStyle('parked')}
+				onClick={() => setValue('parked')}
+			>
+				Parked
+			</Button>
+			<Button
+				sx={{ m: 0.5 }}
+				style={{ textTransform: 'capitalize' }}
+				variant={getButtonStyle('docked')}
+				onClick={() => setValue('docked')}
+			>
+				Docked Only
+			</Button>
+			<Button
+				sx={{ m: 0.5 }}
+				style={{ textTransform: 'capitalize' }}
+				variant={getButtonStyle('engaged')}
+				onClick={() => setValue('engaged')}
+			>
+				Docked Engaged
+			</Button>
 		</div>
 	);
 }
 
 
 export default DockedTeleop;
-

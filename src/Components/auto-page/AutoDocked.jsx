@@ -9,26 +9,19 @@ import './ButtonSpacing.scss';
 
 
 const ChargeStationValues = {
-	auto: {
-		none: 0,
-		docked: 8,
-		engaged: 12
-	},
-	teleop: {
-		none: 0,
-		docked: 6,
-		engaged: 10
-	}
+	none: 0,
+	docked: 8,
+	engaged: 12
 };
 
-function Docked(props) {
+function AutoDocked() {
 
 	const dispatch = useDispatch();
 	const chargeStationValue = useSelector(state => state.auto.chargeStation);
 
 
 	const getButtonStyle = (status) => {
-		if (chargeStationValue === ChargeStationValues[props.gamemode][status]) {
+		if (chargeStationValue === ChargeStationValues[status]) {
 			return 'contained';
 		}
 
@@ -36,7 +29,7 @@ function Docked(props) {
 	};
 
 	const setValue = (status) => {
-		const points = ChargeStationValues[props.gamemode][status];
+		const points = ChargeStationValues[status];
 		dispatch(setChargeStation(points));
 	};
 
@@ -72,4 +65,4 @@ function Docked(props) {
 }
 
 
-export default Docked;
+export default AutoDocked;
