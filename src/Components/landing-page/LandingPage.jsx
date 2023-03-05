@@ -53,14 +53,14 @@ class LandingPage extends React.Component {
 
 	render() {
 		return (
-			<div className='wrapper'>
-				<div className='header'>
-					<div className='left'>
-						<a href='https://twitter.com/FIRST2338'>
-							<img src='2338-logo.png' alt="2338 logo" height='100rem'  />
+			<div className="wrapper">
+				<div className="header">
+					<div className="left">
+						<a href="https://twitter.com/FIRST2338">
+							<img src="2338-logo.png" alt="2338 logo" height="100rem"/>
 						</a>
 					</div>
-					<h1 className='Title'>GearScout</h1>
+					<h1 className="Title">GearScout</h1>
 				</div>
 
 				<h1 className="login-title">Sign In:</h1>
@@ -74,7 +74,7 @@ class LandingPage extends React.Component {
 						onChange={this.handleChange}
 						value={this.state.teamNumber}
 						InputProps={{
-							startAdornment: <InputAdornment position="start">#</InputAdornment>,
+							startAdornment: <InputAdornment position="start">#</InputAdornment>
 						}}
 						inputProps={{
 							min: 0,
@@ -139,7 +139,7 @@ class LandingPage extends React.Component {
 					type="button"
 					variant="contained"
 					size="medium"
-					style={{textTransform: 'capitalize'}}
+					style={{ textTransform: 'capitalize' }}
 					onClick={this.handleClick}
 				>
 					Submit

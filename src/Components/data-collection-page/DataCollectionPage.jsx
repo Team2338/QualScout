@@ -10,8 +10,11 @@ import GearscoutService from '../../Services/GearscoutService'
 import AllianceSelection from './AllianceSelection';
 
 const selector = (state) => ({
+	autoMobility: state.auto.park,
+	autoChargeStation: state.auto.chargeStation,
 	autoGrid: state.auto.grid.map((node) => node.value),
 	teleopGrid: state.teleop.grid.map((node) => node.value),
+	teleopChargeStation: state.teleop.chargeStation
 });
 
 const connectDispatch = (dispatch) => ({
@@ -33,18 +36,6 @@ class ConnectedDataCollectionPage extends React.Component {
 		super(props);
 		this.state = INITIAL_STATE;
 	}
-
-	addMobilityAuto = (event) => {
-		this.setState({
-			autoMobility: 3
-		});
-	};
-
-	removeMobilityAuto = (event) => {
-		this.setState({
-			autoMobility: 0
-		});
-	};
 
 	noDockAuto = (event) => {
 		this.setState({
@@ -129,12 +120,12 @@ class ConnectedDataCollectionPage extends React.Component {
 				{
 					gamemode: 'AUTO',
 					objective: 'MOBILITY_2023',
-					count: this.state.autoMobility
+					count: this.props.autoMobility
 				},
 				{
 					gamemode: 'AUTO',
 					objective: 'CHARGE_STATION_2023',
-					count: this.state.autoChargeStation
+					count: this.props.autoChargeStation
 				},
 				{
 					gamemode: 'AUTO',
@@ -184,13 +175,7 @@ class ConnectedDataCollectionPage extends React.Component {
 				<div>
 					<AllianceSelection selectAlliance={this.setAllianceColor} selected={this.state.allianceColor}/>
 				</div>
-				<Auto
-					addMobilityAuto={this.addMobilityAuto}
-					removeMobilityAuto={this.removeMobilityAuto}
-					noDockAuto={this.noDockAuto}
-					dockedAuto={this.dockedAuto}
-					engagedAuto={this.engagedAuto}
-				/>
+				<Auto />
 				<Teleop
 					noDockTeleop={this.noDockTeleop}
 					parkedTeleop={this.parkedTeleop}

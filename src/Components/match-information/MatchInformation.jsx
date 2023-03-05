@@ -1,7 +1,7 @@
-import './MatchInformation.scss';
-import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import React, { useState } from 'react';
+import './MatchInformation.scss';
 
 
 function MatchInformation(props) {

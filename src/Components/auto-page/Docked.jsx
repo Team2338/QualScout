@@ -1,53 +1,75 @@
-import React, { useState } from 'react';
-import './Auto.jsx';
 import { Button } from '@mui/material';
-import './ButtonSpacing.scss'
+import React from 'react';
+import {
+	useDispatch,
+	useSelector
+} from 'react-redux';
+import { setChargeStation } from '../../app/Actions.js';
+import './ButtonSpacing.scss';
 
+
+const ChargeStationValues = {
+	auto: {
+		none: 0,
+		docked: 8,
+		engaged: 12
+	},
+	teleop: {
+		none: 0,
+		docked: 6,
+		engaged: 10
+	}
+};
 
 function Docked(props) {
-	const [NoneVariant, SetNoneVariant] = useState('contained');
-	const [UnengagedVariant, SetUnengagedVariant] = useState('outlined');
-	const [EngagedVariant, SetEngagedVariant] = useState('outlined');
+
+	const dispatch = useDispatch();
+	const chargeStationValue = useSelector(state => state.auto.chargeStation);
 
 
-	const handleNoneClick = () => {
-		if (NoneVariant === 'outlined') {
-			SetNoneVariant('contained');
-			SetUnengagedVariant('outlined');
-			SetEngagedVariant('outlined');
-			props.noDockAuto();
+	const getButtonStyle = (status) => {
+		if (chargeStationValue === ChargeStationValues[props.gamemode][status]) {
+			return 'contained';
 		}
 
-	}
-	const handleUnengagedClick = () => {
-		if (UnengagedVariant === 'outlined') {
-			SetUnengagedVariant('contained');
-			SetNoneVariant('outlined');
-			SetEngagedVariant('outlined');
-			props.dockedAuto();
-		}
-	}
-	const handleEngagedClick = () => {
-		if (EngagedVariant === 'outlined') {
-			SetEngagedVariant('contained');
-			SetNoneVariant('outlined');
-			SetUnengagedVariant('outlined');
-			props.engagedAuto();
-		}
-	}
+		return 'outlined';
+	};
 
+	const setValue = (status) => {
+		const points = ChargeStationValues[props.gamemode][status];
+		dispatch(setChargeStation(points));
+	};
 
 
 	return (
 		<div className="spacing">
-			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant={NoneVariant} onClick={handleNoneClick}>None</Button>
-			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant={UnengagedVariant} onClick={handleUnengagedClick}>Docked Only</Button>
-			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}}variant={EngagedVariant} onClick={handleEngagedClick}>Docked Engaged</Button>
+			<Button
+				sx={{ m: 0.5 }}
+				style={{ textTransform: 'capitalize' }}
+				variant={getButtonStyle('none')}
+				onClick={() => setValue('none')}
+			>
+				None
+			</Button>
+			<Button
+				sx={{ m: 0.5 }}
+				style={{ textTransform: 'capitalize' }}
+				variant={getButtonStyle('docked')}
+				onClick={() => setValue('docked')}
+			>
+				Docked Only
+			</Button>
+			<Button
+				sx={{ m: 0.5 }}
+				style={{ textTransform: 'capitalize' }}
+				variant={getButtonStyle('engaged')}
+				onClick={() => setValue('engaged')}
+			>
+				Docked Engaged
+			</Button>
 		</div>
-	)
+	);
 }
 
 
-
 export default Docked;
-

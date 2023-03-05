@@ -22,15 +22,10 @@ class Auto extends React.Component {
 				</div>
 				<h3>Mobility</h3>
 				<MobilityInfoButton />
-				<Mobility
-					addMobilityAuto={this.props.addMobilityAuto}
-					removeMobilityAuto={this.props.removeMobilityAuto}/>
+				<Mobility/>
 				<h3>Charge Station</h3>
 				<AutoChargeStationInfoButton />
-				<Docked
-					noDockAuto={this.props.noDockAuto}
-					dockedAuto={this.props.dockedAuto}
-					engagedAuto={this.props.engagedAuto}/>
+				<Docked gamemode="auto"/>
 			</div>
 		)
 	}

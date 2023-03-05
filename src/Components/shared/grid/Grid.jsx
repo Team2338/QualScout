@@ -5,7 +5,10 @@ import {
 	useDispatch,
 	useSelector
 } from 'react-redux';
-import { activateNode, deactivateNode } from '../../../app/Actions';
+import {
+	activateNode,
+	deactivateNode
+} from '../../../app/Actions';
 
 function Grid(props) {
 
@@ -31,14 +34,14 @@ function Grid(props) {
 				onClick={() => handleClick(index)}
 				disabled={node.disabled}
 			>
-				{ symbol }
+				{symbol}
 			</Button>
-		)
+		);
 	});
 
 	return (
 		<div className="grid-objective">
-			{ elements }
+			{elements}
 		</div>
 	);
 }

@@ -1,41 +1,48 @@
-import React, { useState } from 'react';
-import "./Auto.jsx"
+import React from 'react';
 import { Button } from '@mui/material';
-import "./ButtonSpacing.scss"
+import './ButtonSpacing.scss';
+import {
+	useDispatch,
+	useSelector
+} from 'react-redux';
+import { setAutoPark } from '../../app/Actions.js';
 
 
-function Mobility(props) {
+function Mobility() {
 
-	const [YesVariant, setYesVariant] = useState("outlined");
-	const [NoVariant, setNoVariant] = useState("contained");
+	const dispatch = useDispatch();
+	const parkValue = useSelector(state => state.auto.park);
 
 	const handleYesClick = () => {
-		if (YesVariant === 'outlined') {
-			setYesVariant('contained');
-			setNoVariant('outlined');
-			props.addMobilityAuto();
-
-		}
+		dispatch(setAutoPark(3));
 	};
 
 	const handleNoClick = () => {
-		if (NoVariant === 'outlined') {
-			setNoVariant('contained');
-			setYesVariant('outlined');
-			props.removeMobilityAuto();
-
-		}
+		dispatch(setAutoPark(0));
 	};
 
 
 	return (
-		<div className='spacing'>
-			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant={NoVariant} onClick={handleNoClick}>No</Button>
-			<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant={YesVariant} onClick={handleYesClick}>Yes</Button>
+		<div className="spacing">
+			<Button
+				sx={{ m: 0.5 }}
+				style={{ textTransform: 'capitalize' }}
+				variant={(parkValue === 0) ? 'contained' : 'outlined'}
+				onClick={handleNoClick}
+			>
+				No
+			</Button>
+			<Button
+				sx={{ m: 0.5 }}
+				style={{ textTransform: 'capitalize' }}
+				variant={(parkValue === 3) ? 'contained' : 'outlined'}
+				onClick={handleYesClick}
+			>
+				Yes
+			</Button>
 		</div>
 	);
 }
-
 
 
 export default Mobility;
