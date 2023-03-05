@@ -1,25 +1,29 @@
+import Button from '@mui/material/Button';
 import React from 'react';
 import Grid from '../shared/grid/Grid';
-import Nullify from './Nullify';
-import './Teleop.scss';
 import DockedTeleop from './DockedTeleop';
-import TeleopGridInfoButton from './TeleopGridInfoButton';
+import './Teleop.scss';
 import TeleopChargeStationInfoButton from './TeleopChargeStationInfoButton';
+import TeleopGridInfoButton from './TeleopGridInfoButton';
 
 
-function Teleop() {
+function Teleop(props) {
 	return (
 		<div className="background">
 			<h1 className="text">Teleop</h1>
-			<div className="gridflex">
-				<Nullify/>
-			</div>
+			<Button
+				style={{ textTransform: 'capitalize' }}
+				variant={props.isNullified ? 'contained' : 'outlined'}
+				onClick={() => props.setNullified(!props.isNullified)}
+			>
+				Nullify
+			</Button>
 			<h3 className="placed">Grid</h3>
 			<TeleopGridInfoButton/>
 			<Grid gamemode="teleop"/>
 			<h3 className="dock">Charge Station</h3>
 			<TeleopChargeStationInfoButton/>
-			<DockedTeleop />
+			<DockedTeleop/>
 		</div>
 	);
 }
