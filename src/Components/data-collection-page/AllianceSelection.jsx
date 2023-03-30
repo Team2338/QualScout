@@ -1,48 +1,41 @@
-import React, { useState } from 'react';
-import { Button } from '@mui/material'
+import { Button } from '@mui/material';
+import React from 'react';
 
 function AllianceSelection(props) {
 
-	const [red, setRed] = useState('outlined');
-	const [blue, setBlue] = useState('outlined');
-	const [redColor, setRedColor] = useState('#01233d');
-	const [blueColor, setBlueColor] = useState('#01233d');
-
 	const handleRedClick = () => {
-		if (red === 'outlined') {
-			setRed('contained');
-			setBlue('outlined');
-			setRedColor('#ee4444');
-			setBlueColor('#01233d');
-			props.selectAlliance('RED');
-		}
+		props.selectAlliance('RED');
 	};
 
 	const handleBlueClick = () => {
-		if (blue === 'outlined') {
-			setBlue('contained');
-			setRed('outlined');
-			setBlueColor('#5577ff');
-			setRedColor('#01233d');
-			props.selectAlliance('BLUE');
-		}
+		props.selectAlliance('BLUE');
 	};
+
+	let blueColor = '#01233D';
+	let redColor = '#01233D';
+
+	if (props.selected === 'RED') {
+		redColor = '#EE4444';
+	}
+	else if (props.selected === 'BLUE') {
+		blueColor = '#5577FF';
+	}
 
 
 	return (
-		<div className='spacing'>
+		<div className="spacing">
 			<Button
 				sx={{ m: 0.5 }}
-				style={{backgroundColor: redColor, margin: 5, textTransform: 'capitalize'}}
-				variant={red}
+				style={{ backgroundColor: redColor, margin: 5, textTransform: 'capitalize' }}
+				variant={props.selected === 'RED' ? 'contained' : 'outlined'}
 				onClick={handleRedClick}
 			>
 				Red Alliance
 			</Button>
 			<Button
 				sx={{ m: 0.5 }}
-				style={{backgroundColor: blueColor, margin: 5, textTransform: 'capitalize'}}
-				variant={blue}
+				style={{ backgroundColor: blueColor, margin: 5, textTransform: 'capitalize' }}
+				variant={props.selected === 'BLUE' ? 'contained' : 'outlined'}
 				onClick={handleBlueClick}
 			>
 				Blue Alliance

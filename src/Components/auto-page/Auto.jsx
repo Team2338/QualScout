@@ -1,40 +1,38 @@
 import './Auto.scss';
+import Button from '@mui/material/Button';
 import React from 'react';
-import Grid from '../shared/grid/Grid.jsx';
-import Nullify from './Nullify';
+import Grid from '../shared/grid/Grid';
 import Mobility from './Mobility';
-import Docked from './Docked';
+import AutoDocked from './AutoDocked';
 import AutoGridInfoButton from './AutoGridInfoButton';
 import MobilityInfoButton from './MobilityInfoButton';
 import AutoChargeStationInfoButton from './AutoChargeStationInfoButton';
 
 
-class Auto extends React.Component {
-	render() {
-		return(
-			<div className='background'>
-				<h1 className='text'>Auto</h1>
-				<div className='grid-flex'>
-					<Nullify />
-					<h3>Grid</h3>
-					<AutoGridInfoButton />
-					<Grid gamemode="auto"/>
-				</div>
-				<h3>Mobility</h3>
-				<MobilityInfoButton />
-				<Mobility
-					addMobilityAuto={this.props.addMobilityAuto}
-					removeMobilityAuto={this.props.removeMobilityAuto}/>
-				<h3>Charge Station</h3>
-				<AutoChargeStationInfoButton />
-				<Docked
-					noDockAuto={this.props.noDockAuto}
-					dockedAuto={this.props.dockedAuto}
-					engagedAuto={this.props.engagedAuto}/>
+function Auto(props) {
+	return (
+		<div className='background'>
+			<h1 className='text'>Auto</h1>
+			<div className='grid-flex'>
+				<Button
+					style={{ textTransform: 'capitalize' }}
+					variant={props.isNullified ? 'contained' : 'outlined'}
+					onClick={() => props.setNullified(!props.isNullified)}
+				>
+					Nullify
+				</Button>
+				<h3>Grid</h3>
+				<AutoGridInfoButton />
+				<Grid gamemode="auto"/>
 			</div>
-		)
-	}
-
+			<h3>Mobility</h3>
+			<MobilityInfoButton />
+			<Mobility/>
+			<h3>Charge Station</h3>
+			<AutoChargeStationInfoButton />
+			<AutoDocked />
+		</div>
+	);
 }
 
 export default Auto;

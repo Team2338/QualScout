@@ -5,18 +5,20 @@ import {
 	useSelector
 } from 'react-redux';
 import { setChargeStation } from '../../app/Actions.js';
+import './ButtonSpacing.scss';
+
 
 const ChargeStationValues = {
 	none: 0,
-	parked: 2,
-	docked: 6,
-	engaged: 10
+	docked: 8,
+	engaged: 12
 };
 
-function DockedTeleop() {
+function AutoDocked() {
 
 	const dispatch = useDispatch();
-	const chargeStationValue = useSelector(state => state.teleop.chargeStation);
+	const chargeStationValue = useSelector(state => state.auto.chargeStation);
+
 
 	const getButtonStyle = (status) => {
 		if (chargeStationValue === ChargeStationValues[status]) {
@@ -28,7 +30,7 @@ function DockedTeleop() {
 
 	const setValue = (status) => {
 		const points = ChargeStationValues[status];
-		dispatch(setChargeStation('teleop', points));
+		dispatch(setChargeStation('auto', points));
 	};
 
 
@@ -41,14 +43,6 @@ function DockedTeleop() {
 				onClick={() => setValue('none')}
 			>
 				None
-			</Button>
-			<Button
-				sx={{ m: 0.5 }}
-				style={{ textTransform: 'capitalize' }}
-				variant={getButtonStyle('parked')}
-				onClick={() => setValue('parked')}
-			>
-				Parked
 			</Button>
 			<Button
 				sx={{ m: 0.5 }}
@@ -71,4 +65,4 @@ function DockedTeleop() {
 }
 
 
-export default DockedTeleop;
+export default AutoDocked;

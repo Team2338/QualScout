@@ -1,10 +1,11 @@
-$orange: rgb(254, 80, 0) ;
+$orange: rgb(254, 80, 0);
 $tangaroa: rgb(2, 36, 62);
 $pumice: rgb(186, 191, 183);
 
 .text {
 	color: $orange;
 }
+
 .wrapper {
 	width: 100vw;
 	height: 100vh;
@@ -17,6 +18,7 @@ $pumice: rgb(186, 191, 183);
 	box-sizing: border-box;
 	font-family: "Segoe UI";
 }
+
 .header {
 	background-color: $tangaroa;
 	color: $orange;
@@ -28,27 +30,34 @@ $pumice: rgb(186, 191, 183);
 	width: 100%;
 	box-sizing: border-box;
 }
-.main-title  {
+
+.main-title {
 	color: $orange;
 }
+
 .subtitlechange .wrappers .center .main-title {
 	font-family: Arial, Helvetica, sans-serif;
 }
+
 .css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root.Mui-selected:focus {
 	background-color: rgba(254, 80, 0, 0.495);
 	transition: .3s;
 }
+
 .css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root:hover {
 	background-color: $pumice !important;
 	color: $tangaroa;
 	transition: .3s;
 }
+
 .points-landingpage {
 	color: $tangaroa;
 }
+
 .login-title {
 	color: $tangaroa
 }
+
 .button {
 	color: $orange;
 	background-color: $pumice;
@@ -57,25 +66,31 @@ $pumice: rgb(186, 191, 183);
 	margin-right: 600px;
 	margin-bottom: 3rem !important;
 }
+
 .landingpage-forms {
 	margin-bottom: 1rem !important;
 }
+
 #outlined-basic {
 	min-width: 18rem !important;
 	color: $tangaroa;
 }
+
 #lang {
 	border: solid $tangaroa;
 	width: 64px
 }
+
 .landingpage-logo {
 	height: rem7;
 }
+
 @media only screen and (max-width: 700px) {
 	.button {
 		width: 50% !important;
 	}
 }
+
 @media only screen and (max-width: 400px) {
 	.main-title {
 		font-size: 30px;
@@ -85,10 +100,7 @@ $pumice: rgb(186, 191, 183);
 	}
 }
 
-
 .Title {
 	margin: 0 auto;
 	padding-right: 100px;
-
-
 }
