@@ -14,7 +14,6 @@ class LandingPage extends React.Component {
 			eventCode: '',
 			secretCode: '',
 			scouterName: '',
-			teamColor: ''
 		};
 	}
 
@@ -24,7 +23,6 @@ class LandingPage extends React.Component {
 		localStorage.setItem('eventCode', this.state.eventCode.toString());
 		localStorage.setItem('secretCode', this.state.secretCode.toString());
 		localStorage.setItem('scouterName', this.state.scouterName.toString());
-		localStorage.setItem('teamColor', this.state.teamColor.toString());
 		this.props.parentCallback(this.state.teamNumber, this.state.eventCode, this.state.secretCode, this.state.scouterName);
 	};
 
@@ -39,15 +37,22 @@ class LandingPage extends React.Component {
 		const eventCode = localStorage.getItem('eventCode') ?? '';
 		const secretCode = localStorage.getItem('secretCode') ?? '';
 		const scouterName = localStorage.getItem('scouterName') ?? '';
-		const teamColor = localStorage.getItem('teamColor') ?? '';
 
 		this.setState(({
 			teamNumber: teamNumber,
 			eventCode: eventCode,
 			secretCode: secretCode,
 			scouterName: scouterName,
-			teamColor: teamColor
 		}));
+	}
+
+	isSubmitDisabled = () => {
+		return (
+			this.state.teamNumber.length === 0
+			|| this.state.eventCode.length === 0
+			|| this.state.scouterName.length === 0
+			|| this.state.secretCode.length === 0
+		);
 	}
 
 	render() {
@@ -138,8 +143,8 @@ class LandingPage extends React.Component {
 					type="button"
 					variant="contained"
 					size="medium"
-					style={{ textTransform: 'capitalize' }}
 					onClick={this.handleClick}
+					disabled={this.isSubmitDisabled()}
 				>
 					Submit
 				</Button>

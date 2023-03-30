@@ -22,8 +22,8 @@ const connectDispatch = (dispatch) => ({
 });
 
 const INITIAL_STATE = {
-	scoutingTeamNumber: 0,
-	matchNumber: 0,
+	scoutingTeamNumber: '',
+	matchNumber: '',
 	allianceColor: 'UNKNOWN',
 	isAutoNullified: false,
 	isTeleopNullified: false
@@ -126,8 +126,13 @@ class ConnectedDataCollectionPage extends React.Component {
 			objectives: this.generateObjectives()
 		};
 
-		GearscoutService.post(url, body, config);
-		alert('Data Submitted!');
+		GearscoutService.post(url, body, config)
+			.then(response => {
+				alert('Data Submitted!');
+			})
+			.catch(reason => {
+				alert('There was a problem submitting the data!');
+			})
 
 		this.props.resetState();
 		this.setState(INITIAL_STATE);
@@ -136,10 +141,6 @@ class ConnectedDataCollectionPage extends React.Component {
 
 
 	render() {
-		// console.log("Robot Number:\t\t", this.state.scoutingTeamNumber);
-		// console.log("Match Number:\t\t", this.state.matchNumber);
-		// console.log("Nullify Data:\t\t", this.state.nullifyData);
-
 		return (
 			<div className='background'>
 				<MatchInformation
