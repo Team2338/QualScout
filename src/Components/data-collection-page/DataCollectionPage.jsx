@@ -136,10 +136,6 @@ class ConnectedDataCollectionPage extends React.Component {
 
 
 	render() {
-		// console.log("Robot Number:\t\t", this.state.scoutingTeamNumber);
-		// console.log("Match Number:\t\t", this.state.matchNumber);
-		// console.log("Nullify Data:\t\t", this.state.nullifyData);
-
 		return (
 			<div className='background'>
 				<MatchInformation
