@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import store from './app/Store';
 import { Provider } from 'react-redux';
+import './index.css';
 
 export const themeOptions = {
 	palette: {
@@ -22,12 +23,7 @@ export const themeOptions = {
 		text: {
 			primary: '#BABFB7',
 		}
-	},
-  typography: {
-    fontFamily: [
-      '"Segoe UI"',
-    ].join(','),
-  },
+	}
 };
 
 const theme = createTheme(themeOptions);

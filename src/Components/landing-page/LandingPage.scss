@@ -16,7 +16,6 @@ $pumice: rgb(186, 191, 183);
 	overflow-y: auto;
 	text-align: center;
 	box-sizing: border-box;
-	font-family: "Segoe UI";
 }
 
 .header {
@@ -33,10 +32,6 @@ $pumice: rgb(186, 191, 183);
 
 .main-title {
 	color: $orange;
-}
-
-.subtitlechange .wrappers .center .main-title {
-	font-family: Arial, Helvetica, sans-serif;
 }
 
 .css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root.Mui-selected:focus {
