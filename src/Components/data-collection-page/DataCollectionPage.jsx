@@ -103,6 +103,7 @@ class ConnectedDataCollectionPage extends React.Component {
 		if (!this.state.isAutoNullified) {
 			objectives.push(...autoObjectives);
 		}
+
 		if (!this.state.isTeleopNullified) {
 			objectives.push(...teleopObjectives);
 		}
@@ -111,6 +112,22 @@ class ConnectedDataCollectionPage extends React.Component {
 	}
 
 	submit = () => {
+		// Let the user know if they missed an input
+		const problems = [];
+		if (this.state.matchNumber.length === 0) {
+			problems.push('You must specify a match number');
+		}
+		if (this.state.scoutingTeamNumber.length === 0) {
+			problems.push('You must specify a team number');
+		}
+		if (this.state.allianceColor === 'UNKNOWN') {
+			problems.push('You must specify an alliance color');
+		}
+		if (problems.length > 0) {
+			alert(problems.join('\n'));
+			return;
+		}
+
 		const url = '/team/' + this.props.teamNumber;
 		const config = {
 			headers: {
