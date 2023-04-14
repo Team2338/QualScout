@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { sendOfflineRequests } from '../../app/Effects.ts';
 
 const inputs = (state) => ({
-	hasOfflineRequests: false
+	numOfflineMatches: state.cache.matches.length
 });
 
 const outputs = (dispatch) => ({
@@ -162,7 +162,7 @@ class ConnectedLandingPage extends React.Component {
 					size="medium"
 					color="primary"
 					onClick={() => this.props.sendOfflineRequests()}
-					disabled={!this.props.hasOfflineRequests}
+					disabled={this.props.numOfflineMatches === 0}
 					sx={{
 						marginTop: 'auto',
 						marginBottom: '24px'

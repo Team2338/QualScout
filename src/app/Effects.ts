@@ -1,7 +1,16 @@
 import { ICachedMatch, IMatch } from '../models/models';
+import { AppState } from '../models/state';
 import GearscoutService from '../Services/GearscoutService';
+import { getOfflineMatchesSuccess } from './Actions';
+import { AppDispatch } from './Store';
 
+type GetState = () => AppState;
 const OFFLINE_REQUEST_LOCATION: string = 'offlineRequests';
+
+export const fetchOfflineRequests = () => async (dispatch: AppDispatch) => {
+	const offlineRequests: ICachedMatch[] = readOfflineRequestsFromStorage();
+	dispatch(getOfflineMatchesSuccess(offlineRequests));
+};
 
 export const saveOfflineRequest = (teamNumber: string, secretCode: string, match: IMatch) => async () => {
 	const request: ICachedMatch = {
@@ -15,7 +24,7 @@ export const saveOfflineRequest = (teamNumber: string, secretCode: string, match
 	localStorage.setItem(OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
 };
 
-export const sendOfflineRequests = () => async (dispatch) => {
+export const sendOfflineRequests = () => async (dispatch: AppDispatch) => {
 	const offlineRequests: ICachedMatch[] = readOfflineRequestsFromStorage();
 	localStorage.setItem(OFFLINE_REQUEST_LOCATION, '[]');
 
@@ -30,7 +39,7 @@ export const sendOfflineRequests = () => async (dispatch) => {
 	// }
 };
 
-export const submitMatch = (teamNumber: string, secretCode: string, match: IMatch) => async (dispatch) => {
+export const submitMatch = (teamNumber: string, secretCode: string, match: IMatch) => async (dispatch: AppDispatch) => {
 	sendRequest(teamNumber, secretCode, match)
 		.then(result => {
 			if (result === 'SUCCESS') {

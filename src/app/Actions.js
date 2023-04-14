@@ -5,13 +5,21 @@ export const ActionTypes = {
 	DEACTIVATE_NODE: '[GRID] Deactivate auto node',
 	SET_AUTO_PARK: '[PARK] Set auto park',
 	SET_AUTO_CHARGE_STATION: '[CHARGE] Set auto charge station',
-	SET_TELEOP_CHARGE_STATION: '[CHARGE] Set teleop charge station'
+	SET_TELEOP_CHARGE_STATION: '[CHARGE] Set teleop charge station',
+	GET_OFFLINE_MATCHES_SUCCESS: '[CACHE] Successfully got offline matches'
 };
 
 
 export const resetState = () => {
 	return {
 		type: ActionTypes.RESET_STATE
+	};
+};
+
+export const getOfflineMatchesSuccess = (matches) => {
+	return {
+		type: ActionTypes.GET_OFFLINE_MATCHES_SUCCESS,
+		payload: matches
 	};
 };
 
