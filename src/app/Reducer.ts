@@ -1,7 +1,8 @@
+import { AppState, NodeState } from '../models/state';
 import { ActionTypes } from './Actions';
 
-function generateNodeStates() {
-	const states = [];
+function generateNodeStates(): NodeState[] {
+	const states: NodeState[] = [];
 	for (let i = 0; i < 27; i++) {
 		states.push({
 			disabled: false,
@@ -11,22 +12,43 @@ function generateNodeStates() {
 	return states;
 }
 
-const INITIAL_STATE = {
-	teleop: {
-		grid: generateNodeStates(),
-		chargeStation: 0
+const INITIAL_STATE: AppState = {
+	cache: {
+		matches: []
 	},
 	auto: {
 		grid: generateNodeStates(),
 		park: 0,
 		chargeStation: 0
+	},
+	teleop: {
+		grid: generateNodeStates(),
+		chargeStation: 0
 	}
 };
 
-export function reducer(state = INITIAL_STATE, action) {
+export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 	switch (action.type) {
 		case ActionTypes.RESET_STATE:
-			return INITIAL_STATE;
+			return {
+				...state,
+				auto: INITIAL_STATE.auto,
+				teleop: INITIAL_STATE.teleop
+			};
+		case ActionTypes.GET_OFFLINE_MATCHES_SUCCESS:
+			return {
+				...state,
+				cache: {
+					matches: action.payload
+				}
+			};
+		case ActionTypes.CLEAR_OFFLINE_MATCHES:
+			return {
+				...state,
+				cache: {
+					matches: []
+				}
+			};
 		case ActionTypes.ACTIVATE_AUTO_NODE:
 			return handleActivateAutoNode(state, action.payload);
 		case ActionTypes.ACTIVATE_TELEOP_NODE:
@@ -62,7 +84,7 @@ export function reducer(state = INITIAL_STATE, action) {
 	}
 }
 
-function handleActivateAutoNode(state, index) {
+function handleActivateAutoNode(state, index): AppState {
 	const autoGrid = state.auto.grid.slice();
 	autoGrid[index] = {
 		...autoGrid[index],
@@ -90,7 +112,7 @@ function handleActivateAutoNode(state, index) {
 	};
 }
 
-function handleActivateTeleopNode(state, index) {
+function handleActivateTeleopNode(state, index): AppState {
 	const autoGrid = state.auto.grid.slice();
 	autoGrid[index] = {
 		...autoGrid[index],
@@ -119,7 +141,7 @@ function handleActivateTeleopNode(state, index) {
 
 }
 
-function handleDeactivateNode(state, index) {
+function handleDeactivateNode(state, index): AppState {
 	const autoGrid = state.auto.grid.slice();
 	autoGrid[index] = {
 		...autoGrid[index],

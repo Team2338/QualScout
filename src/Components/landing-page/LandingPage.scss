@@ -66,7 +66,11 @@ $pumice: rgb(186, 191, 183);
 	margin-bottom: 1rem !important;
 }
 
-#outlined-basic {
+#team-number,
+#event-code,
+#scouter-name,
+#secret-code
+{
 	min-width: 18rem !important;
 	color: $tangaroa;
 }
@@ -74,10 +78,6 @@ $pumice: rgb(186, 191, 183);
 #lang {
 	border: solid $tangaroa;
 	width: 64px
-}
-
-.landingpage-logo {
-	height: rem7;
 }
 
 @media only screen and (max-width: 700px) {

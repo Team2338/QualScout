@@ -3,9 +3,18 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import './LandingPage.scss';
+import { connect } from 'react-redux';
+import { sendOfflineRequests } from '../../app/Effects.ts';
 
+const inputs = (state) => ({
+	numOfflineMatches: state.cache.matches.length
+});
 
-class LandingPage extends React.Component {
+const outputs = (dispatch) => ({
+	sendOfflineRequests: () => dispatch(sendOfflineRequests())
+});
+
+class ConnectedLandingPage extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -71,7 +80,7 @@ class LandingPage extends React.Component {
 				<div className="landingpage-forms">
 					<TextField
 						name="teamNumber"
-						id="outlined-basic"
+						id="team-number"
 						label="Your Team Number"
 						variant="filled"
 						type="number"
@@ -90,7 +99,7 @@ class LandingPage extends React.Component {
 				<div className="landingpage-forms">
 					<TextField
 						name="eventCode"
-						id="outlined-basic"
+						id="event-code"
 						label="Event Code"
 						variant="filled"
 						type="text"
@@ -106,7 +115,7 @@ class LandingPage extends React.Component {
 				<div className="landingpage-forms">
 					<TextField
 						name="scouterName"
-						id="outlined-basic"
+						id="scouter-name"
 						label="Scouter Name"
 						variant="filled"
 						type="text"
@@ -121,7 +130,7 @@ class LandingPage extends React.Component {
 				<div className="landingpage-forms">
 					<TextField
 						name="secretCode"
-						id="outlined-basic"
+						id="secret-code"
 						label="Secret Code"
 						variant="filled"
 						type="text"
@@ -148,9 +157,23 @@ class LandingPage extends React.Component {
 				>
 					Submit
 				</Button>
+				<Button
+					variant="contained"
+					size="medium"
+					color="primary"
+					onClick={() => this.props.sendOfflineRequests()}
+					disabled={this.props.numOfflineMatches === 0}
+					sx={{
+						marginTop: 'auto',
+						marginBottom: '24px'
+					}}
+				>
+					Retry saved matches
+				</Button>
 			</div>
 		);
 	}
 }
 
+const LandingPage = connect(inputs, outputs)(ConnectedLandingPage);
 export default LandingPage;
