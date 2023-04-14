@@ -1,4 +1,4 @@
-import { AxiosError, AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from 'axios';
 import { ICachedMatch, IMatch } from '../models/models';
 import GearscoutService from '../Services/GearscoutService';
 
