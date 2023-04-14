@@ -33,7 +33,7 @@ function App() {
 			dispatch(fetchOfflineRequests());
 		},
 		[dispatch]
-	)
+	);
 
 	let component = <LandingPage parentCallback={setUserInfoCallback}/>;
 	if (hasLoggedIn) {

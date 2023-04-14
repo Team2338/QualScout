@@ -42,6 +42,13 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 					matches: action.payload
 				}
 			};
+		case ActionTypes.CLEAR_OFFLINE_MATCHES:
+			return {
+				...state,
+				cache: {
+					matches: []
+				}
+			};
 		case ActionTypes.ACTIVATE_AUTO_NODE:
 			return handleActivateAutoNode(state, action.payload);
 		case ActionTypes.ACTIVATE_TELEOP_NODE:
