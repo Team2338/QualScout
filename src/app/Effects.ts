@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios';
 import { ICachedMatch, IMatch } from '../models/models';
 import GearscoutService from '../Services/GearscoutService';
 
@@ -61,15 +60,8 @@ const readOfflineRequestsFromStorage = (): ICachedMatch[] => {
 };
 
 const sendRequest = async (teamNumber: string, secretCode: string, match: IMatch): Promise<'SUCCESS' | 'OFFLINE' | 'FAIL'> => {
-	const url: string = `/team/${teamNumber}`;
-	const config: AxiosRequestConfig = {
-		headers: {
-			secretCode: secretCode
-		}
-	};
-
 	try {
-		await GearscoutService.post(url, match, config);
+		await GearscoutService.submitMatch(teamNumber, secretCode, match);
 		return Promise.resolve('SUCCESS');
 	} catch (error) {
 		console.log(error);

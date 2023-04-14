@@ -148,11 +148,6 @@ class ConnectedDataCollectionPage extends React.Component {
 	render() {
 		return (
 			<div className='background'>
-				<div
-					onClick={() => this.props.sendOfflineRequests()}
-				>
-					Submit offline requests
-				</div>
 				<MatchInformation
 					scoutingTeamNumber={this.state.scoutingTeamNumber}
 					matchNumber={this.state.matchNumber}
