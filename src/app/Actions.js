@@ -35,11 +35,11 @@ export const setAutoPark = (value) => {
 		type: ActionTypes.SET_AUTO_PARK,
 		payload: value
 	};
-}
+};
 
 export const setChargeStation = (gamemode, value) => {
 	return {
 		type: (gamemode === 'teleop') ? ActionTypes.SET_TELEOP_CHARGE_STATION : ActionTypes.SET_AUTO_CHARGE_STATION,
 		payload: value
 	};
-}
+};

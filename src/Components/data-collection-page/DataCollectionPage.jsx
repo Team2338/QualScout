@@ -3,6 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@mui/material/Button'
 import { resetState } from '../../app/Actions';
+import {
+	sendOfflineRequests,
+	submitMatch
+} from '../../app/Effects.ts';
 import MatchInformation from '../match-information/MatchInformation'
 import Auto from '../auto-page/Auto';
 import Teleop from'../teleop-page/Teleop';
@@ -18,7 +22,9 @@ const selector = (state) => ({
 });
 
 const connectDispatch = (dispatch) => ({
-	resetState: () => dispatch(resetState())
+	resetState: () => dispatch(resetState()),
+	submitMatch: (teamNumber, secretCode, match) => dispatch(submitMatch(teamNumber, secretCode, match)),
+	sendOfflineRequests: () => dispatch(sendOfflineRequests())
 });
 
 const INITIAL_STATE = {
@@ -128,12 +134,12 @@ class ConnectedDataCollectionPage extends React.Component {
 			return;
 		}
 
-		const url = '/team/' + this.props.teamNumber;
-		const config = {
-			headers: {
-				secretCode: this.props.secretCode
-			}
-		};
+		// const url = '/team/' + this.props.teamNumber;
+		// const config = {
+		// 	headers: {
+		// 		secretCode: this.props.secretCode
+		// 	}
+		// };
 		const body = {
 			eventCode: this.props.eventCode,
 			matchNumber: this.state.matchNumber,
@@ -143,23 +149,29 @@ class ConnectedDataCollectionPage extends React.Component {
 			objectives: this.generateObjectives()
 		};
 
-		GearscoutService.post(url, body, config)
-			.then(response => {
-				alert('Data Submitted!');
-			})
-			.catch(reason => {
-				alert('There was a problem submitting the data!');
-			})
+
+		// GearscoutService.post(url, body, config)
+		// 	.then(response => {
+		// 		alert('Data Submitted!');
+		// 	})
+		// 	.catch(reason => {
+		// 		alert('There was a problem submitting the data!');
+		// 	})
+		this.props.submitMatch(this.props.teamNumber, this.props.secretCode, body);
 
 		this.props.resetState();
 		this.setState(INITIAL_STATE);
 	};
-	
 
 
 	render() {
 		return (
 			<div className='background'>
+				<div
+					onClick={() => this.props.sendOfflineRequests()}
+				>
+					Submit offline requests
+				</div>
 				<MatchInformation
 					scoutingTeamNumber={this.state.scoutingTeamNumber}
 					matchNumber={this.state.matchNumber}
