@@ -5,21 +5,44 @@ import {
 	useDispatch,
 	useSelector
 } from 'react-redux';
-import {
-	activateNode,
-	deactivateNode
-} from '../../../app/Actions';
+import { activateNode } from '../../../app/Actions';
 
 function Grid(props) {
 
 	const dispatch = useDispatch();
-	const addNode = (index) => dispatch(activateNode(props.gamemode, index));
-	const removeNode = (index) => dispatch(deactivateNode(index));
-	const grid = useSelector(state => state[props.gamemode].grid);
+	const handleClick = (index) => dispatch(activateNode(props.gamemode, index));
+	const autoGrid = useSelector(state => state.auto.grid);
+	const teleopGrid = useSelector(state => state.teleop.grid);
+	console.log('auto')
+	console.log(autoGrid);
+	console.log('teleop')
+	console.log(teleopGrid)
+	const combinedGrid = [];
 
-	const elements = grid.map((node, index) => {
-		const handleClick = (node.value === 0) ? addNode : removeNode;
-		const variant = (node.value === 0) ? 'outlined' : 'contained';
+	for (let i = 0; i < teleopGrid.length; i++) {
+		combinedGrid[i] = autoGrid[i] + teleopGrid[i];
+	}
+
+	const elements = combinedGrid.map((node, index) => {
+		let color = '';
+		let variant = '';
+		if (props.gamemode === 'auto') {
+			color = 'primary';
+			variant = (autoGrid[index] === 0) ? 'outlined' : 'contained';
+		} else {
+			variant = (teleopGrid[index] === 0) ? 'outlined' : 'contained';
+
+			if (teleopGrid[index] === 0) {
+				color = 'primary';
+			} else if (teleopGrid[index] === 1 && autoGrid[index] === 0) {
+				color = 'primary';
+			} else if (teleopGrid[index] === 1 && autoGrid[index] === 1) {
+				color = 'tertiary';
+			} else if (teleopGrid[index] === 2) {
+				color = 'tertiary';
+			}
+		}
+
 		let symbol = '▲';
 		if (index > 17) {
 			symbol = '▲ ■';
@@ -31,8 +54,8 @@ function Grid(props) {
 			<Button
 				key={index}
 				variant={variant}
+				color={color}
 				onClick={() => handleClick(index)}
-				disabled={node.disabled}
 			>
 				{symbol}
 			</Button>

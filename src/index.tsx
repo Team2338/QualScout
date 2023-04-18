@@ -20,6 +20,10 @@ export const themeOptions = {
 			main: '#BABFB7',
 			contrastText: '#000000'
 		},
+		tertiary: {
+			main: '#90D601',
+			contrastText: '#000000'
+		},
 		text: {
 			primary: '#BABFB7',
 		}
