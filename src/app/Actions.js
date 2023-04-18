@@ -38,13 +38,6 @@ export const activateNode = (gamemode, index) => {
 	};
 };
 
-export const deactivateNode = (index) => {
-	return {
-		type: ActionTypes.DEACTIVATE_NODE,
-		payload: index
-	};
-};
-
 export const setAutoPark = (value) => {
 	return {
 		type: ActionTypes.SET_AUTO_PARK,

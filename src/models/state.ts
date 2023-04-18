@@ -5,17 +5,12 @@ export interface AppState {
 		matches: ICachedMatch[]
 	};
 	teleop: {
-		grid: NodeState[];
+		grid: number[];
 		chargeStation: number;
 	};
 	auto: {
-		grid: NodeState[];
+		grid: number[];
 		park: number;
 		chargeStation: number;
 	};
-}
-
-export interface NodeState {
-	disabled: boolean;
-	value: number;
 }
