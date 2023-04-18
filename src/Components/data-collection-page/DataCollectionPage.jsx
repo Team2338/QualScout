@@ -12,8 +12,8 @@ import AllianceSelection from './AllianceSelection';
 const selector = (state) => ({
 	autoMobility: state.auto.park,
 	autoChargeStation: state.auto.chargeStation,
-	autoGrid: state.auto.grid.map((node) => node.value),
-	teleopGrid: state.teleop.grid.map((node) => node.value),
+	autoGrid: state.auto.grid.map((node) => node),
+	teleopGrid: state.teleop.grid.map((node) => node),
 	teleopChargeStation: state.teleop.chargeStation
 });
 
