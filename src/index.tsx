@@ -1,13 +1,11 @@
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
-import {
-	ThemeProvider,
-	createTheme
-} from '@mui/material/styles';
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
 import App from './App';
 import store from './app/Store';
-import { Provider } from 'react-redux';
 import './index.css';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 export const themeOptions = {
 	palette: {
@@ -34,9 +32,11 @@ const theme = createTheme(themeOptions);
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
-	<Provider store={store}>
-		<ThemeProvider theme={theme}>
+	<Provider store={ store }>
+		<ThemeProvider theme={ theme }>
 			<App />
 		</ThemeProvider>
 	</Provider>
 );
+
+serviceWorkerRegistration.register();
