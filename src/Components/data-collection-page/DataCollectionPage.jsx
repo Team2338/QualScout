@@ -8,6 +8,7 @@ import MatchInformation from '../match-information/MatchInformation'
 import Auto from '../auto-page/Auto';
 import Teleop from'../teleop-page/Teleop';
 import AllianceSelection from './AllianceSelection';
+import QualitativePage from '../qual-page/QualitativePage';
 
 const selector = (state) => ({
 	autoMobility: state.auto.park,
@@ -159,6 +160,7 @@ class ConnectedDataCollectionPage extends React.Component {
 				</div>
 				<Auto isNullified={this.state.isAutoNullified} setNullified={this.setAutoNullified}/>
 				<Teleop isNullified={this.state.isTeleopNullified} setNullified={this.setTeleopNullified}/>
+				<QualitativePage />
 				<div className='submit'>
 					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='outlined' className='submit' href='/'>Back</Button>
 					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='contained' className='submit' onClick={this.submit}>Submit</Button>
