@@ -1,12 +1,16 @@
 import React from "react";
-import { Button } from "@mui/material";
-import Menu from "@mui/material";
-import MenuItem from "@mui/material";
+import { Button, Menu, MenuItem } from "@mui/material";
+import { Select } from "@mui/material";
+import { FormControl } from "@mui/material";
+import { InputLabel } from '@mui/material';
+import { Box } from "@mui/material";
+import useState from "react";
 
 
 
 
-export default function CategoryInput() {
+
+ function CategoryInput() {
     /*
     create variable with array values Auto Collection Defense Endgame Path Penalties Placement
     create variable with no initial value
@@ -16,28 +20,32 @@ export default function CategoryInput() {
  
     */
     const MenuItems = [ "Select Category...", "Auto", "Collection", "Defense", "Endgame", "Path" , "Penalties" , "Placement"]
-   const ButtonText = "Select Category...";
+   const [buttonText, setButtonText] = useState(MenuItems[0]);
+   const handleOptionChange = (event) => {
+    setButtonText(event.target.value);
+  };
 
-function CreateMenuItems() {
-    
-    // 7 variables, end loop after that// 
-    for (let count = 0; count < MenuItem.length; count++ ) {
-        
-        <MenuItem>
-        MenuItems[count]
-        </MenuItem>
-    }
-
-
-}
 
    return ( 
     <>   
-    <Button variant="outlined"><ButtonText /></Button>
-    <Menu>
-        <CreateMenuItems />
-    </Menu>
+    <FormControl fullWidth>
+      <InputLabel id='select label'>{MenuItems[0]}</InputLabel>
+      <Select
+      labelId="select-label"
+      id="select"
+      value={buttonText}
+      onChange={handleOptionChange}
+      renderValue={(value) => value}>
+        {MenuItems.map((option, index) => (
+          <MenuItem key={index} value={option}>
+            {option}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
     </>
    )
 
 }
+
+export default CategoryInput;
