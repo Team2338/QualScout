@@ -158,8 +158,7 @@ class ConnectedDataCollectionPage extends React.Component {
 				<div>
 					<AllianceSelection selectAlliance={this.setAllianceColor} selected={this.state.allianceColor}/>
 				</div>
-				<Auto isNullified={this.state.isAutoNullified} setNullified={this.setAutoNullified}/>
-				<Teleop isNullified={this.state.isTeleopNullified} setNullified={this.setTeleopNullified}/>
+				
 				<QualitativePage />
 				<div className='submit'>
 					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='outlined' className='submit' href='/'>Back</Button>
