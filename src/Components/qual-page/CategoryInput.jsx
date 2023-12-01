@@ -1,9 +1,7 @@
 import React, {useState} from "react";
-import { Button, Menu, MenuItem } from "@mui/material";
-import { Select } from "@mui/material";
-import { FormControl } from "@mui/material";
-import { InputLabel } from '@mui/material';
-import { Box } from "@mui/material";
+import { Button, MenuItem, Select, Popover, FormControl, InputLabel } from "@mui/material";
+
+
 
 
 
@@ -11,20 +9,42 @@ import { Box } from "@mui/material";
 
 
  function CategoryInput() {
-    /*
-    create variable with array values Auto Collection Defense Endgame Path Penalties Placement
-    create variable with no initial value
-    create button with the text being said variable
-    menu with menu items being the variables
-    when item clicked it turns into that value
- 
-    */
+    
     const MenuItems = [ "Select Category...", "Auto", "Collection", "Defense", "Endgame", "Path" , "Penalties" , "Placement"]
    const [buttonText, setButtonText] = useState(MenuItems[0]);
+   const HelpItems = [
+    "Select the category you would like to write your notes on above. ",
+    "Auto help ",
+    "Collection help",
+    "Defense help",
+    "Endgame help",
+    "Path help" ,
+    "Penalties help" ,
+    "Placement help"
+  ]  
+  
+  const [helpText, setHelpText] = useState(HelpItems[0])
    const handleOptionChange = (event) => {
-    setButtonText(event.target.value);
+    const selectedValue = event.target.value;
+    const selectedIndex = MenuItems.indexOf(selectedValue);
+    setButtonText(selectedValue)
+      setHelpText(HelpItems[selectedIndex])
+  
   };
+  
+  
 
+  const [isOpen, setIsOpen] = useState(false);
+	const [anchorEl, setAnchorEl] = useState(null);
+
+	const handleClick = (event) => {
+		setAnchorEl(event.currentTarget);
+		setIsOpen(true);
+	};
+	const handleClose = () => {
+		setAnchorEl(null);
+		setIsOpen(false);
+	};
 
    return ( 
     <>   
@@ -43,6 +63,27 @@ import { Box } from "@mui/material";
         ))}
       </Select>
     </FormControl>
+    <Button onClick={handleClick}>
+				?
+			</Button>
+			<Popover
+				open={isOpen}
+				anchorEl={anchorEl}
+				onClose={handleClose}
+				anchorOrigin={{
+					vertical: 'bottom',
+					horizontal: 'center'
+				}}
+				PaperProps={{
+					style: {
+						color: '#FF5000',
+						backgroundColor: '#01233D',
+						padding: '2px'
+					}
+				}}
+			>
+				{helpText}
+			</Popover>
     </>
    )
 
