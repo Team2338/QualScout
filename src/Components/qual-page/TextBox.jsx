@@ -15,6 +15,11 @@ function TextBox() {
         rows={10}
         variant="outlined"
         style={TextFieldStyle}
+        InputLabelProps={{
+            style: {
+                color: '#ff5000',
+            }
+        }}
         />
 
         </>
