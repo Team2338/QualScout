@@ -16,4 +16,4 @@ function QualitativePage() {
 }
 export default QualitativePage;
 
-/* TODO add a submit button */
+
