@@ -51,11 +51,17 @@ export default function QualitativePage() {
       
       const Submit = (event) => {
         event.preventDefault()
+        if (text.trim() !== '' && buttonText.trim() !== MenuItems[0]) {
         const submittedText = { text, buttonText }
         setSubmittedText((oldText) => [...oldText, submittedText])
         setText('')
         setButtonText(MenuItems[0])
-      }
+        }
+        else {
+            console.log("please don't leave this empty :( -the dev")
+        }
+        }
+      
     
       const [Open, setOpen] = useState(false);
         const [anchorEl, setAnchorEl] = useState(null);
@@ -74,7 +80,7 @@ export default function QualitativePage() {
     }
     
        return ( 
-        <>   
+        <div className="background">   
         <form onSubmit={Submit}>
         <FormControl fullWidth>
           <InputLabel id='select label' style={{color:'#ff5000'}}>{MenuItems[0]}</InputLabel>
@@ -132,7 +138,7 @@ export default function QualitativePage() {
           </form>
     
           <div>
-            <h2>Submitted Notes...</h2>
+            <h1 className="title">Submitted Notes</h1>
             <ul>
               {submittedText.map((notes, index) => (
                 <li key={index}>
@@ -141,7 +147,7 @@ export default function QualitativePage() {
               ))}
             </ul>
           </div>
-        </>
+        </div>
        )
 }
 
