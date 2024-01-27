@@ -5,8 +5,7 @@ import Button from '@mui/material/Button'
 import { resetState } from '../../app/Actions';
 import { submitMatch } from '../../app/Effects.ts';
 import MatchInformation from '../match-information/MatchInformation'
-import Auto from '../auto-page/Auto';
-import Teleop from'../teleop-page/Teleop';
+
 import AllianceSelection from './AllianceSelection';
 import QualitativePage from '../qual-page/QualitativePage';
 
