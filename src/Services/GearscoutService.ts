@@ -6,7 +6,7 @@ type GearscoutResponse<T> = Promise<AxiosResponse<T>>;
 class GearscoutService {
 
 	private service: AxiosInstance = axios.create({
-		baseURL: 'https://gearitforward.com/api/v1'
+		baseURL: 'https://gearitforward.com/api/v2/notes'
 	});
 
 	submitMatch = (teamNumber: string, secretCode: string, match: IMatch): GearscoutResponse<void> => {

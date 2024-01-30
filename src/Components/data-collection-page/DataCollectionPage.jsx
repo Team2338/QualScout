@@ -10,11 +10,7 @@ import AllianceSelection from './AllianceSelection';
 import QualitativePage from '../qual-page/QualitativePage';
 
 const selector = (state) => ({
-	autoMobility: state.auto.park,
-	autoChargeStation: state.auto.chargeStation,
-	autoGrid: state.auto.grid.map((node) => node),
-	teleopGrid: state.teleop.grid.map((node) => node),
-	teleopChargeStation: state.teleop.chargeStation
+
 });
 
 const connectDispatch = (dispatch) => ({
