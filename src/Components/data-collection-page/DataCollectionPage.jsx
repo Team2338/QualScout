@@ -2,7 +2,7 @@ import './DataCollectionPage.scss'
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@mui/material/Button'
-import { resetState } from '../../app/Actions';
+
 import { submitMatch } from '../../app/Effects.ts';
 import MatchInformation from '../match-information/MatchInformation'
 
@@ -10,11 +10,20 @@ import AllianceSelection from './AllianceSelection';
 import QualitativePage from '../qual-page/QualitativePage';
 
 const selector = (state) => ({
+	'Auto': state.notes['Auto'],
+	'Collection': state.notes['Collection'],
+	'Shooting Position': state.notes['Shooting Position'],
+	'Shooting Consistency': state.notes['Shooting Consistency'],
+	'Path': state.notes['Path'],
+	'Defense': state.notes['Defense'],
+	'Climbing': state.notes['Climbing'],
+	'Human Player': state.notes['Human Player'],
+	'Penalties': state.notes['Penalties']
 
 });
 
 const connectDispatch = (dispatch) => ({
-	resetState: () => dispatch(resetState()),
+	
 	submitMatch: (teamNumber, secretCode, match) => dispatch(submitMatch(teamNumber, secretCode, match)),
 });
 
@@ -50,60 +59,54 @@ class ConnectedDataCollectionPage extends React.Component {
 		});
 	};
 
-	setAutoNullified = (value) => {
-		this.setState({
-			isAutoNullified: value
-		});
-	};
-
-	setTeleopNullified = (value) => {
-		this.setState({
-			isTeleopNullified: value
-		});
-	};
 
 	generateObjectives = () => {
-		const autoObjectives = [
+		const notes = [
 			{
-				gamemode: 'AUTO',
-				objective: 'MOBILITY_2023',
-				count: this.props.autoMobility
+				topic: 'Auto',
+				content: this.props['Auto']
 			},
 			{
-				gamemode: 'AUTO',
-				objective: 'CHARGE_STATION_2023',
-				count: this.props.autoChargeStation
+				topic: 'Collection',
+				content: this.props['Collection']
 			},
 			{
-				gamemode: 'AUTO',
-				objective: 'GRID_2023',
-				count: this.props.autoGrid.reduce((sum, value) => sum + value),
-				list: this.props.autoGrid
-			},
-		];
 
-		const teleopObjectives = [
-			{
-				gamemode: 'TELEOP',
-				objective: 'CHARGE_STATION_2023',
-				count: this.props.teleopChargeStation
 			},
 			{
-				gamemode: 'TELEOP',
-				objective: 'GRID_2023',
-				count: this.props.teleopGrid.reduce((sum, value) => sum + value),
-				list: this.props.teleopGrid
+				topic: 'Shooting Position',
+				content: this.props["Shooting Position"]
+			},
+			{
+				topic: 'Shooting Consistency',
+				content: this.props['Shooting Consistency']
+			},
+			{
+				topic: "Path",
+				content: this.props['Path']
+			},
+			{
+				topic: 'Defense',
+				content: this.props['Defense']
+			},
+			{
+				topic: 'Climbing',
+				content: this.props['Climbing']
+			},
+			{
+				topic: 'Human Player',
+				content: this.props['Human Player'],
+			},
+			{
+				topic: "Penalties",
+				content: this.props["Penalties"]
 			}
-		];
+
+		]
 
 		const objectives = [];
-		if (!this.state.isAutoNullified) {
-			objectives.push(...autoObjectives);
-		}
-
-		if (!this.state.isTeleopNullified) {
-			objectives.push(...teleopObjectives);
-		}
+		
+			objectives.push(...notes);
 
 		return objectives;
 	}
