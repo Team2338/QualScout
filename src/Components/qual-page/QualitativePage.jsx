@@ -37,6 +37,7 @@ export default function QualitativePage() {
     
       const [submittedText, setSubmittedText] = useState([])
     
+
       const handleText = (event) => {
         setText(event.target.value)
       }
@@ -56,6 +57,7 @@ export default function QualitativePage() {
         setSubmittedText((oldText) => [...oldText, submittedText])
         setText('')
         setButtonText(MenuItems[0])
+        dispatch(sendNotes(buttonText, submittedText))  
         }
         else {
             console.log("please don't leave this empty :( -the dev")

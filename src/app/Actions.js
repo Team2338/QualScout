@@ -32,9 +32,9 @@ export const clearOfflineMatches = () => {
         type: ActionTypes.CLEAR_OFFLINE_MATCHES,
     };
 };
-export const sendNotes = ({category, text}) => {
+export const sendNotes = (topic, content) => {
     let type;
-    switch (category) {
+    switch (topic) {
         case 'Auto':
             type = ActionTypes.SUBMIT_AUTO_NOTES
             break;
@@ -66,7 +66,7 @@ export const sendNotes = ({category, text}) => {
             
     }
     return {
-    type: type,
-    payload: text
+    type,
+    payload: {topic, content}
 }
 }
