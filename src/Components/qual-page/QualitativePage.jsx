@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField } from "@mui/material";
-
+import { sendNotes } from "../../app/Actions";
+import { useDispatch } from "react-redux";
 
 
 
@@ -29,7 +30,7 @@ export default function QualitativePage() {
         "Note how the team plays the human player. Where are they stationed? What do the do?  " ,
         "Note when and how the bot obtained any penalties. ",
       ]  
-      
+      const dispatch = useDispatch(); //TODO write dispatch function 
       const [helpText, setHelpText] = useState(HelpItems[0])
     
       const [text, setText] = useState('')
@@ -39,7 +40,6 @@ export default function QualitativePage() {
       const handleText = (event) => {
         setText(event.target.value)
       }
-    
     
        const handleOptionChange = (event) => {
         const value = event.target.value;
@@ -60,9 +60,9 @@ export default function QualitativePage() {
         else {
             console.log("please don't leave this empty :( -the dev")
         }
+        
         }
       
-    
       const [Open, setOpen] = useState(false);
         const [anchorEl, setAnchorEl] = useState(null);
     
@@ -81,7 +81,6 @@ export default function QualitativePage() {
     
        return ( 
         <div className="background">   
-        <form onSubmit={Submit}>
         <FormControl fullWidth>
           <InputLabel id='select label' style={{color:'#ff5000'}}>{MenuItems[0]}</InputLabel>
           <Select
@@ -133,9 +132,8 @@ export default function QualitativePage() {
                 }
             }}
             />
-        <Button type='submit' variant='contained'>Submit Notes</Button>
+        <Button type='submit' variant='contained' onClick={Submit}>Submit Notes</Button>
     
-          </form>
     
           <div>
             <h1 className="title">Submitted Notes</h1>

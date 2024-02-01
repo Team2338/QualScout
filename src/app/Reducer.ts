@@ -41,7 +41,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                 ...state.notes,
-                "Auto": action.payload
+                "Auto": action.text
                 }
             }
         case ActionTypes.SUBMIT_COLLECTION_NOTES:
@@ -49,7 +49,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    "Collection": action.payload
+                    "Collection": action.text
                 }
             }
         case ActionTypes.SUBMIT_SHOOT_POS_NOTES:
@@ -57,7 +57,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    "Shooting Position": action.payload
+                    "Shooting Position": action.text
                 }
             }
         case ActionTypes.SUBMIT_SHOOT_COS_NOTES:
@@ -65,7 +65,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    "Shooting Consistency": action.payload
+                    "Shooting Consistency": action.text
                 }
             }
         case ActionTypes.SUBMIT_PATH_NOTES:
@@ -73,7 +73,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    "Path": action.payload
+                    "Path": action.text
                 }
             }
         case ActionTypes.SUBMIT_DEFENSE_NOTES:
@@ -81,7 +81,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    'Defense': action.payload
+                    'Defense': action.text
                 }
             }
         case ActionTypes.SUBMIT_CLIMBING_NOTES:
@@ -89,7 +89,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    'Climbing': action.payload
+                    'Climbing': action.text
                 }
             }
         case ActionTypes.SUBMIT_HP_NOTES:
@@ -97,7 +97,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    "Human Player": action.payload
+                    "Human Player": action.text
                 }
             }
         case ActionTypes.SUBMIT_PENALTY_NOTES:
@@ -105,7 +105,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    'Penalties': action.payload
+                    'Penalties': action.text
                 }
             }
         default:

@@ -32,7 +32,8 @@ export const clearOfflineMatches = () => {
         type: ActionTypes.CLEAR_OFFLINE_MATCHES,
     };
 };
-export const sendNotes = ({category, type, value}) => {
+export const sendNotes = ({category, text}) => {
+    let type;
     switch (category) {
         case 'Auto':
             type = ActionTypes.SUBMIT_AUTO_NOTES
@@ -40,10 +41,10 @@ export const sendNotes = ({category, type, value}) => {
         case 'Collection':
             type = ActionTypes.SUBMIT_COLLECTION_NOTES
             break;
-        case 'ShootingPosition':
+        case 'Shooting Position':
             type = ActionTypes.SUBMIT_SHOOT_POS_NOTES
             break;
-        case 'ShootingConsistency':
+        case 'Shooting Consistency':
             type = ActionTypes.SUBMIT_SHOOT_COS_NOTES
             break;
         case 'Path':
@@ -55,17 +56,17 @@ export const sendNotes = ({category, type, value}) => {
         case 'Climbing':
             type = ActionTypes.SUBMIT_CLIMBING_NOTES
             break;
-        case 'HumanPlayer':
+        case 'Human Player':
             type = ActionTypes.SUBMIT_HP_NOTES
             break;
         case 'Penalties':
             type = ActionTypes.SUBMIT_PENALTY_NOTES
             break;
         default:
-            console.log('Error, submit a category please')
+            
     }
     return {
     type: type,
-    payload: value
+    payload: text
 }
 }
