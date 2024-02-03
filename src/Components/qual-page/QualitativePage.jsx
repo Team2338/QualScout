@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField } from "@mui/material";
+import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField, Typography } from "@mui/material";
 import { sendNotes } from "../../app/Actions";
 import { useDispatch } from "react-redux";
 
@@ -54,10 +54,11 @@ export default function QualitativePage() {
         event.preventDefault()
         if (text.trim() !== '' && buttonText.trim() !== MenuItems[0]) {
         const submittedText = { text, buttonText }
+        dispatch(sendNotes(buttonText, text))
         setSubmittedText((oldText) => [...oldText, submittedText])
         setText('')
         setButtonText(MenuItems[0])
-        dispatch(sendNotes(buttonText, submittedText))  
+        
         }
         else {
             console.log("please don't leave this empty :( -the dev")
@@ -84,7 +85,9 @@ export default function QualitativePage() {
        return ( 
         <div className="background">   
         <FormControl fullWidth>
-          <InputLabel id='select label' style={{color:'#ff5000'}}>{MenuItems[0]}</InputLabel>
+          <InputLabel id='select label' style={{color:'#ff5000'}}>
+            <Typography variant="subtitle1" style={{margin: '6px 0'}}>{MenuItems[0]}</Typography>
+          </InputLabel>
           <Select
           labelId="select-label"
           id="select"

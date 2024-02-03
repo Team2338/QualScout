@@ -8,20 +8,25 @@ const INITIAL_STATE: AppState = {
         matches: []
     },
     notes: {
-        "Auto": '',
-        "Collection": '', 
-        "Shooting Position": '',
-        "Shooting Consistency": '',
-        "Path": '', 
-        "Defense": '', 
-        "Climbing": '', 
-        "Human Player": '', 
-        "Penalties": '',
+        "Auto": [],
+        "Collection": [], 
+        "Shooting Position": [],
+        "Shooting Consistency": [],
+        "Path": [], 
+        "Defense": [], 
+        "Climbing": [], 
+        "Human Player": [], 
+        "Penalties": [],
     }
 };
 export function reducer(state: AppState = INITIAL_STATE, action): AppState {
     switch (action.type) {
-        
+
+        case ActionTypes.RESET_STATE:
+            return {
+                ...state,
+                notes: INITIAL_STATE.notes
+            }
         case ActionTypes.GET_OFFLINE_MATCHES_SUCCESS:
             return {
                 ...state,

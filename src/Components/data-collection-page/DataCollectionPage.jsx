@@ -8,6 +8,7 @@ import MatchInformation from '../match-information/MatchInformation'
 
 import AllianceSelection from './AllianceSelection';
 import QualitativePage from '../qual-page/QualitativePage';
+import { resetState } from '../../app/Actions';
 
 const selector = (state) => ({
 	'Auto': state.notes['Auto'],
@@ -23,16 +24,14 @@ const selector = (state) => ({
 });
 
 const connectDispatch = (dispatch) => ({
-	
+	resetState: () => dispatch(resetState()),
 	submitMatch: (teamNumber, secretCode, match) => dispatch(submitMatch(teamNumber, secretCode, match)),
 });
 
 const INITIAL_STATE = {
 	scoutingTeamNumber: '',
 	matchNumber: '',
-	allianceColor: 'UNKNOWN',
-	isAutoNullified: false,
-	isTeleopNullified: false
+	allianceColor: 'UNKNOWN'
 }
 
 class ConnectedDataCollectionPage extends React.Component {
