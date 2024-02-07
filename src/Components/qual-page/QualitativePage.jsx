@@ -137,12 +137,12 @@ export default function QualitativePage() {
                 }
             }}
             />
-        <Button type='submit' variant='contained' onClick={Submit}>Submit Notes</Button>
+        <Button type='submit' variant='contained' onClick={Submit}>Submit Note</Button>
     
     
           <div>
             <h1 className="title">Submitted Notes</h1>
-            <ul>
+            <ul className="list">
               {submittedText.map((notes, index) => (
                 <li key={index}>
                   <strong>{notes.buttonText}:</strong> {notes.text}

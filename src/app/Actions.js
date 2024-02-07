@@ -67,6 +67,6 @@ export const sendNotes = (topic, content) => {
     }
     return {
     type,
-    payload: {topic, content}
+    payload: content, topic
 }
 }

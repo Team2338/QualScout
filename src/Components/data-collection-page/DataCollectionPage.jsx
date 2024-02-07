@@ -11,15 +11,15 @@ import QualitativePage from '../qual-page/QualitativePage';
 import { resetState } from '../../app/Actions';
 
 const selector = (state) => ({
-	'Auto': state.notes['Auto'],
-	'Collection': state.notes['Collection'],
-	'Shooting Position': state.notes['Shooting Position'],
-	'Shooting Consistency': state.notes['Shooting Consistency'],
-	'Path': state.notes['Path'],
-	'Defense': state.notes['Defense'],
-	'Climbing': state.notes['Climbing'],
-	'Human Player': state.notes['Human Player'],
-	'Penalties': state.notes['Penalties']
+	'Auto': '',
+	'Collection': '',
+	'Shooting Position': '',
+	'Shooting Consistency': '',
+	'Path': '',
+	'Defense': '',
+	'Climbing': '',
+	'Human Player': '',
+	'Penalties': ''
 
 });
 
@@ -31,7 +31,8 @@ const connectDispatch = (dispatch) => ({
 const INITIAL_STATE = {
 	scoutingTeamNumber: '',
 	matchNumber: '',
-	allianceColor: 'UNKNOWN'
+	allianceColor: 'UNKNOWN',
+
 }
 
 class ConnectedDataCollectionPage extends React.Component {
@@ -68,9 +69,6 @@ class ConnectedDataCollectionPage extends React.Component {
 			{
 				topic: 'Collection',
 				content: this.props['Collection']
-			},
-			{
-
 			},
 			{
 				topic: 'Shooting Position',
