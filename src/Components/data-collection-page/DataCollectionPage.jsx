@@ -11,15 +11,15 @@ import QualitativePage from '../qual-page/QualitativePage';
 import { resetState } from '../../app/Actions';
 
 const selector = (state) => ({
-	'Auto': '',
-	'Collection': '',
-	'Shooting Position': '',
-	'Shooting Consistency': '',
-	'Path': '',
-	'Defense': '',
-	'Climbing': '',
-	'Human Player': '',
-	'Penalties': ''
+	'Auto': state.notes['Auto'],
+	'Collection': state.notes['Collection'],
+	'Shooting Position': state.notes['Shooting Position'],
+	'Shooting Consistency': state.notes['Shooting Consistency'],
+	'Path': state.notes['Path'],
+	'Defense': state.notes['Defense'],
+	'Climbing': state.notes['Climbing'],
+	'Human Player': state.notes['Human Player'],
+	'Penalties': state.notes['Penalties']
 
 });
 
@@ -109,6 +109,15 @@ class ConnectedDataCollectionPage extends React.Component {
 	}
 
 	submit = () => {
+		const match = {
+			eventCode: this.props.eventCode,
+			matchNumber: this.state.matchNumber,
+			robotNumber: this.state.scoutingTeamNumber,
+			creator: this.props.scouterName,
+			allianceColor: this.state.allianceColor,
+			gameYear: 2024,
+			objectives: this.generateObjectives()
+		};
 		// Let the user know if they missed an input
 		const problems = [];
 		if (this.state.matchNumber.length === 0) {
@@ -125,14 +134,7 @@ class ConnectedDataCollectionPage extends React.Component {
 			return;
 		}
 
-		const match = {
-			eventCode: this.props.eventCode,
-			matchNumber: this.state.matchNumber,
-			robotNumber: this.state.scoutingTeamNumber,
-			creator: this.props.scouterName,
-			allianceColor: this.state.allianceColor,
-			objectives: this.generateObjectives()
-		};
+		
 
 		this.props.submitMatch(this.props.teamNumber, this.props.secretCode, match);
 
