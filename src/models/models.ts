@@ -1,8 +1,4 @@
 
-export enum Gamemodes {
-	teleop = 'TELEOP',
-	auto = 'AUTO'
-}
 
 export interface IMatch {
 	eventCode: string;

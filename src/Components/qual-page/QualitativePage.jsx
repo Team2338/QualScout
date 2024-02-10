@@ -30,7 +30,7 @@ export default function QualitativePage() {
         "Note how the team plays the human player. Where are they stationed? What do the do?  " ,
         "Note when and how the bot obtained any penalties. ",
       ]  
-      const dispatch = useDispatch(); //TODO write dispatch function 
+      const dispatch = useDispatch();  
       const [helpText, setHelpText] = useState(HelpItems[0])
     
       const [text, setText] = useState('')
@@ -53,8 +53,8 @@ export default function QualitativePage() {
       const Submit = (event) => {
         event.preventDefault()
         if (text.trim() !== '' && buttonText.trim() !== MenuItems[0]) {
-        const submittedText = { text, buttonText }
         dispatch(sendNotes(buttonText, text))
+        const submittedText = { text, buttonText }
         setSubmittedText((oldText) => [...oldText, submittedText])
         setText('')
         setButtonText(MenuItems[0])
