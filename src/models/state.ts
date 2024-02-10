@@ -14,5 +14,6 @@ export interface AppState {
         "Climbing": string, 
         "Human Player": string, 
         "Penalties": string,
+        "Drivers": string
 	}
 }

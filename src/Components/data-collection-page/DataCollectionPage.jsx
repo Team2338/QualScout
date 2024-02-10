@@ -19,7 +19,8 @@ const selector = (state) => ({
 	'Defense': state.notes['Defense'],
 	'Climbing': state.notes['Climbing'],
 	'Human Player': state.notes['Human Player'],
-	'Penalties': state.notes['Penalties']
+	'Penalties': state.notes['Penalties'],
+	'Drivers': state.notes['Drivers']
 
 });
 
@@ -60,7 +61,7 @@ class ConnectedDataCollectionPage extends React.Component {
 	};
 
 
-	generateObjectives = () => {
+	generateComments = () => {
 		const notes = [
 			{
 				topic: 'Auto',
@@ -97,15 +98,18 @@ class ConnectedDataCollectionPage extends React.Component {
 			{
 				topic: "Penalties",
 				content: this.props["Penalties"]
+			},
+			{
+				topic: "Drivers",
+				content: this.props['Drivers']
 			}
 
 		]
 
-		const objectives = [];
-		
-			objectives.push(...notes);
+		const comments = [];
+			comments.push(...notes);
 
-		return objectives;
+		return comments;
 	}
 
 	submit = () => {
@@ -116,7 +120,7 @@ class ConnectedDataCollectionPage extends React.Component {
 			creator: this.props.scouterName,
 			allianceColor: this.state.allianceColor,
 			gameYear: 2024,
-			objectives: this.generateObjectives()
+			comments: this.generateComments()
 		};
 		// Let the user know if they missed an input
 		const problems = [];

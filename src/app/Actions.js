@@ -11,7 +11,8 @@ export const ActionTypes = {
     SUBMIT_DEFENSE_NOTES: '[QUAL] Submit Defense Notes',
     SUBMIT_CLIMBING_NOTES: '[QUAL] Submit Climing Notes',
     SUBMIT_HP_NOTES: '[QUAL] Submit Human Player Notes',
-    SUBMIT_PENALTY_NOTES: '[QUAL] Submit Penalties Notes'
+    SUBMIT_PENALTY_NOTES: '[QUAL] Submit Penalties Notes',
+    SUBMIT_DRIVERS_NOTES: '[QUAL] Submit Drivers Notes'
 };
 
 
@@ -61,6 +62,9 @@ export const sendNotes = (topic, content) => {
             break;
         case 'Penalties':
             type = ActionTypes.SUBMIT_PENALTY_NOTES
+            break;
+        case 'Drivers':
+            type = ActionTypes.SUBMIT_DRIVERS_NOTES
             break;
         default:
             

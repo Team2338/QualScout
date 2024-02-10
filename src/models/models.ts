@@ -6,7 +6,7 @@ export interface IMatch {
 	robotNumber: string;
 	creator: string;
 	allianceColor: string;
-	objectives: INote[];
+	comments: INote[];
 }
 
 export interface ICachedMatch extends IMatch {

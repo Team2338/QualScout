@@ -17,6 +17,7 @@ const INITIAL_STATE: AppState = {
         "Climbing": '', 
         "Human Player": '', 
         "Penalties": '',
+        'Drivers': ''
     }
 };
 export function reducer(state: AppState = INITIAL_STATE, action): AppState {
@@ -113,6 +114,14 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                     'Penalties': state.notes['Penalties'].concat(', ' + action.payload)
                 }
             }
+        case ActionTypes.SUBMIT_DRIVERS_NOTES: 
+        return {
+            ...state,
+            notes: {
+                ...state.notes,
+                'Drivers': state.notes['Drivers'].concat(', ' + action.payload)
+            }
+        }
         default:
             return state;
     }
