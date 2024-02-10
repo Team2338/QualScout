@@ -106,8 +106,7 @@ class ConnectedDataCollectionPage extends React.Component {
 
 		]
 
-		const comments = [];
-			comments.push(...notes);
+		const comments = notes.filter(content => content.content.trim() !== '')
 
 		return comments;
 	}
