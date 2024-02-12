@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField, Typography } from "@mui/material";
 import { sendNotes } from "../../app/Actions";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../app/Hooks";
 
 
 
 export default function QualitativePage() {
-    const MenuItems = [ 
+    const menuItems = [ 
         "Select Category...", 
         "Auto", 
         "Collection", 
@@ -18,8 +18,8 @@ export default function QualitativePage() {
         "Human Player" , 
         "Penalties",
         "Drivers"]
-       const [buttonText, setButtonText] = useState(MenuItems[0]);
-       const HelpItems = [
+       const [buttonText, setButtonText] = useState(menuItems[0]);
+       const helpItems = [
         "Select the category you would like to write your notes on above. ",
         "Note what the bot does during auto. Include starting position, path, scores, and possible A-STOPS. ",
         "Note how the bot collects. Examples: Floor intake, direct into robot, etc.",
@@ -32,8 +32,8 @@ export default function QualitativePage() {
         "Note when and how the bot obtained any penalties. ",
         "Note how the driver plays i.e. their experience and preferences."
       ]  
-      const dispatch = useDispatch();  
-      const [helpText, setHelpText] = useState(HelpItems[0])
+      const dispatch = useAppDispatch();  
+      const [helpText, setHelpText] = useState(helpItems[0])
     
       const [text, setText] = useState('')
     
@@ -46,20 +46,20 @@ export default function QualitativePage() {
     
        const handleOptionChange = (event) => {
         const value = event.target.value;
-        const index = MenuItems.indexOf(value);
+        const index = menuItems.indexOf(value);
         setButtonText(value)
-          setHelpText(HelpItems[index])
+          setHelpText(helpItems[index])
       
       };
       
-      const Submit = (event) => {
+      const submit = (event) => {
         event.preventDefault()
-        if (text.trim() !== '' && buttonText.trim() !== MenuItems[0]) {
-        dispatch(sendNotes(buttonText, text))
-        const submittedText = { text, buttonText }
-        setSubmittedText((oldText) => [...oldText, submittedText])
-        setText('')
-        setButtonText(MenuItems[0])
+        if (text.trim() !== '' && buttonText.trim() !== menuItems[0]) {
+            dispatch(sendNotes(buttonText, text))
+            const submittedText = { text, buttonText }
+            setSubmittedText((oldText) => [...oldText, submittedText])
+            setText('')
+            setButtonText(menuItems[0])
         
         }
         else {
@@ -68,27 +68,27 @@ export default function QualitativePage() {
         
         }
       
-      const [Open, setOpen] = useState(false);
-        const [anchorEl, setAnchorEl] = useState(null);
+      const [open, setOpen] = useState(false);
+      const [anchorEl, setAnchorEl] = useState(null);
     
-        const handleClick = (event) => {
+      const handleClick = (event) => {
             setAnchorEl(event.currentTarget);
             setOpen(true);
         };
-        const handleClose = () => {
+      const handleClose = () => {
             setAnchorEl(null);
             setOpen(false);
         };
       const TextFieldStyle = {
         width: '100%', 
         marginBottom: '16px',
-    }
+        }
     
        return ( 
         <div className="background">   
         <FormControl fullWidth>
-          <InputLabel id='select label' style={{color:'#ff5000'}}>
-            <Typography variant="subtitle1" style={{margin: '6px 0'}}>{MenuItems[0]}</Typography>
+          <InputLabel id='selectlabel' style={{color:'#ff5000'}}>
+            <Typography variant="subtitle1" style={{margin: '6px 0'}}>{menuItems[0]}</Typography>
           </InputLabel>
           <Select
           labelId="select-label"
@@ -96,7 +96,7 @@ export default function QualitativePage() {
           value={buttonText}
           onChange={handleOptionChange}
           renderValue={(value) => value}>
-            {MenuItems.map((option, index) => (
+            {menuItems.map((option, index) => (
               <MenuItem key={index} value={option}>
                 {option}
               </MenuItem>
@@ -107,7 +107,7 @@ export default function QualitativePage() {
                     ?
                 </Button>
                 <Popover
-                    open={Open}
+                    open={open}
                     anchorEl={anchorEl}
                     onClose={handleClose}
                     anchorOrigin={{
@@ -139,7 +139,7 @@ export default function QualitativePage() {
                 }
             }}
             />
-        <Button type='submit' variant='contained' onClick={Submit}>Submit Note</Button>
+        <Button type='submit' variant='contained' onClick={submit}>Submit Note</Button>
     
     
           <div>

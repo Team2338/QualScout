@@ -69,8 +69,8 @@ export const sendNotes = (topic, content) => {
         default:
             
     }
-    return {
-    type,
-    payload: content, topic
+        return {
+            type,
+            payload: content
 }
 }

@@ -80,7 +80,7 @@ class ConnectedDataCollectionPage extends React.Component {
 				content: this.props['Shooting Consistency']
 			},
 			{
-				topic: "Path",
+				topic:'Path',
 				content: this.props['Path']
 			},
 			{
@@ -96,11 +96,11 @@ class ConnectedDataCollectionPage extends React.Component {
 				content: this.props['Human Player'],
 			},
 			{
-				topic: "Penalties",
+				topic: 'Penalties',
 				content: this.props["Penalties"]
 			},
 			{
-				topic: "Drivers",
+				topic: 'Drivers',
 				content: this.props['Drivers']
 			}
 

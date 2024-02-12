@@ -56,8 +56,8 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
             return {
                 ...state,
                 notes: {
-                ...state.notes,
-                "Auto": checkSpace('Auto', action.payload)
+                    ...state.notes,
+                    "Auto": checkSpace('Auto', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_COLLECTION_NOTES:
