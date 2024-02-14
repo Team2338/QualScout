@@ -11,16 +11,16 @@ import QualitativePage from '../qual-page/QualitativePage';
 import { resetState } from '../../app/Actions';
 
 const selector = (state) => ({
-	'Auto': state.notes['Auto'],
-	'Collection': state.notes['Collection'],
+	Auto: state.notes.Auto,
+	Collection: state.notes.Collection,
 	'Shooting Position': state.notes['Shooting Position'],
 	'Shooting Consistency': state.notes['Shooting Consistency'],
-	'Path': state.notes['Path'],
-	'Defense': state.notes['Defense'],
-	'Climbing': state.notes['Climbing'],
+	Path: state.notes.Path,
+	Defense: state.notes.Defense,
+	Climbing: state.notes.Climbing,
 	'Human Player': state.notes['Human Player'],
-	'Penalties': state.notes['Penalties'],
-	'Drivers': state.notes['Drivers']
+	Penalties: state.notes.Penalties,
+	Drivers: state.notes.Drivers
 
 });
 
@@ -65,11 +65,11 @@ class ConnectedDataCollectionPage extends React.Component {
 		const notes = [
 			{
 				topic: 'Auto',
-				content: this.props['Auto']
+				content: this.props.Auto
 			},
 			{
 				topic: 'Collection',
-				content: this.props['Collection']
+				content: this.props.Collection
 			},
 			{
 				topic: 'Shooting Position',
@@ -81,15 +81,15 @@ class ConnectedDataCollectionPage extends React.Component {
 			},
 			{
 				topic:'Path',
-				content: this.props['Path']
+				content: this.props.Path
 			},
 			{
 				topic: 'Defense',
-				content: this.props['Defense']
+				content: this.props.Defense
 			},
 			{
 				topic: 'Climbing',
-				content: this.props['Climbing']
+				content: this.props.Climbing
 			},
 			{
 				topic: 'Human Player',
@@ -97,11 +97,11 @@ class ConnectedDataCollectionPage extends React.Component {
 			},
 			{
 				topic: 'Penalties',
-				content: this.props["Penalties"]
+				content: this.props.Penalties
 			},
 			{
 				topic: 'Drivers',
-				content: this.props['Drivers']
+				content: this.props.Drivers
 			}
 
 		]
