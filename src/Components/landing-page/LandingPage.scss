@@ -19,15 +19,28 @@ $pumice: rgb(186, 191, 183);
 }
 
 .header {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr; // Right 1fr is used to center the title
+	align-items: center;
 	background-color: $tangaroa;
 	color: $orange;
 	margin-bottom: 10px;
 	padding: 10px 10px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	width: 100%;
 	box-sizing: border-box;
+
+	.logo-wrapper {
+		display: flex;
+	}
+
+	.title-and-version {
+		display: flex;
+		flex-direction: column;
+
+		.title {
+			margin: 0;
+		}
+	}
 }
 
 .main-title {
@@ -69,8 +82,7 @@ $pumice: rgb(186, 191, 183);
 #team-number,
 #event-code,
 #scouter-name,
-#secret-code
-{
+#secret-code {
 	min-width: 18rem !important;
 	color: $tangaroa;
 }
@@ -93,9 +105,4 @@ $pumice: rgb(186, 191, 183);
 	.landingpage-logo {
 		height: 6rem;
 	}
-}
-
-.Title {
-	margin: 0 auto;
-	padding-right: 100px;
 }
