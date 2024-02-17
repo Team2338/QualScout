@@ -8,16 +8,16 @@ const INITIAL_STATE: AppState = {
         matches: []
     },
     notes: {
-        Auto: '',
-        Collection: '', 
-        ShootingPosition: '',
-        ShootingConsistency: '',
-        Path: '', 
-        Defense: '', 
-        Climbing: '', 
-        HumanPlayer: '', 
-        Penalties: '',
-        Drivers: ''
+        auto: '',
+        collection: '', 
+        shootingPosition: '',
+        shootingConsistency: '',
+        path: '', 
+        defense: '', 
+        climbing: '', 
+        humanPlayer: '', 
+        penalties: '',
+        drivers: ''
     }
 };
 export function reducer(state: AppState = INITIAL_STATE, action): AppState {
@@ -57,7 +57,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    Auto: checkSpace('Auto', action.payload)
+                    auto: checkSpace('auto', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_COLLECTION_NOTES:
@@ -65,7 +65,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    Collection: checkSpace('Collection', action.payload)
+                    collection: checkSpace('collection', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_SHOOT_POS_NOTES:
@@ -73,7 +73,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    ShootingPosition: checkSpace('ShootingPosition', action.payload)
+                    shootingPosition: checkSpace('shootingPosition', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_SHOOT_COS_NOTES:
@@ -81,7 +81,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    ShootingConsistency: checkSpace('ShootingConsistency', action.payload)
+                    shootingConsistency: checkSpace('shootingConsistency', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_PATH_NOTES:
@@ -89,7 +89,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    Path: checkSpace('Path', action.payload)
+                    path: checkSpace('path', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_DEFENSE_NOTES:
@@ -97,7 +97,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    Defense: checkSpace('Defense', action.payload)
+                    defense: checkSpace('defense', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_CLIMBING_NOTES:
@@ -105,7 +105,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    Climbing: checkSpace('Climbing', action.payload)
+                    climbing: checkSpace('climbing', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_HP_NOTES:
@@ -113,7 +113,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    HumanPlayer: checkSpace('HumanPlayer', action.payload)
+                    humanPlayer: checkSpace('humanPlayer', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_PENALTY_NOTES:
@@ -121,7 +121,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    Penalties: checkSpace('Penalties', action.payload)
+                    penalties: checkSpace('penalties', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_DRIVERS_NOTES: 
@@ -129,7 +129,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
             ...state,
             notes: {
                 ...state.notes,
-                Drivers: checkSpace('Drivers', action.payload)
+                drivers: checkSpace('drivers', action.payload)
             }
         }
         default:

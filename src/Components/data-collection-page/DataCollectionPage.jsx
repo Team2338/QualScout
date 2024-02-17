@@ -11,16 +11,16 @@ import QualitativePage from '../qual-page/QualitativePage';
 import { resetState } from '../../app/Actions';
 
 const selector = (state) => ({
-	Auto: state.notes.Auto,
-	Collection: state.notes.Collection,
-	ShootingPosition: state.notes.ShootingPosition,
-	ShootingConsistency: state.notes.ShootingConsistency,
-	Path: state.notes.Path,
-	Defense: state.notes.Defense,
-	Climbing: state.notes.Climbing,
-	HumanPlayer: state.notes.HumanPlayer,
-	Penalties: state.notes.Penalties,
-	Drivers: state.notes.Drivers
+	auto: state.notes.auto,
+	collection: state.notes.collection,
+	shootingPosition: state.notes.shootingPosition,
+	shootingConsistency: state.notes.shootingConsistency,
+	path: state.notes.path,
+	defense: state.notes.defense,
+	climbing: state.notes.climbing,
+	humanPlayer: state.notes.humanPlayer,
+	penalties: state.notes.penalties,
+	drivers: state.notes.drivers
 
 });
 
@@ -65,43 +65,43 @@ class ConnectedDataCollectionPage extends React.Component {
 		const notes = [
 			{
 				topic: 'Auto',
-				content: this.props.Auto
+				content: this.props.auto
 			},
 			{
 				topic: 'Collection',
-				content: this.props.Collection
+				content: this.props.collection
 			},
 			{
 				topic: 'Shooting Position',
-				content: this.props.ShootingPosition
+				content: this.props.shootingPosition
 			},
 			{
 				topic: 'Shooting Consistency',
-				content: this.props.ShootingConsistency
+				content: this.props.shootingConsistency
 			},
 			{
 				topic:'Path',
-				content: this.props.Path
+				content: this.props.path
 			},
 			{
 				topic: 'Defense',
-				content: this.props.Defense
+				content: this.props.defense
 			},
 			{
 				topic: 'Climbing',
-				content: this.props.Climbing
+				content: this.props.climbing
 			},
 			{
 				topic: 'Human Player',
-				content: this.props.HumanPlayer,
+				content: this.props.humanPlayer,
 			},
 			{
 				topic: 'Penalties',
-				content: this.props.Penalties
+				content: this.props.penalties
 			},
 			{
 				topic: 'Drivers',
-				content: this.props.Drivers
+				content: this.props.drivers
 			}
 
 		]

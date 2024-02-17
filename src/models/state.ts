@@ -5,15 +5,15 @@ export interface AppState {
 		matches: ICachedMatch[]
 	};
 	notes: {
-		Auto: string, 
-        Collection: string, 
-        ShootingPosition: string,
-        ShootingConsistency: string,
-        Path: string, 
-        Defense: string, 
-        Climbing: string, 
-        HumanPlayer: string, 
-        Penalties: string,
-        Drivers: string
+		auto: string, 
+        collection: string, 
+        shootingPosition: string,
+        shootingConsistency: string,
+        path: string, 
+        defense: string, 
+        climbing: string, 
+        humanPlayer: string, 
+        penalties: string,
+        drivers: string
 	}
 }
