@@ -13,12 +13,12 @@ import { resetState } from '../../app/Actions';
 const selector = (state) => ({
 	Auto: state.notes.Auto,
 	Collection: state.notes.Collection,
-	'Shooting Position': state.notes['Shooting Position'],
-	'Shooting Consistency': state.notes['Shooting Consistency'],
+	ShootingPosition: state.notes.ShootingPosition,
+	ShootingConsistency: state.notes.ShootingConsistency,
 	Path: state.notes.Path,
 	Defense: state.notes.Defense,
 	Climbing: state.notes.Climbing,
-	'Human Player': state.notes['Human Player'],
+	HumanPlayer: state.notes.HumanPlayer,
 	Penalties: state.notes.Penalties,
 	Drivers: state.notes.Drivers
 
@@ -73,11 +73,11 @@ class ConnectedDataCollectionPage extends React.Component {
 			},
 			{
 				topic: 'Shooting Position',
-				content: this.props["Shooting Position"]
+				content: this.props.ShootingPosition
 			},
 			{
 				topic: 'Shooting Consistency',
-				content: this.props['Shooting Consistency']
+				content: this.props.ShootingConsistency
 			},
 			{
 				topic:'Path',
@@ -93,7 +93,7 @@ class ConnectedDataCollectionPage extends React.Component {
 			},
 			{
 				topic: 'Human Player',
-				content: this.props['Human Player'],
+				content: this.props.HumanPlayer,
 			},
 			{
 				topic: 'Penalties',
