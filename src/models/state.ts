@@ -4,13 +4,16 @@ export interface AppState {
 	cache: {
 		matches: ICachedMatch[]
 	};
-	teleop: {
-		grid: number[];
-		chargeStation: number;
-	};
-	auto: {
-		grid: number[];
-		park: number;
-		chargeStation: number;
-	};
+	notes: {
+		auto: string, 
+        collection: string, 
+        shootingPosition: string,
+        shootingConsistency: string,
+        path: string, 
+        defense: string, 
+        climbing: string, 
+        humanPlayer: string, 
+        penalties: string,
+        drivers: string
+	}
 }

@@ -1,8 +1,4 @@
 
-export enum Gamemodes {
-	teleop = 'TELEOP',
-	auto = 'AUTO'
-}
 
 export interface IMatch {
 	eventCode: string;
@@ -10,7 +6,7 @@ export interface IMatch {
 	robotNumber: string;
 	creator: string;
 	allianceColor: string;
-	objectives: IObjective[];
+	comments: INote[];
 }
 
 export interface ICachedMatch extends IMatch {
@@ -18,9 +14,7 @@ export interface ICachedMatch extends IMatch {
 	secretCode: string;
 }
 
-export interface IObjective {
-	gamemode: Gamemodes,
-	objective: string;
-	count: number;
-	list?: number[];
+export interface INote {
+	topic: string;
+	content: string;
 }

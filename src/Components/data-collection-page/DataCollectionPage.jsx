@@ -2,19 +2,26 @@ import './DataCollectionPage.scss'
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@mui/material/Button'
-import { resetState } from '../../app/Actions';
+
 import { submitMatch } from '../../app/Effects.ts';
 import MatchInformation from '../match-information/MatchInformation'
 
 import AllianceSelection from './AllianceSelection';
 import QualitativePage from '../qual-page/QualitativePage';
+import { resetState } from '../../app/Actions';
 
 const selector = (state) => ({
-	autoMobility: state.auto.park,
-	autoChargeStation: state.auto.chargeStation,
-	autoGrid: state.auto.grid.map((node) => node),
-	teleopGrid: state.teleop.grid.map((node) => node),
-	teleopChargeStation: state.teleop.chargeStation
+	auto: state.notes.auto,
+	collection: state.notes.collection,
+	shootingPosition: state.notes.shootingPosition,
+	shootingConsistency: state.notes.shootingConsistency,
+	path: state.notes.path,
+	defense: state.notes.defense,
+	climbing: state.notes.climbing,
+	humanPlayer: state.notes.humanPlayer,
+	penalties: state.notes.penalties,
+	drivers: state.notes.drivers
+
 });
 
 const connectDispatch = (dispatch) => ({
@@ -26,8 +33,7 @@ const INITIAL_STATE = {
 	scoutingTeamNumber: '',
 	matchNumber: '',
 	allianceColor: 'UNKNOWN',
-	isAutoNullified: false,
-	isTeleopNullified: false
+
 }
 
 class ConnectedDataCollectionPage extends React.Component {
@@ -54,65 +60,67 @@ class ConnectedDataCollectionPage extends React.Component {
 		});
 	};
 
-	setAutoNullified = (value) => {
-		this.setState({
-			isAutoNullified: value
-		});
-	};
 
-	setTeleopNullified = (value) => {
-		this.setState({
-			isTeleopNullified: value
-		});
-	};
-
-	generateObjectives = () => {
-		const autoObjectives = [
+	generateComments = () => {
+		const notes = [
 			{
-				gamemode: 'AUTO',
-				objective: 'MOBILITY_2023',
-				count: this.props.autoMobility
+				topic: 'Auto',
+				content: this.props.auto
 			},
 			{
-				gamemode: 'AUTO',
-				objective: 'CHARGE_STATION_2023',
-				count: this.props.autoChargeStation
+				topic: 'Collection',
+				content: this.props.collection
 			},
 			{
-				gamemode: 'AUTO',
-				objective: 'GRID_2023',
-				count: this.props.autoGrid.reduce((sum, value) => sum + value),
-				list: this.props.autoGrid
-			},
-		];
-
-		const teleopObjectives = [
-			{
-				gamemode: 'TELEOP',
-				objective: 'CHARGE_STATION_2023',
-				count: this.props.teleopChargeStation
+				topic: 'Shooting Position',
+				content: this.props.shootingPosition
 			},
 			{
-				gamemode: 'TELEOP',
-				objective: 'GRID_2023',
-				count: this.props.teleopGrid.reduce((sum, value) => sum + value),
-				list: this.props.teleopGrid
+				topic: 'Shooting Consistency',
+				content: this.props.shootingConsistency
+			},
+			{
+				topic:'Path',
+				content: this.props.path
+			},
+			{
+				topic: 'Defense',
+				content: this.props.defense
+			},
+			{
+				topic: 'Climbing',
+				content: this.props.climbing
+			},
+			{
+				topic: 'Human Player',
+				content: this.props.humanPlayer,
+			},
+			{
+				topic: 'Penalties',
+				content: this.props.penalties
+			},
+			{
+				topic: 'Drivers',
+				content: this.props.drivers
 			}
-		];
 
-		const objectives = [];
-		if (!this.state.isAutoNullified) {
-			objectives.push(...autoObjectives);
-		}
+		]
 
-		if (!this.state.isTeleopNullified) {
-			objectives.push(...teleopObjectives);
-		}
+		const comments = notes.filter(content => content.content.trim() !== '')
 
-		return objectives;
+		return comments;
 	}
 
 	submit = () => {
+		const match = {
+			eventCode: this.props.eventCode,
+			matchNumber: this.state.matchNumber,
+			robotNumber: this.state.scoutingTeamNumber,
+			creator: this.props.scouterName,
+			allianceColor: this.state.allianceColor,
+			gameYear: 2024,
+			comments: this.generateComments()
+		};
 		// Let the user know if they missed an input
 		const problems = [];
 		if (this.state.matchNumber.length === 0) {
@@ -129,14 +137,7 @@ class ConnectedDataCollectionPage extends React.Component {
 			return;
 		}
 
-		const match = {
-			eventCode: this.props.eventCode,
-			matchNumber: this.state.matchNumber,
-			robotNumber: this.state.scoutingTeamNumber,
-			creator: this.props.scouterName,
-			allianceColor: this.state.allianceColor,
-			objectives: this.generateObjectives()
-		};
+		
 
 		this.props.submitMatch(this.props.teamNumber, this.props.secretCode, match);
 

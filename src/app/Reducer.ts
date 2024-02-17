@@ -1,111 +1,138 @@
+
 import { AppState } from '../models/state';
 import { ActionTypes } from './Actions';
 
-function generateNodeStates(): number[] {
-	const states: number[] = [];
-	for (let i = 0; i < 27; i++) {
-		states.push(0);
-	}
-	return states;
-}
 
 const INITIAL_STATE: AppState = {
-	cache: {
-		matches: []
-	},
-	auto: {
-		grid: generateNodeStates(),
-		park: 0,
-		chargeStation: 0
-	},
-	teleop: {
-		grid: generateNodeStates(),
-		chargeStation: 0
-	}
+    cache: {
+        matches: []
+    },
+    notes: {
+        auto: '',
+        collection: '', 
+        shootingPosition: '',
+        shootingConsistency: '',
+        path: '', 
+        defense: '', 
+        climbing: '', 
+        humanPlayer: '', 
+        penalties: '',
+        drivers: ''
+    }
 };
-
 export function reducer(state: AppState = INITIAL_STATE, action): AppState {
-	switch (action.type) {
-		case ActionTypes.RESET_STATE:
-			return {
-				...state,
-				auto: INITIAL_STATE.auto,
-				teleop: INITIAL_STATE.teleop
-			};
-		case ActionTypes.GET_OFFLINE_MATCHES_SUCCESS:
-			return {
-				...state,
-				cache: {
-					matches: action.payload
-				}
-			};
-		case ActionTypes.CLEAR_OFFLINE_MATCHES:
-			return {
-				...state,
-				cache: {
-					matches: []
-				}
-			};
-		case ActionTypes.ACTIVATE_AUTO_NODE:
-			return handleActivateAutoNode(state, action.payload);
-		case ActionTypes.ACTIVATE_TELEOP_NODE:
-			return handleActivateTeleopNode(state, action.payload);
-		case ActionTypes.SET_AUTO_PARK:
-			return {
-				...state,
-				auto: {
-					...state.auto,
-					park: action.payload
-				}
-			};
-		case ActionTypes.SET_AUTO_CHARGE_STATION:
-			return {
-				...state,
-				auto: {
-					...state.auto,
-					chargeStation: action.payload
-				}
-			};
-		case ActionTypes.SET_TELEOP_CHARGE_STATION:
-			return {
-				...state,
-				teleop: {
-					...state.teleop,
-					chargeStation: action.payload
-				}
-			};
-		default:
-			return state;
-	}
-}
+    const checkSpace = (categoryName, payload) => {
+        if (state.notes[categoryName] !== '') {
+           return state.notes[categoryName].concat(' / ', payload);
+        }
+        else {
+            return payload;
+        }
+        
+    }
 
-function handleActivateAutoNode(state, index): AppState {
-	const autoGrid = state.auto.grid.slice();
-	autoGrid[index] = (state.auto.grid[index] + 1) % 2;
+    switch (action.type) {
 
-	return {
-		...state,
-		auto: {
-			...state.auto,
-			grid: autoGrid
-		}
-	};
-}
-
-function handleActivateTeleopNode(state, index): AppState {
-	const teleopGrid = state.teleop.grid.slice();
-	const numAutoPieces = state.auto.grid[index];
-	const maxTeleopPieces = 2 - numAutoPieces;
-	const currentTeleopPieces = teleopGrid[index];
-
-	teleopGrid[index] = (currentTeleopPieces + 1) % (maxTeleopPieces + 1);
-
-	return {
-		...state,
-		teleop: {
-			...state.teleop,
-			grid: teleopGrid
-		}
-	};
-
+        case ActionTypes.RESET_STATE:
+            return {
+                ...state,
+                notes: INITIAL_STATE.notes
+            }
+        case ActionTypes.GET_OFFLINE_MATCHES_SUCCESS:
+            return {
+                ...state,
+                cache: {
+                    matches: action.payload
+                }
+            };
+        case ActionTypes.CLEAR_OFFLINE_MATCHES:
+            return {
+                ...state,
+                cache: {
+                    matches: []
+                }
+            };
+        case ActionTypes.SUBMIT_AUTO_NOTES:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    auto: checkSpace('auto', action.payload)
+                }
+            }
+        case ActionTypes.SUBMIT_COLLECTION_NOTES:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    collection: checkSpace('collection', action.payload)
+                }
+            }
+        case ActionTypes.SUBMIT_SHOOT_POS_NOTES:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    shootingPosition: checkSpace('shootingPosition', action.payload)
+                }
+            }
+        case ActionTypes.SUBMIT_SHOOT_COS_NOTES:
+            return{
+                ...state,
+                notes: {
+                    ...state.notes,
+                    shootingConsistency: checkSpace('shootingConsistency', action.payload)
+                }
+            }
+        case ActionTypes.SUBMIT_PATH_NOTES:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    path: checkSpace('path', action.payload)
+                }
+            }
+        case ActionTypes.SUBMIT_DEFENSE_NOTES:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    defense: checkSpace('defense', action.payload)
+                }
+            }
+        case ActionTypes.SUBMIT_CLIMBING_NOTES:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    climbing: checkSpace('climbing', action.payload)
+                }
+            }
+        case ActionTypes.SUBMIT_HP_NOTES:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    humanPlayer: checkSpace('humanPlayer', action.payload)
+                }
+            }
+        case ActionTypes.SUBMIT_PENALTY_NOTES:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    penalties: checkSpace('penalties', action.payload)
+                }
+            }
+        case ActionTypes.SUBMIT_DRIVERS_NOTES: 
+        return {
+            ...state,
+            notes: {
+                ...state.notes,
+                drivers: checkSpace('drivers', action.payload)
+            }
+        }
+        default:
+            return state;
+    }
 }
