@@ -37,7 +37,7 @@ export default function QualitativePage() {
     
       const [text, setText] = useState('')
     
-      const [submittedText, setSubmittedText] = useState([])
+      const [arrayText, setArrayText] = useState([])
     
 
       const handleText = (event) => {
@@ -57,7 +57,7 @@ export default function QualitativePage() {
         if (text.trim() !== '' && buttonText.trim() !== menuItems[0]) {
             dispatch(sendNotes(buttonText, text))
             const submittedText = { text, buttonText }
-            setSubmittedText((oldText) => [...oldText, submittedText])
+            setArrayText((oldText) => [...oldText, submittedText])
             setText('')
             setButtonText(menuItems[0])
         
@@ -145,7 +145,7 @@ export default function QualitativePage() {
           <div>
             <h1 className="title">Submitted Notes</h1>
             <ul className="list">
-              {submittedText.map((notes, index) => (
+              {arrayText.map((notes, index) => (
                 <li key={index}>
                   <strong>{notes.buttonText}:</strong> {notes.text}
                 </li>
