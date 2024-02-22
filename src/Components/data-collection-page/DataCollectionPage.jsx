@@ -33,13 +33,13 @@ const INITIAL_STATE = {
 	scoutingTeamNumber: '',
 	matchNumber: '',
 	allianceColor: 'UNKNOWN',
-
+	arrayText: []
 }
 
 class ConnectedDataCollectionPage extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = INITIAL_STATE;
+		this.state = INITIAL_STATE;	
 	}
 
 	setRobotNumber = (robotNumber) => {
@@ -110,7 +110,11 @@ class ConnectedDataCollectionPage extends React.Component {
 
 		return comments;
 	}
-
+	addToArray = text => {
+		this.setState(oldText => ({
+			arrayText: [...oldText.arrayText, text]
+		}))
+	}
 	submit = () => {
 		const match = {
 			eventCode: this.props.eventCode,
@@ -159,7 +163,15 @@ class ConnectedDataCollectionPage extends React.Component {
 					<AllianceSelection selectAlliance={this.setAllianceColor} selected={this.state.allianceColor}/>
 				</div>
 				
-				<QualitativePage />
+				<QualitativePage addToArray={this.addToArray} />
+				<h1 className="title">Submitted Notes</h1>
+           		<ul className="list">
+            	  {this.state.arrayText.map((notes, index) => (
+               		 <li key={index}>
+                 	 <strong>{notes.buttonText}:</strong> {notes.text}
+               		 </li>
+              		))}
+          		</ul>
 				<div className='submit'>
 					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='outlined' className='submit' href='/'>Back</Button>
 					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='contained' className='submit' onClick={this.submit}>Submit</Button>

@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../app/Hooks";
 
 
 
-export default function QualitativePage() {
+export default function QualitativePage({ addToArray }) {
     const menuItems = [ 
         "Select Category...", 
         "Auto", 
@@ -18,6 +18,7 @@ export default function QualitativePage() {
         "Human Player" , 
         "Penalties",
         "Drivers"]
+        
        const [buttonText, setButtonText] = useState(menuItems[0]);
        const helpItems = [
         "Select the category you would like to write your notes on above. ",
@@ -37,7 +38,7 @@ export default function QualitativePage() {
     
       const [text, setText] = useState('')
     
-      const [arrayText, setArrayText] = useState([])
+     
     
 
       const handleText = (event) => {
@@ -57,7 +58,7 @@ export default function QualitativePage() {
         if (text.trim() !== '' && buttonText.trim() !== menuItems[0]) {
             dispatch(sendNotes(buttonText, text))
             const submittedText = { text, buttonText }
-            setArrayText((oldText) => [...oldText, submittedText])
+            addToArray(submittedText)
             setText('')
             setButtonText(menuItems[0])
         
@@ -143,14 +144,6 @@ export default function QualitativePage() {
     
     
           <div>
-            <h1 className="title">Submitted Notes</h1>
-            <ul className="list">
-              {arrayText.map((notes, index) => (
-                <li key={index}>
-                  <strong>{notes.buttonText}:</strong> {notes.text}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
        )
