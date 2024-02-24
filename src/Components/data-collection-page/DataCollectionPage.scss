@@ -29,3 +29,8 @@ $pumice: rgb(186, 191, 183);
 	margin: 1rem;
 	padding-top: 25px;
 }
+
+.list {
+    display: grid;
+    place-items: left;
+}
