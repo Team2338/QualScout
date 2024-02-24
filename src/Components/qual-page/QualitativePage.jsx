@@ -98,7 +98,7 @@ export default function QualitativePage({ addToArray }) {
           onChange={handleOptionChange}
           renderValue={(value) => value}>
             {menuItems.map((option, index) => (
-              <MenuItem key={index} value={option}>
+              <MenuItem key={index} value={option} style={{color: 'black'}}>
                 {option}
               </MenuItem>
             ))}
