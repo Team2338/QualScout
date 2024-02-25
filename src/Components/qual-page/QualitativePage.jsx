@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField, Typography } from "@mui/material";
+import { Button, MenuItem, Select, Popover, FormControl, TextField } from "@mui/material";
 import { sendNotes } from "../../app/Actions";
 import { useAppDispatch } from "../../app/Hooks";
 import {styled} from "@mui/material/styles";
@@ -111,13 +111,19 @@ export default function QualitativePage({ addToArray }) {
           },
          }, 
       })
+      
+    
+
+
        return ( 
         <div className="background">   
         <StyledFormControl fullWidth>
-          <InputLabel id='selectlabel' style={{color:'#ff5000', marginLeft:'auto'}}>
-            <Typography variant="subtitle1" style={{margin: '6px 0'}}>{menuItems[0]}</Typography>
-          </InputLabel>
           <Select
+          sx={{
+            '& .MuiSelect-icon': {
+              fill: '#fe5000'
+            }
+          }}
           style={{width: TextFieldStyle.width, marginLeft: 'auto', marginRight: 'auto'}}
           labelId="select-label"
           id="select"
