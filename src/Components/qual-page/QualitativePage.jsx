@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField, Typography } from "@mui/material";
 import { sendNotes } from "../../app/Actions";
 import { useAppDispatch } from "../../app/Hooks";
+import {styled} from "@mui/material/styles";
 
 
 
@@ -84,7 +85,19 @@ export default function QualitativePage({ addToArray }) {
         width: '98%', 
         marginBottom: '16px',
         }
-    
+      const CustomTextField = styled(TextField)({
+       '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: '#BABFB7'
+        },
+        '&:hover fieldset': {
+          borderColor: 'white'
+        },
+        '&.Mui-focused fieldset': {
+          borderColor: '#FE5000'
+        },
+       }, 
+      })
        return ( 
         <div className="background">   
         <FormControl fullWidth>
@@ -127,7 +140,7 @@ export default function QualitativePage({ addToArray }) {
                     {helpText}
                 </Popover>
           
-          <TextField 
+          <CustomTextField 
             label="Enter your text here..."
             value={text}
             onChange={handleText}
