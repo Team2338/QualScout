@@ -81,17 +81,18 @@ export default function QualitativePage({ addToArray }) {
             setOpen(false);
         };
       const TextFieldStyle = {
-        width: '100%', 
+        width: '98%', 
         marginBottom: '16px',
         }
     
        return ( 
         <div className="background">   
         <FormControl fullWidth>
-          <InputLabel id='selectlabel' style={{color:'#ff5000'}}>
+          <InputLabel id='selectlabel' style={{color:'#ff5000', marginLeft:'auto'}}>
             <Typography variant="subtitle1" style={{margin: '6px 0'}}>{menuItems[0]}</Typography>
           </InputLabel>
           <Select
+          style={{width: TextFieldStyle.width, marginLeft: 'auto', marginRight: 'auto'}}
           labelId="select-label"
           id="select"
           value={buttonText}
