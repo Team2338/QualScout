@@ -85,39 +85,14 @@ export default function QualitativePage({ addToArray }) {
         width: '98%', 
         marginBottom: '16px',
         }
-      const StyledTextField = styled(TextField)({
-       '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderColor: '#BABFB7'
-        },
-        '&:hover fieldset': {
-          borderColor: 'white'
-        },
-        '&.Mui-focused fieldset': {
-          borderColor: '#FE5000'
-        },
-       }, 
-      })
-      const StyledFormControl = styled(FormControl)({
-        '& .MuiOutlinedInput-root': {
-          '& fieldset': {
-            borderColor: '#BABFB7'
-          },
-          '&:hover fieldset': {
-            borderColor: 'white'
-          },
-          '&.Mui-focused fieldset': {
-            borderColor: '#FE5000'
-          },
-         }, 
-      })
+     
       
     
 
 
        return ( 
         <div className="background">   
-        <StyledFormControl fullWidth>
+        <FormControl fullWidth>
           <Select
           sx={{
             '& .MuiSelect-icon': {
@@ -136,7 +111,7 @@ export default function QualitativePage({ addToArray }) {
               </MenuItem>
             ))}
           </Select>
-        </StyledFormControl>
+        </FormControl>
         <Button onClick={handleClick}>
                     ?
                 </Button>
@@ -159,7 +134,7 @@ export default function QualitativePage({ addToArray }) {
                     {helpText}
                 </Popover>
           
-          <StyledTextField 
+          <TextField 
             label="Enter your text here..."
             value={text}
             onChange={handleText}
