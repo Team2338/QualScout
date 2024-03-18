@@ -14,6 +14,7 @@ export interface AppState {
         climbing: string, 
         humanPlayer: string, 
         penalties: string,
-        drivers: string
+        drivers: string,
+        other: string
 	}
 }

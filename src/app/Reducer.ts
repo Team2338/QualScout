@@ -17,7 +17,8 @@ const INITIAL_STATE: AppState = {
         climbing: '', 
         humanPlayer: '', 
         penalties: '',
-        drivers: ''
+        drivers: '',
+        other: ''
     }
 };
 export function reducer(state: AppState = INITIAL_STATE, action): AppState {
@@ -132,6 +133,14 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 drivers: checkSpace('drivers', action.payload)
             }
         }
+        case ActionTypes.SUBMIT_OTHER_NOTES:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    other: checkSpace('other', action.payload)
+                }
+            }
         default:
             return state;
     }
