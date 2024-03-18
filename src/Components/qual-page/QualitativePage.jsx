@@ -17,7 +17,8 @@ export default function QualitativePage({ addToArray }) {
         "Climbing" , 
         "Human Player" , 
         "Penalties",
-        "Drivers"]
+        "Drivers",
+        "Other"]
         
        const [buttonText, setButtonText] = useState(menuItems[0]);
        const helpItems = [
@@ -31,7 +32,8 @@ export default function QualitativePage({ addToArray }) {
         "Note how the robot climbs the chain. What mechanism do they use, and is it very sturdy? Can they climb with other bots on the same chain?" ,
         "Note how the team plays the human player. Where are they stationed? What do the do?  " ,
         "Note when and how the bot obtained any penalties. ",
-        "Note how the driver plays i.e. their experience and preferences."
+        "Note how the driver plays i.e. their experience and preferences.",
+        "Note any other things about the robot not listed in the categories i.e. breakage, comm issues, etc. If your team would like to note something else, also use this category."
       ]  
       const dispatch = useAppDispatch();  
       const [helpText, setHelpText] = useState(helpItems[0])
