@@ -67,7 +67,7 @@ export const sendNotes = (topic, content) => {
         case 'Drivers':
             type = ActionTypes.SUBMIT_DRIVERS_NOTES
             break;
-        case 'Ohter':
+        case 'Other':
             type = ActionTypes.SUBMIT_OTHER_NOTES
             break;
         default:
