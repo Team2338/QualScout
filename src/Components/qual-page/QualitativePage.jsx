@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField, Typography } from "@mui/material";
 import { sendNotes } from "../../app/Actions";
 import { useAppDispatch } from "../../app/Hooks";
+import AutoPresets from "./AutoPresets";
 
 
 
@@ -39,7 +40,7 @@ export default function QualitativePage({ addToArray }) {
       const [helpText, setHelpText] = useState(helpItems[0])
     
       const [text, setText] = useState('')
-    
+      const [showPresets, setShowPresets] = useState(false)
      
     
 
@@ -52,12 +53,22 @@ export default function QualitativePage({ addToArray }) {
         const index = menuItems.indexOf(value);
         setButtonText(value)
           setHelpText(helpItems[index])
-      
+
       };
+
+      useEffect(() => {
+        if (buttonText === 'Auto') {
+          setShowPresets(true);
+        }
+        else {
+          setShowPresets(false);
+        }
+      }, [buttonText])
       
       const submit = (event) => {
         event.preventDefault()
         if (text.trim() !== '' && buttonText.trim() !== menuItems[0]) {
+
             dispatch(sendNotes(buttonText, text))
             const submittedText = { text, buttonText }
             addToArray(submittedText)
@@ -127,7 +138,9 @@ export default function QualitativePage({ addToArray }) {
                 >
                     {helpText}
                 </Popover>
-          
+          <div>
+          {showPresets && <AutoPresets />}
+          </div>
           <TextField 
             label="Enter your text here..."
             value={text}
