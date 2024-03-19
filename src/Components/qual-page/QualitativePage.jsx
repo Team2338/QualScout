@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField, Typography } from "@mui/material";
 import { sendNotes } from "../../app/Actions";
 import { useAppDispatch } from "../../app/Hooks";
-import AutoPresets from "./AutoPresets";
-
 
 
 export default function QualitativePage({ addToArray }) {
@@ -40,7 +38,6 @@ export default function QualitativePage({ addToArray }) {
       const [helpText, setHelpText] = useState(helpItems[0])
     
       const [text, setText] = useState('')
-      const [showPresets, setShowPresets] = useState(false)
      
     
 
@@ -56,14 +53,7 @@ export default function QualitativePage({ addToArray }) {
 
       };
 
-      useEffect(() => {
-        if (buttonText === 'Auto') {
-          setShowPresets(true);
-        }
-        else {
-          setShowPresets(false);
-        }
-      }, [buttonText])
+      
       
       const submit = (event) => {
         event.preventDefault()
@@ -97,7 +87,28 @@ export default function QualitativePage({ addToArray }) {
         width: '100%', 
         marginBottom: '16px',
         }
-    
+
+
+        function NoteStatus() {
+          const red = '#EE4444';
+          const green = '#75FA61';
+          // if menu item has text attributed to it (i.e. text to button text,) display green. Otherwise, display red. Repeat for all buttons
+          // can i check the appstate from here? If so, use that for the attribution 
+          // 9clicking the button will load the text back into the text box
+          // esentially, the best idea is to access and mutate the appstate directly, but I don't know if that is easily possible
+          
+          return (
+            <div>
+              {menuItems.map((option, index) => (
+              <Button key={index} value={option} variant="contained">
+                {option}
+              </Button>
+            ))}
+          
+            </div>
+          )
+          
+        }
        return ( 
         <div className="background">   
         <FormControl fullWidth>
@@ -139,7 +150,6 @@ export default function QualitativePage({ addToArray }) {
                     {helpText}
                 </Popover>
           <div>
-          {showPresets && <AutoPresets />}
           </div>
           <TextField 
             label="Enter your text here..."
@@ -155,11 +165,14 @@ export default function QualitativePage({ addToArray }) {
                 }
             }}
             />
+        <div className="grid">
+          <NoteStatus />
+        </div>    
+           
         <Button type='submit' variant='contained' onClick={submit}>Submit Note</Button>
-    
-    
-          <div>
-          </div>
+            
+            
+         
         </div>
        )
 }
