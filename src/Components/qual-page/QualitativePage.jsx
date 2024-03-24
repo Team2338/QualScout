@@ -9,12 +9,12 @@ export default function QualitativePage({ addToArray }) {
         "Select Category...", 
         "Auto", 
         "Collection", 
-        "Shooting Position",
-        "Shooting Consistency",
+        "Shooting",
+        "Amp",
         "Path", 
         "Defense", 
-        "Climbing" , 
-        "Human Player" , 
+        "Endgame", 
+        "Human Player", 
         "Penalties",
         "Drivers",
         "Other"]
@@ -24,8 +24,8 @@ export default function QualitativePage({ addToArray }) {
         "Select the category you would like to write your notes on above. ",
         "Note what the bot does during auto. Include starting position, path, scores, and possible A-STOPS. ",
         "Note how the bot collects. Examples: Floor intake, direct into robot, etc.",
-        "Note where the bot likes to shoot towards the speaker and amp.",
-        "Note how consistent the bot is shooting. Do they miss many shots?",
+        "Note the robot's preferences and consistency when shooting into the speaker.",
+        "Note the robot's preferences and consistency when delivering to the amp.",
         "Note how the robot travels across the field, especially if they are able to travel under the chain.",
         "Note how the bot plays defense and its effectiveness (if applicable). Also note how the bot responds to defense and its effectiveness.",
         "Note how the robot climbs the chain. What mechanism do they use, and is it very sturdy? Can they climb with other bots on the same chain?" ,
@@ -94,7 +94,7 @@ export default function QualitativePage({ addToArray }) {
           const green = '#75FA61';
           // if menu item has text attributed to it (i.e. text to button text,) display green. Otherwise, display red. Repeat for all buttons
           // can i check the appstate from here? If so, use that for the attribution 
-          // 9clicking the button will load the text back into the text box
+          // clicking the button will load the text back into the text box
           // esentially, the best idea is to access and mutate the appstate directly, but I don't know if that is easily possible
           
           return (
