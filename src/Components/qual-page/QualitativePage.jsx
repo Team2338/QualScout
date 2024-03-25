@@ -165,13 +165,12 @@ export default function QualitativePage({ addToArray }) {
                 }
             }}
             />
-        <div className="grid">
-          <NoteStatus />
-        </div>    
            
         <Button type='submit' variant='contained' onClick={submit}>Submit Note</Button>
             
-            
+         <div className="grid">
+            <NoteStatus />
+         </div>   
          
         </div>
        )

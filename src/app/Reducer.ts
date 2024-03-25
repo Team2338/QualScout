@@ -10,11 +10,11 @@ const INITIAL_STATE: AppState = {
     notes: {
         auto: '',
         collection: '', 
-        shootingPosition: '',
-        shootingConsistency: '',
+        shooting: '',
+        amp: '',
         path: '', 
         defense: '', 
-        climbing: '', 
+        endgame: '', 
         humanPlayer: '', 
         penalties: '',
         drivers: '',
@@ -74,7 +74,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    shootingPosition: checkSpace('shootingPosition', action.payload)
+                    shooting: checkSpace('shooting', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_SHOOT_COS_NOTES:
@@ -82,7 +82,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    shootingConsistency: checkSpace('shootingConsistency', action.payload)
+                    amp: checkSpace('amp', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_PATH_NOTES:
@@ -106,7 +106,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    climbing: checkSpace('climbing', action.payload)
+                    endgame: checkSpace('endgame', action.payload)
                 }
             }
         case ActionTypes.SUBMIT_HP_NOTES:
