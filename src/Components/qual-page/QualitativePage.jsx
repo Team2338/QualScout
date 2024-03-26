@@ -38,7 +38,7 @@ export default function QualitativePage({ addToArray }) {
       //handles submit note
       const submit = (event) => {
         event.preventDefault()
-        if (text.trim() !== '' && buttonText.trim() !== menuItems[0]) {
+        if (buttonText.trim() !== menuItems[0]) {
 
             dispatch(sendNotes(buttonText, text))
             const submittedText = { text, buttonText }
@@ -48,7 +48,7 @@ export default function QualitativePage({ addToArray }) {
         
         }
         else {
-            console.log("please don't leave this empty :( -the dev")
+            console.log("please don't leave the category empty :( -the dev")
         }
         
         }
