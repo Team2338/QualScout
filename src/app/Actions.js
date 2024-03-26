@@ -14,7 +14,6 @@ export const ActionTypes = {
     SUBMIT_PENALTY_NOTES: '[QUAL] Submit Penalties Notes',
     SUBMIT_DRIVERS_NOTES: '[QUAL] Submit Drivers Notes',
     SUBMIT_OTHER_NOTES: '[QUAL] Submit Other Notes',
-    ACCESS_NOTES: '[QUAL] Access Notes'
 };
 
 
