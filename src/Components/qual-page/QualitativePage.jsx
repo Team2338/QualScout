@@ -73,7 +73,6 @@ export default function QualitativePage({ addToArray }) {
         function NoteStatus() {
           //function chains to handle pulling data from categories when clicked
           const handleAutoButton = () => {
-            dispatch(sendNotes(buttonText, text));
             setText(auto);
             setButtonText(menuItems[1]);
           }
