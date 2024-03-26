@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Button, TextField } from "@mui/material";
 import { sendNotes } from "../../app/Actions";
 import { useAppDispatch, useAppSelector } from "../../app/Hooks";
 
 
 export default function QualitativePage({ addToArray }) {
+  //categories
     const menuItems = [ 
         "None Selected", 
         "Auto", 
@@ -18,23 +19,23 @@ export default function QualitativePage({ addToArray }) {
         "Penalties",
         "Drivers",
         "Other"]
-        
+       //current category selected 
        const [buttonText, setButtonText] = useState(menuItems[0]);
        
       const dispatch = useAppDispatch();  
       
-    
+    //text to be in the text box
       const [text, setText] = useState('')
      
     
-
+      //handles text changes in the text box
       const handleText = (event) => {
         setText(event.target.value)
       }
     
 
       
-      
+      //handles submit note
       const submit = (event) => {
         event.preventDefault()
         if (text.trim() !== '' && buttonText.trim() !== menuItems[0]) {
@@ -56,6 +57,7 @@ export default function QualitativePage({ addToArray }) {
         width: '100%', 
         marginBottom: '16px',
         }
+        //declarations to import app state 
         const auto = useAppSelector(state => state.notes.auto);
           const collection = useAppSelector(state => state.notes.collection);
           const shooting = useAppSelector(state => state.notes.shooting);
@@ -69,49 +71,51 @@ export default function QualitativePage({ addToArray }) {
           const other = useAppSelector(state => state.notes.other);
 
         function NoteStatus() {
+          //function chains to handle pulling data from categories when clicked
           const handleAutoButton = () => {
+            dispatch(sendNotes(buttonText, text));
             setText(auto);
-            setButtonText(menuItems[1])
+            setButtonText(menuItems[1]);
           }
           const handleCollectionButton = () => {
             setText(collection);
-            setButtonText(menuItems[2])
+            setButtonText(menuItems[2]);
           }
           const handleShootingButton = () => {
             setText(shooting);
-            setButtonText(menuItems[3])
+            setButtonText(menuItems[3]);
           }
           const handleAmpButton = () => {
             setText(amp);
-            setButtonText(menuItems[4])
+            setButtonText(menuItems[4]);
           }
           const handlePathButton = () => {
             setText(path);
-            setButtonText(menuItems[5])
+            setButtonText(menuItems[5]);
           }
           const handleDefenseButton = () => {
             setText(defense);
-            setButtonText(menuItems[6])
+            setButtonText(menuItems[6]);
           }
           const handleEndgameButton = () => {
             setText(endgame);
-            setButtonText(menuItems[7])
+            setButtonText(menuItems[7]);
           }
           const handleHumanPlayerButton = () => {
             setText(humanPlayer);
-            setButtonText(menuItems[8])
+            setButtonText(menuItems[8]);
           }
           const handlePenaltiesButton = () => {
             setText(penalties);
-            setButtonText(menuItems[9])
+            setButtonText(menuItems[9]);
           }
           const handleDriversButton = () => {
             setText(drivers);
-            setButtonText(menuItems[10])
+            setButtonText(menuItems[10]);
           }
           const handleOtherButton = () => {
             setText(other);
-            setButtonText(menuItems[11])
+            setButtonText(menuItems[11]);
           }
           return (
             <div className="grid">
@@ -132,7 +136,8 @@ export default function QualitativePage({ addToArray }) {
           
         }
        return ( 
-        <div className="background">   
+        <div className="background"> 
+        <h1>Categories</h1>  
           <div>
             <NoteStatus />
           </div>
@@ -158,7 +163,7 @@ export default function QualitativePage({ addToArray }) {
            
         <Button type='submit' variant='contained' onClick={submit}>Submit Note</Button>
                
-        <h1>Submitted Notes but BETTER</h1>
+        <h1>Submitted Notes</h1>
         <ul className="list">
             <li><strong>Auto:</strong> {auto}</li>
             <li><strong>Collection:</strong> {collection}</li>
