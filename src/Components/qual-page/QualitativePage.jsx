@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField, Typography } from "@mui/material";
 import { sendNotes } from "../../app/Actions";
-import { useAppDispatch } from "../../app/Hooks";
+import { useAppDispatch, useAppSelector } from "../../app/Hooks";
 
 
 export default function QualitativePage({ addToArray }) {
     const menuItems = [ 
-        "Select Category...", 
+        "None Selected", 
         "Auto", 
         "Collection", 
         "Shooting",
@@ -20,22 +20,9 @@ export default function QualitativePage({ addToArray }) {
         "Other"]
         
        const [buttonText, setButtonText] = useState(menuItems[0]);
-       const helpItems = [
-        "Select the category you would like to write your notes on above. ",
-        "Note what the bot does during auto. Include starting position, path, scores, and possible A-STOPS. ",
-        "Note how the bot collects. Examples: Floor intake, direct into robot, etc.",
-        "Note the robot's preferences and consistency when shooting into the speaker.",
-        "Note the robot's preferences and consistency when delivering to the amp.",
-        "Note how the robot travels across the field, especially if they are able to travel under the chain.",
-        "Note how the bot plays defense and its effectiveness (if applicable). Also note how the bot responds to defense and its effectiveness.",
-        "Note how the robot climbs the chain. What mechanism do they use, and is it very sturdy? Can they climb with other bots on the same chain?" ,
-        "Note how the team plays the human player. Where are they stationed? What do the do?  " ,
-        "Note when and how the bot obtained any penalties. ",
-        "Note how the driver plays i.e. their experience and preferences.",
-        "Note any other things about the robot not listed in the categories i.e. breakage, comm issues, etc. If your team would like to note something else, also use this category."
-      ]  
+       
       const dispatch = useAppDispatch();  
-      const [helpText, setHelpText] = useState(helpItems[0])
+      
     
       const [text, setText] = useState('')
      
@@ -45,13 +32,6 @@ export default function QualitativePage({ addToArray }) {
         setText(event.target.value)
       }
     
-       const handleOptionChange = (event) => {
-        const value = event.target.value;
-        const index = menuItems.indexOf(value);
-        setButtonText(value)
-          setHelpText(helpItems[index])
-
-      };
 
       
       
@@ -72,38 +52,80 @@ export default function QualitativePage({ addToArray }) {
         
         }
       
-      const [open, setOpen] = useState(false);
-      const [anchorEl, setAnchorEl] = useState(null);
-    
-      const handleClick = (event) => {
-            setAnchorEl(event.currentTarget);
-            setOpen(true);
-        };
-      const handleClose = () => {
-            setAnchorEl(null);
-            setOpen(false);
-        };
       const TextFieldStyle = {
         width: '100%', 
         marginBottom: '16px',
         }
-
+        const auto = useAppSelector(state => state.notes.auto);
+          const collection = useAppSelector(state => state.notes.collection);
+          const shooting = useAppSelector(state => state.notes.shooting);
+          const amp = useAppSelector(state => state.notes.amp);
+          const path = useAppSelector(state => state.notes.path);
+          const defense = useAppSelector(state => state.notes.defense);
+          const endgame = useAppSelector(state => state.notes.endgame);
+          const humanPlayer = useAppSelector(state => state.notes.humanPlayer);
+          const penalties = useAppSelector(state => state.notes.penalties);
+          const drivers = useAppSelector(state => state.notes.drivers);
+          const other = useAppSelector(state => state.notes.other);
 
         function NoteStatus() {
-          const red = '#EE4444';
-          const green = '#75FA61';
-          // if menu item has text attributed to it (i.e. text to button text,) display green. Otherwise, display red. Repeat for all buttons
-          // can i check the appstate from here? If so, use that for the attribution 
-          // clicking the button will load the text back into the text box
-          // esentially, the best idea is to access and mutate the appstate directly, but I don't know if that is easily possible
-          
+          const handleAutoButton = () => {
+            setText(auto);
+            setButtonText(menuItems[1])
+          }
+          const handleCollectionButton = () => {
+            setText(collection);
+            setButtonText(menuItems[2])
+          }
+          const handleShootingButton = () => {
+            setText(shooting);
+            setButtonText(menuItems[3])
+          }
+          const handleAmpButton = () => {
+            setText(amp);
+            setButtonText(menuItems[4])
+          }
+          const handlePathButton = () => {
+            setText(path);
+            setButtonText(menuItems[5])
+          }
+          const handleDefenseButton = () => {
+            setText(defense);
+            setButtonText(menuItems[6])
+          }
+          const handleEndgameButton = () => {
+            setText(endgame);
+            setButtonText(menuItems[7])
+          }
+          const handleHumanPlayerButton = () => {
+            setText(humanPlayer);
+            setButtonText(menuItems[8])
+          }
+          const handlePenaltiesButton = () => {
+            setText(penalties);
+            setButtonText(menuItems[9])
+          }
+          const handleDriversButton = () => {
+            setText(drivers);
+            setButtonText(menuItems[10])
+          }
+          const handleOtherButton = () => {
+            setText(other);
+            setButtonText(menuItems[11])
+          }
           return (
-            <div>
-              {menuItems.map((option, index) => (
-              <Button key={index} value={option} variant="contained">
-                {option}
-              </Button>
-            ))}
+            <div className="grid">
+              <Button variant='contained' onClick={handleAutoButton}> Auto </Button>
+              <Button variant='contained' onClick={handleCollectionButton}> Collection </Button>
+              <Button variant='contained' onClick={handleShootingButton}> Shooting </Button>
+              <Button variant='contained' onClick={handleAmpButton}> Amp </Button>
+              <Button variant='contained' onClick={handlePathButton}> Path </Button>
+              <Button variant='contained' onClick={handleDefenseButton}> Defense </Button>
+              <Button variant='contained' onClick={handleEndgameButton}> Endgame </Button>
+              <Button variant='contained' onClick={handleHumanPlayerButton}> Human Player </Button>
+              <Button variant='contained' onClick={handlePenaltiesButton}> Penalties </Button>
+              <Button variant='contained' onClick={handleDriversButton}> Drivers </Button>
+              <Button variant='contained' onClick={handleOtherButton}> Other </Button>
           
             </div>
           )
@@ -111,44 +133,12 @@ export default function QualitativePage({ addToArray }) {
         }
        return ( 
         <div className="background">   
-        <FormControl fullWidth>
-          <InputLabel id='selectlabel' style={{color:'#ff5000'}}>
-            <Typography variant="subtitle1" style={{margin: '6px 0'}}>{menuItems[0]}</Typography>
-          </InputLabel>
-          <Select
-          labelId="select-label"
-          id="select"
-          value={buttonText}
-          onChange={handleOptionChange}
-          renderValue={(value) => value}>
-            {menuItems.map((option, index) => (
-              <MenuItem key={index} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <Button onClick={handleClick}>
-                    ?
-                </Button>
-                <Popover
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'center'
-                    }}
-                    PaperProps={{
-                        style: {
-                            color: '#FF5000',
-                            backgroundColor: '#01233D',
-                            padding: '2px'
-                        }
-                    }}
-                >
-                    {helpText}
-                </Popover>
+          <div>
+            <NoteStatus />
+          </div>
+
+         <p><strong>Selected Category:</strong> {buttonText}</p>
+    
           <div>
           </div>
           <TextField 
@@ -167,11 +157,21 @@ export default function QualitativePage({ addToArray }) {
             />
            
         <Button type='submit' variant='contained' onClick={submit}>Submit Note</Button>
-            
-         <div className="grid">
-            <NoteStatus />
-         </div>   
-         
+               
+        <h1>Submitted Notes but BETTER</h1>
+        <ul className="list">
+            <li><strong>Auto:</strong> {auto}</li>
+            <li><strong>Collection:</strong> {collection}</li>
+            <li><strong>Shooting:</strong> {shooting}</li>
+            <li><strong>Amp:</strong> {amp}</li>
+            <li><strong>Path:</strong> {path}</li>
+            <li><strong>Defense:</strong> {defense}</li>
+            <li><strong>Endgame:</strong> {endgame}</li>
+            <li><strong>Human Player:</strong> {humanPlayer}</li>
+            <li><strong>Penalties:</strong> {penalties}</li>
+            <li><strong>Drivers:</strong> {drivers}</li>
+            <li><strong>Other:</strong> {other}</li>
+        </ul>
         </div>
        )
 }

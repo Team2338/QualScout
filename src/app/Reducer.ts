@@ -22,15 +22,6 @@ const INITIAL_STATE: AppState = {
     }
 };
 export function reducer(state: AppState = INITIAL_STATE, action): AppState {
-    const checkSpace = (categoryName, payload) => {
-        if (state.notes[categoryName] !== '') {
-           return state.notes[categoryName].concat(' / ', payload);
-        }
-        else {
-            return payload;
-        }
-        
-    }
 
     switch (action.type) {
 
@@ -58,7 +49,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    auto: checkSpace('auto', action.payload)
+                    auto: action.payload
                 }
             }
         case ActionTypes.SUBMIT_COLLECTION_NOTES:
@@ -66,23 +57,23 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    collection: checkSpace('collection', action.payload)
+                    collection: action.payload
                 }
             }
-        case ActionTypes.SUBMIT_SHOOT_POS_NOTES:
+        case ActionTypes.SUBMIT_SHOOTING_NOTES:
             return {
                 ...state,
                 notes: {
                     ...state.notes,
-                    shooting: checkSpace('shooting', action.payload)
+                    shooting: action.payload
                 }
             }
-        case ActionTypes.SUBMIT_SHOOT_COS_NOTES:
+        case ActionTypes.SUBMIT_AMP_NOTES:
             return{
                 ...state,
                 notes: {
                     ...state.notes,
-                    amp: checkSpace('amp', action.payload)
+                    amp: action.payload
                 }
             }
         case ActionTypes.SUBMIT_PATH_NOTES:
@@ -90,7 +81,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    path: checkSpace('path', action.payload)
+                    path: action.payload
                 }
             }
         case ActionTypes.SUBMIT_DEFENSE_NOTES:
@@ -98,15 +89,15 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    defense: checkSpace('defense', action.payload)
+                    defense: action.payload
                 }
             }
-        case ActionTypes.SUBMIT_CLIMBING_NOTES:
+        case ActionTypes.SUBMIT_ENDGAME_NOTES:
             return {
                 ...state,
                 notes: {
                     ...state.notes,
-                    endgame: checkSpace('endgame', action.payload)
+                    endgame: action.payload
                 }
             }
         case ActionTypes.SUBMIT_HP_NOTES:
@@ -114,7 +105,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    humanPlayer: checkSpace('humanPlayer', action.payload)
+                    humanPlayer: action.payload
                 }
             }
         case ActionTypes.SUBMIT_PENALTY_NOTES:
@@ -122,7 +113,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    penalties: checkSpace('penalties', action.payload)
+                    penalties: action.payload
                 }
             }
         case ActionTypes.SUBMIT_DRIVERS_NOTES: 
@@ -130,7 +121,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
             ...state,
             notes: {
                 ...state.notes,
-                drivers: checkSpace('drivers', action.payload)
+                drivers: action.payload
             }
         }
         case ActionTypes.SUBMIT_OTHER_NOTES:
@@ -138,7 +129,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
                 ...state,
                 notes: {
                     ...state.notes,
-                    other: checkSpace('other', action.payload)
+                    other: action.payload
                 }
             }
         default:

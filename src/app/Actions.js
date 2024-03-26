@@ -5,11 +5,11 @@ export const ActionTypes = {
     CLEAR_OFFLINE_MATCHES: '[CACHE] Clear matches',
     SUBMIT_AUTO_NOTES: '[QUAL] Submit Auto Notes',
     SUBMIT_COLLECTION_NOTES: '[QUAL] Submit Collection Notes',
-    SUBMIT_SHOOT_POS_NOTES: '[QUAL] Submiit Shooting Position Notes',
-    SUBMIT_SHOOT_COS_NOTES: '[QUAL] Submit Shooting Consistency Notes',
+    SUBMIT_SHOOTING_NOTES: '[QUAL] Submit Shooting Notes',
+    SUBMIT_AMP_NOTES: '[QUAL] Submit Amp Notes',
     SUBMIT_PATH_NOTES: '[QUAL] Submit Path Notes',
     SUBMIT_DEFENSE_NOTES: '[QUAL] Submit Defense Notes',
-    SUBMIT_CLIMBING_NOTES: '[QUAL] Submit Climing Notes',
+    SUBMIT_ENDGAME_NOTES: '[QUAL] Submit Endgame Notes',
     SUBMIT_HP_NOTES: '[QUAL] Submit Human Player Notes',
     SUBMIT_PENALTY_NOTES: '[QUAL] Submit Penalties Notes',
     SUBMIT_DRIVERS_NOTES: '[QUAL] Submit Drivers Notes',
@@ -44,11 +44,11 @@ export const sendNotes = (topic, content) => {
         case 'Collection':
             type = ActionTypes.SUBMIT_COLLECTION_NOTES
             break;
-        case 'Shooting Position':
-            type = ActionTypes.SUBMIT_SHOOT_POS_NOTES
+        case 'Shooting':
+            type = ActionTypes.SUBMIT_SHOOTING_NOTES
             break;
-        case 'Shooting Consistency':
-            type = ActionTypes.SUBMIT_SHOOT_COS_NOTES
+        case 'Amp':
+            type = ActionTypes.SUBMIT_AMP_NOTES
             break;
         case 'Path':
             type = ActionTypes.SUBMIT_PATH_NOTES
@@ -56,8 +56,8 @@ export const sendNotes = (topic, content) => {
         case 'Defense':
             type = ActionTypes.SUBMIT_DEFENSE_NOTES
             break;
-        case 'Climbing':
-            type = ActionTypes.SUBMIT_CLIMBING_NOTES
+        case 'Endgame':
+            type = ActionTypes.SUBMIT_ENDGAME_NOTES
             break;
         case 'Human Player':
             type = ActionTypes.SUBMIT_HP_NOTES

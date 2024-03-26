@@ -164,14 +164,6 @@ class ConnectedDataCollectionPage extends React.Component {
 				</div>
 				
 				<QualitativePage addToArray={this.addToArray} />
-				<h1 className="title">Submitted Notes</h1>
-           		<ul className="list">
-            	  {this.state.arrayText.map((notes, index) => (
-               		 <li key={index}>
-                 	 <strong>{notes.buttonText}:</strong> {notes.text}
-               		 </li>
-              		))}
-          		</ul>
 				<div className='submit'>
 					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='outlined' className='submit' href='/'>Back</Button>
 					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='contained' className='submit' onClick={this.submit}>Submit</Button>
