@@ -26,4 +26,20 @@ This is also entered the same way as in GearScout. At the top of the screen, you
 ![QualScout Info Page](./src/images/QualScoutInfo.png)
 
 ### Entering Data
-In QualScout, there are several *categories* pertaining to a robot's performance in a match that scouters can take note of. Scouters would select the category they would like to write notes in
+In QualScout, there are several *categories* pertaining to a robot's performance in a match that scouters can take note of. Scouters would select the category they would like to write notes in using the buttons under the "Categories" section. The category will then show below the buttons.
+
+![QualScout Categories](./src/images/QualScoutCategories.png)
+
+Once a category is selected, scouters can write information pertaining to the topic in the text box below. Once the notes are completed, they can click "Submit Note" to prepare it for submission.
+
+The notes will appear at the bottom of the page, in the "Submitted Notes" Category.
+
+
+### Editing Notes
+A new feature starting from v2024.2, QualScout now allows scouters to edit their notes after submission. Instead of encouraging scouters to submit another note in the same category, displaying this new note alongside the old one, they can now *edit* their note, eliminating the need for submitting multiple of them.
+
+To edit notes, simply click the category you would like to change. Your previous notes will appear in the text box, where you can make any changes and follow the "Entering Data" section. The Submitted Notes section will display your updated notes after you click "Submit Note". 
+
+Note: If you have any text in the text box, it will be OVERWRITTEN when you change categories, so be sure to save it (either in a category or your devices' clipboard).
+
+Once you are finished, the "Submit" button will send all data to the server and clear the data on the frontend so you can start again.
