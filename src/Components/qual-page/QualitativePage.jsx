@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, MenuItem, Select, Popover, FormControl, InputLabel, TextField, Typography } from "@mui/material";
+import { Button, MenuItem, Select, Popover, FormControl, TextField } from "@mui/material";
 import { sendNotes } from "../../app/Actions";
 import { useAppDispatch } from "../../app/Hooks";
+
 
 
 
@@ -81,24 +82,31 @@ export default function QualitativePage({ addToArray }) {
             setOpen(false);
         };
       const TextFieldStyle = {
-        width: '100%', 
+        width: '98%', 
         marginBottom: '16px',
         }
+     
+      
     
+
+
        return ( 
         <div className="background">   
         <FormControl fullWidth>
-          <InputLabel id='selectlabel' style={{color:'#ff5000'}}>
-            <Typography variant="subtitle1" style={{margin: '6px 0'}}>{menuItems[0]}</Typography>
-          </InputLabel>
           <Select
+          sx={{
+            '& .MuiSelect-icon': {
+              fill: '#fe5000'
+            }
+          }}
+          style={{width: TextFieldStyle.width, marginLeft: 'auto', marginRight: 'auto'}}
           labelId="select-label"
           id="select"
           value={buttonText}
           onChange={handleOptionChange}
           renderValue={(value) => value}>
             {menuItems.map((option, index) => (
-              <MenuItem key={index} value={option}>
+              <MenuItem key={index} value={option} style={{color: 'black'}}>
                 {option}
               </MenuItem>
             ))}
