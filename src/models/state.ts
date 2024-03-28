@@ -7,13 +7,14 @@ export interface AppState {
 	notes: {
 		auto: string, 
         collection: string, 
-        shootingPosition: string,
-        shootingConsistency: string,
+        shooting: string,
+        amp: string,
         path: string, 
         defense: string, 
-        climbing: string, 
+        endgame: string, 
         humanPlayer: string, 
         penalties: string,
-        drivers: string
+        drivers: string,
+        other: string
 	}
 }
