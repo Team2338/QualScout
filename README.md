@@ -18,17 +18,17 @@ You can access QualScout [here](https://qual.gearitforward.com/).
 ### Signing in 
 The Landing page, where you sign in, is the same as GearScout. There will be multiple fields for signing in. Enter your team number, event code, your name, and your secret code in the text fields.  Event and secret codes should be predetermined, and every scouter from the same team should use these codes.
 
-![QualScout Landing Page](./src/images/QualScoutSignIn.png)
+![QualScout Landing Page](./images/QualScoutSignIn.png)
 
 ### Entering Robot and Match Info
 This is also entered the same way as in GearScout. At the top of the screen, you will see several text fields. Enter the robot and match numbers, as well as the alliance the team is on.
 
-![QualScout Info Page](./src/images/QualScoutInfo.png)
+![QualScout Info Page](./images/QualScoutInfo.png)
 
 ### Entering Data
 In QualScout, there are several *categories* pertaining to a robot's performance in a match that scouters can take note of. Scouters would select the category they would like to write notes in using the buttons under the "Categories" section. The category will then show below the buttons.
 
-![QualScout Categories](./src/images/QualScoutCategories.png)
+![QualScout Categories](./images/QualScoutCategories.png)
 
 Once a category is selected, scouters can write information pertaining to the topic in the text box below. Once the notes are completed, they can click "Submit Note" to prepare it for submission.
 
