@@ -148,11 +148,11 @@ export default function QualitativePage({addToArray}) {
 				rows={ 10 }
 				variant="outlined"
 				style={ TextFieldStyle }
-				InputLabelProps={ {
+				InputLabelProps={{
 					style: {
 						color: '#ff5000'
 					}
-				} }
+				}}
 			/>
 
 			<Button type="submit" variant="contained" onClick={ submit }>Submit Note</Button>
