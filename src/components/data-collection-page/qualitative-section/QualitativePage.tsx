@@ -4,58 +4,42 @@ import { sendNotes } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativePage.scss';
 
+const categories: string[] = [
+	'None Selected',
+	'Auto',
+	'Collection',
+	'Shooting',
+	'Amp',
+	'Path',
+	'Defense',
+	'Endgame',
+	'Human Player',
+	'Penalties',
+	'Drivers',
+	'Other'
+];
 
 export default function QualitativePage({addToArray}) {
-	//categories
-	const menuItems = [
-		'None Selected',
-		'Auto',
-		'Collection',
-		'Shooting',
-		'Amp',
-		'Path',
-		'Defense',
-		'Endgame',
-		'Human Player',
-		'Penalties',
-		'Drivers',
-		'Other'];
-	//current category selected
-	const [buttonText, setButtonText] = useState(menuItems[0]);
-
 	const dispatch = useAppDispatch();
 
-	//text to be in the text box
-	const [text, setText] = useState('');
+	const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+	const [noteContent, setNoteContent] = useState('');
 
-
-	//handles text changes in the text box
-	const handleText = (event) => {
-		setText(event.target.value);
-	};
-
-
-	//handles submit note
 	const submit = (event) => {
 		event.preventDefault();
-		if (buttonText.trim() !== menuItems[0]) {
+		if (selectedCategory.trim() !== categories[0]) {
 
-			dispatch(sendNotes(buttonText, text));
-			const submittedText = {text, buttonText};
+			dispatch(sendNotes(selectedCategory, noteContent));
+			const submittedText = {noteContent, selectedCategory};
 			addToArray(submittedText);
-			setText('');
-			setButtonText(menuItems[0]);
+			setNoteContent('');
+			setSelectedCategory(categories[0]);
 
 		} else {
 			console.log('please don\'t leave the category empty :(');
 		}
-
 	};
 
-	const TextFieldStyle = {
-		width: '100%',
-		marginBottom: '16px'
-	};
 	//declarations to import app state
 	const auto = useAppSelector(state => state.notes.auto);
 	const collection = useAppSelector(state => state.notes.collection);
@@ -72,48 +56,48 @@ export default function QualitativePage({addToArray}) {
 	function NoteStatus() {
 		//function chains to handle pulling data from categories when clicked
 		const handleAutoButton = () => {
-			setText(auto);
-			setButtonText(menuItems[1]);
+			setNoteContent(auto);
+			setSelectedCategory(categories[1]);
 		};
 		const handleCollectionButton = () => {
-			setText(collection);
-			setButtonText(menuItems[2]);
+			setNoteContent(collection);
+			setSelectedCategory(categories[2]);
 		};
 		const handleShootingButton = () => {
-			setText(shooting);
-			setButtonText(menuItems[3]);
+			setNoteContent(shooting);
+			setSelectedCategory(categories[3]);
 		};
 		const handleAmpButton = () => {
-			setText(amp);
-			setButtonText(menuItems[4]);
+			setNoteContent(amp);
+			setSelectedCategory(categories[4]);
 		};
 		const handlePathButton = () => {
-			setText(path);
-			setButtonText(menuItems[5]);
+			setNoteContent(path);
+			setSelectedCategory(categories[5]);
 		};
 		const handleDefenseButton = () => {
-			setText(defense);
-			setButtonText(menuItems[6]);
+			setNoteContent(defense);
+			setSelectedCategory(categories[6]);
 		};
 		const handleEndgameButton = () => {
-			setText(endgame);
-			setButtonText(menuItems[7]);
+			setNoteContent(endgame);
+			setSelectedCategory(categories[7]);
 		};
 		const handleHumanPlayerButton = () => {
-			setText(humanPlayer);
-			setButtonText(menuItems[8]);
+			setNoteContent(humanPlayer);
+			setSelectedCategory(categories[8]);
 		};
 		const handlePenaltiesButton = () => {
-			setText(penalties);
-			setButtonText(menuItems[9]);
+			setNoteContent(penalties);
+			setSelectedCategory(categories[9]);
 		};
 		const handleDriversButton = () => {
-			setText(drivers);
-			setButtonText(menuItems[10]);
+			setNoteContent(drivers);
+			setSelectedCategory(categories[10]);
 		};
 		const handleOtherButton = () => {
-			setText(other);
-			setButtonText(menuItems[11]);
+			setNoteContent(other);
+			setSelectedCategory(categories[11]);
 		};
 		return (
 			<div className="category-buttons">
@@ -138,24 +122,22 @@ export default function QualitativePage({addToArray}) {
 			<h1>Categories</h1>
 			<NoteStatus />
 
-			<p><strong>Selected Category:</strong> { buttonText }</p>
+			<p><strong>Selected Category:</strong> { selectedCategory }</p>
 
 			<TextField
 				label="Enter your text here..."
-				value={ text }
-				onChange={ handleText }
+				value={ noteContent }
+				onChange={ (event) => setNoteContent(event.target.value) }
 				multiline
 				rows={ 10 }
 				variant="outlined"
-				style={ TextFieldStyle }
-				InputLabelProps={{
-					style: {
-						color: '#ff5000'
-					}
+				fullWidth={ true }
+				sx={{
+					marginBottom: '16px',
 				}}
 			/>
 
-			<Button type="submit" variant="contained" onClick={ submit }>Submit Note</Button>
+			<Button variant="contained" onClick={ submit }>Submit Note</Button>
 
 			<h1>Submitted Notes</h1>
 			<ul className="submitted-notes">
