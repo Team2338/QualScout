@@ -32,7 +32,6 @@ const INITIAL_STATE = {
 	scoutingTeamNumber: '',
 	matchNumber: '',
 	allianceColor: AllianceColor.unknown,
-	arrayText: []
 }
 
 class ConnectedDataCollectionPage extends React.Component<any, any> {
@@ -111,12 +110,6 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 		return notes.filter(content => content.content.trim() !== '');
 	};
 
-	addToArray = (text) => {
-		this.setState(oldText => ({
-			arrayText: [...oldText.arrayText, text]
-		}))
-	};
-
 	submit = () => {
 		const match: IMatch = {
 			eventCode: this.props.eventCode,
@@ -162,7 +155,7 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 					<AllianceSelector selectAlliance={ this.setAllianceColor } selected={ this.state.allianceColor }/>
 				</div>
 				
-				<QualitativePage addToArray={ this.addToArray } />
+				<QualitativePage />
 				<div className='submit'>
 					<Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
 					<Button sx={{ m: 0.5 }} variant='contained' className='submit' onClick={ this.submit }>Submit</Button>

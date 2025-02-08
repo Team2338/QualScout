@@ -45,94 +45,14 @@ export function reducer(state: IAppState = INITIAL_STATE, action): IAppState {
 					matches: []
 				}
 			};
-		case ActionTypes.SUBMIT_AUTO_NOTES:
+		case ActionTypes.SAVE_NOTE:
 			return {
 				...state,
 				notes: {
 					...state.notes,
-					[Topic.auto]: action.payload
+					[action.payload.topic]: action.payload.content
 				}
-			}
-		case ActionTypes.SUBMIT_COLLECTION_NOTES:
-			return {
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.collection]: action.payload
-				}
-			}
-		case ActionTypes.SUBMIT_SHOOTING_NOTES:
-			return {
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.shooting]: action.payload
-				}
-			}
-		case ActionTypes.SUBMIT_AMP_NOTES:
-			return{
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.amp]: action.payload
-				}
-			}
-		case ActionTypes.SUBMIT_PATH_NOTES:
-			return {
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.path]: action.payload
-				}
-			}
-		case ActionTypes.SUBMIT_DEFENSE_NOTES:
-			return {
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.defense]: action.payload
-				}
-			}
-		case ActionTypes.SUBMIT_ENDGAME_NOTES:
-			return {
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.endgame]: action.payload
-				}
-			}
-		case ActionTypes.SUBMIT_HP_NOTES:
-			return {
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.humanPlayer]: action.payload
-				}
-			}
-		case ActionTypes.SUBMIT_PENALTY_NOTES:
-			return {
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.penalties]: action.payload
-				}
-			}
-		case ActionTypes.SUBMIT_DRIVERS_NOTES:
-			return {
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.drivers]: action.payload
-				}
-			}
-		case ActionTypes.SUBMIT_OTHER_NOTES:
-			return {
-				...state,
-				notes: {
-					...state.notes,
-					[Topic.other]: action.payload
-				}
-			}
+			};
 		default:
 			return state;
 	}
