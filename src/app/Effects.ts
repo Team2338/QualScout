@@ -1,6 +1,6 @@
 import { ICachedMatch, IMatch } from '../models/models';
 import { AppState } from '../models/state';
-import GearscoutService from '../Services/GearscoutService';
+import GearscoutService from '../services/GearscoutService';
 import { clearOfflineMatches, getOfflineMatchesSuccess } from './Actions';
 import { AppDispatch } from './Store';
 

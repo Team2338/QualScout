@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { fetchOfflineRequests } from './app/Effects';
 import { useAppDispatch } from './app/Hooks';
-import DataCollectionPage from './Components/data-collection-page/DataCollectionPage';
-import LandingPage from './Components/landing-page/LandingPage';
+import DataCollectionPage from './components/data-collection-page/DataCollectionPage';
+import LandingPage from './components/landing-page/LandingPage';
 
 function App() {
 	const dispatch = useAppDispatch();
