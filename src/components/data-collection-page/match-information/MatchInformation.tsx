@@ -12,36 +12,37 @@ interface IProps {
 
 function MatchInformation(props: IProps) {
 	return (
-		<div className="wrap">
-			<div className="logo">
-				<img src="2338-logo.png" alt="2338 logo" height="100rem" />
-			</div>
+		<div className="match-information">
+			<img className="logo" src="2338-logo.png" alt="2338 logo" height="100rem" />
 			<div className="textboxes">
 				<TextField
 					label="Team Number"
-					variant="standard"
-					sx={{ '& .MuiFormLabel-root': { color: 'primary.main' }, m: 0.5 }}
+					variant="outlined"
+					type="number"
 					placeholder="Team Number"
 					value={ props.scoutingTeamNumber }
-					onChange={ (event) => {
-						return props.setScoutingTeamNumber(event.target.value);
-					}}
+					onChange={ (event) => props.setScoutingTeamNumber(event.target.value) }
 				/>
 				<TextField
 					label="Match Number"
-					variant="standard"
-					sx={{ '& .MuiFormLabel-root': { color: 'primary.main' }, m: 0.5 }}
+					variant="outlined"
+					type="number"
 					placeholder="Match Number"
 					value={ props.matchNumber }
 					onChange={ (event) => props.setMatchNumber(event.target.value) }
 				/>
 			</div>
 			<div className="analytics">
-				<Button sx={{ m: 0.5 }} variant="contained" href="https://data.gearitforward.com/">Analytics</Button>
+				<Button
+					variant="contained"
+					href="https://data.gearitforward.com/"
+					disableElevation={ true }
+				>
+					Analytics&nbsp;&gt;
+				</Button>
 			</div>
 		</div>
 	);
 }
-
 
 export default MatchInformation;

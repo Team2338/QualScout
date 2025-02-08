@@ -6,23 +6,48 @@ import App from './components/App';
 import store from './state/Store';
 import './index.scss';
 
+const GRAY = '#BABFB7';
+
 export const themeOptions = {
 	palette: {
 		type: 'dark',
 		primary: {
-			main: '#FE5000',
+			main: '#FE5000DD',
 			contrastText: '#000000'
 		},
 		secondary: {
-			main: '#BABFB7',
-			contrastText: '#000000'
-		},
-		tertiary: {
-			main: '#90D601',
+			main: GRAY,
 			contrastText: '#000000'
 		},
 		text: {
-			primary: '#BABFB7',
+			primary: GRAY,
+		},
+	},
+
+	components: {
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					['text-transform']: 'capitalize',
+				}
+			}
+		},
+		MuiInputLabel: {
+			styleOverrides: {
+				outlined: {
+					color: GRAY
+				}
+			}
+		},
+		MuiOutlinedInput: {
+			styleOverrides: {
+				input: {
+					color: GRAY
+				},
+				notchedOutline: {
+					borderColor: GRAY
+				}
+			}
 		}
 	}
 };
