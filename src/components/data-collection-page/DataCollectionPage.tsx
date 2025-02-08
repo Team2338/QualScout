@@ -2,13 +2,11 @@ import './DataCollectionPage.scss';
 import Button from '@mui/material/Button';
 import React from 'react';
 import { connect } from 'react-redux';
-import { resetState } from '../../app/Actions';
-
-import { submitMatch } from '../../app/Effects';
-import MatchInformation from '../match-information/MatchInformation';
-import QualitativePage from '../qual-page/QualitativePage';
-
-import AllianceSelection from './AllianceSelection';
+import { resetState } from '../../state/Actions';
+import { submitMatch } from '../../state/Effects';
+import MatchInformation from './match-information/MatchInformation';
+import QualitativePage from './qualitative-section/QualitativePage';
+import AllianceSelector from './alliance-selector/AllianceSelector';
 
 const selector = (state) => ({
 	auto: state.notes.auto,
@@ -22,7 +20,6 @@ const selector = (state) => ({
 	penalties: state.notes.penalties,
 	drivers: state.notes.drivers,
 	other: state.notes.other
-
 });
 
 const connectDispatch = (dispatch) => ({
@@ -108,16 +105,17 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 				topic: 'Other',
 				content: this.props.other
 			}
-
-		]
+		];
 
 		return notes.filter(content => content.content.trim() !== '');
-	}
+	};
+
 	addToArray = text => {
 		this.setState(oldText => ({
 			arrayText: [...oldText.arrayText, text]
 		}))
-	}
+	};
+
 	submit = () => {
 		const match = {
 			eventCode: this.props.eventCode,
@@ -125,7 +123,7 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 			robotNumber: this.state.scoutingTeamNumber,
 			creator: this.props.scouterName,
 			allianceColor: this.state.allianceColor,
-			gameYear: 2024,
+			gameYear: 2025,
 			comments: this.generateComments()
 		};
 		// Let the user know if they missed an input
@@ -154,19 +152,19 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 		return (
 			<div className='background'>
 				<MatchInformation
-					scoutingTeamNumber={this.state.scoutingTeamNumber}
-					matchNumber={this.state.matchNumber}
-					setScoutingTeamNumber={this.setRobotNumber}
-					setMatchNumber={this.setMatchNumber}
+					scoutingTeamNumber={ this.state.scoutingTeamNumber }
+					matchNumber={ this.state.matchNumber }
+					setScoutingTeamNumber={ this.setRobotNumber }
+					setMatchNumber={ this.setMatchNumber }
 				/>
 				<div>
-					<AllianceSelection selectAlliance={this.setAllianceColor} selected={this.state.allianceColor}/>
+					<AllianceSelector selectAlliance={ this.setAllianceColor } selected={ this.state.allianceColor }/>
 				</div>
 				
-				<QualitativePage addToArray={this.addToArray} />
+				<QualitativePage addToArray={ this.addToArray } />
 				<div className='submit'>
-					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='outlined' className='submit' href='/'>Back</Button>
-					<Button sx={{ m: 0.5 }} style={{textTransform: 'capitalize'}} variant='contained' className='submit' onClick={this.submit}>Submit</Button>
+					<Button sx={{ m: 0.5 }} style={{ textTransform: 'capitalize' }} variant='outlined' className='submit' href='/'>Back</Button>
+					<Button sx={{ m: 0.5 }} style={{ textTransform: 'capitalize' }} variant='contained' className='submit' onClick={ this.submit }>Submit</Button>
 				</div>
 			</div>
 		);

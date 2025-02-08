@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
-import { fetchOfflineRequests } from './app/Effects';
-import { useAppDispatch } from './app/Hooks';
-import DataCollectionPage from './components/data-collection-page/DataCollectionPage';
-import LandingPage from './components/landing-page/LandingPage';
+import { fetchOfflineRequests } from '../state/Effects';
+import { useAppDispatch } from '../state/Hooks';
+import DataCollectionPage from './data-collection-page/DataCollectionPage';
+import LandingPage from './landing-page/LandingPage';
 
 function App() {
 	const dispatch = useAppDispatch();

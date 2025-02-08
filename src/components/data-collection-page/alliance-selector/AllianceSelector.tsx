@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
 
-function AllianceSelection(props) {
+function AllianceSelector(props) {
 
 	const handleRedClick = () => {
 		props.selectAlliance('RED');
@@ -44,4 +44,4 @@ function AllianceSelection(props) {
 	);
 }
 
-export default AllianceSelection;
+export default AllianceSelector;

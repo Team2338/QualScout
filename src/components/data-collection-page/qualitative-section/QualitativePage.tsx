@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import { sendNotes } from '../../app/Actions';
-import { useAppDispatch, useAppSelector } from '../../app/Hooks';
+import { sendNotes } from '../../../state/Actions';
+import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativePage.scss';
 
 

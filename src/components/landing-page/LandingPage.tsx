@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import './LandingPage.scss';
 import { connect } from 'react-redux';
-import { sendOfflineRequests } from '../../app/Effects';
+import { sendOfflineRequests } from '../../state/Effects';
 
 const inputs = (state) => ({
 	numOfflineMatches: state.cache.matches.length

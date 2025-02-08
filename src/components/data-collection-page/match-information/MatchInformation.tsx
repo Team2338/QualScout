@@ -14,7 +14,7 @@ function MatchInformation(props: IProps) {
 	return (
 		<div className="wrap">
 			<div className="logo">
-				<img src="2338-logo.png" alt="2338 logo" height="100rem"/>
+				<img src="2338-logo.png" alt="2338 logo" height="100rem" />
 			</div>
 			<div className="textboxes">
 				<TextField
@@ -22,8 +22,8 @@ function MatchInformation(props: IProps) {
 					variant="standard"
 					sx={{ '& .MuiFormLabel-root': { color: 'primary.main' }, m: 0.5 }}
 					placeholder="Team Number"
-					value={props.scoutingTeamNumber}
-					onChange={(event) => {
+					value={ props.scoutingTeamNumber }
+					onChange={ (event) => {
 						return props.setScoutingTeamNumber(event.target.value);
 					}}
 				/>
@@ -32,8 +32,8 @@ function MatchInformation(props: IProps) {
 					variant="standard"
 					sx={{ '& .MuiFormLabel-root': { color: 'primary.main' }, m: 0.5 }}
 					placeholder="Match Number"
-					value={props.matchNumber}
-					onChange={(event) => props.setMatchNumber(event.target.value)}
+					value={ props.matchNumber }
+					onChange={ (event) => props.setMatchNumber(event.target.value) }
 				/>
 			</div>
 			<div className="analytics">

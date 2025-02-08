@@ -15,10 +15,6 @@ $pumice: rgb(186, 191, 183);
 	color: $pumice;
 }
 
-
-
-
-
 .submit {
 	align-items: center;
 	display: flex;
@@ -31,7 +27,7 @@ $pumice: rgb(186, 191, 183);
 }
 
 .list {
-    display: grid;
-    place-items: left;
+	display: grid;
+	place-items: left;
 	text-align: left;
 }
