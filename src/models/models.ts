@@ -17,3 +17,9 @@ export interface INote {
 	topic: string;
 	content: string;
 }
+
+export enum AllianceColor {
+	unknown = 'UNKNOWN',
+	red = 'RED',
+	blue = 'BLUE'
+}

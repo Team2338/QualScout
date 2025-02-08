@@ -1,42 +1,38 @@
+import './AllianceSelector.scss';
 import { Button } from '@mui/material';
 import React from 'react';
+import { AllianceColor } from '../../../models/models';
 
-function AllianceSelector(props) {
+interface IProps {
+	selected: string;
+	selectAlliance: (color: string) => void;
+}
 
-	const handleRedClick = () => {
-		props.selectAlliance('RED');
-	};
-
-	const handleBlueClick = () => {
-		props.selectAlliance('BLUE');
-	};
-
+function AllianceSelector(props: IProps) {
 	let blueColor = '#01233D';
 	let redColor = '#01233D';
 
-	if (props.selected === 'RED') {
+	if (props.selected === AllianceColor.red) {
 		redColor = '#EE4444';
-	}
-	else if (props.selected === 'BLUE') {
+	} else if (props.selected === AllianceColor.blue) {
 		blueColor = '#5577FF';
 	}
 
-
 	return (
-		<div className="spacing">
+		<div className="alliance-selector">
 			<Button
-				sx={{ m: 0.5 }}
-				style={{ backgroundColor: redColor, margin: 5, textTransform: 'capitalize' }}
-				variant={props.selected === 'RED' ? 'contained' : 'outlined'}
-				onClick={handleRedClick}
+				id="red-alliance-button"
+				style={{ backgroundColor: redColor }}
+				variant={ props.selected === AllianceColor.red ? 'contained' : 'outlined' }
+				onClick={ () => props.selectAlliance(AllianceColor.red) }
 			>
 				Red Alliance
 			</Button>
 			<Button
-				sx={{ m: 0.5 }}
-				style={{ backgroundColor: blueColor, margin: 5, textTransform: 'capitalize' }}
-				variant={props.selected === 'BLUE' ? 'contained' : 'outlined'}
-				onClick={handleBlueClick}
+				id="blue-alliance-button"
+				style={{ backgroundColor: blueColor }}
+				variant={ props.selected === AllianceColor.blue ? 'contained' : 'outlined' }
+				onClick={ () => props.selectAlliance(AllianceColor.blue) }
 			>
 				Blue Alliance
 			</Button>
