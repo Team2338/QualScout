@@ -1,14 +1,14 @@
-import './DataCollectionPage.scss'
+import './DataCollectionPage.scss';
+import Button from '@mui/material/Button';
 import React from 'react';
 import { connect } from 'react-redux';
-import Button from '@mui/material/Button'
+import { resetState } from '../../app/Actions';
 
-import { submitMatch } from '../../app/Effects.ts';
-import MatchInformation from '../match-information/MatchInformation'
+import { submitMatch } from '../../app/Effects';
+import MatchInformation from '../match-information/MatchInformation';
+import QualitativePage from '../qual-page/QualitativePage';
 
 import AllianceSelection from './AllianceSelection';
-import QualitativePage from '../qual-page/QualitativePage';
-import { resetState } from '../../app/Actions';
 
 const selector = (state) => ({
 	auto: state.notes.auto,
@@ -37,7 +37,7 @@ const INITIAL_STATE = {
 	arrayText: []
 }
 
-class ConnectedDataCollectionPage extends React.Component {
+class ConnectedDataCollectionPage extends React.Component<any, any> {
 	constructor(props) {
 		super(props);
 		this.state = INITIAL_STATE;	
@@ -111,9 +111,7 @@ class ConnectedDataCollectionPage extends React.Component {
 
 		]
 
-		const comments = notes.filter(content => content.content.trim() !== '')
-
-		return comments;
+		return notes.filter(content => content.content.trim() !== '');
 	}
 	addToArray = text => {
 		this.setState(oldText => ({
@@ -146,10 +144,7 @@ class ConnectedDataCollectionPage extends React.Component {
 			return;
 		}
 
-		
-
 		this.props.submitMatch(this.props.teamNumber, this.props.secretCode, match);
-
 		this.props.resetState();
 		this.setState(INITIAL_STATE);
 	};

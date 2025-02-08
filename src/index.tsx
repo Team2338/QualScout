@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './app/Store';
 import './index.css';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 export const themeOptions = {
 	palette: {
@@ -38,5 +37,3 @@ root.render(
 		</ThemeProvider>
 	</Provider>
 );
-
-serviceWorkerRegistration.register();

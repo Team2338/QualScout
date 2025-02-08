@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import './LandingPage.scss';
 import { connect } from 'react-redux';
-import { sendOfflineRequests } from '../../app/Effects.ts';
+import { sendOfflineRequests } from '../../app/Effects';
 
 const inputs = (state) => ({
 	numOfflineMatches: state.cache.matches.length
@@ -14,7 +14,7 @@ const outputs = (dispatch) => ({
 	sendOfflineRequests: () => dispatch(sendOfflineRequests())
 });
 
-class ConnectedLandingPage extends React.Component {
+class ConnectedLandingPage extends React.Component<any, any> {
 
 	constructor(props) {
 		super(props);
