@@ -1,5 +1,4 @@
 
-
 export interface IMatch {
 	eventCode: string;
 	matchNumber: string;

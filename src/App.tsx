@@ -1,7 +1,4 @@
-import React, {
-	useEffect,
-	useState
-} from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { fetchOfflineRequests } from './app/Effects';
 import { useAppDispatch } from './app/Hooks';
@@ -35,21 +32,21 @@ function App() {
 		[dispatch]
 	);
 
-	let component = <LandingPage parentCallback={setUserInfoCallback}/>;
+	let component = <LandingPage parentCallback={ setUserInfoCallback } />;
 	if (hasLoggedIn) {
 		component = (
 			<DataCollectionPage
-				teamNumber={userInfo.teamNumber}
-				eventCode={userInfo.eventCode}
-				secretCode={userInfo.secretCode}
-				scouterName={userInfo.scouterName}
+				teamNumber={ userInfo.teamNumber }
+				eventCode={ userInfo.eventCode }
+				secretCode={ userInfo.secretCode }
+				scouterName={ userInfo.scouterName }
 			/>
 		);
 	}
 
 	return (
 		<div className="App">
-			{component}
+			{ component }
 		</div>
 	);
 }
