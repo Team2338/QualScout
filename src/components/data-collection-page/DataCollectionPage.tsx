@@ -2,11 +2,12 @@ import './DataCollectionPage.scss';
 import Button from '@mui/material/Button';
 import React from 'react';
 import { connect } from 'react-redux';
+import { AllianceColor, IMatch, Topic } from '../../models/models';
 import { resetState } from '../../state/Actions';
 import { submitMatch } from '../../state/Effects';
+import AllianceSelector from './alliance-selector/AllianceSelector';
 import MatchInformation from './match-information/MatchInformation';
 import QualitativePage from './qualitative-section/QualitativePage';
-import AllianceSelector from './alliance-selector/AllianceSelector';
 
 const selector = (state) => ({
 	auto: state.notes.auto,
@@ -24,13 +25,13 @@ const selector = (state) => ({
 
 const connectDispatch = (dispatch) => ({
 	resetState: () => dispatch(resetState()),
-	submitMatch: (teamNumber, secretCode, match) => dispatch(submitMatch(teamNumber, secretCode, match)),
+	submitMatch: (teamNumber: string, secretCode: string, match: IMatch) => dispatch(submitMatch(teamNumber, secretCode, match)),
 });
 
 const INITIAL_STATE = {
 	scoutingTeamNumber: '',
 	matchNumber: '',
-	allianceColor: 'UNKNOWN',
+	allianceColor: AllianceColor.unknown,
 	arrayText: []
 }
 
@@ -40,19 +41,19 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 		this.state = INITIAL_STATE;	
 	}
 
-	setRobotNumber = (robotNumber) => {
+	setRobotNumber = (robotNumber: string) => {
 		this.setState({
 			scoutingTeamNumber: robotNumber
 		});
 	};
 
-	setMatchNumber = (matchNumber) => {
+	setMatchNumber = (matchNumber: string) => {
 		this.setState({
 			matchNumber: matchNumber
 		});
 	};
 
-	setAllianceColor = (color) => {
+	setAllianceColor = (color: AllianceColor) => {
 		this.setState({
 			allianceColor: color
 		});
@@ -62,47 +63,47 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 	generateComments = () => {
 		const notes = [
 			{
-				topic: 'Auto',
+				topic: Topic.auto,
 				content: this.props.auto
 			},
 			{
-				topic: 'Collection',
+				topic: Topic.collection,
 				content: this.props.collection
 			},
 			{
-				topic: 'Shooting',
+				topic: Topic.shooting,
 				content: this.props.shooting
 			},
 			{
-				topic: 'Amp',
+				topic: Topic.amp,
 				content: this.props.amp
 			},
 			{
-				topic:'Path',
+				topic: Topic.path,
 				content: this.props.path
 			},
 			{
-				topic: 'Defense',
+				topic: Topic.defense,
 				content: this.props.defense
 			},
 			{
-				topic: 'Endgame',
+				topic: Topic.endgame,
 				content: this.props.endgame
 			},
 			{
-				topic: 'Human Player',
+				topic: Topic.humanPlayer,
 				content: this.props.humanPlayer,
 			},
 			{
-				topic: 'Penalties',
+				topic: Topic.penalties,
 				content: this.props.penalties
 			},
 			{
-				topic: 'Drivers',
+				topic: Topic.drivers,
 				content: this.props.drivers
 			},
 			{
-				topic: 'Other',
+				topic: Topic.other,
 				content: this.props.other
 			}
 		];
@@ -110,14 +111,14 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 		return notes.filter(content => content.content.trim() !== '');
 	};
 
-	addToArray = text => {
+	addToArray = (text) => {
 		this.setState(oldText => ({
 			arrayText: [...oldText.arrayText, text]
 		}))
 	};
 
 	submit = () => {
-		const match = {
+		const match: IMatch = {
 			eventCode: this.props.eventCode,
 			matchNumber: this.state.matchNumber,
 			robotNumber: this.state.scoutingTeamNumber,
@@ -127,7 +128,7 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 			comments: this.generateComments()
 		};
 		// Let the user know if they missed an input
-		const problems = [];
+		const problems: string[] = [];
 		if (this.state.matchNumber.length === 0) {
 			problems.push('You must specify a match number');
 		}
@@ -163,8 +164,8 @@ class ConnectedDataCollectionPage extends React.Component<any, any> {
 				
 				<QualitativePage addToArray={ this.addToArray } />
 				<div className='submit'>
-					<Button sx={{ m: 0.5 }} style={{ textTransform: 'capitalize' }} variant='outlined' className='submit' href='/'>Back</Button>
-					<Button sx={{ m: 0.5 }} style={{ textTransform: 'capitalize' }} variant='contained' className='submit' onClick={ this.submit }>Submit</Button>
+					<Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
+					<Button sx={{ m: 0.5 }} variant='contained' className='submit' onClick={ this.submit }>Submit</Button>
 				</div>
 			</div>
 		);

@@ -1,27 +1,28 @@
-import { AppState } from '../models/state';
+import { Topic } from '../models/models';
+import { IAppState } from '../models/state';
 import { ActionTypes } from './Actions';
 
 
-const INITIAL_STATE: AppState = {
+const INITIAL_STATE: IAppState = {
 	cache: {
 		matches: []
 	},
 	notes: {
-		auto: '',
-		collection: '',
-		shooting: '',
-		amp: '',
-		path: '',
-		defense: '',
-		endgame: '',
-		humanPlayer: '',
-		penalties: '',
-		drivers: '',
-		other: ''
+		[Topic.auto]: '',
+		[Topic.collection]: '',
+		[Topic.shooting]: '',
+		[Topic.amp]: '',
+		[Topic.path]: '',
+		[Topic.defense]: '',
+		[Topic.endgame]: '',
+		[Topic.humanPlayer]: '',
+		[Topic.penalties]: '',
+		[Topic.drivers]: '',
+		[Topic.other]: '',
 	}
 };
 
-export function reducer(state: AppState = INITIAL_STATE, action): AppState {
+export function reducer(state: IAppState = INITIAL_STATE, action): IAppState {
 
 	switch (action.type) {
 
@@ -49,7 +50,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					auto: action.payload
+					[Topic.auto]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_COLLECTION_NOTES:
@@ -57,7 +58,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					collection: action.payload
+					[Topic.collection]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_SHOOTING_NOTES:
@@ -65,7 +66,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					shooting: action.payload
+					[Topic.shooting]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_AMP_NOTES:
@@ -73,7 +74,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					amp: action.payload
+					[Topic.amp]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_PATH_NOTES:
@@ -81,7 +82,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					path: action.payload
+					[Topic.path]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_DEFENSE_NOTES:
@@ -89,7 +90,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					defense: action.payload
+					[Topic.defense]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_ENDGAME_NOTES:
@@ -97,7 +98,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					endgame: action.payload
+					[Topic.endgame]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_HP_NOTES:
@@ -105,7 +106,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					humanPlayer: action.payload
+					[Topic.humanPlayer]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_PENALTY_NOTES:
@@ -113,7 +114,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					penalties: action.payload
+					[Topic.penalties]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_DRIVERS_NOTES:
@@ -121,7 +122,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					drivers: action.payload
+					[Topic.drivers]: action.payload
 				}
 			}
 		case ActionTypes.SUBMIT_OTHER_NOTES:
@@ -129,7 +130,7 @@ export function reducer(state: AppState = INITIAL_STATE, action): AppState {
 				...state,
 				notes: {
 					...state.notes,
-					other: action.payload
+					[Topic.other]: action.payload
 				}
 			}
 		default:

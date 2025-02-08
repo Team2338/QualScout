@@ -1,104 +1,89 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
+import { Topic } from '../../../models/models';
 import { sendNotes } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativePage.scss';
 
-const categories: string[] = [
-	'None Selected',
-	'Auto',
-	'Collection',
-	'Shooting',
-	'Amp',
-	'Path',
-	'Defense',
-	'Endgame',
-	'Human Player',
-	'Penalties',
-	'Drivers',
-	'Other'
-];
 
 export default function QualitativePage({addToArray}) {
 	const dispatch = useAppDispatch();
 
-	const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+	const [selectedCategory, setSelectedCategory] = useState<Topic>(null);
 	const [noteContent, setNoteContent] = useState('');
 
 	const submit = (event) => {
 		event.preventDefault();
-		if (selectedCategory.trim() !== categories[0]) {
-
+		if (selectedCategory !== null) {
 			dispatch(sendNotes(selectedCategory, noteContent));
 			const submittedText = {noteContent, selectedCategory};
 			addToArray(submittedText);
 			setNoteContent('');
-			setSelectedCategory(categories[0]);
-
-		} else {
-			console.log('please don\'t leave the category empty :(');
+			setSelectedCategory(null);
 		}
 	};
 
 	//declarations to import app state
-	const auto = useAppSelector(state => state.notes.auto);
-	const collection = useAppSelector(state => state.notes.collection);
-	const shooting = useAppSelector(state => state.notes.shooting);
-	const amp = useAppSelector(state => state.notes.amp);
-	const path = useAppSelector(state => state.notes.path);
-	const defense = useAppSelector(state => state.notes.defense);
-	const endgame = useAppSelector(state => state.notes.endgame);
-	const humanPlayer = useAppSelector(state => state.notes.humanPlayer);
-	const penalties = useAppSelector(state => state.notes.penalties);
-	const drivers = useAppSelector(state => state.notes.drivers);
-	const other = useAppSelector(state => state.notes.other);
+	const auto = useAppSelector(state => state.notes[Topic.auto]);
+	const collection = useAppSelector(state => state.notes[Topic.collection]);
+	const shooting = useAppSelector(state => state.notes[Topic.shooting]);
+	const amp = useAppSelector(state => state.notes[Topic.amp]);
+	const path = useAppSelector(state => state.notes[Topic.path]);
+	const defense = useAppSelector(state => state.notes[Topic.defense]);
+	const endgame = useAppSelector(state => state.notes[Topic.endgame]);
+	const humanPlayer = useAppSelector(state => state.notes[Topic.humanPlayer]);
+	const penalties = useAppSelector(state => state.notes[Topic.penalties]);
+	const drivers = useAppSelector(state => state.notes[Topic.drivers]);
+	const other = useAppSelector(state => state.notes[Topic.other]);
+
+	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
 
 	function NoteStatus() {
-		//function chains to handle pulling data from categories when clicked
 		const handleAutoButton = () => {
 			setNoteContent(auto);
-			setSelectedCategory(categories[1]);
+			setSelectedCategory(Topic.auto);
 		};
 		const handleCollectionButton = () => {
 			setNoteContent(collection);
-			setSelectedCategory(categories[2]);
+			setSelectedCategory(Topic.collection);
 		};
 		const handleShootingButton = () => {
 			setNoteContent(shooting);
-			setSelectedCategory(categories[3]);
+			setSelectedCategory(Topic.shooting);
 		};
 		const handleAmpButton = () => {
 			setNoteContent(amp);
-			setSelectedCategory(categories[4]);
+			setSelectedCategory(Topic.amp);
 		};
 		const handlePathButton = () => {
 			setNoteContent(path);
-			setSelectedCategory(categories[5]);
+			setSelectedCategory(Topic.path);
 		};
 		const handleDefenseButton = () => {
 			setNoteContent(defense);
-			setSelectedCategory(categories[6]);
+			setSelectedCategory(Topic.defense);
 		};
 		const handleEndgameButton = () => {
 			setNoteContent(endgame);
-			setSelectedCategory(categories[7]);
+			setSelectedCategory(Topic.endgame);
 		};
 		const handleHumanPlayerButton = () => {
 			setNoteContent(humanPlayer);
-			setSelectedCategory(categories[8]);
+			setSelectedCategory(Topic.humanPlayer);
 		};
 		const handlePenaltiesButton = () => {
 			setNoteContent(penalties);
-			setSelectedCategory(categories[9]);
+			setSelectedCategory(Topic.penalties);
 		};
 		const handleDriversButton = () => {
 			setNoteContent(drivers);
-			setSelectedCategory(categories[10]);
+			setSelectedCategory(Topic.drivers);
 		};
 		const handleOtherButton = () => {
 			setNoteContent(other);
-			setSelectedCategory(categories[11]);
+			setSelectedCategory(Topic.other);
 		};
+
 		return (
 			<div className="category-buttons">
 				<Button variant="contained" onClick={ handleAutoButton }> Auto </Button>
@@ -114,7 +99,6 @@ export default function QualitativePage({addToArray}) {
 				<Button variant="contained" onClick={ handleOtherButton }> Other </Button>
 			</div>
 		);
-
 	}
 
 	return (
@@ -122,7 +106,7 @@ export default function QualitativePage({addToArray}) {
 			<h1>Categories</h1>
 			<NoteStatus />
 
-			<p><strong>Selected Category:</strong> { selectedCategory }</p>
+			<p><strong>Selected Category:</strong> { selectedCategory ?? 'None' }</p>
 
 			<TextField
 				label="Enter your text here..."
@@ -135,56 +119,21 @@ export default function QualitativePage({addToArray}) {
 				sx={{
 					marginBottom: '16px',
 				}}
+				disabled={ selectedCategory === null }
 			/>
 
-			<Button variant="contained" onClick={ submit }>Submit Note</Button>
+			<Button variant="contained" onClick={ submit } disabled={ selectedCategory === null }>Submit Note</Button>
 
 			<h1>Submitted Notes</h1>
 			<ul className="submitted-notes">
-				<li>
-					<strong>Auto:</strong>
-					<p>{ auto }</p>
-				</li>
-				<li>
-					<strong>Collection:</strong>
-					<p>{ collection }</p>
-				</li>
-				<li>
-					<strong>Shooting:</strong>
-					<p>{ shooting }</p>
-				</li>
-				<li>
-					<strong>Amp:</strong>
-					<p>{ amp }</p>
-				</li>
-				<li>
-					<strong>Path:</strong>
-					<p>{ path }</p>
-				</li>
-				<li>
-					<strong>Defense:</strong>
-					<p>{ defense }</p>
-				</li>
-				<li>
-					<strong>Endgame:</strong>
-					<p>{ endgame }</p>
-				</li>
-				<li>
-					<strong>Human Player:</strong>
-					<p>{ humanPlayer }</p>
-				</li>
-				<li>
-					<strong>Penalties:</strong>
-					<p>{ penalties }</p>
-				</li>
-				<li>
-					<strong>Drivers:</strong>
-					<p>{ drivers }</p>
-				</li>
-				<li>
-					<strong>Other:</strong>
-					<p>{ other }</p>
-				</li>
+				{
+					Object.values(Topic).map((topic: Topic) => (
+						<li key={ topic }>
+							<strong>{ topic }:</strong>
+							<p>{ savedNotes[topic] }</p>
+						</li>
+					))
+				}
 			</ul>
 		</div>
 	);
