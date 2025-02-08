@@ -75,7 +75,7 @@ class ConnectedLandingPage extends React.Component<any, any> {
 					</div>
 					<div className="title-and-version">
 						<h1 className="title">QualScout</h1>
-						<div className="version">v{ process.env.REACT_APP_VERSION }</div>
+						<div className="version">v{ import.meta.env.VITE_APP_VERSION }</div>
 					</div>
 				</div>
 
