@@ -5,7 +5,6 @@ export interface IMatch {
 	matchNumber: string;
 	robotNumber: string;
 	creator: string;
-	allianceColor: string;
 	comments: INote[];
 }
 
@@ -37,4 +36,11 @@ export enum Topic {
 	penalties = 'Penalties',
 	drivers = 'Drivers',
 	other = 'Other'
+}
+
+export interface IUser {
+	teamNumber: string;
+	scouterName: string;
+	secretCode: string;
+	eventCode: string;
 }

@@ -1,6 +1,7 @@
-import { ICachedMatch, Topic } from './models';
+import { ICachedMatch, IUser, Topic } from './models';
 
 export interface IAppState {
+	user: IUser;
 	cache: {
 		matches: ICachedMatch[];
 	};

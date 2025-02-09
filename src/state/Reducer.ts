@@ -1,9 +1,10 @@
 import { Topic } from '../models/models';
 import { IAppState } from '../models/state';
-import { ActionTypes } from './Actions';
+import { ActionTypes, IAction } from './Actions';
 
 
 const INITIAL_STATE: IAppState = {
+	user: null,
 	cache: {
 		matches: []
 	},
@@ -22,15 +23,19 @@ const INITIAL_STATE: IAppState = {
 	}
 };
 
-export function reducer(state: IAppState = INITIAL_STATE, action): IAppState {
+export function reducer(state: IAppState = INITIAL_STATE, action: IAction): IAppState {
 
 	switch (action.type) {
-
-		case ActionTypes.RESET_STATE:
+		case ActionTypes.CLEAR_NOTES:
 			return {
 				...state,
 				notes: INITIAL_STATE.notes
-			}
+			};
+		case ActionTypes.LOGIN_SUCCESS:
+			return {
+				...state,
+				user: action.payload
+			};
 		case ActionTypes.GET_OFFLINE_MATCHES_SUCCESS:
 			return {
 				...state,

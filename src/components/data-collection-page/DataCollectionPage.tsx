@@ -1,169 +1,75 @@
 import './DataCollectionPage.scss';
 import Button from '@mui/material/Button';
-import React from 'react';
-import { connect } from 'react-redux';
-import { AllianceColor, IMatch, Topic } from '../../models/models';
-import { resetState } from '../../state/Actions';
+import React, { useState } from 'react';
+import { IMatch, INote, IUser, Topic } from '../../models/models';
+import { clearNotes } from '../../state/Actions';
 import { submitMatch } from '../../state/Effects';
-import AllianceSelector from './alliance-selector/AllianceSelector';
 import MatchInformation from './match-information/MatchInformation';
 import QualitativePage from './qualitative-section/QualitativePage';
+import { useAppDispatch, useAppSelector } from '../../state/Hooks';
 
-const selector = (state) => ({
-	auto: state.notes.auto,
-	collection: state.notes.collection,
-	shooting: state.notes.shooting,
-	amp: state.notes.amp,
-	path: state.notes.path,
-	defense: state.notes.defense,
-	endgame: state.notes.endgame,
-	humanPlayer: state.notes.humanPlayer,
-	penalties: state.notes.penalties,
-	drivers: state.notes.drivers,
-	other: state.notes.other
-});
+const MAX_MATCH_NUMBER = 200;
 
-const connectDispatch = (dispatch) => ({
-	resetState: () => dispatch(resetState()),
-	submitMatch: (teamNumber: string, secretCode: string, match: IMatch) => dispatch(submitMatch(teamNumber, secretCode, match)),
-});
+export default function DataCollectionPage() {
+	const dispatch = useAppDispatch();
+	const user: IUser = useAppSelector(state => state.user);
+	const notes: Record<Topic, string> = useAppSelector(state => state.notes);
+	const [robotNumber, setRobotNumber] = useState<string>('');
+	const [matchNumber, setMatchNumber] = useState<string>('');
 
-const INITIAL_STATE = {
-	scoutingTeamNumber: '',
-	matchNumber: '',
-	allianceColor: AllianceColor.unknown,
-}
-
-class ConnectedDataCollectionPage extends React.Component<any, any> {
-	constructor(props) {
-		super(props);
-		this.state = INITIAL_STATE;	
-	}
-
-	setRobotNumber = (robotNumber: string) => {
-		this.setState({
-			scoutingTeamNumber: robotNumber
-		});
+	const generateComments = (): INote[] => {
+		return Object.values(Topic)
+			.filter((topic: Topic) => !!notes[topic].trim()) // Ignore empty notes
+			.map((topic: Topic): INote => ({
+				topic: topic,
+				content: notes[topic]
+			}));
 	};
 
-	setMatchNumber = (matchNumber: string) => {
-		this.setState({
-			matchNumber: matchNumber
-		});
-	};
-
-	setAllianceColor = (color: AllianceColor) => {
-		this.setState({
-			allianceColor: color
-		});
-	};
-
-
-	generateComments = () => {
-		const notes = [
-			{
-				topic: Topic.auto,
-				content: this.props.auto
-			},
-			{
-				topic: Topic.collection,
-				content: this.props.collection
-			},
-			{
-				topic: Topic.shooting,
-				content: this.props.shooting
-			},
-			{
-				topic: Topic.amp,
-				content: this.props.amp
-			},
-			{
-				topic: Topic.path,
-				content: this.props.path
-			},
-			{
-				topic: Topic.defense,
-				content: this.props.defense
-			},
-			{
-				topic: Topic.endgame,
-				content: this.props.endgame
-			},
-			{
-				topic: Topic.humanPlayer,
-				content: this.props.humanPlayer,
-			},
-			{
-				topic: Topic.penalties,
-				content: this.props.penalties
-			},
-			{
-				topic: Topic.drivers,
-				content: this.props.drivers
-			},
-			{
-				topic: Topic.other,
-				content: this.props.other
-			}
-		];
-
-		return notes.filter(content => content.content.trim() !== '');
-	};
-
-	submit = () => {
-		const match: IMatch = {
-			eventCode: this.props.eventCode,
-			matchNumber: this.state.matchNumber,
-			robotNumber: this.state.scoutingTeamNumber,
-			creator: this.props.scouterName,
-			allianceColor: this.state.allianceColor,
-			gameYear: 2025,
-			comments: this.generateComments()
-		};
-		// Let the user know if they missed an input
+	const validateRequiredInfo = (): void => {
 		const problems: string[] = [];
-		if (this.state.matchNumber.length === 0) {
+		if (matchNumber.length === 0)
 			problems.push('You must specify a match number');
-		}
-		if (this.state.scoutingTeamNumber.length === 0) {
-			problems.push('You must specify a team number');
-		}
-		if (this.state.allianceColor === 'UNKNOWN') {
-			problems.push('You must specify an alliance color');
-		}
-		if (problems.length > 0) {
-			alert(problems.join('\n'));
-			return;
-		}
+		if (Number(matchNumber) >= MAX_MATCH_NUMBER)
+			problems.push(`Match # must be below ${MAX_MATCH_NUMBER}`)
+		if (robotNumber.length === 0)
+			problems.push('You must specify a robot number');
 
-		this.props.submitMatch(this.props.teamNumber, this.props.secretCode, match);
-		this.props.resetState();
-		this.setState(INITIAL_STATE);
+		if (problems.length > 0)
+			alert(problems.join('- \n'));
 	};
 
+	const handleSubmit = (): void => {
+		validateRequiredInfo();
 
-	render() {
-		return (
-			<div className='background'>
-				<MatchInformation
-					scoutingTeamNumber={ this.state.scoutingTeamNumber }
-					matchNumber={ this.state.matchNumber }
-					setScoutingTeamNumber={ this.setRobotNumber }
-					setMatchNumber={ this.setMatchNumber }
-				/>
-				<div>
-					<AllianceSelector selectAlliance={ this.setAllianceColor } selected={ this.state.allianceColor }/>
-				</div>
-				
-				<QualitativePage />
-				<div className='submit'>
-					<Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
-					<Button sx={{ m: 0.5 }} variant='contained' className='submit' onClick={ this.submit }>Submit</Button>
-				</div>
+		const match: IMatch = {
+			gameYear: 2025,
+			creator: user.scouterName,
+			eventCode: user.eventCode,
+			matchNumber: matchNumber,
+			robotNumber: robotNumber,
+			comments: generateComments()
+		};
+
+		dispatch(submitMatch(user.teamNumber, user.secretCode, match));
+		dispatch(clearNotes());
+		setRobotNumber('');
+		setMatchNumber('');
+	};
+
+	return (
+		<div className='background'>
+			<MatchInformation
+				scoutingTeamNumber={ robotNumber }
+				matchNumber={ matchNumber }
+				setScoutingTeamNumber={ setRobotNumber }
+				setMatchNumber={ setMatchNumber }
+			/>
+			<QualitativePage />
+			<div className='submit'>
+				<Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
+				<Button sx={{ m: 0.5 }} variant='contained' className='submit' onClick={ handleSubmit }>Submit</Button>
 			</div>
-		);
-	}
+		</div>
+	);
 }
-
-const DataCollectionPage = connect(selector, connectDispatch)(ConnectedDataCollectionPage);
-export default DataCollectionPage;
