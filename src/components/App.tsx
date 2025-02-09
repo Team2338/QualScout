@@ -1,36 +1,15 @@
-import React, { useEffect, useState } from 'react';
 import './App.scss';
+import React, { useEffect } from 'react';
 import { fetchOfflineRequests } from '../state/Effects';
-import { useAppDispatch } from '../state/Hooks';
+import { useAppDispatch, useAppSelector } from '../state/Hooks';
+import { IUser } from '../models/models';
 import DataCollectionPage from './data-collection-page/DataCollectionPage';
 import LandingPage from './landing-page/LandingPage';
-import { loginSuccess } from '../state/Actions';
 
 function App() {
 	const dispatch = useAppDispatch();
-	const [hasLoggedIn, setLoggedIn] = useState(false);
-	const [userInfo, setUserInfo] = useState({
-		teamNumber: '',
-		eventCode: '',
-		secretCode: '',
-		scouterName: ''
-	});
-
-	const setUserInfoCallback = (teamNumber, eventCode, secretCode, scouterName) => {
-		dispatch(loginSuccess({
-			teamNumber: teamNumber,
-			eventCode: eventCode,
-			secretCode: secretCode,
-			scouterName: scouterName
-		}));
-		setUserInfo({
-			teamNumber: teamNumber,
-			eventCode: eventCode,
-			secretCode: secretCode,
-			scouterName: scouterName
-		});
-		setLoggedIn(true);
-	};
+	const user: IUser = useAppSelector(state => state.user);
+	const hasLoggedIn: boolean = !!user;
 
 	useEffect(
 		() => {
@@ -39,11 +18,9 @@ function App() {
 		[dispatch]
 	);
 
-	let component = <LandingPage parentCallback={ setUserInfoCallback } />;
+	let component = <LandingPage />;
 	if (hasLoggedIn) {
-		component = (
-			<DataCollectionPage />
-		);
+		component = <DataCollectionPage />;
 	}
 
 	return (

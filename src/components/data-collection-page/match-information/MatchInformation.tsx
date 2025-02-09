@@ -4,8 +4,8 @@ import React from 'react';
 import './MatchInformation.scss';
 
 interface IProps {
-	scoutingTeamNumber: string;
-	setScoutingTeamNumber: (value: string) => void;
+	robotNumber: string;
+	setRobotNumber: (value: string) => void;
 	matchNumber: string;
 	setMatchNumber: (value: string) => void;
 }
@@ -16,12 +16,12 @@ function MatchInformation(props: IProps) {
 			<img className="logo" src="2338-logo.png" alt="2338 logo" height="100rem" />
 			<div className="textboxes">
 				<TextField
-					label="Team Number"
+					label="Robot Number"
 					variant="outlined"
 					type="number"
-					placeholder="Team Number"
-					value={ props.scoutingTeamNumber }
-					onChange={ (event) => props.setScoutingTeamNumber(event.target.value) }
+					placeholder="Robot Number"
+					value={ props.robotNumber }
+					onChange={ (event) => props.setRobotNumber(event.target.value) }
 				/>
 				<TextField
 					label="Match Number"

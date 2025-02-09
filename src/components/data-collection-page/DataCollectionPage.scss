@@ -2,7 +2,8 @@ $orange: rgb(254, 80, 0);
 $tangaroa: rgb(2, 36, 62);
 $pumice: rgb(186, 191, 183);
 
-.background {
+.data-collection-page {
+	min-height: 100vh;
 	width: 100%;
 	height: 100%;
 	align-items: center;
@@ -13,21 +14,12 @@ $pumice: rgb(186, 191, 183);
 	box-sizing: border-box;
 	background-color: $tangaroa;
 	color: $pumice;
-}
 
-.submit {
-	align-items: center;
-	display: flex;
-	flex-direction: row;
-	overflow-y: auto;
-	text-align: center;
-	box-sizing: border-box;
-	margin: 1rem;
-	padding-top: 25px;
-}
-
-.list {
-	display: grid;
-	place-items: left;
-	text-align: left;
+	.action-buttons {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		padding: 24px 0;
+		column-gap: 8px;
+	}
 }

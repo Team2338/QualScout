@@ -3,10 +3,10 @@ import { Button, TextField } from '@mui/material';
 import { Topic } from '../../../models/models';
 import { saveNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
-import './QualitativePage.scss';
+import './QualitativeSection.scss';
 
 
-export default function QualitativePage() {
+export default function QualitativeSection() {
 	const dispatch = useAppDispatch();
 
 	const [selectedCategory, setSelectedCategory] = useState<Topic>(null);
@@ -46,7 +46,7 @@ export default function QualitativePage() {
 	}
 
 	return (
-		<div className="qualitative-page">
+		<div className="qualitative-section">
 			<h1>Categories</h1>
 			<NoteStatus />
 

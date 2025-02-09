@@ -5,16 +5,20 @@ import { InputAdornment } from '@mui/material';
 import './LandingPage.scss';
 import { connect } from 'react-redux';
 import { sendOfflineRequests } from '../../state/Effects';
+import { IUser } from '../../models/models';
+import { loginSuccess } from '../../state/Actions';
+import { IAppState } from '../../models/state';
 
-const inputs = (state) => ({
+const inputs = (state: IAppState) => ({
 	numOfflineMatches: state.cache.matches.length
 });
 
 const outputs = (dispatch) => ({
-	sendOfflineRequests: () => dispatch(sendOfflineRequests())
+	sendOfflineRequests: () => dispatch(sendOfflineRequests()),
+	login: (user: IUser) => dispatch(loginSuccess(user))
 });
 
-class ConnectedLandingPage extends React.Component<any, any> {
+class ConnectedLandingPage extends React.Component<any, any & IUser> {
 
 	constructor(props) {
 		super(props);
@@ -32,7 +36,7 @@ class ConnectedLandingPage extends React.Component<any, any> {
 		localStorage.setItem('eventCode', this.state.eventCode.toString());
 		localStorage.setItem('secretCode', this.state.secretCode.toString());
 		localStorage.setItem('scouterName', this.state.scouterName.toString());
-		this.props.parentCallback(this.state.teamNumber, this.state.eventCode, this.state.secretCode, this.state.scouterName);
+		this.props.login(this.state);
 	};
 
 	handleChange = (event) => {
@@ -55,7 +59,7 @@ class ConnectedLandingPage extends React.Component<any, any> {
 		}));
 	}
 
-	isSubmitDisabled = () => {
+	isSubmitDisabled = (): boolean => {
 		return (
 			this.state.teamNumber.length === 0
 			|| this.state.eventCode.length === 0

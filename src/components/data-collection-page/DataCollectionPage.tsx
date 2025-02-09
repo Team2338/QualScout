@@ -5,7 +5,7 @@ import { IMatch, INote, IUser, Topic } from '../../models/models';
 import { clearNotes } from '../../state/Actions';
 import { submitMatch } from '../../state/Effects';
 import MatchInformation from './match-information/MatchInformation';
-import QualitativePage from './qualitative-section/QualitativePage';
+import QualitativeSection from './qualitative-section/QualitativeSection';
 import { useAppDispatch, useAppSelector } from '../../state/Hooks';
 
 const MAX_MATCH_NUMBER = 200;
@@ -31,7 +31,7 @@ export default function DataCollectionPage() {
 		if (matchNumber.length === 0)
 			problems.push('You must specify a match number');
 		if (Number(matchNumber) >= MAX_MATCH_NUMBER)
-			problems.push(`Match # must be below ${MAX_MATCH_NUMBER}`)
+			problems.push(`Match # must be below ${MAX_MATCH_NUMBER}`);
 		if (robotNumber.length === 0)
 			problems.push('You must specify a robot number');
 
@@ -58,17 +58,17 @@ export default function DataCollectionPage() {
 	};
 
 	return (
-		<div className='background'>
+		<div className="data-collection-page">
 			<MatchInformation
-				scoutingTeamNumber={ robotNumber }
+				robotNumber={ robotNumber }
 				matchNumber={ matchNumber }
-				setScoutingTeamNumber={ setRobotNumber }
+				setRobotNumber={ setRobotNumber }
 				setMatchNumber={ setMatchNumber }
 			/>
-			<QualitativePage />
-			<div className='submit'>
-				<Button sx={{ m: 0.5 }} variant='outlined' className='submit' href='/'>Back</Button>
-				<Button sx={{ m: 0.5 }} variant='contained' className='submit' onClick={ handleSubmit }>Submit</Button>
+			<QualitativeSection />
+			<div className='action-buttons'>
+				<Button sx={{ m: 0.5 }} variant='outlined' href='/'>Back</Button>
+				<Button sx={{ m: 0.5 }} variant='contained' onClick={ handleSubmit }>Submit</Button>
 			</div>
 		</div>
 	);
