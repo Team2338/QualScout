@@ -49,113 +49,115 @@ export default function LandingPage() {
 	);
 
 	return (
-		<div className="wrapper">
+		<div className="landing-page">
 			<div className="header">
-				<div className="logo-wrapper">
-					<a href="https://twitter.com/FIRST2338">
-						<img src="2338-logo.png" alt="2338 logo" height="100rem"/>
-					</a>
-				</div>
+				<img
+					src="2338-logo.png"
+					alt="2338 logo"
+					height="100"
+				/>
 				<div className="title-and-version">
 					<h1 className="title">QualScout</h1>
 					<div className="version">v{ import.meta.env.VITE_APP_VERSION }</div>
 				</div>
 			</div>
 
-			<h1 className="login-title">Sign In:</h1>
-			<div className="landingpage-forms">
+			<form
+				className="login-form"
+			>
+				<h1 className="login-form-title">Sign In:</h1>
 				<TextField
-					name="teamNumber"
 					id="team-number"
+					name="teamNumber"
 					label="Your Team Number"
-					variant="filled"
 					type="number"
-					onChange={ (event) => setTeamNumber(event.target.value) }
+					margin="dense"
+					variant="filled"
 					value={ teamNumber }
-					InputProps={{
-						startAdornment: <InputAdornment position="start">#</InputAdornment>
-					}}
-					inputProps={{
-						min: 0,
-						max: 9999
+					onChange={ (event) => setTeamNumber(event.target.value) }
+					slotProps={{
+						input: {
+							startAdornment: <InputAdornment position="start">#</InputAdornment>
+						},
+						htmlInput: {
+							min: 0,
+							max: 10999
+						}
 					}}
 				/>
-			</div>
-
-			<div className="landingpage-forms">
 				<TextField
-					name="eventCode"
 					id="event-code"
+					name="eventCode"
 					label="Event Code"
-					variant="filled"
 					type="text"
-					onChange={ (event) => setEventCode(event.target.value) }
+					margin="dense"
+					variant="filled"
 					value={ eventCode }
-					placeholder="Event Code"
-					inputProps={{
-						maxLength: 32
+					onChange={ (event) => setEventCode(event.target.value) }
+					slotProps={{
+						htmlInput: {
+							maxLength: 32
+						}
 					}}
 				/>
-			</div>
-
-			<div className="landingpage-forms">
 				<TextField
-					name="scouterName"
 					id="scouter-name"
+					name="scouterName"
 					label="Scouter Name"
-					variant="filled"
 					type="text"
-					onChange={ (event) => setScouterName(event.target.value) }
+					margin="dense"
+					variant="filled"
 					value={ scouterName }
-					placeholder="Scouter Name"
-					inputProps={{
-						maxLength: 32
+					onChange={ (event) => setScouterName(event.target.value) }
+					slotProps={{
+						htmlInput: {
+							maxLength: 32
+						}
 					}}
 				/>
-			</div>
-			<div className="landingpage-forms">
 				<TextField
-					name="secretCode"
 					id="secret-code"
+					name="secretCode"
 					label="Secret Code"
-					variant="filled"
 					type="text"
-					onChange={ (event) => setSecretCode(event.target.value) }
+					margin="dense"
+					variant="filled"
 					value={ secretCode }
-					placeholder="Secret Code"
-					inputProps={{
-						maxLength: 32
+					onChange={ (event) => setSecretCode(event.target.value) }
+					slotProps={{
+						htmlInput: {
+							maxLength: 32
+						}
 					}}
 				/>
+				<ul className="directions-area">
+					<span className="note">Note:</span>
+					<li className="direction">Enter a team-specific "secret code" to store data</li>
+					<li className="direction">This code will be needed to view your data in the analytics app</li>
+					<li className="direction">All scouters from the same team should use the same code</li>
+				</ul>
+				<Button
+					id="submit-button"
+					variant="contained"
+					type="submit"
+					size="medium"
+					onClick={ handleSubmit }
+					disabled={ isSubmitDisabled }
+				>
+					Submit
+				</Button>
+			</form>
+			<div className="retry-send-button-wrapper">
+				<Button
+					variant="contained"
+					size="medium"
+					color="primary"
+					onClick={ handleSendOfflineRequests }
+					disabled={ numOfflineMatches === 0 }
+				>
+					Retry saved matches
+				</Button>
 			</div>
-
-			<div className="points-landingpage">*Enter team specific password to store data*</div>
-			<div className="points-landingpage">*This code will be used to view your analytics*</div>
-			<div className="points-landingpage">*Make sure all scouters from the same team use the same code*</div>
-			<Button
-				name="submit"
-				className="button"
-				type="button"
-				variant="contained"
-				size="medium"
-				onClick={ handleSubmit }
-				disabled={ isSubmitDisabled }
-			>
-				Submit
-			</Button>
-			<Button
-				variant="contained"
-				size="medium"
-				color="primary"
-				onClick={ handleSendOfflineRequests }
-				disabled={ numOfflineMatches === 0 }
-				sx={{
-					marginTop: 'auto',
-					marginBottom: '24px'
-				}}
-			>
-				Retry saved matches
-			</Button>
 		</div>
 	);
 }

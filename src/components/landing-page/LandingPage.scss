@@ -6,103 +6,79 @@ $pumice: rgb(186, 191, 183);
 	color: $orange;
 }
 
-.wrapper {
+.landing-page {
 	width: 100vw;
 	height: 100vh;
 	align-items: center;
+	color: $tangaroa;
 	background-color: $pumice;
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
-	text-align: center;
-	box-sizing: border-box;
-}
 
-.header {
-	display: grid;
-	grid-template-columns: 1fr auto 1fr; // Right 1fr is used to center the title
-	align-items: center;
-	background-color: $tangaroa;
-	color: $orange;
-	margin-bottom: 10px;
-	padding: 10px 10px;
-	width: 100%;
-	box-sizing: border-box;
+	.header {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr; // Right 1fr is used to center the title
+		align-items: center;
+		background-color: $tangaroa;
+		color: $orange;
+		padding: 10px 10px;
+		width: 100%;
+		box-sizing: border-box;
 
-	.logo-wrapper {
-		display: flex;
-	}
+		.title-and-version {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
 
-	.title-and-version {
-		display: flex;
-		flex-direction: column;
-
-		.title {
-			margin: 0;
+			.title {
+				margin: 0;
+			}
 		}
 	}
-}
 
-.main-title {
-	color: $orange;
-}
+	.login-form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-.css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root.Mui-selected:focus {
-	background-color: rgba(254, 80, 0, 0.495);
-	transition: .3s;
-}
+		&-title {
+			margin: 32px 0 12px
+		}
 
-.css-8c8mkq-MuiButtonBase-root-MuiMenuItem-root:hover {
-	background-color: $pumice !important;
-	color: $tangaroa;
-	transition: .3s;
-}
+		#team-number,
+		#event-code,
+		#scouter-name,
+		#secret-code {
+			min-width: 18rem !important;
+			color: $tangaroa;
+		}
 
-.points-landingpage {
-	color: $tangaroa;
-}
+		.directions-area {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			text-align: left;
+			margin: 0;
+			padding: 16px 16px 20px 24px;
 
-.login-title {
-	color: $tangaroa
-}
+			.note {
+				font-weight: 600;
+			}
+		}
 
-.button {
-	color: $orange;
-	background-color: $pumice;
-	margin-top: 30px;
-	margin-left: 600px;
-	margin-right: 600px;
-	margin-bottom: 3rem !important;
-}
+		#submit-button {
+			width: min(200px, 50%);
+		}
+	}
 
-.landingpage-forms {
-	margin-bottom: 1rem !important;
-}
 
-#team-number,
-#event-code,
-#scouter-name,
-#secret-code {
-	min-width: 18rem !important;
-	color: $tangaroa;
-}
-
-#lang {
-	border: solid $tangaroa;
-	width: 64px
-}
-
-@media only screen and (max-width: 700px) {
-	.button {
-		width: 50% !important;
+	.retry-send-button-wrapper {
+		display: flex;
+		width: fit-content;
+		height: fit-content;
+		padding: 24px;
+		margin-top: auto;
 	}
 }
 
-@media only screen and (max-width: 400px) {
-	.main-title {
-		font-size: 30px;
-	}
-	.landingpage-logo {
-		height: 6rem;
-	}
-}
