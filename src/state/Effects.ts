@@ -1,4 +1,4 @@
-import { ICachedMatch, IMatch } from '../models/models';
+import { ICachedMatch, IMatch, IUser } from '../models/models';
 import { IAppState } from '../models/state';
 import GearscoutService from '../services/GearscoutService';
 import { clearOfflineMatches, getOfflineMatchesSuccess } from './Actions';
@@ -53,8 +53,9 @@ export const sendOfflineRequests = () => async (dispatch: AppDispatch, getState:
 	alert(`Failed to send ${nextOfflineRequests.length} requests`);
 };
 
-export const submitMatch = (teamNumber: string, secretCode: string, match: IMatch) => async (dispatch: AppDispatch) => {
-	sendRequest(teamNumber, secretCode, match)
+export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getState: GetState) => {
+	const user: IUser = getState().user;
+	sendRequest(user.teamNumber, user.secretCode, match)
 		.then((result: MatchResponseStatus) => {
 			if (result === 'SUCCESS') {
 				alert('Data Submitted!');
@@ -62,7 +63,7 @@ export const submitMatch = (teamNumber: string, secretCode: string, match: IMatc
 			}
 
 			if (result === 'OFFLINE') {
-				dispatch(saveOfflineRequest(teamNumber, secretCode, match));
+				dispatch(saveOfflineRequest(user.teamNumber, user.secretCode, match));
 				alert('You are offline! Saving request for later.');
 				return;
 			}
