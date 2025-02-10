@@ -2,10 +2,6 @@ $orange: rgb(254, 80, 0);
 $tangaroa: rgb(2, 36, 62);
 $pumice: rgb(186, 191, 183);
 
-.text {
-	color: $orange;
-}
-
 .landing-page {
 	width: 100vw;
 	height: 100vh;
@@ -51,7 +47,6 @@ $pumice: rgb(186, 191, 183);
 		#scouter-name,
 		#secret-code {
 			min-width: 18rem !important;
-			color: $tangaroa;
 		}
 
 		.directions-area {

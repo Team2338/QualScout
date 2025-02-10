@@ -7,6 +7,7 @@ import store from './state/Store';
 import './index.scss';
 
 const GRAY = '#BABFB7';
+const TANGAROA = '#02243E';
 
 export const themeOptions = {
 	palette: {
@@ -36,6 +37,16 @@ export const themeOptions = {
 			styleOverrides: {
 				outlined: {
 					color: GRAY
+				},
+				filled: {
+					color: '#000000AA'
+				}
+			}
+		},
+		MuiFilledInput: {
+			styleOverrides: {
+				root: {
+					color: TANGAROA
 				}
 			}
 		},
