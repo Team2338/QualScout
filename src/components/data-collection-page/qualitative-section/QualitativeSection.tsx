@@ -66,9 +66,9 @@ export default function QualitativeSection() {
 				disabled={ selectedCategory === null }
 			/>
 
-			<Button variant="contained" onClick={ submit } disabled={ selectedCategory === null }>Submit Note</Button>
+			<Button variant="contained" onClick={ submit } disabled={ selectedCategory === null }>Save Note</Button>
 
-			<h1>Submitted Notes</h1>
+			<h1>Saved Notes</h1>
 			<ul className="submitted-notes">
 				{
 					Object.values(Topic).map((topic: Topic) => (
