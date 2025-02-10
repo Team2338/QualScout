@@ -38,8 +38,8 @@ export default function LandingPage() {
 	};
 
 	const handleSendOfflineRequests = (): void => {
-		dispatch(sendOfflineRequests())
-	}
+		dispatch(sendOfflineRequests());
+	};
 
 	const isSubmitDisabled = (
 		teamNumber.trim().length === 0
