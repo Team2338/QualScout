@@ -1,0 +1,44 @@
+$tangaroa: rgb(2, 36, 62);
+
+.match-information {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	grid-template-rows: auto;
+	grid-template-areas: "logo textboxes analytics";
+	align-items: center;
+	width: 100%;
+	row-gap: 8px;
+	padding: 16px;
+	box-sizing: border-box;
+	background-color: $tangaroa;
+
+	@media only screen and (width < 520px) {
+		grid-template-areas:
+			"logo . analytics"
+			"textboxes textboxes textboxes";
+	}
+
+	.logo {
+		grid-area: logo;
+	}
+
+	.textboxes {
+		grid-area: textboxes;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		row-gap: 16px;
+		width: 100%;
+		min-width: 10rem;
+		box-sizing: border-box;
+	}
+
+	.analytics {
+		display: flex;
+		grid-area: analytics;
+		width: fit-content;
+	}
+}
+
+
+

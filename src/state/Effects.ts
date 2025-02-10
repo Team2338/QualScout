@@ -1,10 +1,10 @@
 import { ICachedMatch, IMatch } from '../models/models';
-import { AppState } from '../models/state';
-import GearscoutService from '../Services/GearscoutService';
+import { IAppState } from '../models/state';
+import GearscoutService from '../services/GearscoutService';
 import { clearOfflineMatches, getOfflineMatchesSuccess } from './Actions';
 import { AppDispatch } from './Store';
 
-type GetState = () => AppState;
+type GetState = () => IAppState;
 type MatchResponseStatus = 'SUCCESS' | 'OFFLINE' | 'FAIL';
 const OFFLINE_REQUEST_LOCATION: string = 'offlineRequests';
 
