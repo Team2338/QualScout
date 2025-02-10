@@ -2,6 +2,7 @@ $orange: rgb(254, 80, 0);
 $tangaroa: rgb(2, 36, 62);
 $pumice: rgb(186, 191, 183);
 
+
 .landing-page {
 	width: 100vw;
 	height: 100vh;
@@ -30,6 +31,24 @@ $pumice: rgb(186, 191, 183);
 			.title {
 				margin: 0;
 			}
+		}
+	}
+
+	.MuiTextField-root {
+		$fontColor: #000000aa;
+
+		.MuiFormLabel-root {
+			color: $fontColor;
+		}
+
+		.MuiInputAdornment-root {
+			.MuiTypography-root {
+				color: $fontColor;
+			}
+		}
+
+		.MuiInputBase-input {
+			color: $tangaroa;
 		}
 	}
 

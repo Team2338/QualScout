@@ -22,4 +22,21 @@ $pumice: rgb(186, 191, 183);
 		padding: 24px 0;
 		column-gap: 8px;
 	}
+
+	.MuiTextField-root {
+		.MuiFormLabel-root {
+			color: $pumice;
+		}
+
+		.MuiOutlinedInput {
+			&-input {
+				color: $pumice;
+			}
+
+			&-notchedOutline {
+				border-color: $pumice;
+
+			}
+		}
+	}
 }
