@@ -26,7 +26,7 @@ export default function QualitativeSection() {
 		const handleButtonClick = (topic: Topic) => {
 			setNoteContent(savedNotes[topic]);
 			setSelectedCategory(topic);
-		}
+		};
 
 		return (
 			<div className="category-buttons">

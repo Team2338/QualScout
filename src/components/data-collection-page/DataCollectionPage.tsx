@@ -51,7 +51,7 @@ export default function DataCollectionPage() {
 			comments: generateComments()
 		};
 
-		dispatch(submitMatch(user.teamNumber, user.secretCode, match));
+		dispatch(submitMatch(match));
 		dispatch(clearNotes());
 		setRobotNumber('');
 		setMatchNumber('');
