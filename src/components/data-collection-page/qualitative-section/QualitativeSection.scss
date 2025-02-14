@@ -11,6 +11,17 @@
 		row-gap: 8px;
 	}
 
+	.dropdown-buttons {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		column-gap: 8px;
+		row-gap: 8px;
+		margin-bottom: 8px;
+		color: #fe5000;
+	}
+
 	.submitted-notes {
 		display: flex;
 		flex-direction: column;

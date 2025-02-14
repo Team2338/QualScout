@@ -10,17 +10,17 @@ const INITIAL_STATE: IAppState = {
 	},
 	notes: {
 		[Topic.auto]: '',
-		[Topic.collection]: '',
-		[Topic.shooting]: '',
-		[Topic.amp]: '',
-		[Topic.path]: '',
-		[Topic.defense]: '',
-		[Topic.endgame]: '',
-		[Topic.humanPlayer]: '',
-		[Topic.penalties]: '',
+		[Topic.pathing]: '',
+		[Topic.coral]: '',
+		[Topic.algae]: '',
 		[Topic.drivers]: '',
+		[Topic.hp]: '',
+		[Topic.penalties]: '',
+		[Topic.climb]: '',
+		[Topic.defense]: '',
 		[Topic.other]: '',
-	}
+	},
+
 };
 
 export function reducer(state: IAppState = INITIAL_STATE, action: IAction): IAppState {
