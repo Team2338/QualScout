@@ -6,7 +6,7 @@ export interface IMatch {
 	robotNumber: string;
 	creator: string;
 	comments: INote[];
-}
+} 
 
 export interface ICachedMatch extends IMatch {
 	teamNumber: string;
@@ -104,17 +104,20 @@ export enum HumanP {
 }
 
 export enum Climb {
+	a = 'Fast or Sturdy Climb',
+	b = 'Long or Wobbly Climb',
+	c = 'That Bot Should Not be Hanging'
+}
+export enum DefenseSkill {
 	a = '<5 second climb',
 	b = 'Long or Wobbly Climb',
 	c = 'That bot should not be hanging'
 }
-
-export enum Defense {
-	a = 'Great defense',
-	b = 'Not very good',
-	c = 'Defense not played'
+export enum DefenseType {
+	a = 'Zone Defense',
+	b = 'Targeted Defense',
+	c = 'No Defense'
 }
-
 export interface IUser {
 	teamNumber: string;
 	scouterName: string;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import { Topic, Auto, Pathing, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, Drivers, HumanP, Climb, Defense } from '../../../models/models';
+import { Topic, Auto, Pathing, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, Drivers, HumanP, Climb, DefenseSkill, DefenseType } from '../../../models/models';
 import { saveNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
@@ -25,14 +25,15 @@ export default function QualitativeSection() {
 	const [algaeProcessor, setAlgaeProcessor] = useState<string>();
 	const [algaeBarge, setAlgaeBarge] = useState<string>();
 
-	const [autoDriver, setAutoDriver] = useState<string>();
+	const [driver, setDriver] = useState<string>();
 
-	const [autoHuman, setAutoHuman] = useState<string>();
+	const [human, setHuman] = useState<string>();
 
-	const [autoClimb, setAutoClimb] = useState<string>();
+	const [climb, setClimb] = useState<string>();
 
-	const [autoDefense, setAutoDefense] = useState<string>();
-	
+	const [defenseSkill, setDefenseSkill] = useState<string>();
+	const [defenseType, setDefenseType] = useState<string>();
+  
 	const submit = (event) => {
 		event.preventDefault();
 		if (selectedCategory !== null) {
@@ -253,8 +254,7 @@ export default function QualitativeSection() {
 					<TextField
 						select
 						label="HP at Processor"
-						value={ autoHuman }
-						onChange={ (event) => setAutoHuman(event.target.value as Topic) }
+						value={ human }
 						variant="outlined"
 						fullWidth
 					>
@@ -273,8 +273,8 @@ export default function QualitativeSection() {
 					<TextField
 						select
 						label="Driver Ability"
-						value={ autoDriver }
-						onChange={ (event) => setAutoDriver(event.target.value as Topic) }
+						value={ driver }
+						onChange={ (event) => setDriver(event.target.value as Topic) }
 						variant="outlined"
 						fullWidth
 					>
@@ -293,8 +293,8 @@ export default function QualitativeSection() {
 					<TextField
 						select
 						label="Climb Skill"
-						value={ autoClimb }
-						onChange={ (event) => setAutoClimb(event.target.value as Topic) }
+						value={ climb }
+						onChange={ (event) => setClimb(event.target.value as Topic) }
 						variant="outlined"
 						fullWidth
 					>
@@ -310,23 +310,42 @@ export default function QualitativeSection() {
 				)}
 
 				{selectedCategory === Topic.defense && (
-					<TextField
-						select
-						label="Defense Skill"
-						value={ autoDefense }
-						onChange={ (event) => setAutoDefense(event.target.value as Topic) }
-						variant="outlined"
-						fullWidth
-					>
-						<option value="" disabled>Select a category</option>
-						{
-							Object.values(Defense).map((topic: Defense) => (
-								<option key={ topic } value={ topic }>
-									{ topic }
-								</option>
-							))
-						}
-					</TextField>
+					<div className="dropdown-buttons">
+						<TextField
+							select
+							label="Defense Skill"
+							value={ defenseSkill }
+							onChange={ (event) => setDefenseSkill(event.target.value as Topic) }
+							variant="outlined"
+							fullWidth
+						>
+							<option value="" disabled>Select a category</option>
+							{
+								Object.values(DefenseSkill).map((topic: DefenseSkill) => (
+									<option key={ topic } value={ topic }>
+										{ topic }
+									</option>
+								))
+							}
+						</TextField>
+						<TextField
+							select
+							label="Defense Type"
+							value={ defenseType }
+							onChange={ (event) => setDefenseType(event.target.value as Topic) }
+							variant="outlined"
+							fullWidth
+						>
+							<option value="" disabled>Select a category</option>
+							{
+								Object.values(DefenseType).map((topic: DefenseType) => (
+									<option key={ topic } value={ topic }>
+										{ topic }
+									</option>
+								))
+							}
+						</TextField>
+					</div>
 				)}
 			</div>
 
