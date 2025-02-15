@@ -79,9 +79,6 @@ export default function QualitativeSection() {
 						label="Placement Accuracy"
 						value={ autoDrop }
 						onChange={ (event) => setAutoDrop(event.target.value as Topic) }
-						SelectProps={{
-							native: true,
-						}}
 						variant="outlined"
 						fullWidth
 					>
@@ -103,9 +100,6 @@ export default function QualitativeSection() {
 						label="Driver Pathing"
 						value={ pathingDrop }
 						onChange={ (event) => setPathingDrop(event.target.value as Topic) }
-						SelectProps={{
-							native: true,
-						}}
 						variant="outlined"
 						fullWidth
 					>
@@ -128,9 +122,6 @@ export default function QualitativeSection() {
 							label="Ground Collection"
 							value={ coralGroundCollection }
 							onChange={ (event) => setCoralGroundCollection(event.target.value as Topic) }
-							SelectProps={{
-								native: true,
-							}}
 							variant="outlined"
 							fullWidth
 						>
@@ -149,9 +140,6 @@ export default function QualitativeSection() {
 							label="Station Collection"
 							value={ coralStationCollection }
 							onChange={ (event) => setCoralStationCollection(event.target.value as Topic) }
-							SelectProps={{
-								native: true,
-							}}
 							variant="outlined"
 							fullWidth
 						>
@@ -170,9 +158,6 @@ export default function QualitativeSection() {
 							label="Scoring"
 							value={ coralScoring }
 							onChange={ (event) => setCoralScoring(event.target.value as Topic) }
-							SelectProps={{
-								native: true,
-							}}
 							variant="outlined"
 							fullWidth
 						>
@@ -195,9 +180,6 @@ export default function QualitativeSection() {
 							label="Ground Collection"
 							value={ algaeGroundCollection }
 							onChange={ (event) => setAlgaeGroundCollection(event.target.value as Topic) }
-							SelectProps={{
-								native: true,
-							}}
 							variant="outlined"
 							fullWidth
 						>
@@ -216,9 +198,6 @@ export default function QualitativeSection() {
 							label="Reef Collection"
 							value={ algaeReefCollection }
 							onChange={ (event) => setAlgaeReefCollection(event.target.value as Topic) }
-							SelectProps={{
-								native: true,
-							}}
 							variant="outlined"
 							fullWidth
 						>
@@ -237,9 +216,6 @@ export default function QualitativeSection() {
 							label="Processor"
 							value={ algaeProcessor }
 							onChange={ (event) => setAlgaeProcessor(event.target.value as Topic) }
-							SelectProps={{
-								native: true,
-							}}
 							variant="outlined"
 							fullWidth
 						>
@@ -258,9 +234,6 @@ export default function QualitativeSection() {
 							label="Barge"
 							value={ algaeBarge }
 							onChange={ (event) => setAlgaeBarge(event.target.value as Topic) }
-							SelectProps={{
-								native: true,
-							}}
 							variant="outlined"
 							fullWidth
 						>
@@ -282,9 +255,6 @@ export default function QualitativeSection() {
 						label="HP at Processor"
 						value={ autoHuman }
 						onChange={ (event) => setAutoHuman(event.target.value as Topic) }
-						SelectProps={{
-							native: true,
-						}}
 						variant="outlined"
 						fullWidth
 					>
@@ -305,9 +275,6 @@ export default function QualitativeSection() {
 						label="Driver Ability"
 						value={ autoDriver }
 						onChange={ (event) => setAutoDriver(event.target.value as Topic) }
-						SelectProps={{
-							native: true,
-						}}
 						variant="outlined"
 						fullWidth
 					>
@@ -328,9 +295,6 @@ export default function QualitativeSection() {
 						label="Climb Skill"
 						value={ autoClimb }
 						onChange={ (event) => setAutoClimb(event.target.value as Topic) }
-						SelectProps={{
-							native: true,
-						}}
 						variant="outlined"
 						fullWidth
 					>
@@ -351,9 +315,6 @@ export default function QualitativeSection() {
 						label="Defense Skill"
 						value={ autoDefense }
 						onChange={ (event) => setAutoDefense(event.target.value as Topic) }
-						SelectProps={{
-							native: true,
-						}}
 						variant="outlined"
 						fullWidth
 					>
