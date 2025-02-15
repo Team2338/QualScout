@@ -108,19 +108,16 @@ export enum Climb {
 	b = 'Long or Wobbly Climb',
 	c = 'That Bot Should Not be Hanging'
 }
-
 export enum DefenseSkill {
-	a = 'Great defense',
-	b = 'Not very good',
-	c = 'Defense not played'
+	a = '<5 second climb',
+	b = 'Long or Wobbly Climb',
+	c = 'That bot should not be hanging'
 }
-
 export enum DefenseType {
 	a = 'Zone Defense',
 	b = 'Targeted Defense',
 	c = 'No Defense'
 }
-
 export interface IUser {
 	teamNumber: string;
 	scouterName: string;

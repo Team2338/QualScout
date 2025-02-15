@@ -33,7 +33,7 @@ export default function QualitativeSection() {
 
 	const [defenseSkill, setDefenseSkill] = useState<string>();
 	const [defenseType, setDefenseType] = useState<string>();
-
+  
 	const submit = (event) => {
 		event.preventDefault();
 		if (selectedCategory !== null) {
@@ -255,7 +255,6 @@ export default function QualitativeSection() {
 						select
 						label="HP at Processor"
 						value={ human }
-						onChange={ (event) => setHuman(event.target.value as Topic) }
 						variant="outlined"
 						fullWidth
 					>
