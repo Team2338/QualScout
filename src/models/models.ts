@@ -49,43 +49,43 @@ export enum Pathing {
 	c = 'Many Collisions'
 }
 
-export enum Coral1 {
+export enum CoralGroundCollection {
 	a = 'Quick Snag',
 	b = 'Align',
 	c = 'Cant Pick up'
 }
 
-export enum Coral2 {
+export enum CoralStationCollection {
 	a = 'Quick Collection',
 	b = 'Align',
 	c = 'Drop Piece'
 }
 
-export enum Coral3 {
+export enum CoralScoring {
 	a = 'Instant Place',
 	b = 'Long Lineup',
 	c = 'Cant Place'
 }
 
-export enum Algae1 {
+export enum AlgaeGroundCollection {
 	a = 'Good Pickup',
 	b = 'Pushes it',
 	c = 'Cant Pickup'
 }
 
-export enum Algae2 {
+export enum AlgaeReefCollection {
 	a = 'Good Pickup',
 	b = 'Long Alignment',
 	c = 'Knocks it Down'
 }
 
-export enum Algae3 {
+export enum AlgaeProcessor {
 	a = 'Instant Place',
 	b = 'Long Alignment',
 	c = 'No Scoring Mechanism'
 }
 
-export enum Algae4 {
+export enum AlgaeBarge {
 	a = 'Instant Score',
 	b = 'Needs to Lineup',
 	c = 'Cant Score'

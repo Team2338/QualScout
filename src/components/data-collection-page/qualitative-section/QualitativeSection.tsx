@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import { Topic, Auto, Pathing, Coral1, Coral2, Coral3, Algae1, Algae2, Algae3, Algae4, Drivers, HumanP, Climb, Defense } from '../../../models/models';
+import { Topic, Auto, Pathing, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, Drivers, HumanP, Climb, Defense } from '../../../models/models';
 import { saveNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
@@ -16,14 +16,14 @@ export default function QualitativeSection() {
 	const [autoDrop, setAutoDrop] = useState<string>(); 
 	const [pathingDrop, setPathingDrop] = useState<string>();
 
-	const [autoCoral1, setAutoCoral1] = useState<string>();
-	const [autoCoral2, setAutoCoral2] = useState<string>();
-	const [autoCoral3, setAutoCoral3] = useState<string>();
+	const [coralGroundCollection, setCoralGroundCollection] = useState<string>();
+	const [coralStationCollection, setCoralStationCollection] = useState<string>();
+	const [coralScoring, setCoralScoring] = useState<string>();
 
-	const [autoAlgae1, setAutoAlgae1] = useState<string>();
-	const [autoAlgae2, setAutoAlgae2] = useState<string>();
-	const [autoAlgae3, setAutoAlgae3] = useState<string>();
-	const [autoAlgae4, setAutoAlgae4] = useState<string>();
+	const [algaeGroundCollection, setAlgaeGroundCollection] = useState<string>();
+	const [algaeReefCollection, setAlgaeReefCollection] = useState<string>();
+	const [algaeProcessor, setAlgaeProcessor] = useState<string>();
+	const [algaeBarge, setAlgaeBarge] = useState<string>();
 
 	const [autoDriver, setAutoDriver] = useState<string>();
 
@@ -122,12 +122,12 @@ export default function QualitativeSection() {
 				)}
 
 				{selectedCategory === Topic.coral && (
-					<div>
+					<div className="dropdown-buttons">
 						<TextField
 							select
 							label="Ground Collection"
-							value={ autoCoral1 }
-							onChange={ (event) => setAutoCoral1(event.target.value as Topic) }
+							value={ coralGroundCollection }
+							onChange={ (event) => setCoralGroundCollection(event.target.value as Topic) }
 							SelectProps={{
 								native: true,
 							}}
@@ -136,7 +136,7 @@ export default function QualitativeSection() {
 						>
 							<option value="" disabled>Select a category</option>
 							{
-								Object.values(Coral1).map((topic: Coral1) => (
+								Object.values(CoralGroundCollection).map((topic: CoralGroundCollection) => (
 									<option key={ topic } value={ topic }>
 										{ topic }
 									</option>
@@ -147,8 +147,8 @@ export default function QualitativeSection() {
 						<TextField
 							select
 							label="Station Collection"
-							value={ autoCoral2 }
-							onChange={ (event) => setAutoCoral2(event.target.value as Topic) }
+							value={ coralStationCollection }
+							onChange={ (event) => setCoralStationCollection(event.target.value as Topic) }
 							SelectProps={{
 								native: true,
 							}}
@@ -157,7 +157,7 @@ export default function QualitativeSection() {
 						>
 							<option value="" disabled>Select a category</option>
 							{
-								Object.values(Coral2).map((topic: Coral2) => (
+								Object.values(CoralStationCollection).map((topic: CoralStationCollection) => (
 									<option key={ topic } value={ topic }>
 										{ topic }
 									</option>
@@ -168,8 +168,8 @@ export default function QualitativeSection() {
 						<TextField
 							select
 							label="Scoring"
-							value={ autoCoral3 }
-							onChange={ (event) => setAutoCoral3(event.target.value as Topic) }
+							value={ coralScoring }
+							onChange={ (event) => setCoralScoring(event.target.value as Topic) }
 							SelectProps={{
 								native: true,
 							}}
@@ -178,7 +178,7 @@ export default function QualitativeSection() {
 						>
 							<option value="" disabled>Select a category</option>
 							{
-								Object.values(Coral3).map((topic: Coral3) => (
+								Object.values(CoralScoring).map((topic: CoralScoring) => (
 									<option key={ topic } value={ topic }>
 										{ topic }
 									</option>
@@ -189,12 +189,12 @@ export default function QualitativeSection() {
 				)}
 
 				{selectedCategory === Topic.algae && (
-					<div>
+					<div className="dropdown-buttons">
 						<TextField
 							select
 							label="Ground Collection"
-							value={ autoAlgae1 }
-							onChange={ (event) => setAutoAlgae1(event.target.value as Topic) }
+							value={ algaeGroundCollection }
+							onChange={ (event) => setAlgaeGroundCollection(event.target.value as Topic) }
 							SelectProps={{
 								native: true,
 							}}
@@ -203,7 +203,7 @@ export default function QualitativeSection() {
 						>
 							<option value="" disabled>Select a category</option>
 							{
-								Object.values(Algae1).map((topic: Algae1) => (
+								Object.values(AlgaeGroundCollection).map((topic: AlgaeGroundCollection) => (
 									<option key={ topic } value={ topic }>
 										{ topic }
 									</option>
@@ -214,8 +214,8 @@ export default function QualitativeSection() {
 						<TextField
 							select
 							label="Reef Collection"
-							value={ autoAlgae2 }
-							onChange={ (event) => setAutoAlgae2(event.target.value as Topic) }
+							value={ algaeReefCollection }
+							onChange={ (event) => setAlgaeReefCollection(event.target.value as Topic) }
 							SelectProps={{
 								native: true,
 							}}
@@ -224,7 +224,7 @@ export default function QualitativeSection() {
 						>
 							<option value="" disabled>Select a category</option>
 							{
-								Object.values(Algae2).map((topic: Algae2) => (
+								Object.values(AlgaeReefCollection).map((topic: AlgaeReefCollection) => (
 									<option key={ topic } value={ topic }>
 										{ topic }
 									</option>
@@ -235,8 +235,8 @@ export default function QualitativeSection() {
 						<TextField
 							select
 							label="Processor"
-							value={ autoAlgae3 }
-							onChange={ (event) => setAutoAlgae3(event.target.value as Topic) }
+							value={ algaeProcessor }
+							onChange={ (event) => setAlgaeProcessor(event.target.value as Topic) }
 							SelectProps={{
 								native: true,
 							}}
@@ -245,7 +245,7 @@ export default function QualitativeSection() {
 						>
 							<option value="" disabled>Select a category</option>
 							{
-								Object.values(Algae3).map((topic: Algae3) => (
+								Object.values(AlgaeProcessor).map((topic: AlgaeProcessor) => (
 									<option key={ topic } value={ topic }>
 										{ topic }
 									</option>
@@ -256,8 +256,8 @@ export default function QualitativeSection() {
 						<TextField
 							select
 							label="Barge"
-							value={ autoAlgae4 }
-							onChange={ (event) => setAutoAlgae4(event.target.value as Topic) }
+							value={ algaeBarge }
+							onChange={ (event) => setAlgaeBarge(event.target.value as Topic) }
 							SelectProps={{
 								native: true,
 							}}
@@ -266,7 +266,7 @@ export default function QualitativeSection() {
 						>
 							<option value="" disabled>Select a category</option>
 							{
-								Object.values(Algae4).map((topic: Algae4) => (
+								Object.values(AlgaeBarge).map((topic: AlgaeBarge) => (
 									<option key={ topic } value={ topic }>
 										{ topic }
 									</option>
