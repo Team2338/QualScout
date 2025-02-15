@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import { Topic } from '../../../models/models';
+import { Topic, Auto, Pathing, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, Drivers, HumanP, Climb, Defense } from '../../../models/models';
 import { saveNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
@@ -13,6 +13,26 @@ export default function QualitativeSection() {
 	const [noteContent, setNoteContent] = useState<string>('');
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
 
+	const [autoDrop, setAutoDrop] = useState<string>(); 
+	const [pathingDrop, setPathingDrop] = useState<string>();
+
+	const [coralGroundCollection, setCoralGroundCollection] = useState<string>();
+	const [coralStationCollection, setCoralStationCollection] = useState<string>();
+	const [coralScoring, setCoralScoring] = useState<string>();
+
+	const [algaeGroundCollection, setAlgaeGroundCollection] = useState<string>();
+	const [algaeReefCollection, setAlgaeReefCollection] = useState<string>();
+	const [algaeProcessor, setAlgaeProcessor] = useState<string>();
+	const [algaeBarge, setAlgaeBarge] = useState<string>();
+
+	const [autoDriver, setAutoDriver] = useState<string>();
+
+	const [autoHuman, setAutoHuman] = useState<string>();
+
+	const [autoClimb, setAutoClimb] = useState<string>();
+
+	const [autoDefense, setAutoDefense] = useState<string>();
+	
 	const submit = (event) => {
 		event.preventDefault();
 		if (selectedCategory !== null) {
@@ -51,6 +71,264 @@ export default function QualitativeSection() {
 			<NoteStatus />
 
 			<p><strong>Selected Category:</strong> { selectedCategory ?? 'None' }</p>
+
+			<div className="dropdown-buttons">
+				{selectedCategory === Topic.auto && (
+					<TextField
+						select
+						label="Placement Accuracy"
+						value={ autoDrop }
+						onChange={ (event) => setAutoDrop(event.target.value as Topic) }
+						variant="outlined"
+						fullWidth
+					>
+						<option value="" disabled>Select a category</option>
+						{
+							Object.values(Auto).map((topic: Auto) => (
+								<option key={ topic } value={ topic }>
+									{ topic }
+								</option>
+							))
+						}
+					</TextField>
+
+				)}
+
+				{selectedCategory === Topic.pathing && (
+					<TextField
+						select
+						label="Driver Pathing"
+						value={ pathingDrop }
+						onChange={ (event) => setPathingDrop(event.target.value as Topic) }
+						variant="outlined"
+						fullWidth
+					>
+						<option value="" disabled>Select a category</option>
+						{
+							Object.values(Pathing).map((topic: Pathing) => (
+								<option key={ topic } value={ topic }>
+									{ topic }
+								</option>
+							))
+						}
+					</TextField>
+
+				)}
+
+				{selectedCategory === Topic.coral && (
+					<div className="dropdown-buttons">
+						<TextField
+							select
+							label="Ground Collection"
+							value={ coralGroundCollection }
+							onChange={ (event) => setCoralGroundCollection(event.target.value as Topic) }
+							variant="outlined"
+							fullWidth
+						>
+							<option value="" disabled>Select a category</option>
+							{
+								Object.values(CoralGroundCollection).map((topic: CoralGroundCollection) => (
+									<option key={ topic } value={ topic }>
+										{ topic }
+									</option>
+								))
+							}
+						</TextField>
+
+						<TextField
+							select
+							label="Station Collection"
+							value={ coralStationCollection }
+							onChange={ (event) => setCoralStationCollection(event.target.value as Topic) }
+							variant="outlined"
+							fullWidth
+						>
+							<option value="" disabled>Select a category</option>
+							{
+								Object.values(CoralStationCollection).map((topic: CoralStationCollection) => (
+									<option key={ topic } value={ topic }>
+										{ topic }
+									</option>
+								))
+							}
+						</TextField>
+
+						<TextField
+							select
+							label="Scoring"
+							value={ coralScoring }
+							onChange={ (event) => setCoralScoring(event.target.value as Topic) }
+							variant="outlined"
+							fullWidth
+						>
+							<option value="" disabled>Select a category</option>
+							{
+								Object.values(CoralScoring).map((topic: CoralScoring) => (
+									<option key={ topic } value={ topic }>
+										{ topic }
+									</option>
+								))
+							}
+						</TextField>
+					</div>
+				)}
+
+				{selectedCategory === Topic.algae && (
+					<div className="dropdown-buttons">
+						<TextField
+							select
+							label="Ground Collection"
+							value={ algaeGroundCollection }
+							onChange={ (event) => setAlgaeGroundCollection(event.target.value as Topic) }
+							variant="outlined"
+							fullWidth
+						>
+							<option value="" disabled>Select a category</option>
+							{
+								Object.values(AlgaeGroundCollection).map((topic: AlgaeGroundCollection) => (
+									<option key={ topic } value={ topic }>
+										{ topic }
+									</option>
+								))
+							}
+						</TextField>
+
+						<TextField
+							select
+							label="Reef Collection"
+							value={ algaeReefCollection }
+							onChange={ (event) => setAlgaeReefCollection(event.target.value as Topic) }
+							variant="outlined"
+							fullWidth
+						>
+							<option value="" disabled>Select a category</option>
+							{
+								Object.values(AlgaeReefCollection).map((topic: AlgaeReefCollection) => (
+									<option key={ topic } value={ topic }>
+										{ topic }
+									</option>
+								))
+							}
+						</TextField>
+
+						<TextField
+							select
+							label="Processor"
+							value={ algaeProcessor }
+							onChange={ (event) => setAlgaeProcessor(event.target.value as Topic) }
+							variant="outlined"
+							fullWidth
+						>
+							<option value="" disabled>Select a category</option>
+							{
+								Object.values(AlgaeProcessor).map((topic: AlgaeProcessor) => (
+									<option key={ topic } value={ topic }>
+										{ topic }
+									</option>
+								))
+							}
+						</TextField>
+
+						<TextField
+							select
+							label="Barge"
+							value={ algaeBarge }
+							onChange={ (event) => setAlgaeBarge(event.target.value as Topic) }
+							variant="outlined"
+							fullWidth
+						>
+							<option value="" disabled>Select a category</option>
+							{
+								Object.values(AlgaeBarge).map((topic: AlgaeBarge) => (
+									<option key={ topic } value={ topic }>
+										{ topic }
+									</option>
+								))
+							}
+						</TextField>
+					</div>
+				)}
+
+				{selectedCategory === Topic.hp && (
+					<TextField
+						select
+						label="HP at Processor"
+						value={ autoHuman }
+						onChange={ (event) => setAutoHuman(event.target.value as Topic) }
+						variant="outlined"
+						fullWidth
+					>
+						<option value="" disabled>Select a category</option>
+						{
+							Object.values(HumanP).map((topic: HumanP) => (
+								<option key={ topic } value={ topic }>
+									{ topic }
+								</option>
+							))
+						}
+					</TextField>
+				)}
+
+				{selectedCategory === Topic.drivers && (
+					<TextField
+						select
+						label="Driver Ability"
+						value={ autoDriver }
+						onChange={ (event) => setAutoDriver(event.target.value as Topic) }
+						variant="outlined"
+						fullWidth
+					>
+						<option value="" disabled>Select a category</option>
+						{
+							Object.values(Drivers).map((topic: Drivers) => (
+								<option key={ topic } value={ topic }>
+									{ topic }
+								</option>
+							))
+						}
+					</TextField>
+				)}
+
+				{selectedCategory === Topic.climb && (
+					<TextField
+						select
+						label="Climb Skill"
+						value={ autoClimb }
+						onChange={ (event) => setAutoClimb(event.target.value as Topic) }
+						variant="outlined"
+						fullWidth
+					>
+						<option value="" disabled>Select a category</option>
+						{
+							Object.values(Climb).map((topic: Climb) => (
+								<option key={ topic } value={ topic }>
+									{ topic }
+								</option>
+							))
+						}
+					</TextField>
+				)}
+
+				{selectedCategory === Topic.defense && (
+					<TextField
+						select
+						label="Defense Skill"
+						value={ autoDefense }
+						onChange={ (event) => setAutoDefense(event.target.value as Topic) }
+						variant="outlined"
+						fullWidth
+					>
+						<option value="" disabled>Select a category</option>
+						{
+							Object.values(Defense).map((topic: Defense) => (
+								<option key={ topic } value={ topic }>
+									{ topic }
+								</option>
+							))
+						}
+					</TextField>
+				)}
+			</div>
 
 			<TextField
 				label="Enter your text here..."
