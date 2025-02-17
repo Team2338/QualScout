@@ -3,6 +3,30 @@
 	padding-right: 16px;
 	width: 60vw;
 
+	.dropdown-buttons {
+		color: #babfb7;
+		width: 60vw;
+		margin-bottom: 8px;
+
+		.MuiOutlinedInput-root.Mui-disabled {
+		  fieldset {
+			border-color: #babfb7;
+		  }
+	  
+		  &:hover fieldset {
+			border-color: #babfb7;
+		  }
+	  
+		  &.Mui-fieldset {
+			border-color: #babfb7;
+		  }
+		}
+	  
+		.MuiSvgIcon-root {
+		  color: #babfb7;
+		}
+	  }
+
 	.category-buttons {
 		display: flex;
 		flex-direction: row;

@@ -88,23 +88,6 @@ export default function QualitativeSection() {
 							onChange={ (event) => setAutoDrop(event.target.value as string) }
 							variant="outlined"
 							fullWidth
-							sx={{
-								color: '#babfb7',
-								'& .MuiOutlinedInput-root.Mui-disabled': {
-									'& fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&:hover fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&.Mui-fieldset': {
-										borderColor: '#babfb7',
-									},
-								},
-								'& .MuiSvgIcon-root': {
-									color: '#babfb7',
-								},
-							}}
 						>
 							<MenuItem key="option1" value={AutoPlacementAccuracy.NeverMiss}>Never Missed</MenuItem>
 							<MenuItem key="option2" value={AutoPlacementAccuracy.MinimalMissed}>Minimal Missed</MenuItem>
@@ -127,23 +110,7 @@ export default function QualitativeSection() {
 							onChange={ (event) => setPathingDrop(event.target.value as string) }
 							variant="outlined"
 							fullWidth
-							sx={{
-								color: '#babfb7',
-								'& .MuiOutlinedInput-root.Mui-disabled': {
-									'& fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&:hover fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&.Mui-fieldset': {
-										borderColor: '#babfb7',
-									},
-								},
-								'& .MuiSvgIcon-root': {
-									color: '#babfb7',
-								},
-							}}
+
 						>
 							<MenuItem key="option1" value={PathingDrivers.NoCollision} >No collision</MenuItem>
 							<MenuItem key="option2" value={PathingDrivers.MinimalCollisions}>Minimal Collisions</MenuItem>
@@ -167,23 +134,7 @@ export default function QualitativeSection() {
 								onChange={ (event) => setCoralGroundCollection(event.target.value as string) }
 								variant="outlined"
 								fullWidth
-								sx={{
-									color: '#babfb7',
-									'& .MuiOutlinedInput-root.Mui-disabled': {
-										'& fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&:hover fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&.Mui-fieldset': {
-											borderColor: '#babfb7',
-										},
-									},
-									'& .MuiSvgIcon-root': {
-										color: '#babfb7',
-									},
-								}}
+								
 							>
 								<MenuItem key="option1" value={CoralGroundCollection.QuickSnag}>Quick snag</MenuItem>
 								<MenuItem key="option2" value={CoralGroundCollection.Align}>Align</MenuItem>
@@ -203,23 +154,7 @@ export default function QualitativeSection() {
 								onChange={ (event) => setCoralStationCollection(event.target.value as string) }
 								variant="outlined"
 								fullWidth
-								sx={{
-									color: '#babfb7',
-									'& .MuiOutlinedInput-root.Mui-disabled': {
-										'& fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&:hover fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&.Mui-fieldset': {
-											borderColor: '#babfb7',
-										},
-									},
-									'& .MuiSvgIcon-root': {
-										color: '#babfb7',
-									},
-								}}
+								
 							>
 								<MenuItem key="option1" value={CoralStationCollection.QuickCollection}>Quick Collection</MenuItem>
 								<MenuItem key="option2" value={CoralStationCollection.Align}>Align</MenuItem>
@@ -239,23 +174,7 @@ export default function QualitativeSection() {
 								onChange={ (event) => setCoralScoring(event.target.value as string) }
 								variant="outlined"
 								fullWidth
-								sx={{
-									color: '#babfb7',
-									'& .MuiOutlinedInput-root.Mui-disabled': {
-										'& fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&:hover fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&.Mui-fieldset': {
-											borderColor: '#babfb7',
-										},
-									},
-									'& .MuiSvgIcon-root': {
-										color: '#babfb7',
-									},
-								}}
+								
 							>
 								<MenuItem key="option1" value={CoralScoring.InstantPlace}>Instant Place</MenuItem>
 								<MenuItem key="option2" value={CoralScoring.LongLineup}>Long lineup</MenuItem>
@@ -279,23 +198,7 @@ export default function QualitativeSection() {
 								onChange={ (event) => setAlgaeGroundCollection(event.target.value as string) }
 								variant="outlined"
 								fullWidth
-								sx={{
-									color: '#babfb7',
-									'& .MuiOutlinedInput-root.Mui-disabled': {
-										'& fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&:hover fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&.Mui-fieldset': {
-											borderColor: '#babfb7',
-										},
-									},
-									'& .MuiSvgIcon-root': {
-										color: '#babfb7',
-									},
-								}}
+								
 							>
 								<MenuItem key="option1" value={AlgaeGroundCollection.GoodPickUp}>Good pick up</MenuItem>
 								<MenuItem key="option2" value={AlgaeGroundCollection.PushesIt}>Pushes it</MenuItem>
@@ -315,23 +218,7 @@ export default function QualitativeSection() {
 								onChange={ (event) => setAlgaeReefCollection(event.target.value as string) }
 								variant="outlined"
 								fullWidth
-								sx={{
-									color: '#babfb7',
-									'& .MuiOutlinedInput-root.Mui-disabled': {
-										'& fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&:hover fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&.Mui-fieldset': {
-											borderColor: '#babfb7',
-										},
-									},
-									'& .MuiSvgIcon-root': {
-										color: '#babfb7',
-									},
-								}}
+								
 							>
 								<MenuItem key="option1" value={AlgaeReefCollection.GoodPickUp}>Good Pick Up</MenuItem>
 								<MenuItem key="option2" value={AlgaeReefCollection.LongAlignment}>Long Alignment</MenuItem>
@@ -351,23 +238,7 @@ export default function QualitativeSection() {
 								onChange={ (event) => setAlgaeProcessor(event.target.value as string) }
 								variant="outlined"
 								fullWidth
-								sx={{
-									color: '#babfb7',
-									'& .MuiOutlinedInput-root.Mui-disabled': {
-										'& fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&:hover fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&.Mui-fieldset': {
-											borderColor: '#babfb7',
-										},
-									},
-									'& .MuiSvgIcon-root': {
-										color: '#babfb7',
-									},
-								}}
+								
 							>
 								<MenuItem key="option1" value={AlgaeProcessor.InstantPlace}>Instant Place</MenuItem>
 								<MenuItem key="option2" value={AlgaeProcessor.LongAlignment}>Long Alignment</MenuItem>
@@ -387,23 +258,7 @@ export default function QualitativeSection() {
 								onChange={ (event) => setAlgaeBarge(event.target.value as string) }
 								variant="outlined"
 								fullWidth
-								sx={{
-									color: '#babfb7',
-									'& .MuiOutlinedInput-root.Mui-disabled': {
-										'& fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&:hover fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&.Mui-fieldset': {
-											borderColor: '#babfb7',
-										},
-									},
-									'& .MuiSvgIcon-root': {
-										color: '#babfb7',
-									},
-								}}
+								
 							>
 								<MenuItem key="option1" value={AlgaeBarge.InstantScore}>Instant Score</MenuItem>
 								<MenuItem key="option2" value={AlgaeBarge.NeedsToLineUp}>Needs to line up</MenuItem>
@@ -426,23 +281,7 @@ export default function QualitativeSection() {
 							onChange={ (event) => setHuman(event.target.value as string) }
 							variant="outlined"
 							fullWidth
-							sx={{
-								color: '#babfb7',
-								'& .MuiOutlinedInput-root.Mui-disabled': {
-									'& fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&:hover fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&.Mui-fieldset': {
-										borderColor: '#babfb7',
-									},
-								},
-								'& .MuiSvgIcon-root': {
-									color: '#babfb7',
-								},
-							}}
+							
 						>
 							<MenuItem key="option1" value={HPAtProcessor.MichaelJordan}>MICHAEL JORDAN</MenuItem>
 							<MenuItem key="option2" value={HPAtProcessor.Middle}>Middle</MenuItem>
@@ -464,23 +303,7 @@ export default function QualitativeSection() {
 							onChange={ (event) => setDriver(event.target.value as string) }
 							variant="outlined"
 							fullWidth
-							sx={{
-								color: '#babfb7',
-								'& .MuiOutlinedInput-root.Mui-disabled': {
-									'& fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&:hover fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&.Mui-fieldset': {
-										borderColor: '#babfb7',
-									},
-								},
-								'& .MuiSvgIcon-root': {
-									color: '#babfb7',
-								},
-							}}
+							
 						>
 							<MenuItem key="option1" value={DriverAbility.SmoothOperator}>Smooth Operator</MenuItem>
 							<MenuItem key="option2" value={DriverAbility.SlowDecisions}>Slow Decision</MenuItem>
@@ -502,23 +325,7 @@ export default function QualitativeSection() {
 							onChange={ (event) => setClimb(event.target.value as string) }
 							variant="outlined"
 							fullWidth
-							sx={{
-								color: '#babfb7',
-								'& .MuiOutlinedInput-root.Mui-disabled': {
-									'& fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&:hover fieldset': {
-										borderColor: '#babfb7',
-									},
-									'&.Mui-fieldset': {
-										borderColor: '#babfb7',
-									},
-								},
-								'& .MuiSvgIcon-root': {
-									color: '#babfb7',
-								},
-							}}
+							
 						>
 							<MenuItem key="option1" value={ClimbSkill.FastOrSturdy}>Fast or sturdy climb</MenuItem>
 							<MenuItem key="option2" value={ClimbSkill.SlowOrWobbly}>Slow or Wobbly Climb</MenuItem>
@@ -541,23 +348,7 @@ export default function QualitativeSection() {
 								onChange={ (event) => setDefenseSkill(event.target.value as string) }
 								variant="outlined"
 								fullWidth
-								sx={{
-									color: '#babfb7',
-									'& .MuiOutlinedInput-root.Mui-disabled': {
-										'& fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&:hover fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&.Mui-fieldset': {
-											borderColor: '#babfb7',
-										},
-									},
-									'& .MuiSvgIcon-root': {
-										color: '#babfb7',
-									},
-								}}
+								
 							>
 								<MenuItem key="option1" value={DefenseDriverSkill.EffectiveDefense}>Effective defense</MenuItem>
 								<MenuItem key="option2" value={DefenseDriverSkill.NotVeryGood}>Not very good</MenuItem>
@@ -576,23 +367,7 @@ export default function QualitativeSection() {
 								onChange={ (event) => setDefenseType(event.target.value as string) }
 								variant="outlined"
 								fullWidth
-								sx={{
-									color: '#babfb7',
-									'& .MuiOutlinedInput-root.Mui-disabled': {
-										'& fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&:hover fieldset': {
-											borderColor: '#babfb7',
-										},
-										'&.Mui-fieldset': {
-											borderColor: '#babfb7',
-										},
-									},
-									'& .MuiSvgIcon-root': {
-										color: '#babfb7',
-									},
-								}}
+								
 							>
 								<MenuItem key="option1" value={DefenseType.ZoneDefense}>Zone Defense</MenuItem>
 								<MenuItem key="option2" value={DefenseType.TargetedDefense}>Targeted Defense</MenuItem>
