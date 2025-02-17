@@ -7,7 +7,7 @@ export interface IMatch {
 	creator: string;
 	comments: INote[];
 	dropdowns: Drop[];
-} 
+}  
 
 export interface ICachedMatch extends IMatch {
 	teamNumber: string;
@@ -122,7 +122,6 @@ export enum DefenseType {
 	b = 'Targeted Defense',
 	c = 'No Defense'
 }
-
 export interface IUser {
 	teamNumber: string;
 	scouterName: string;
