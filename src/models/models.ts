@@ -6,6 +6,7 @@ export interface IMatch {
 	robotNumber: string;
 	creator: string;
 	comments: INote[];
+	dropdowns: Drop[];
 } 
 
 export interface ICachedMatch extends IMatch {
@@ -23,6 +24,7 @@ export enum AllianceColor {
 	red = 'RED',
 	blue = 'BLUE'
 }
+
 
 export enum Topic {
 	auto = 'Auto',
@@ -126,4 +128,105 @@ export interface IUser {
 	scouterName: string;
 	secretCode: string;
 	eventCode: string;
+}
+
+export enum Drop {
+	AutoPlacementAccuracy = 'AutoPlacementAccuracy',
+	PathingDrivers = 'PathingDrivers',
+	CoralGroundCollection = 'CoralGroundCollection',
+	CoralStationCollection = 'CoralStationCollection',
+	CoralScoring = 'CoralScoring',
+	AlgaeGroundCollection = 'AlgaeGroundCollection',
+	AlgaeReefCollection = 'AlgaeReefCollection',
+	AlgaeProcessor = 'AlgaeProcessor',
+	AlgaeBarge = 'AlgaeBarge',
+	DriverAbility = 'DriverAbility',
+	HPAtProcessor = 'HPAtProcessor',
+	ClimbSkill = 'ClimbSkill',
+	DefenseDriverSkill = 'DefenseDriverSkill',
+	DefenseType = 'DefenseType',
+  }
+
+export enum AutoPlacementAccuracy {
+  NeverMiss = 'Never miss',
+  MinimalMissed = 'Minimal missed',
+  ManyMissed = 'Many missed',
+}
+
+export enum PathingDrivers {
+  NoCollision = 'No collision',
+  MinimalCollisions = 'Minimal Collisions',
+  ManyCollisions = 'Many Collisions',
+}
+
+export enum CoralGroundCollection {
+  QuickSnag = 'Quick snag',
+  Align = 'Align',
+  CantPickUp = 'Cant pick up',
+}
+
+export enum CoralStationCollection {
+  QuickCollection = 'Quick collection',
+  Align = 'Align',
+  DropPiece = 'Drop piece',
+}
+
+export enum CoralScoring {
+  InstantPlace = 'Instant Place',
+  LongLineup = 'Long lineup',
+  CantPlace = 'Cant Place',
+}
+
+export enum AlgaeGroundCollection {
+  GoodPickUp = 'Good pick up',
+  PushesIt = 'Pushes it',
+  CantPickItUp = 'Cant pick it up',
+}
+
+export enum AlgaeReefCollection {
+  GoodPickUp = 'Good pick up',
+  LongAlignment = 'Long alignment',
+  KnocksItDown = 'Knocks it down',
+}
+
+export enum AlgaeProcessor {
+  InstantPlace = 'Instant Place',
+  LongAlignment = 'Long Alignment',
+  NoMechanismToScore = 'No mechanism to score',
+}
+
+export enum AlgaeBarge {
+  InstantScore = 'Instant Score',
+  NeedsToLineUp = 'Needs to line up',
+  CantScore = 'Cant Score',
+}
+
+export enum DriverAbility {
+  SmoothOperator = 'Smooth Operator',
+  SlowDecisions = 'Slow decisions',
+  LackOfDrive = 'Lack of drive',
+}
+
+export enum HPAtProcessor {
+  MichaelJordan = 'MICHAEL JORDAN',
+  Middle = 'Middle',
+  NotAtProcessor = 'Not at processor',
+}
+
+export enum ClimbSkill {
+  FastOrSturdy = 'Fast or sturdy climb',
+  SlowOrWobbly = 'Slow or Wobbly Climb',
+  ShouldNotHang = 'That bot should not be hanging',
+}
+
+export enum DefenseDriverSkill {
+  EffectiveDefense = 'Effective defense',
+  NotVeryGood = 'Not very good',
+  NotPlayed = 'Defense not played',
+}
+
+export enum DefenseType {
+  ZoneDefense = 'Zone Defense',
+  TargetedDefense = 'Targeted Defense',
+  NoDefense = 'No Defense',
 }

@@ -1,4 +1,4 @@
-import { ICachedMatch, IUser, Topic } from './models';
+import { ICachedMatch, IUser, Topic, Drop } from './models';
 
 export interface IAppState {
 	user: IUser;
@@ -8,4 +8,7 @@ export interface IAppState {
 	notes: {
 		[key in Topic]: string;
 	};
+	dropdown: {
+		[key in Drop]: string;
+	}
 }
