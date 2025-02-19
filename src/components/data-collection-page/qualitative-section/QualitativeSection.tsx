@@ -14,26 +14,26 @@ export default function QualitativeSection() {
 	const [noteContent, setNoteContent] = useState<string>('');
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
 
-	const [autoDrop, setAutoDrop] = useState<string>(); 
-	const [pathingDrop, setPathingDrop] = useState<string>();
+	const [autoDrop, setAutoDrop] = useState<string>(''); 
+	const [pathingDrop, setPathingDrop] = useState<string>('');
 
-	const [coralGroundCollection, setCoralGroundCollection] = useState<string>();
-	const [coralStationCollection, setCoralStationCollection] = useState<string>();
-	const [coralScoring, setCoralScoring] = useState<string>();
+	const [coralGroundCollection, setCoralGroundCollection] = useState<string>('');
+	const [coralStationCollection, setCoralStationCollection] = useState<string>('');
+	const [coralScoring, setCoralScoring] = useState<string>('');
 
-	const [algaeGroundCollection, setAlgaeGroundCollection] = useState<string>();
-	const [algaeReefCollection, setAlgaeReefCollection] = useState<string>();
-	const [algaeProcessor, setAlgaeProcessor] = useState<string>();
-	const [algaeBarge, setAlgaeBarge] = useState<string>();
+	const [algaeGroundCollection, setAlgaeGroundCollection] = useState<string>('');
+	const [algaeReefCollection, setAlgaeReefCollection] = useState<string>('');
+	const [algaeProcessor, setAlgaeProcessor] = useState<string>('');
+	const [algaeBarge, setAlgaeBarge] = useState<string>('');
 
-	const [driver, setDriver] = useState<string>();
+	const [driver, setDriver] = useState<string>('');
 
-	const [human, setHuman] = useState<string>();
+	const [human, setHuman] = useState<string>('');
 
-	const [climb, setClimb] = useState<string>();
+	const [climb, setClimb] = useState<string>('');
 
-	const [defenseSkill, setDefenseSkill] = useState<string>();
-	const [defenseType, setDefenseType] = useState<string>();
+	const [defenseSkill, setDefenseSkill] = useState<string>('');
+	const [defenseType, setDefenseType] = useState<string>('');
   
 	const submit = (event) => {
 		event.preventDefault();
