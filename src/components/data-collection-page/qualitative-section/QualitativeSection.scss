@@ -3,6 +3,30 @@
 	padding-right: 16px;
 	width: 60vw;
 
+	.dropdown-buttons {
+		color: #babfb7;
+		width: 60vw;
+		margin-bottom: 8px;
+
+		.MuiOutlinedInput-root.Mui-disabled {
+		  fieldset {
+			border-color: #babfb7;
+		  }
+	  
+		  &:hover fieldset {
+			border-color: #babfb7;
+		  }
+	  
+		  &.Mui-fieldset {
+			border-color: #babfb7;
+		  }
+		}
+	  
+		.MuiSvgIcon-root {
+		  color: #babfb7;
+		}
+	  }
+
 	.category-buttons {
 		display: flex;
 		flex-direction: row;
@@ -10,18 +34,6 @@
 		justify-content: center;
 		column-gap: 8px;
 		row-gap: 8px;
-	}
-
-	.dropdown-buttons {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		column-gap: 8px;
-		row-gap: 8px;
-		margin-bottom: 8px;
-		color: #fe5000;
-		width: 60vw;
 	}
 
 	.submitted-notes {

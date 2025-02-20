@@ -1,7 +1,7 @@
 import './DataCollectionPage.scss';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
-import { IMatch, INote, IUser, Topic } from '../../models/models';
+import { IMatch, INote, IUser, Topic, Drop, AutoPlacementAccuracy, PathingDrivers, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, DriverAbility, HPAtProcessor, ClimbSkill, DefenseDriverSkill, DefenseType } from '../../models/models';  
 import { clearNotes } from '../../state/Actions';
 import { submitMatch } from '../../state/Effects';
 import MatchInformation from './match-information/MatchInformation';
@@ -10,12 +10,34 @@ import { useAppDispatch, useAppSelector } from '../../state/Hooks';
 
 const MAX_MATCH_NUMBER = 200;
 
+function initializeDropEnums() {
+	return {
+	  [Drop.AutoPlacementAccuracy]: AutoPlacementAccuracy,
+	  [Drop.PathingDrivers]: PathingDrivers,
+	  [Drop.CoralGroundCollection]: CoralGroundCollection,
+	  [Drop.CoralStationCollection]: CoralStationCollection,
+	  [Drop.CoralScoring]: CoralScoring,
+	  [Drop.AlgaeGroundCollection]: AlgaeGroundCollection,
+	  [Drop.AlgaeReefCollection]: AlgaeReefCollection,
+	  [Drop.AlgaeProcessor]: AlgaeProcessor,
+	  [Drop.AlgaeBarge]: AlgaeBarge,
+	  [Drop.DriverAbility]: DriverAbility,
+	  [Drop.HPAtProcessor]: HPAtProcessor,
+	  [Drop.ClimbSkill]: ClimbSkill,
+	  [Drop.DefenseDriverSkill]: DefenseDriverSkill,
+	  [Drop.DefenseType]: DefenseType,
+	};
+}
+
 export default function DataCollectionPage() {
 	const dispatch = useAppDispatch();
 	const user: IUser = useAppSelector(state => state.user);
 	const notes: Record<Topic, string> = useAppSelector(state => state.notes);
 	const [robotNumber, setRobotNumber] = useState<string>('');
 	const [matchNumber, setMatchNumber] = useState<string>('');
+
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const Drop = initializeDropEnums();
 
 	const generateComments = (): INote[] => {
 		return Object.values(Topic)
@@ -48,7 +70,8 @@ export default function DataCollectionPage() {
 			eventCode: user.eventCode,
 			matchNumber: matchNumber,
 			robotNumber: robotNumber,
-			comments: generateComments()
+			comments: generateComments(),
+			dropdowns: Object.values(initializeDropEnums)
 		};
 
 		dispatch(submitMatch(match));
