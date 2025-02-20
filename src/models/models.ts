@@ -6,8 +6,23 @@ export interface IMatch {
 	robotNumber: string;
 	creator: string;
 	comments: INote[];
-	dropdowns: Drop[];
 }  
+
+export interface ISuperMatch {
+	gameYear: number;
+	eventCode: string;
+	matchNumber: string;
+	robotNumber: string;
+	creator: string;
+	comments: IObjective[];
+}
+
+export interface IObjective {
+	gamemode: Gamemode,
+	objective: string;
+	count: number;
+	list?: number[];
+}
 
 export interface ICachedMatch extends IMatch {
 	teamNumber: string;
@@ -17,6 +32,10 @@ export interface ICachedMatch extends IMatch {
 export interface INote {
 	topic: Topic;
 	content: string;
+}
+
+export enum Gamemode {
+	superscout = 'SUPERSCOUT'
 }
 
 export enum AllianceColor {

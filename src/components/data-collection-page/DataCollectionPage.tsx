@@ -1,7 +1,7 @@
 import './DataCollectionPage.scss';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
-import { IMatch, INote, IUser, Topic, Drop, AutoPlacementAccuracy, PathingDrivers, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, DriverAbility, HPAtProcessor, ClimbSkill, DefenseDriverSkill, DefenseType } from '../../models/models';  
+import { IMatch, INote, IUser, Topic, Drop, AutoPlacementAccuracy, PathingDrivers, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, DriverAbility, HPAtProcessor, ClimbSkill, DefenseDriverSkill, DefenseType, ISuperMatch, Gamemode, IObjective } from '../../models/models';  
 import { clearNotes } from '../../state/Actions';
 import { submitMatch } from '../../state/Effects';
 import MatchInformation from './match-information/MatchInformation';
@@ -36,9 +36,6 @@ export default function DataCollectionPage() {
 	const [robotNumber, setRobotNumber] = useState<string>('');
 	const [matchNumber, setMatchNumber] = useState<string>('');
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const Drop = initializeDropEnums();
-
 	const generateComments = (): INote[] => {
 		return Object.values(Topic)
 			.filter((topic: Topic) => !!notes[topic].trim()) // Ignore empty notes
@@ -47,6 +44,10 @@ export default function DataCollectionPage() {
 				content: notes[topic]
 			}));
 	};
+
+	const superScoutComments = (): IObjective[] => {
+		return Object.values()
+	}
 
 	const validateRequiredInfo = (): void => {
 		const problems: string[] = [];
@@ -70,8 +71,32 @@ export default function DataCollectionPage() {
 			eventCode: user.eventCode,
 			matchNumber: matchNumber,
 			robotNumber: robotNumber,
-			comments: generateComments(),
-			dropdowns: Object.values(initializeDropEnums)
+			comments: generateComments()
+		};
+
+		const quant: ISuperMatch = {
+			gameYear: 2025,
+			creator: user.scouterName,
+			eventCode: user.eventCode,
+			matchNumber: matchNumber,
+			robotNumber: robotNumber,
+			comments: 
+			// comments: [
+			// 	{ gamemode: Gamemode.superscout, objective: 'PLACEMENT_AUTO', count: Number(autoDrop) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'PATHING', count: Number(pathingDrop) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'CORAL_GROUND', count: Number(coralGroundCollection) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'CORAL_STATION', count: Number(coralStationCollection) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'CORAL_SCORING', count: Number(coralScoring) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'ALGAE_GROUND', count: Number(algaeGroundCollection) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'ALGAE_REEF', count: Number(algaeReefCollection) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'ALGAE_PROCESSOR', count: Number(algaeProcessor) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'ALGAE_BARGE', count: Number(algaeBarge) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'HUMAN_PLAYER', count: Number(human) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'HUMAN_DRIVER', count: Number(driver) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'ROBOT_CLIMB', count: Number(climb) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'DEFENSE_SKILL', count: Number(defenseSkill) },
+			// 	{ gamemode: Gamemode.superscout, objective: 'DEFENSE_TYPE', count: Number(defenseType) }
+			// ]
 		};
 
 		dispatch(submitMatch(match));

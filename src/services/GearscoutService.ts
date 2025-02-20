@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { IMatch } from '../models/models';
+import { IMatch, ISuperMatch } from '../models/models';
 
 type GearscoutResponse<T> = Promise<AxiosResponse<T>>;
 
@@ -18,6 +18,16 @@ class GearscoutService {
 		};
 
 		return this.service.post(url, match, config);
+	};
+	superScout = (teamNumber: string, secretCode:string, quant: ISuperMatch): GearscoutResponse<void> => {
+		const url: string = `/team/${teamNumber}`;
+		const config: AxiosRequestConfig = {
+			headers: {
+				secretCode: secretCode
+			}
+		};
+
+		return this.service.post(url, quant, config);
 	};
 }
 

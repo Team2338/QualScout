@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Button, TextField, Select, FormControl, MenuItem, InputLabel } from '@mui/material';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Topic, Auto, Pathing, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, DriverAbility, HPAtProcessor, ClimbSkill, DefenseDriverSkill, Drivers, HumanP, Climb, DefenseSkill, DefenseType, AutoPlacementAccuracy, PathingDrivers } from '../../../models/models';
+import { Topic, Auto, Pathing, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, DriverAbility, HPAtProcessor, 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	ClimbSkill, DefenseDriverSkill, Drivers, HumanP, Climb, DefenseSkill, DefenseType, AutoPlacementAccuracy, PathingDrivers, Gamemode, ISuperMatch } from '../../../models/models';
 import { saveNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
-
 
 export default function QualitativeSection() {
 	const dispatch = useAppDispatch();
