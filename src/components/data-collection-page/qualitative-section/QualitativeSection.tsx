@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Button, TextField, Select, FormControl, MenuItem, InputLabel } from '@mui/material';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Topic, Auto, Pathing, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, DriverAbility, HPAtProcessor, 
+import { IUser, Topic, Auto, Pathing, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, DriverAbility, HPAtProcessor, 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	ClimbSkill, DefenseDriverSkill, Drivers, HumanP, Climb, DefenseSkill, DefenseType, AutoPlacementAccuracy, PathingDrivers, Gamemode, ISuperMatch } from '../../../models/models';
+	ClimbSkill, DefenseDriverSkill, Drivers, HumanP, Climb, DefenseSkill, DefenseType, AutoPlacementAccuracy, PathingDrivers, Gamemode, ISuperMatch} from '../../../models/models';
 import { saveNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
 
 export default function QualitativeSection() {
 	const dispatch = useAppDispatch();
+	const user: IUser = useAppSelector(state => state.user);
 
 	const [selectedCategory, setSelectedCategory] = useState<Topic>(null);
 	const [noteContent, setNoteContent] = useState<string>('');
@@ -43,6 +44,30 @@ export default function QualitativeSection() {
 			setNoteContent('');
 			setSelectedCategory(null);
 		}
+	};
+
+	const quant: ISuperMatch = {
+		gameYear: 2025,
+		creator: user.scouterName,
+		eventCode: user.eventCode,
+		matchNumber: '',
+		robotNumber: '',
+		comments: [
+			{ gamemode: Gamemode.superscout, objective: 'PLACEMENT_AUTO', count: Number(autoDrop) },
+			{ gamemode: Gamemode.superscout, objective: 'PATHING', count: Number(pathingDrop) },
+			{ gamemode: Gamemode.superscout, objective: 'CORAL_GROUND', count: Number(coralGroundCollection) },
+			{ gamemode: Gamemode.superscout, objective: 'CORAL_STATION', count: Number(coralStationCollection) },
+			{ gamemode: Gamemode.superscout, objective: 'CORAL_SCORING', count: Number(coralScoring) },
+			{ gamemode: Gamemode.superscout, objective: 'ALGAE_GROUND', count: Number(algaeGroundCollection) },
+			{ gamemode: Gamemode.superscout, objective: 'ALGAE_REEF', count: Number(algaeReefCollection) },
+			{ gamemode: Gamemode.superscout, objective: 'ALGAE_PROCESSOR', count: Number(algaeProcessor) },
+			{ gamemode: Gamemode.superscout, objective: 'ALGAE_BARGE', count: Number(algaeBarge) },
+			{ gamemode: Gamemode.superscout, objective: 'HUMAN_PLAYER', count: Number(human) },
+			{ gamemode: Gamemode.superscout, objective: 'HUMAN_DRIVER', count: Number(driver) },
+			{ gamemode: Gamemode.superscout, objective: 'ROBOT_CLIMB', count: Number(climb) },
+			{ gamemode: Gamemode.superscout, objective: 'DEFENSE_SKILL', count: Number(defenseSkill) },
+			{ gamemode: Gamemode.superscout, objective: 'DEFENSE_TYPE', count: Number(defenseType) }
+		],
 	};
 
 	function NoteStatus() {

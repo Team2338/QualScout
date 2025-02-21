@@ -114,6 +114,8 @@ const sendRequest = async (teamNumber: string, secretCode: string, match: IMatch
 	}
 };
 
+//TODO: HANDLE CAHCING
+
 const sendRequestSuperScout = async (teamNumber: string, secretCode: string, quant: ISuperMatch): Promise<MatchResponseStatus> => {
 	try {
 		await GearscoutService.superScout(teamNumber, secretCode, quant);
