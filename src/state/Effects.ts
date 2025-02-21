@@ -71,8 +71,8 @@ export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getS
 			alert('There was a problem submitting the data!');
 		});
 
-	const drop: ISuperMatch = getState().drop;
-	sendRequestSuperScout(user, user.teamNumber, user.secretCode, drop)
+	const quant: ISuperMatch = getState().quant;
+	sendRequestSuperScout(user, user.teamNumber, user.secretCode, quant)
 		.then((result: MatchResponseStatus) => {
 			if (result === 'SUCCESS') {
 				alert('Data Submitted!');
@@ -117,7 +117,7 @@ const sendRequest = async (teamNumber: string, secretCode: string, match: IMatch
 
 const sendRequestSuperScout = async (user: IUser, teamNumber: string, secretCode: string, quant: ISuperMatch): Promise<MatchResponseStatus> => {
 	try {
-		await GearscoutService.superScout(user, user.teamNumber, secretCode, quant);
+		await GearscoutService.superScout(user, secretCode, quant);
 		return Promise.resolve('SUCCESS');
 	} catch (error) {
 		console.log(error);

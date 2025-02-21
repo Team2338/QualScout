@@ -9,13 +9,32 @@ export interface IMatch {
 }  
 
 export interface ISuperMatch {
-	gameYear: number;
-	eventCode: string;
-	matchNumber: string;
-	robotNumber: string;
-	creator: string;
-	objectives: IObjective[];
+    key: string; // "objective" in HTTP request; this is the translation key
+    name: string; // What appears in the UI
+    score: number; // "count" in HTTP request
 }
+
+export interface ISuperMatchOptions {
+    [key: string]: ISuperMatch;
+}
+
+export const Improved: ISuperMatchOptions = {
+	a: {
+		key: 'NEVER_MISSED',
+		name: 'Never Miss',
+		score: 2
+	},
+	b: {
+		key: 'MINIMAL_MISSED',
+		name: 'Minimal Missed',
+		score: 1
+	},
+	c: {
+		key: 'MANY_MISSED',
+    	name: 'Many Missed',
+    	score: 0
+	},
+};
 
 export interface IObjective {
 	gamemode: Gamemode,

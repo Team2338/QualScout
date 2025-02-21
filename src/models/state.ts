@@ -8,5 +8,5 @@ export interface IAppState {
 	notes: {
 		[key in Topic]: string;
 	};
-	drop: ISuperMatch;
+	quant: ISuperMatch;
 }

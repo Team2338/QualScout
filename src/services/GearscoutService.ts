@@ -19,8 +19,8 @@ class GearscoutService {
 
 		return this.service.post(url, match, config);
 	};
-	superScout = (user:IUser, teamNumber: string, secretCode:string, quant: ISuperMatch): GearscoutResponse<void> => {
-		const url: string = `h/team/${user.teamNumber}`;
+	superScout = (user:IUser, secretCode:string, quant: ISuperMatch): GearscoutResponse<void> => {
+		const url: string = `/team/${user.teamNumber}`;
 		const config: AxiosRequestConfig = {
 			headers: {
 				secretCode: secretCode
