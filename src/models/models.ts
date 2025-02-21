@@ -14,7 +14,7 @@ export interface ISuperMatch {
 	matchNumber: string;
 	robotNumber: string;
 	creator: string;
-	comments: IObjective[];
+	objectives: IObjective[];
 }
 
 export interface IObjective {

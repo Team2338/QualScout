@@ -72,7 +72,7 @@ export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getS
 		});
 
 	const drop: ISuperMatch = getState().drop;
-	sendRequestSuperScout(user.teamNumber, user.secretCode, drop)
+	sendRequestSuperScout(user, user.teamNumber, user.secretCode, drop)
 		.then((result: MatchResponseStatus) => {
 			if (result === 'SUCCESS') {
 				alert('Data Submitted!');
@@ -80,8 +80,7 @@ export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getS
 			}
 
 			if (result === 'OFFLINE') {
-				dispatch(saveOfflineRequest(user.teamNumber, user.secretCode, match));
-				alert('You are offline! Saving request for later.');
+				// TODO: SAVE OFFLINE
 				return;
 			}
 
@@ -116,9 +115,9 @@ const sendRequest = async (teamNumber: string, secretCode: string, match: IMatch
 
 //TODO: HANDLE CAHCING
 
-const sendRequestSuperScout = async (teamNumber: string, secretCode: string, quant: ISuperMatch): Promise<MatchResponseStatus> => {
+const sendRequestSuperScout = async (user: IUser, teamNumber: string, secretCode: string, quant: ISuperMatch): Promise<MatchResponseStatus> => {
 	try {
-		await GearscoutService.superScout(teamNumber, secretCode, quant);
+		await GearscoutService.superScout(user, user.teamNumber, secretCode, quant);
 		return Promise.resolve('SUCCESS');
 	} catch (error) {
 		console.log(error);

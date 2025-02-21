@@ -46,13 +46,14 @@ export default function QualitativeSection() {
 		}
 	};
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const quant: ISuperMatch = {
 		gameYear: 2025,
 		creator: user.scouterName,
 		eventCode: user.eventCode,
 		matchNumber: '',
 		robotNumber: '',
-		comments: [
+		objectives: [
 			{ gamemode: Gamemode.superscout, objective: 'PLACEMENT_AUTO', count: Number(autoDrop) },
 			{ gamemode: Gamemode.superscout, objective: 'PATHING', count: Number(pathingDrop) },
 			{ gamemode: Gamemode.superscout, objective: 'CORAL_GROUND', count: Number(coralGroundCollection) },
@@ -103,7 +104,7 @@ export default function QualitativeSection() {
 			<div className="dropdown-buttons">
 				{selectedCategory === Topic.auto && (
 					<FormControl className='dropdown-buttons'>
-						<InputLabel id="Placement-Accueact" style={{ color: '#babfb7' }}>Placement Accuracy</InputLabel>
+						<InputLabel id="placement-Accuracy" style={{ color: '#babfb7' }}>Placement Accuracy</InputLabel>
 						<Select
 							style={{ color: '#babfb7' }}
 							title='Placement-Accuracy'
@@ -125,14 +126,14 @@ export default function QualitativeSection() {
 
 				{selectedCategory === Topic.pathing && (
 					<FormControl className='dropdown-buttons'>
-						<InputLabel id="Pathing" style={{ color: '#babfb7' }}>Pathing</InputLabel>
+						<InputLabel id="pathing" style={{ color: '#babfb7' }}>Pathing</InputLabel>
 						<Select
 							style={{ color: '#babfb7' }}
 							title='Pathing'
 							id="Pathing"
 							labelId='Pathing'
 							value={ pathingDrop }
-							label="pathing"
+							label="Pathing"
 							onChange={ (event) => setPathingDrop(event.target.value as string) }
 							variant="outlined"
 							fullWidth
@@ -149,7 +150,7 @@ export default function QualitativeSection() {
 				{selectedCategory === Topic.coral && (
 					<div className="dropdown-buttons">
 						<FormControl className='dropdown-buttons'>
-							<InputLabel id="Ground Collection" style={{ color: '#babfb7' }}>Ground Collection</InputLabel>
+							<InputLabel id="ground-Collection" style={{ color: '#babfb7' }}>Ground Collection</InputLabel>
 							<Select
 								style={{ color: '#babfb7' }}
 								title='Ground Collection'
@@ -169,7 +170,7 @@ export default function QualitativeSection() {
 						</FormControl>
 
 						<FormControl className='dropdown-buttons'>
-							<InputLabel id="Station Collection" style={{ color: '#babfb7' }}>Station Collection</InputLabel>
+							<InputLabel id="station-Collection" style={{ color: '#babfb7' }}>Station Collection</InputLabel>
 							<Select
 								style={{ color: '#babfb7' }}
 								title='Station Collection'
@@ -189,7 +190,7 @@ export default function QualitativeSection() {
 						</FormControl>
 
 						<FormControl className='dropdown-buttons'>
-							<InputLabel id="Scoring" style={{ color: '#babfb7' }}>Scoring</InputLabel>
+							<InputLabel id="scoring" style={{ color: '#babfb7' }}>Scoring</InputLabel>
 							<Select
 								style={{ color: '#babfb7' }}
 								title='Scoring'
@@ -220,7 +221,7 @@ export default function QualitativeSection() {
 								id="ground-collection"
 								labelId='ground-collection'
 								value={ algaeGroundCollection }
-								label="Ground Collection"
+								label="Ground-Collection"
 								onChange={ (event) => setAlgaeGroundCollection(event.target.value as string) }
 								variant="outlined"
 								fullWidth
@@ -363,7 +364,7 @@ export default function QualitativeSection() {
 				{selectedCategory === Topic.defense && (
 					<div className="dropdown-buttons">
 						<FormControl className='dropdown-buttons'>
-							<InputLabel id="defense" style={{ color: '#babfb7' }}>Defense Skill</InputLabel>
+							<InputLabel id="defense-skill" style={{ color: '#babfb7' }}>Defense Skill</InputLabel>
 							<Select
 								style={{ color: '#babfb7' }}
 								title='Defense Skill'
@@ -382,7 +383,7 @@ export default function QualitativeSection() {
 							</Select>
 						</FormControl> 
 						<FormControl className='dropdown-buttons'>
-							<InputLabel id="defense type" style={{ color: '#babfb7' }}>Defense Type</InputLabel>
+							<InputLabel id="defense-type" style={{ color: '#babfb7' }}>Defense Type</InputLabel>
 							<Select
 								style={{ color: '#babfb7' }}
 								title='Defense Type'

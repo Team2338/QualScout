@@ -51,13 +51,14 @@ export default function DataCollectionPage() {
 			comments: generateComments()
 		};
 
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const quant: ISuperMatch = {
 			gameYear: 2025,
 			creator: user.scouterName,
 			eventCode: user.eventCode,
 			matchNumber: matchNumber,
 			robotNumber: robotNumber,
-			comments: [],
+			objectives: [],
 		};
 
 		dispatch(submitMatch(match));
