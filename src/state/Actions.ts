@@ -1,4 +1,4 @@
-import { IUser, Topic } from '../models/models';
+import { ISuperMatch, IUser, Subtopic, Topic } from '../models/models';
 
 export interface IAction {
 	type: string;
@@ -12,6 +12,7 @@ export const ActionTypes = {
 	CLEAR_OFFLINE_MATCHES: '[CACHE] Clear matches',
 	CLEAR_NOTES: '[NOTE] Clear notes',
 	SAVE_NOTE: '[NOTE] Save note',
+	SET_SUPER_NOTE: '[SUPER] Set super note'
 };
 
 export const loginSuccess = (user: IUser): IAction => ({
@@ -37,5 +38,13 @@ export const saveNote = (topic: Topic, content: string): IAction => ({
 	payload: {
 		topic: topic,
 		content: content
+	}
+});
+
+export const setSuperNote = (subtopic: Subtopic, key: string): IAction => ({
+	type: ActionTypes.SET_SUPER_NOTE,
+	payload: {
+		subtopic: subtopic,
+		key: key
 	}
 });

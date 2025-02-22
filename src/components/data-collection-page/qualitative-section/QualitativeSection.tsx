@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-import {
-	ISuperMatch,
-	Topic
-} from '../../../models/models';
-import { saveNote } from '../../../state/Actions';
+import { ISuperMatch, Subtopic, Topic } from '../../../models/models';
+import { saveNote, setSuperNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
 import {
 	AlgaeBarge,
-	AlgaeGroundCollection, AlgaeProcessor, AlgaeReefCollection,
-	AutoPlacementAccuracy, ClimbSkill,
-	CoralGroundCollection, CoralScoring,
-	CoralStationCollection, DefenseDriverSkill, DefenseType, DriverAbility,
-	DriverPathing, HpAtProcessor
+	AlgaeGroundCollection,
+	AlgaeProcessor,
+	AlgaeReefCollection,
+	AutoPlacementAccuracy,
+	ClimbSkill,
+	CoralGroundCollection,
+	CoralScoring,
+	CoralStationCollection,
+	DefenseDriverSkill,
+	DefenseType,
+	DriverAbility,
+	DriverPathing,
+	HpAtProcessor
 } from '../../../models/superscout-constants';
 
 export default function QualitativeSection() {
@@ -22,27 +27,6 @@ export default function QualitativeSection() {
 	const [selectedCategory, setSelectedCategory] = useState<Topic>(null);
 	const [noteContent, setNoteContent] = useState<string>('');
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
-
-	const [autoDrop, setAutoDrop] = useState<string>('');
-	const [pathingDrop, setPathingDrop] = useState<string>('');
-
-	const [coralGroundCollection, setCoralGroundCollection] = useState<string>('');
-	const [coralStationCollection, setCoralStationCollection] = useState<string>('');
-	const [coralScoring, setCoralScoring] = useState<string>('');
-
-	const [algaeGroundCollection, setAlgaeGroundCollection] = useState<string>('');
-	const [algaeReefCollection, setAlgaeReefCollection] = useState<string>('');
-	const [algaeProcessor, setAlgaeProcessor] = useState<string>('');
-	const [algaeBarge, setAlgaeBarge] = useState<string>('');
-
-	const [driver, setDriver] = useState<string>('');
-
-	const [human, setHuman] = useState<string>('');
-
-	const [climb, setClimb] = useState<string>('');
-
-	const [defenseSkill, setDefenseSkill] = useState<string>('');
-	const [defenseType, setDefenseType] = useState<string>('');
 
 	const submit = (event) => {
 		event.preventDefault();
@@ -88,9 +72,8 @@ export default function QualitativeSection() {
 					<Dropdown
 						id="placement-accuracy"
 						label="Placement Accuracy"
-						value={ autoDrop }
+						subtopic={ Subtopic.autoPlacementAccuracy }
 						options={ AutoPlacementAccuracy }
-						onChange={ setAutoDrop }
 					/>
 				)}
 
@@ -98,9 +81,8 @@ export default function QualitativeSection() {
 					<Dropdown
 						id="pathing"
 						label="Pathing"
-						value={ pathingDrop }
+						subtopic={ Subtopic.pathingDrivers }
 						options={ DriverPathing }
-						onChange={ setPathingDrop }
 					/>
 				)}
 
@@ -109,23 +91,20 @@ export default function QualitativeSection() {
 						<Dropdown
 							id="coral-ground-collection"
 							label="Ground Collection"
-							value={ coralGroundCollection }
+							subtopic={ Subtopic.coralGroundCollection }
 							options={ CoralGroundCollection }
-							onChange={ setCoralGroundCollection }
 						/>
 						<Dropdown
 							id="station-collection"
 							label="Station Collection"
-							value={ coralStationCollection }
+							subtopic={ Subtopic.coralStationCollection}
 							options={ CoralStationCollection }
-							onChange={ setCoralStationCollection }
 						/>
 						<Dropdown
 							id="scoring"
 							label="Scoring"
-							value={ coralScoring }
+							subtopic={ Subtopic.coralScoring }
 							options={ CoralScoring }
-							onChange={ setCoralScoring }
 						/>
 					</div>
 				)}
@@ -135,30 +114,26 @@ export default function QualitativeSection() {
 						<Dropdown
 							id="algae-ground-collection"
 							label="Ground Collection"
-							value={ algaeGroundCollection }
+							subtopic={ Subtopic.algaeGroundCollection }
 							options={ AlgaeGroundCollection }
-							onChange={ setAlgaeGroundCollection }
 						/>
 						<Dropdown
 							id="algae-reef-collection"
 							label="Reef Collection"
-							value={ algaeReefCollection }
+							subtopic={ Subtopic.algaeReefCollection }
 							options={ AlgaeReefCollection }
-							onChange={ setAlgaeReefCollection }
 						/>
 						<Dropdown
 							id="algae-processor"
 							label="Processor"
-							value={ algaeProcessor }
+							subtopic={ Subtopic.algaeProcessor}
 							options={ AlgaeProcessor }
-							onChange={ setAlgaeProcessor }
 						/>
 						<Dropdown
 							id="algae-barge"
 							label="Barge"
-							value={ algaeBarge }
+							subtopic={ Subtopic.algaeBarge }
 							options={ AlgaeBarge }
-							onChange={ setAlgaeBarge }
 						/>
 					</div>
 				)}
@@ -167,9 +142,8 @@ export default function QualitativeSection() {
 					<Dropdown
 						id="human-player-dropdown"
 						label="Human Player"
-						value={ human }
+						subtopic={ Subtopic.hpAtProcessor }
 						options={ HpAtProcessor }
-						onChange={ setHuman }
 					/>
 				)}
 
@@ -177,9 +151,8 @@ export default function QualitativeSection() {
 					<Dropdown
 						id="driver-skill-dropdown"
 						label="Driver Skill"
-						value={ driver }
+						subtopic={ Subtopic.driverAbility }
 						options={ DriverAbility }
-						onChange={ setDriver }
 					/>
 				)}
 
@@ -187,9 +160,8 @@ export default function QualitativeSection() {
 					<Dropdown
 						id="climb-dropdown"
 						label="Climb"
-						value={ climb }
+						subtopic={ Subtopic.climbSkill }
 						options={ ClimbSkill }
-						onChange={ setClimb }
 					/>
 				)}
 
@@ -198,16 +170,14 @@ export default function QualitativeSection() {
 						<Dropdown
 							id="defense-skill-dropdown"
 							label="Defense Skill"
-							value={ defenseSkill }
+							subtopic={ Subtopic.defenseDriverSkill }
 							options={ DefenseDriverSkill }
-							onChange={ setDefenseSkill }
 						/>
 						<Dropdown
 							id="defense-type-dropdown"
 							label="Defense Type"
-							value={ defenseType }
+							subtopic={ Subtopic.defenseType }
 							options={ DefenseType }
-							onChange={ setDefenseType }
 						/>
 					</div>
 				)}
@@ -246,13 +216,14 @@ export default function QualitativeSection() {
 
 interface IDropdownProps {
 	id: string;
-	value: string;
 	label: string;
-	options: ISuperMatch[]
-	onChange: (value: string) => void;
+	subtopic: Subtopic;
+	options: ISuperMatch[];
 }
 
 function Dropdown(props: IDropdownProps) {
+	const dispatch = useAppDispatch();
+	const value = useAppSelector(state => state.superNotes[props.subtopic]);
 	const labelId = props.id + '__label';
 	return (
 		<FormControl className="dropdown-wrapper" margin="dense">
@@ -260,12 +231,12 @@ function Dropdown(props: IDropdownProps) {
 			<Select
 				id={ props.id }
 				labelId={ labelId }
-				value={ props.value }
+				value={ value }
 				label={ props.label }
 				style={{ color: '#babfb7' }}
 				variant="outlined"
 				fullWidth={ true }
-				onChange={ (event) => props.onChange(event.target.value) }
+				onChange={ (event) => dispatch(setSuperNote(props.subtopic, event.target.value)) }
 			>
 				{
 					props.options.map(option => (

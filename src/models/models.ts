@@ -69,19 +69,19 @@ export interface IUser {
 	eventCode: string;
 }
 
-export enum Drop {
-	AutoPlacementAccuracy = 'AutoPlacementAccuracy',
-	PathingDrivers = 'PathingDrivers',
-	CoralGroundCollection = 'CoralGroundCollection',
-	CoralStationCollection = 'CoralStationCollection',
-	CoralScoring = 'CoralScoring',
-	AlgaeGroundCollection = 'AlgaeGroundCollection',
-	AlgaeReefCollection = 'AlgaeReefCollection',
-	AlgaeProcessor = 'AlgaeProcessor',
-	AlgaeBarge = 'AlgaeBarge',
-	DriverAbility = 'DriverAbility',
-	HPAtProcessor = 'HPAtProcessor',
-	ClimbSkill = 'ClimbSkill',
-	DefenseDriverSkill = 'DefenseDriverSkill',
-	DefenseType = 'DefenseType',
+export enum Subtopic {
+	autoPlacementAccuracy = 'Auto Placement Accuracy',
+	pathingDrivers = 'Pathing Drivers',
+	coralGroundCollection = 'Coral Ground Collection',
+	coralStationCollection = 'Coral Station Collection',
+	coralScoring = 'Coral Scoring',
+	algaeGroundCollection = 'Algae Ground Collection',
+	algaeReefCollection = 'Algae Reef Collection',
+	algaeProcessor = 'Algae Processor',
+	algaeBarge = 'Algae Barge',
+	driverAbility = 'Driver Ability',
+	hpAtProcessor = 'HP at Processor',
+	climbSkill = 'Climb Skill',
+	defenseDriverSkill = 'Driver Defense Skill',
+	defenseType = 'Defense Type',
 }

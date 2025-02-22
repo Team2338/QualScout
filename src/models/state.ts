@@ -1,4 +1,4 @@
-import { ICachedMatch, IUser, Topic, ISuperMatch } from './models';
+import { ICachedMatch, IUser, Topic, ISuperMatch, Subtopic } from './models';
 
 export interface IAppState {
 	user: IUser;
@@ -8,5 +8,5 @@ export interface IAppState {
 	notes: {
 		[key in Topic]: string;
 	};
-	quant: ISuperMatch;
+	superNotes: Record<Subtopic, string>; // subtopic -> key
 }
