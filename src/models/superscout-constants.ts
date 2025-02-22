@@ -1,4 +1,4 @@
-import { ISuperMatch } from './models';
+import { ISuperMatch, Subtopic } from './models';
 
 export const AutoPlacementAccuracy: ISuperMatch[] = [
 	{
@@ -251,3 +251,21 @@ export const DefenseType: ISuperMatch[] = [
 		score: 0
 	},
 ];
+
+type ISubtopicToOptionMap = Record<Subtopic, ISuperMatch[]>;
+export const SubtopicToOptionMap: ISubtopicToOptionMap = {
+	[Subtopic.autoPlacementAccuracy]: AutoPlacementAccuracy,
+	[Subtopic.pathingDrivers]: DriverPathing,
+	[Subtopic.coralGroundCollection]: CoralGroundCollection,
+	[Subtopic.coralStationCollection]: CoralStationCollection,
+	[Subtopic.coralScoring]: CoralScoring,
+	[Subtopic.algaeGroundCollection]: AlgaeGroundCollection,
+	[Subtopic.algaeReefCollection]: AlgaeReefCollection,
+	[Subtopic.algaeProcessor]: AlgaeProcessor,
+	[Subtopic.algaeBarge]: AlgaeBarge,
+	[Subtopic.driverAbility]: DriverAbility,
+	[Subtopic.hpAtProcessor]: HpAtProcessor,
+	[Subtopic.climbSkill]: ClimbSkill,
+	[Subtopic.defenseDriverSkill]: DefenseDriverSkill,
+	[Subtopic.defenseType]: DefenseType
+}

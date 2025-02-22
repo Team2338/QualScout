@@ -1,12 +1,23 @@
 import './DataCollectionPage.scss';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
-import { Gamemode, IMatch, INote, IObjective, ISuperNoteRequest, IUser, Topic } from '../../models/models';
+import {
+	Gamemode,
+	IMatch,
+	INote,
+	IObjective,
+	ISuperMatch,
+	ISuperNoteRequest,
+	IUser,
+	Subtopic,
+	Topic
+} from '../../models/models';
 import { clearNotes } from '../../state/Actions';
 import { submitMatch, submitSuperNotes } from '../../state/Effects';
 import MatchInformation from './match-information/MatchInformation';
 import QualitativeSection from './qualitative-section/QualitativeSection';
 import { useAppDispatch, useAppSelector } from '../../state/Hooks';
+import { SubtopicToOptionMap } from '../../models/superscout-constants';
 
 const MAX_MATCH_NUMBER = 200;
 
@@ -14,6 +25,7 @@ export default function DataCollectionPage() {
 	const dispatch = useAppDispatch();
 	const user: IUser = useAppSelector(state => state.user);
 	const notes: Record<Topic, string> = useAppSelector(state => state.notes);
+	const superNotes: Record<Subtopic, string> = useAppSelector(state => state.superNotes);
 	const [robotNumber, setRobotNumber] = useState<string>('');
 	const [matchNumber, setMatchNumber] = useState<string>('');
 
@@ -27,14 +39,18 @@ export default function DataCollectionPage() {
 	};
 
 	const generateSuperObjectives = (): IObjective[] => {
-		return [
-			{
-				gamemode: Gamemode.superscout,
-				objective: 'DRIVER_SKILL',
-				count: 2
-			}
-		];
-	}
+		return Object.values(Subtopic)
+			.filter((subtopic: Subtopic) => !!superNotes[subtopic])
+			.map((subtopic: Subtopic): IObjective => {
+				const selectedKey: string = superNotes[subtopic];
+				const option: ISuperMatch = SubtopicToOptionMap[subtopic].find(opt => opt.key === selectedKey);
+				return {
+					gamemode: Gamemode.superscout,
+					objective: subtopic,
+					count: option.score
+				};
+			});
+	};
 
 	const validateRequiredInfo = (): boolean => {
 		const problems: string[] = [];

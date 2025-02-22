@@ -44,7 +44,8 @@ export function reducer(state: IAppState = INITIAL_STATE, action: IAction): IApp
 		case ActionTypes.CLEAR_NOTES:
 			return {
 				...state,
-				notes: INITIAL_STATE.notes
+				notes: INITIAL_STATE.notes,
+				superNotes: INITIAL_STATE.superNotes
 			};
 		case ActionTypes.LOGIN_SUCCESS:
 			return {

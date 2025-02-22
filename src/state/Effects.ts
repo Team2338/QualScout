@@ -55,7 +55,6 @@ export const sendOfflineRequests = () => async (dispatch: AppDispatch, getState:
 
 export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getState: GetState) => {
 	const user: IUser = getState().user;
-	return;
 	sendRequest(user.teamNumber, user.secretCode, match)
 		.then((result: MatchResponseStatus) => {
 			if (result === 'SUCCESS') {
