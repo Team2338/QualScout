@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
-import { Button, TextField, Select, FormControl, MenuItem, InputLabel } from '@mui/material';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { IUser, Topic, Auto, Pathing, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, DriverAbility, HPAtProcessor, 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	ClimbSkill, DefenseDriverSkill, Drivers, HumanP, Climb, DefenseSkill, DefenseType, AutoPlacementAccuracy, PathingDrivers, Gamemode, ISuperMatch} from '../../../models/models';
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import {
+	ISuperMatch,
+	Topic
+} from '../../../models/models';
 import { saveNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
+import {
+	AlgaeBarge,
+	AlgaeGroundCollection, AlgaeProcessor, AlgaeReefCollection,
+	AutoPlacementAccuracy, ClimbSkill,
+	CoralGroundCollection, CoralScoring,
+	CoralStationCollection, DefenseDriverSkill, DefenseType, DriverAbility,
+	DriverPathing, HpAtProcessor
+} from '../../../models/superscout-constants';
 
 export default function QualitativeSection() {
 	const dispatch = useAppDispatch();
-	const user: IUser = useAppSelector(state => state.user);
 
 	const [selectedCategory, setSelectedCategory] = useState<Topic>(null);
 	const [noteContent, setNoteContent] = useState<string>('');
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
 
-	const [autoDrop, setAutoDrop] = useState<string>(''); 
+	const [autoDrop, setAutoDrop] = useState<string>('');
 	const [pathingDrop, setPathingDrop] = useState<string>('');
 
 	const [coralGroundCollection, setCoralGroundCollection] = useState<string>('');
@@ -36,7 +43,7 @@ export default function QualitativeSection() {
 
 	const [defenseSkill, setDefenseSkill] = useState<string>('');
 	const [defenseType, setDefenseType] = useState<string>('');
-  
+
 	const submit = (event) => {
 		event.preventDefault();
 		if (selectedCategory !== null) {
@@ -44,31 +51,6 @@ export default function QualitativeSection() {
 			setNoteContent('');
 			setSelectedCategory(null);
 		}
-	};
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const quant: ISuperMatch = {
-		gameYear: 2025,
-		creator: user.scouterName,
-		eventCode: user.eventCode,
-		matchNumber: '',
-		robotNumber: '',
-		objectives: [
-			{ gamemode: Gamemode.superscout, objective: 'PLACEMENT_AUTO', count: Number(autoDrop) },
-			{ gamemode: Gamemode.superscout, objective: 'PATHING', count: Number(pathingDrop) },
-			{ gamemode: Gamemode.superscout, objective: 'CORAL_GROUND', count: Number(coralGroundCollection) },
-			{ gamemode: Gamemode.superscout, objective: 'CORAL_STATION', count: Number(coralStationCollection) },
-			{ gamemode: Gamemode.superscout, objective: 'CORAL_SCORING', count: Number(coralScoring) },
-			{ gamemode: Gamemode.superscout, objective: 'ALGAE_GROUND', count: Number(algaeGroundCollection) },
-			{ gamemode: Gamemode.superscout, objective: 'ALGAE_REEF', count: Number(algaeReefCollection) },
-			{ gamemode: Gamemode.superscout, objective: 'ALGAE_PROCESSOR', count: Number(algaeProcessor) },
-			{ gamemode: Gamemode.superscout, objective: 'ALGAE_BARGE', count: Number(algaeBarge) },
-			{ gamemode: Gamemode.superscout, objective: 'HUMAN_PLAYER', count: Number(human) },
-			{ gamemode: Gamemode.superscout, objective: 'HUMAN_DRIVER', count: Number(driver) },
-			{ gamemode: Gamemode.superscout, objective: 'ROBOT_CLIMB', count: Number(climb) },
-			{ gamemode: Gamemode.superscout, objective: 'DEFENSE_SKILL', count: Number(defenseSkill) },
-			{ gamemode: Gamemode.superscout, objective: 'DEFENSE_TYPE', count: Number(defenseType) }
-		],
 	};
 
 	function NoteStatus() {
@@ -97,310 +79,136 @@ export default function QualitativeSection() {
 	return (
 		<div className="qualitative-section">
 			<h1>Categories</h1>
-			<NoteStatus />
+			<NoteStatus/>
 
 			<p><strong>Selected Category:</strong> { selectedCategory ?? 'None' }</p>
 
 			<div className="dropdown-buttons">
-				{selectedCategory === Topic.auto && (
-					<FormControl className='dropdown-buttons'>
-						<InputLabel id="placement-Accuracy" style={{ color: '#babfb7' }}>Placement Accuracy</InputLabel>
-						<Select
-							style={{ color: '#babfb7' }}
-							title='Placement-Accuracy'
-							id="Placement-Accuracy"
-							labelId='Placement Accuracy'
-							value={ autoDrop }
-							label="Placement-Accuracy"
-							onChange={ (event) => setAutoDrop(event.target.value as string) }
-							variant="outlined"
-							fullWidth
-						>
-							<MenuItem key="option1" value={AutoPlacementAccuracy.NeverMiss}>Never Missed</MenuItem>
-							<MenuItem key="option2" value={AutoPlacementAccuracy.MinimalMissed}>Minimal Missed</MenuItem>
-							<MenuItem key="option3" value={AutoPlacementAccuracy.ManyMissed}>Many Missed</MenuItem>
-						</Select>
-					</FormControl>
-
+				{ selectedCategory === Topic.auto && (
+					<Dropdown
+						id="placement-accuracy"
+						label="Placement Accuracy"
+						value={ autoDrop }
+						options={ AutoPlacementAccuracy }
+						onChange={ setAutoDrop }
+					/>
 				)}
 
-				{selectedCategory === Topic.pathing && (
-					<FormControl className='dropdown-buttons'>
-						<InputLabel id="pathing" style={{ color: '#babfb7' }}>Pathing</InputLabel>
-						<Select
-							style={{ color: '#babfb7' }}
-							title='Pathing'
-							id="Pathing"
-							labelId='Pathing'
-							value={ pathingDrop }
-							label="Pathing"
-							onChange={ (event) => setPathingDrop(event.target.value as string) }
-							variant="outlined"
-							fullWidth
-
-						>
-							<MenuItem key="option1" value={PathingDrivers.NoCollision} >No collision</MenuItem>
-							<MenuItem key="option2" value={PathingDrivers.MinimalCollisions}>Minimal Collisions</MenuItem>
-							<MenuItem key="option3" value={PathingDrivers.ManyCollisions}>Many Collisions</MenuItem>
-						</Select>
-					</FormControl>
-
+				{ selectedCategory === Topic.pathing && (
+					<Dropdown
+						id="pathing"
+						label="Pathing"
+						value={ pathingDrop }
+						options={ DriverPathing }
+						onChange={ setPathingDrop }
+					/>
 				)}
 
-				{selectedCategory === Topic.coral && (
+				{ selectedCategory === Topic.coral && (
 					<div className="dropdown-buttons">
-						<FormControl className='dropdown-buttons'>
-							<InputLabel id="ground-Collection" style={{ color: '#babfb7' }}>Ground Collection</InputLabel>
-							<Select
-								style={{ color: '#babfb7' }}
-								title='Ground Collection'
-								id="Ground-Collection"
-								labelId='Ground-Collection'
-								value={ coralGroundCollection }
-								label="Ground-Collection"
-								onChange={ (event) => setCoralGroundCollection(event.target.value as string) }
-								variant="outlined"
-								fullWidth
-								
-							>
-								<MenuItem key="option1" value={CoralGroundCollection.QuickSnag}>Quick snag</MenuItem>
-								<MenuItem key="option2" value={CoralGroundCollection.Align}>Align</MenuItem>
-								<MenuItem key="option3" value={CoralGroundCollection.CantPickUp}>Cant pick up</MenuItem>
-							</Select>
-						</FormControl>
-
-						<FormControl className='dropdown-buttons'>
-							<InputLabel id="station-Collection" style={{ color: '#babfb7' }}>Station Collection</InputLabel>
-							<Select
-								style={{ color: '#babfb7' }}
-								title='Station Collection'
-								id="Station-Collection"
-								labelId='Station-Collection'
-								value={ coralStationCollection }
-								label="Station-Collection"
-								onChange={ (event) => setCoralStationCollection(event.target.value as string) }
-								variant="outlined"
-								fullWidth
-								
-							>
-								<MenuItem key="option1" value={CoralStationCollection.QuickCollection}>Quick Collection</MenuItem>
-								<MenuItem key="option2" value={CoralStationCollection.Align}>Align</MenuItem>
-								<MenuItem key="option3" value={CoralStationCollection.DropPiece}>Drop Piece</MenuItem>
-							</Select>
-						</FormControl>
-
-						<FormControl className='dropdown-buttons'>
-							<InputLabel id="scoring" style={{ color: '#babfb7' }}>Scoring</InputLabel>
-							<Select
-								style={{ color: '#babfb7' }}
-								title='Scoring'
-								id="scoring"
-								labelId='scoring'
-								value={ coralScoring }
-								label="Scoring"
-								onChange={ (event) => setCoralScoring(event.target.value as string) }
-								variant="outlined"
-								fullWidth
-								
-							>
-								<MenuItem key="option1" value={CoralScoring.InstantPlace}>Instant Place</MenuItem>
-								<MenuItem key="option2" value={CoralScoring.LongLineup}>Long lineup</MenuItem>
-								<MenuItem key="option3" value={CoralScoring.CantPlace}>Cant Place</MenuItem>
-							</Select>
-						</FormControl> 
+						<Dropdown
+							id="coral-ground-collection"
+							label="Ground Collection"
+							value={ coralGroundCollection }
+							options={ CoralGroundCollection }
+							onChange={ setCoralGroundCollection }
+						/>
+						<Dropdown
+							id="station-collection"
+							label="Station Collection"
+							value={ coralStationCollection }
+							options={ CoralStationCollection }
+							onChange={ setCoralStationCollection }
+						/>
+						<Dropdown
+							id="scoring"
+							label="Scoring"
+							value={ coralScoring }
+							options={ CoralScoring }
+							onChange={ setCoralScoring }
+						/>
 					</div>
 				)}
 
-				{selectedCategory === Topic.algae && (
+				{ selectedCategory === Topic.algae && (
 					<div className="dropdown-buttons">
-						<FormControl className='dropdown-buttons'>
-							<InputLabel id="ground-collection" style={{ color: '#babfb7' }}>Ground Collection</InputLabel>
-							<Select
-								style={{ color: '#babfb7' }}
-								title='Ground Collection'
-								id="ground-collection"
-								labelId='ground-collection'
-								value={ algaeGroundCollection }
-								label="Ground-Collection"
-								onChange={ (event) => setAlgaeGroundCollection(event.target.value as string) }
-								variant="outlined"
-								fullWidth
-								
-							>
-								<MenuItem key="option1" value={AlgaeGroundCollection.GoodPickUp}>Good pick up</MenuItem>
-								<MenuItem key="option2" value={AlgaeGroundCollection.PushesIt}>Pushes it</MenuItem>
-								<MenuItem key="option3" value={AlgaeGroundCollection.CantPickItUp}>Cant pick it up</MenuItem>
-							</Select>
-						</FormControl> 
-
-						<FormControl className='dropdown-buttons'>
-							<InputLabel id="reef-collection" style={{ color: '#babfb7' }}>Reef Collection</InputLabel>
-							<Select
-								style={{ color: '#babfb7' }}
-								title='Reef Collection'
-								id="reef-collection"
-								labelId='reef-collection'
-								value={ algaeReefCollection }
-								label="Barge"
-								onChange={ (event) => setAlgaeReefCollection(event.target.value as string) }
-								variant="outlined"
-								fullWidth
-								
-							>
-								<MenuItem key="option1" value={AlgaeReefCollection.GoodPickUp}>Good Pick Up</MenuItem>
-								<MenuItem key="option2" value={AlgaeReefCollection.LongAlignment}>Long Alignment</MenuItem>
-								<MenuItem key="option3" value={AlgaeReefCollection.KnocksItDown}>Knocks it down</MenuItem>
-							</Select>
-						</FormControl>
-
-						<FormControl className='dropdown-buttons'>
-							<InputLabel id="algae-processor" style={{ color: '#babfb7' }}>Processor</InputLabel>
-							<Select
-								style={{ color: '#babfb7' }}
-								title='Processor'
-								id="algae-processor"
-								labelId='algae-processor'
-								value={ algaeProcessor }
-								label="Processor"
-								onChange={ (event) => setAlgaeProcessor(event.target.value as string) }
-								variant="outlined"
-								fullWidth
-								
-							>
-								<MenuItem key="option1" value={AlgaeProcessor.InstantPlace}>Instant Place</MenuItem>
-								<MenuItem key="option2" value={AlgaeProcessor.LongAlignment}>Long Alignment</MenuItem>
-								<MenuItem key="option3" value={AlgaeProcessor.NoMechanismToScore}>No mechanism to score</MenuItem>
-							</Select>
-						</FormControl>
-
-						<FormControl className='dropdown-buttons'>
-							<InputLabel id="algae-barge" style={{ color: '#babfb7' }}>Barge</InputLabel>
-							<Select
-								style={{ color: '#babfb7' }}
-								title='Barge'
-								id="algae-barge"
-								labelId='algae-barge'
-								value={ algaeBarge }
-								label="Barge"
-								onChange={ (event) => setAlgaeBarge(event.target.value as string) }
-								variant="outlined"
-								fullWidth
-								
-							>
-								<MenuItem key="option1" value={AlgaeBarge.InstantScore}>Instant Score</MenuItem>
-								<MenuItem key="option2" value={AlgaeBarge.NeedsToLineUp}>Needs to line up</MenuItem>
-								<MenuItem key="option3" value={AlgaeBarge.CantScore}>Can't Score</MenuItem>
-							</Select>
-						</FormControl>
+						<Dropdown
+							id="algae-ground-collection"
+							label="Ground Collection"
+							value={ algaeGroundCollection }
+							options={ AlgaeGroundCollection }
+							onChange={ setAlgaeGroundCollection }
+						/>
+						<Dropdown
+							id="algae-reef-collection"
+							label="Reef Collection"
+							value={ algaeReefCollection }
+							options={ AlgaeReefCollection }
+							onChange={ setAlgaeReefCollection }
+						/>
+						<Dropdown
+							id="algae-processor"
+							label="Processor"
+							value={ algaeProcessor }
+							options={ AlgaeProcessor }
+							onChange={ setAlgaeProcessor }
+						/>
+						<Dropdown
+							id="algae-barge"
+							label="Barge"
+							value={ algaeBarge }
+							options={ AlgaeBarge }
+							onChange={ setAlgaeBarge }
+						/>
 					</div>
 				)}
 
-				{selectedCategory === Topic.hp && (
-					<FormControl className='dropdown-buttons'>
-						<InputLabel id="human-player-dropdown" style={{ color: '#babfb7' }}>Human Player</InputLabel>
-						<Select
-							style={{ color: '#babfb7' }}
-							title='Human Player'
-							id="human-player-dropdown"
-							labelId='human-player-dropdown'
-							value={ human }
-							label="Human Player"
-							onChange={ (event) => setHuman(event.target.value as string) }
-							variant="outlined"
-							fullWidth
-							
-						>
-							<MenuItem key="option1" value={HPAtProcessor.MichaelJordan}>MICHAEL JORDAN</MenuItem>
-							<MenuItem key="option2" value={HPAtProcessor.Middle}>Middle</MenuItem>
-							<MenuItem key="option3" value={HPAtProcessor.NotAtProcessor}>Not at processor</MenuItem>
-						</Select>
-					</FormControl>
+				{ selectedCategory === Topic.hp && (
+					<Dropdown
+						id="human-player-dropdown"
+						label="Human Player"
+						value={ human }
+						options={ HpAtProcessor }
+						onChange={ setHuman }
+					/>
 				)}
 
-				{selectedCategory === Topic.drivers && (
-					<FormControl className='dropdown-buttons'>
-						<InputLabel id="driver-skill-dropdown" style={{ color: '#babfb7' }}>Driver Skill</InputLabel>
-						<Select
-							style={{ color: '#babfb7' }}
-							title='Driver Skill'
-							id="driver-skill-dropdown"
-							labelId='driver-skill-dropdown'
-							value={ driver }
-							label="Driver Skill"
-							onChange={ (event) => setDriver(event.target.value as string) }
-							variant="outlined"
-							fullWidth
-							
-						>
-							<MenuItem key="option1" value={DriverAbility.SmoothOperator}>Smooth Operator</MenuItem>
-							<MenuItem key="option2" value={DriverAbility.SlowDecisions}>Slow Decision</MenuItem>
-							<MenuItem key="option3" value={DriverAbility.LackOfDrive}>Lack of Drive</MenuItem>
-						</Select>
-					</FormControl>
+				{ selectedCategory === Topic.drivers && (
+					<Dropdown
+						id="driver-skill-dropdown"
+						label="Driver Skill"
+						value={ driver }
+						options={ DriverAbility }
+						onChange={ setDriver }
+					/>
 				)}
 
-				{selectedCategory === Topic.climb && (
-					<FormControl className='dropdown-buttons'>
-						<InputLabel id="climb" style={{ color: '#babfb7' }}>Climb</InputLabel>
-						<Select
-							style={{ color: '#babfb7' }}
-							title='Climb'
-							id="climb"
-							labelId='climb'
-							value={ climb }
-							label="Climb"
-							onChange={ (event) => setClimb(event.target.value as string) }
-							variant="outlined"
-							fullWidth
-							
-						>
-							<MenuItem key="option1" value={ClimbSkill.FastOrSturdy}>Fast or sturdy climb</MenuItem>
-							<MenuItem key="option2" value={ClimbSkill.SlowOrWobbly}>Slow or Wobbly Climb</MenuItem>
-							<MenuItem key="option3" value={ClimbSkill.ShouldNotHang}>That bot should not be hanging</MenuItem>
-						</Select>
-					</FormControl> 
+				{ selectedCategory === Topic.climb && (
+					<Dropdown
+						id="climb-dropdown"
+						label="Climb"
+						value={ climb }
+						options={ ClimbSkill }
+						onChange={ setClimb }
+					/>
 				)}
 
-				{selectedCategory === Topic.defense && (
+				{ selectedCategory === Topic.defense && (
 					<div className="dropdown-buttons">
-						<FormControl className='dropdown-buttons'>
-							<InputLabel id="defense-skill" style={{ color: '#babfb7' }}>Defense Skill</InputLabel>
-							<Select
-								style={{ color: '#babfb7' }}
-								title='Defense Skill'
-								id="defense-skill"
-								labelId='defense-skill'
-								value={ defenseSkill }
-								label="Defense Skill"
-								onChange={ (event) => setDefenseSkill(event.target.value as string) }
-								variant="outlined"
-								fullWidth
-								
-							>
-								<MenuItem key="option1" value={DefenseDriverSkill.EffectiveDefense}>Effective defense</MenuItem>
-								<MenuItem key="option2" value={DefenseDriverSkill.NotVeryGood}>Not very good</MenuItem>
-								<MenuItem key="option3" value={DefenseDriverSkill.NotPlayed}>Defense not played</MenuItem>
-							</Select>
-						</FormControl> 
-						<FormControl className='dropdown-buttons'>
-							<InputLabel id="defense-type" style={{ color: '#babfb7' }}>Defense Type</InputLabel>
-							<Select
-								style={{ color: '#babfb7' }}
-								title='Defense Type'
-								id="defense-type"
-								labelId='defense-type'
-								value={ defenseType }
-								label="Defense Type"
-								onChange={ (event) => setDefenseType(event.target.value as string) }
-								variant="outlined"
-								fullWidth
-								
-							>
-								<MenuItem key="option1" value={DefenseType.ZoneDefense}>Zone Defense</MenuItem>
-								<MenuItem key="option2" value={DefenseType.TargetedDefense}>Targeted Defense</MenuItem>
-								<MenuItem key="option3" value={DefenseType.NoDefense}>No Defense</MenuItem>
-							</Select>
-						</FormControl> 
+						<Dropdown
+							id="defense-skill-dropdown"
+							label="Defense Skill"
+							value={ defenseSkill }
+							options={ DefenseDriverSkill }
+							onChange={ setDefenseSkill }
+						/>
+						<Dropdown
+							id="defense-type-dropdown"
+							label="Defense Type"
+							value={ defenseType }
+							options={ DefenseType }
+							onChange={ setDefenseType }
+						/>
 					</div>
 				)}
 			</div>
@@ -414,7 +222,7 @@ export default function QualitativeSection() {
 				variant="outlined"
 				fullWidth={ true }
 				sx={{
-					marginBottom: '16px',
+					marginBottom: '16px'
 				}}
 				disabled={ selectedCategory === null }
 			/>
@@ -433,5 +241,38 @@ export default function QualitativeSection() {
 				}
 			</ul>
 		</div>
+	);
+}
+
+interface IDropdownProps {
+	id: string;
+	value: string;
+	label: string;
+	options: ISuperMatch[]
+	onChange: (value: string) => void;
+}
+
+function Dropdown(props: IDropdownProps) {
+	const labelId = props.id + '__label';
+	return (
+		<FormControl className="dropdown-wrapper" margin="dense">
+			<InputLabel id={ labelId } style={{ color: '#babfb7' }}>{ props.label }</InputLabel>
+			<Select
+				id={ props.id }
+				labelId={ labelId }
+				value={ props.value }
+				label={ props.label }
+				style={{ color: '#babfb7' }}
+				variant="outlined"
+				fullWidth={ true }
+				onChange={ (event) => props.onChange(event.target.value) }
+			>
+				{
+					props.options.map(option => (
+						<MenuItem key={ option.key } value={ option.key }>{ option.name }</MenuItem>
+					))
+				}
+			</Select>
+		</FormControl>
 	);
 }
