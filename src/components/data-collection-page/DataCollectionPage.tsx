@@ -1,9 +1,9 @@
 import './DataCollectionPage.scss';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
-import { IMatch, INote, IUser, Topic, ISuperMatch } from '../../models/models';  
+import { Gamemode, IMatch, INote, IObjective, ISuperNoteRequest, IUser, Topic } from '../../models/models';
 import { clearNotes } from '../../state/Actions';
-import { submitMatch } from '../../state/Effects';
+import { submitMatch, submitSuperNotes } from '../../state/Effects';
 import MatchInformation from './match-information/MatchInformation';
 import QualitativeSection from './qualitative-section/QualitativeSection';
 import { useAppDispatch, useAppSelector } from '../../state/Hooks';
@@ -26,7 +26,17 @@ export default function DataCollectionPage() {
 			}));
 	};
 
-	const validateRequiredInfo = (): void => {
+	const generateSuperObjectives = (): IObjective[] => {
+		return [
+			{
+				gamemode: Gamemode.superscout,
+				objective: 'DRIVER_SKILL',
+				count: 2
+			}
+		];
+	}
+
+	const validateRequiredInfo = (): boolean => {
 		const problems: string[] = [];
 		if (matchNumber.length === 0)
 			problems.push('You must specify a match number');
@@ -35,12 +45,18 @@ export default function DataCollectionPage() {
 		if (robotNumber.length === 0)
 			problems.push('You must specify a robot number');
 
-		if (problems.length > 0)
-			alert(problems.join('- \n'));
+		if (problems.length > 0) {
+			alert(problems.join('\n'));
+			return false;
+		}
+
+		return true;
 	};
 
 	const handleSubmit = (): void => {
-		validateRequiredInfo();
+		if (!validateRequiredInfo()) {
+			return;
+		}
 
 		const match: IMatch = {
 			gameYear: 2025,
@@ -51,17 +67,17 @@ export default function DataCollectionPage() {
 			comments: generateComments()
 		};
 
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const quant: ISuperMatch = {
+		const superNotes: ISuperNoteRequest = {
 			gameYear: 2025,
 			creator: user.scouterName,
 			eventCode: user.eventCode,
 			matchNumber: matchNumber,
 			robotNumber: robotNumber,
-			objectives: [],
+			objectives: generateSuperObjectives()
 		};
 
 		dispatch(submitMatch(match));
+		dispatch(submitSuperNotes(superNotes));
 		dispatch(clearNotes());
 		setRobotNumber('');
 		setMatchNumber('');

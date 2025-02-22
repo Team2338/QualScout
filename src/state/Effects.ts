@@ -1,4 +1,4 @@
-import { ISuperMatch, ICachedMatch, IMatch, IUser } from '../models/models';
+import { ICachedMatch, IMatch, IUser, ISuperNoteRequest } from '../models/models';
 import { IAppState } from '../models/state';
 import GearscoutService from '../services/GearscoutService';
 import { clearOfflineMatches, getOfflineMatchesSuccess } from './Actions';
@@ -55,6 +55,7 @@ export const sendOfflineRequests = () => async (dispatch: AppDispatch, getState:
 
 export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getState: GetState) => {
 	const user: IUser = getState().user;
+	return;
 	sendRequest(user.teamNumber, user.secretCode, match)
 		.then((result: MatchResponseStatus) => {
 			if (result === 'SUCCESS') {
@@ -70,9 +71,11 @@ export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getS
 
 			alert('There was a problem submitting the data!');
 		});
+};
 
-	const quant: ISuperMatch = getState().quant;
-	sendRequestSuperScout(user, user.teamNumber, user.secretCode, quant)
+export const submitSuperNotes = (notes: ISuperNoteRequest) => async (dispatch: AppDispatch, getState: GetState) => {
+	const user: IUser = getState().user;
+	sendRequestSuperScout(user.teamNumber, user.secretCode, notes)
 		.then((result: MatchResponseStatus) => {
 			if (result === 'SUCCESS') {
 				alert('Data Submitted!');
@@ -86,7 +89,7 @@ export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getS
 
 			alert('There was a problem submitting the data!');
 		});
-};
+}
 
 /*
 	#########################
@@ -115,9 +118,9 @@ const sendRequest = async (teamNumber: string, secretCode: string, match: IMatch
 
 //TODO: HANDLE CAHCING
 
-const sendRequestSuperScout = async (user: IUser, teamNumber: string, secretCode: string, quant: ISuperMatch): Promise<MatchResponseStatus> => {
+const sendRequestSuperScout = async (teamNumber: string, secretCode: string, quant: ISuperNoteRequest): Promise<MatchResponseStatus> => {
 	try {
-		await GearscoutService.superScout(user, secretCode, quant);
+		await GearscoutService.superScout(teamNumber, secretCode, quant);
 		return Promise.resolve('SUCCESS');
 	} catch (error) {
 		console.log(error);
