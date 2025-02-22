@@ -1,4 +1,4 @@
-import { ICachedMatch, IUser, Topic, ISuperMatch, Subtopic } from './models';
+import { ICachedMatch, IUser, Topic, Subtopic } from './models';
 
 export interface IAppState {
 	user: IUser;
