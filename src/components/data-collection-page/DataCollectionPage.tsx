@@ -1,43 +1,33 @@
 import './DataCollectionPage.scss';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
-import { IMatch, INote, IUser, Topic, Drop, AutoPlacementAccuracy, PathingDrivers, CoralGroundCollection, CoralStationCollection, CoralScoring, AlgaeGroundCollection, AlgaeReefCollection, AlgaeProcessor, AlgaeBarge, DriverAbility, HPAtProcessor, ClimbSkill, DefenseDriverSkill, DefenseType } from '../../models/models';  
+import {
+	Gamemode,
+	IMatch,
+	INote,
+	IObjective,
+	ISuperMatch,
+	ISuperNoteRequest,
+	IUser,
+	Subtopic,
+	Topic
+} from '../../models/models';
 import { clearNotes } from '../../state/Actions';
-import { submitMatch } from '../../state/Effects';
+import { submitMatch, submitSuperNotes } from '../../state/Effects';
 import MatchInformation from './match-information/MatchInformation';
 import QualitativeSection from './qualitative-section/QualitativeSection';
 import { useAppDispatch, useAppSelector } from '../../state/Hooks';
+import { SubtopicToOptionMap } from '../../models/superscout-constants';
 
 const MAX_MATCH_NUMBER = 200;
-
-function initializeDropEnums() {
-	return {
-	  [Drop.AutoPlacementAccuracy]: AutoPlacementAccuracy,
-	  [Drop.PathingDrivers]: PathingDrivers,
-	  [Drop.CoralGroundCollection]: CoralGroundCollection,
-	  [Drop.CoralStationCollection]: CoralStationCollection,
-	  [Drop.CoralScoring]: CoralScoring,
-	  [Drop.AlgaeGroundCollection]: AlgaeGroundCollection,
-	  [Drop.AlgaeReefCollection]: AlgaeReefCollection,
-	  [Drop.AlgaeProcessor]: AlgaeProcessor,
-	  [Drop.AlgaeBarge]: AlgaeBarge,
-	  [Drop.DriverAbility]: DriverAbility,
-	  [Drop.HPAtProcessor]: HPAtProcessor,
-	  [Drop.ClimbSkill]: ClimbSkill,
-	  [Drop.DefenseDriverSkill]: DefenseDriverSkill,
-	  [Drop.DefenseType]: DefenseType,
-	};
-}
 
 export default function DataCollectionPage() {
 	const dispatch = useAppDispatch();
 	const user: IUser = useAppSelector(state => state.user);
 	const notes: Record<Topic, string> = useAppSelector(state => state.notes);
+	const superNotes: Record<Subtopic, string> = useAppSelector(state => state.superNotes);
 	const [robotNumber, setRobotNumber] = useState<string>('');
 	const [matchNumber, setMatchNumber] = useState<string>('');
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const Drop = initializeDropEnums();
 
 	const generateComments = (): INote[] => {
 		return Object.values(Topic)
@@ -48,7 +38,21 @@ export default function DataCollectionPage() {
 			}));
 	};
 
-	const validateRequiredInfo = (): void => {
+	const generateSuperObjectives = (): IObjective[] => {
+		return Object.values(Subtopic)
+			.filter((subtopic: Subtopic) => !!superNotes[subtopic])
+			.map((subtopic: Subtopic): IObjective => {
+				const selectedKey: string = superNotes[subtopic];
+				const option: ISuperMatch = SubtopicToOptionMap[subtopic].find(opt => opt.key === selectedKey);
+				return {
+					gamemode: Gamemode.superscout,
+					objective: subtopic,
+					count: option.score
+				};
+			});
+	};
+
+	const validateRequiredInfo = (): boolean => {
 		const problems: string[] = [];
 		if (matchNumber.length === 0)
 			problems.push('You must specify a match number');
@@ -57,12 +61,18 @@ export default function DataCollectionPage() {
 		if (robotNumber.length === 0)
 			problems.push('You must specify a robot number');
 
-		if (problems.length > 0)
-			alert(problems.join('- \n'));
+		if (problems.length > 0) {
+			alert(problems.join('\n'));
+			return false;
+		}
+
+		return true;
 	};
 
 	const handleSubmit = (): void => {
-		validateRequiredInfo();
+		if (!validateRequiredInfo()) {
+			return;
+		}
 
 		const match: IMatch = {
 			gameYear: 2025,
@@ -70,11 +80,20 @@ export default function DataCollectionPage() {
 			eventCode: user.eventCode,
 			matchNumber: matchNumber,
 			robotNumber: robotNumber,
-			comments: generateComments(),
-			dropdowns: Object.values(initializeDropEnums)
+			comments: generateComments()
+		};
+
+		const superNotes: ISuperNoteRequest = {
+			gameYear: 2025,
+			creator: user.scouterName,
+			eventCode: user.eventCode,
+			matchNumber: matchNumber,
+			robotNumber: robotNumber,
+			objectives: generateSuperObjectives()
 		};
 
 		dispatch(submitMatch(match));
+		dispatch(submitSuperNotes(superNotes));
 		dispatch(clearNotes());
 		setRobotNumber('');
 		setMatchNumber('');

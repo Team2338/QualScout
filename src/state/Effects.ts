@@ -1,4 +1,4 @@
-import { ICachedMatch, IMatch, IUser } from '../models/models';
+import { ICachedMatch, IMatch, IUser, ISuperNoteRequest } from '../models/models';
 import { IAppState } from '../models/state';
 import GearscoutService from '../services/GearscoutService';
 import { clearOfflineMatches, getOfflineMatchesSuccess } from './Actions';
@@ -72,6 +72,24 @@ export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getS
 		});
 };
 
+export const submitSuperNotes = (notes: ISuperNoteRequest) => async (dispatch: AppDispatch, getState: GetState) => {
+	const user: IUser = getState().user;
+	sendRequestSuperScout(user.teamNumber, user.secretCode, notes)
+		.then((result: MatchResponseStatus) => {
+			if (result === 'SUCCESS') {
+				alert('Data Submitted!');
+				return;
+			}
+
+			if (result === 'OFFLINE') {
+				// TODO: SAVE OFFLINE
+				return;
+			}
+
+			alert('There was a problem submitting the data!');
+		});
+}
+
 /*
 	#########################
 	### Private functions ###
@@ -86,6 +104,22 @@ const readOfflineRequestsFromStorage = (): ICachedMatch[] => {
 const sendRequest = async (teamNumber: string, secretCode: string, match: IMatch): Promise<MatchResponseStatus> => {
 	try {
 		await GearscoutService.submitMatch(teamNumber, secretCode, match);
+		return Promise.resolve('SUCCESS');
+	} catch (error) {
+		console.log(error);
+		if (error.code === 'ERR_NETWORK') {
+			return Promise.resolve('OFFLINE');
+		}
+
+		return Promise.resolve('FAIL');
+	}
+};
+
+//TODO: HANDLE CAHCING
+
+const sendRequestSuperScout = async (teamNumber: string, secretCode: string, quant: ISuperNoteRequest): Promise<MatchResponseStatus> => {
+	try {
+		await GearscoutService.superScout(teamNumber, secretCode, quant);
 		return Promise.resolve('SUCCESS');
 	} catch (error) {
 		console.log(error);
