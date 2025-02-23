@@ -14,7 +14,12 @@ function isLocalHost(): boolean {
 
 export const register = async (config?: IConfig) => {
 	window.addEventListener('load', async () => {
-		if ('serviceWorker' in navigator && import.meta.env.MODE === 'production' && !isLocalHost()) {
+		if ('serviceWorker' in navigator) {
+			if (isLocalHost() || import.meta.env.MODE !== 'production') {
+				unregister();
+				return;
+			}
+
 			try {
 				const registration: ServiceWorkerRegistration = await navigator.serviceWorker
 					.register('/service-worker.js', {
