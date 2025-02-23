@@ -16,6 +16,11 @@ export interface ISuperNoteRequest {
 	objectives: IObjective[];
 }
 
+export interface ICachedSuperNoteRequest extends ISuperNoteRequest {
+	teamNumber: string;
+	secretCode: string;
+}
+
 export interface IObjective {
 	gamemode: Gamemode,
 	objective: string;

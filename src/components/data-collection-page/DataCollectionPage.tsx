@@ -92,8 +92,11 @@ export default function DataCollectionPage() {
 			objectives: generateSuperObjectives()
 		};
 
+		if (superNotes.objectives.length > 0) {
+			dispatch(submitSuperNotes(superNotes));
+		}
+
 		dispatch(submitMatch(match));
-		dispatch(submitSuperNotes(superNotes));
 		dispatch(clearNotes());
 		setRobotNumber('');
 		setMatchNumber('');

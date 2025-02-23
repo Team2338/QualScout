@@ -1,9 +1,10 @@
-import { ICachedMatch, IUser, Topic, Subtopic } from './models';
+import { ICachedMatch, IUser, Topic, Subtopic, ICachedSuperNoteRequest } from './models';
 
 export interface IAppState {
 	user: IUser;
 	cache: {
 		matches: ICachedMatch[];
+		superNotes: ICachedSuperNoteRequest[];
 	};
 	notes: {
 		[key in Topic]: string;

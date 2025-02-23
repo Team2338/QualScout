@@ -6,7 +6,8 @@ import { ActionTypes, IAction } from './Actions';
 const INITIAL_STATE: IAppState = {
 	user: null,
 	cache: {
-		matches: []
+		matches: [],
+		superNotes: []
 	},
 	notes: {
 		[Topic.auto]: '',
@@ -56,14 +57,32 @@ export function reducer(state: IAppState = INITIAL_STATE, action: IAction): IApp
 			return {
 				...state,
 				cache: {
+					...state.cache,
 					matches: action.payload
+				}
+			};
+		case ActionTypes.GET_OFFLINE_SUPER_NOTES_SUCCESS:
+			return {
+				...state,
+				cache: {
+					...state.cache,
+					superNotes: action.payload
 				}
 			};
 		case ActionTypes.CLEAR_OFFLINE_MATCHES:
 			return {
 				...state,
 				cache: {
+					...state.cache,
 					matches: []
+				}
+			};
+		case ActionTypes.CLEAR_OFFLINE_SUPER_NOTES:
+			return {
+				...state,
+				cache: {
+					...state.cache,
+					superNotes: []
 				}
 			};
 		case ActionTypes.SAVE_NOTE:

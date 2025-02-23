@@ -1,4 +1,4 @@
-import { ISuperMatch, IUser, Subtopic, Topic } from '../models/models';
+import { ICachedMatch, ICachedSuperNoteRequest, IUser, Subtopic, Topic } from '../models/models';
 
 export interface IAction {
 	type: string;
@@ -9,7 +9,9 @@ export interface IAction {
 export const ActionTypes = {
 	LOGIN_SUCCESS: '[AUTH] LOGIN SUCCESS',
 	GET_OFFLINE_MATCHES_SUCCESS: '[CACHE] Successfully got offline matches',
+	GET_OFFLINE_SUPER_NOTES_SUCCESS: '[CACHE] Successfully got offline super notes',
 	CLEAR_OFFLINE_MATCHES: '[CACHE] Clear matches',
+	CLEAR_OFFLINE_SUPER_NOTES: '[CACHE] Clear super notes',
 	CLEAR_NOTES: '[NOTE] Clear notes',
 	SAVE_NOTE: '[NOTE] Save note',
 	SET_SUPER_NOTE: '[SUPER] Set super note'
@@ -20,13 +22,22 @@ export const loginSuccess = (user: IUser): IAction => ({
 	payload: user
 });
 
-export const getOfflineMatchesSuccess = (matches): IAction => ({
+export const getOfflineMatchesSuccess = (matches: ICachedMatch[]): IAction => ({
 	type: ActionTypes.GET_OFFLINE_MATCHES_SUCCESS,
 	payload: matches
 });
 
+export const getOfflineSuperNotesSuccess = (superNotes: ICachedSuperNoteRequest[]): IAction => ({
+	type: ActionTypes.GET_OFFLINE_SUPER_NOTES_SUCCESS,
+	payload: superNotes
+});
+
 export const clearOfflineMatches = (): IAction => ({
-	type: ActionTypes.CLEAR_OFFLINE_MATCHES,
+	type: ActionTypes.CLEAR_OFFLINE_MATCHES
+});
+
+export const clearOfflineSuperNotes = (): IAction => ({
+	type: ActionTypes.CLEAR_OFFLINE_SUPER_NOTES
 });
 
 export const clearNotes = (): IAction => ({

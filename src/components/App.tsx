@@ -1,6 +1,6 @@
 import './App.scss';
 import React, { useEffect } from 'react';
-import { fetchOfflineRequests } from '../state/Effects';
+import { fetchOfflineRequests, fetchOfflineSuperNotes } from '../state/Effects';
 import { useAppDispatch, useAppSelector } from '../state/Hooks';
 import { IUser } from '../models/models';
 import DataCollectionPage from './data-collection-page/DataCollectionPage';
@@ -14,6 +14,7 @@ function App() {
 	useEffect(
 		() => {
 			dispatch(fetchOfflineRequests());
+			dispatch(fetchOfflineSuperNotes());
 		},
 		[dispatch]
 	);
