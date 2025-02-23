@@ -1,16 +1,27 @@
-import { ICachedMatch, IMatch, IUser, ISuperNoteRequest } from '../models/models';
+import { ICachedMatch, IMatch, IUser, ISuperNoteRequest, ICachedSuperNoteRequest } from '../models/models';
 import { IAppState } from '../models/state';
 import GearscoutService from '../services/GearscoutService';
-import { clearOfflineMatches, getOfflineMatchesSuccess } from './Actions';
+import {
+	clearOfflineMatches,
+	clearOfflineSuperNotes,
+	getOfflineMatchesSuccess,
+	getOfflineSuperNotesSuccess
+} from './Actions';
 import { AppDispatch } from './Store';
 
 type GetState = () => IAppState;
 type MatchResponseStatus = 'SUCCESS' | 'OFFLINE' | 'FAIL';
 const OFFLINE_REQUEST_LOCATION: string = 'offlineRequests';
+const OFFLINE_SUPER_NOTE_REQUEST_LOCATION: string = 'offlineSuperNotes';
 
 export const fetchOfflineRequests = () => async (dispatch: AppDispatch) => {
 	const offlineRequests: ICachedMatch[] = readOfflineRequestsFromStorage();
 	dispatch(getOfflineMatchesSuccess(offlineRequests));
+};
+
+export const fetchOfflineSuperNotes = () => async (dispatch: AppDispatch) => {
+	const offlineRequests: ICachedSuperNoteRequest[] = readOfflineSuperNotesFromStorage();
+	dispatch(getOfflineSuperNotesSuccess(offlineRequests));
 };
 
 export const saveOfflineRequest = (teamNumber: string, secretCode: string, match: IMatch) => async (dispatch: AppDispatch, getState: GetState) => {
@@ -25,6 +36,18 @@ export const saveOfflineRequest = (teamNumber: string, secretCode: string, match
 	localStorage.setItem(OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
 	dispatch(getOfflineMatchesSuccess(offlineRequests));
 };
+
+export const saveOfflineSuperNotesRequest = (teamNumber: string, secretCode: string, superNotes: ISuperNoteRequest) => async (dispatch: AppDispatch, getState: GetState) => {
+	const request: ICachedSuperNoteRequest = {
+		...superNotes,
+		teamNumber: teamNumber,
+		secretCode: secretCode,
+	};
+	const offlineRequests: ICachedSuperNoteRequest[] = getState().cache.superNotes.concat(request);
+
+	localStorage.setItem(OFFLINE_SUPER_NOTE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
+	dispatch(getOfflineSuperNotesSuccess(offlineRequests));
+}
 
 export const sendOfflineRequests = () => async (dispatch: AppDispatch, getState: GetState) => {
 	const offlineRequests: ICachedMatch[] = getState().cache.matches;
@@ -44,13 +67,40 @@ export const sendOfflineRequests = () => async (dispatch: AppDispatch, getState:
 	});
 
 	if (nextOfflineRequests.length === 0) {
-		alert('Successfully sent all cached requests');
+		alert('Successfully sent all cached qualitative notes');
 		return;
 	}
 
 	localStorage.setItem(OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
 	dispatch(getOfflineMatchesSuccess(nextOfflineRequests));
-	alert(`Failed to send ${nextOfflineRequests.length} requests`);
+	alert(`Failed to send ${nextOfflineRequests.length} qualitative matches`);
+};
+
+export const sendOfflineSuperNotesRequests = () => async (dispatch: AppDispatch, getState: GetState) => {
+	const offlineRequests: ICachedSuperNoteRequest[] = getState().cache.superNotes;
+	localStorage.setItem(OFFLINE_SUPER_NOTE_REQUEST_LOCATION, '[]');
+	dispatch(clearOfflineSuperNotes());
+
+	const requests: Promise<MatchResponseStatus>[] = offlineRequests.map(
+		(request: ICachedSuperNoteRequest)=> sendSuperNoteRequest(request.teamNumber, request.secretCode, request)
+	)
+
+	const results: PromiseSettledResult<MatchResponseStatus>[] = await Promise.allSettled(requests);
+	const nextOfflineRequests: ICachedSuperNoteRequest[] = [];
+	results.forEach((result, index) => {
+		if (result.status === 'fulfilled' && result.value === 'OFFLINE') {
+			nextOfflineRequests.push(offlineRequests[index]);
+		}
+	});
+
+	if (nextOfflineRequests.length === 0) {
+		alert('Successfully sent all cached superscout data');
+		return;
+	}
+
+	localStorage.setItem(OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
+	dispatch(getOfflineSuperNotesSuccess(nextOfflineRequests));
+	alert(`Failed to send ${nextOfflineRequests.length} superscout matches`);
 };
 
 export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getState: GetState) => {
@@ -74,7 +124,7 @@ export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getS
 
 export const submitSuperNotes = (notes: ISuperNoteRequest) => async (dispatch: AppDispatch, getState: GetState) => {
 	const user: IUser = getState().user;
-	sendRequestSuperScout(user.teamNumber, user.secretCode, notes)
+	sendSuperNoteRequest(user.teamNumber, user.secretCode, notes)
 		.then((result: MatchResponseStatus) => {
 			if (result === 'SUCCESS') {
 				alert('Data Submitted!');
@@ -82,7 +132,7 @@ export const submitSuperNotes = (notes: ISuperNoteRequest) => async (dispatch: A
 			}
 
 			if (result === 'OFFLINE') {
-				// TODO: SAVE OFFLINE
+				dispatch(saveOfflineSuperNotesRequest(user.teamNumber, user.secretCode, notes));
 				return;
 			}
 
@@ -97,7 +147,12 @@ export const submitSuperNotes = (notes: ISuperNoteRequest) => async (dispatch: A
  */
 
 const readOfflineRequestsFromStorage = (): ICachedMatch[] => {
-	const serializedOfflineRequests: string = localStorage.getItem('offlineRequests') ?? '[]';
+	const serializedOfflineRequests: string = localStorage.getItem(OFFLINE_REQUEST_LOCATION) ?? '[]';
+	return JSON.parse(serializedOfflineRequests);
+};
+
+const readOfflineSuperNotesFromStorage = (): ICachedSuperNoteRequest[] => {
+	const serializedOfflineRequests = localStorage.getItem(OFFLINE_REQUEST_LOCATION) ?? '[]';
 	return JSON.parse(serializedOfflineRequests);
 };
 
@@ -115,9 +170,7 @@ const sendRequest = async (teamNumber: string, secretCode: string, match: IMatch
 	}
 };
 
-//TODO: HANDLE CAHCING
-
-const sendRequestSuperScout = async (teamNumber: string, secretCode: string, quant: ISuperNoteRequest): Promise<MatchResponseStatus> => {
+const sendSuperNoteRequest = async (teamNumber: string, secretCode: string, quant: ISuperNoteRequest): Promise<MatchResponseStatus> => {
 	try {
 		await GearscoutService.superScout(teamNumber, secretCode, quant);
 		return Promise.resolve('SUCCESS');

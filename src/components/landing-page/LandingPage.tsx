@@ -3,14 +3,15 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import './LandingPage.scss';
-import { sendOfflineRequests } from '../../state/Effects';
+import { sendOfflineRequests, sendOfflineSuperNotesRequests } from '../../state/Effects';
 import { loginSuccess } from '../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../state/Hooks';
 
 
 export default function LandingPage() {
 	const dispatch = useAppDispatch();
-	const numOfflineMatches = useAppSelector(state => state.cache.matches.length);
+	const numOfflineMatches: number = useAppSelector(state => state.cache.matches.length);
+	const numOfflineSuperNotes: number = useAppSelector(state => state.cache.superNotes.length);
 	const [teamNumber, setTeamNumber] = useState<string>('');
 	const [eventCode, setEventCode] = useState<string>('');
 	const [secretCode, setSecretCode] = useState<string>('');
@@ -39,6 +40,7 @@ export default function LandingPage() {
 
 	const handleSendOfflineRequests = (): void => {
 		dispatch(sendOfflineRequests());
+		dispatch(sendOfflineSuperNotesRequests());
 	};
 
 	const isSubmitDisabled = (
@@ -153,7 +155,7 @@ export default function LandingPage() {
 					size="medium"
 					color="primary"
 					onClick={ handleSendOfflineRequests }
-					disabled={ numOfflineMatches === 0 }
+					disabled={ numOfflineMatches === 0 && numOfflineSuperNotes === 0 }
 				>
 					Retry saved matches
 				</Button>

@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import store from './state/Store';
 import './index.scss';
+import { register } from './ServiceWorkerRegistration';
+import { serviceWorkerInstalled } from './state/Actions';
 
 const GRAY = '#BABFB7';
 
@@ -45,3 +47,10 @@ root.render(
 		</ThemeProvider>
 	</Provider>
 );
+
+register({
+	onUpdate: sw => store.dispatch(serviceWorkerInstalled(sw)),
+	onSuccess: () => {
+		window.location.reload();
+	}
+});

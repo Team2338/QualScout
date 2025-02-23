@@ -5,8 +5,13 @@ import { ActionTypes, IAction } from './Actions';
 
 const INITIAL_STATE: IAppState = {
 	user: null,
+	serviceWorker: {
+		updated: false,
+		sw: null
+	},
 	cache: {
-		matches: []
+		matches: [],
+		superNotes: []
 	},
 	notes: {
 		[Topic.auto]: '',
@@ -41,6 +46,14 @@ const INITIAL_STATE: IAppState = {
 export function reducer(state: IAppState = INITIAL_STATE, action: IAction): IAppState {
 
 	switch (action.type) {
+		case ActionTypes.SERVICE_WORKER_INSTALLED:
+			return {
+				...state,
+				serviceWorker: {
+					updated: true,
+					sw: action.payload
+				}
+			};
 		case ActionTypes.CLEAR_NOTES:
 			return {
 				...state,
@@ -56,14 +69,32 @@ export function reducer(state: IAppState = INITIAL_STATE, action: IAction): IApp
 			return {
 				...state,
 				cache: {
+					...state.cache,
 					matches: action.payload
+				}
+			};
+		case ActionTypes.GET_OFFLINE_SUPER_NOTES_SUCCESS:
+			return {
+				...state,
+				cache: {
+					...state.cache,
+					superNotes: action.payload
 				}
 			};
 		case ActionTypes.CLEAR_OFFLINE_MATCHES:
 			return {
 				...state,
 				cache: {
+					...state.cache,
 					matches: []
+				}
+			};
+		case ActionTypes.CLEAR_OFFLINE_SUPER_NOTES:
+			return {
+				...state,
+				cache: {
+					...state.cache,
+					superNotes: []
 				}
 			};
 		case ActionTypes.SAVE_NOTE:
