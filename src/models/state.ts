@@ -2,6 +2,10 @@ import { ICachedMatch, IUser, Topic, Subtopic, ICachedSuperNoteRequest } from '.
 
 export interface IAppState {
 	user: IUser;
+	serviceWorker: {
+		updated: boolean;
+		sw: ServiceWorker | null;
+	};
 	cache: {
 		matches: ICachedMatch[];
 		superNotes: ICachedSuperNoteRequest[];

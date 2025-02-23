@@ -7,6 +7,7 @@ export interface IAction {
 }
 
 export const ActionTypes = {
+	SERVICE_WORKER_INSTALLED: '[UPDATE] SERVICE_WORKER_INSTALLED',
 	LOGIN_SUCCESS: '[AUTH] LOGIN SUCCESS',
 	GET_OFFLINE_MATCHES_SUCCESS: '[CACHE] Successfully got offline matches',
 	GET_OFFLINE_SUPER_NOTES_SUCCESS: '[CACHE] Successfully got offline super notes',
@@ -16,6 +17,11 @@ export const ActionTypes = {
 	SAVE_NOTE: '[NOTE] Save note',
 	SET_SUPER_NOTE: '[SUPER] Set super note'
 };
+
+export const serviceWorkerInstalled = (sw: ServiceWorker): IAction => ({
+	type: ActionTypes.SERVICE_WORKER_INSTALLED,
+	payload: sw
+});
 
 export const loginSuccess = (user: IUser): IAction => ({
 	type: ActionTypes.LOGIN_SUCCESS,

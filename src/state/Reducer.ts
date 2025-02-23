@@ -5,6 +5,10 @@ import { ActionTypes, IAction } from './Actions';
 
 const INITIAL_STATE: IAppState = {
 	user: null,
+	serviceWorker: {
+		updated: false,
+		sw: null
+	},
 	cache: {
 		matches: [],
 		superNotes: []
@@ -42,6 +46,14 @@ const INITIAL_STATE: IAppState = {
 export function reducer(state: IAppState = INITIAL_STATE, action: IAction): IAppState {
 
 	switch (action.type) {
+		case ActionTypes.SERVICE_WORKER_INSTALLED:
+			return {
+				...state,
+				serviceWorker: {
+					updated: true,
+					sw: action.payload
+				}
+			};
 		case ActionTypes.CLEAR_NOTES:
 			return {
 				...state,
