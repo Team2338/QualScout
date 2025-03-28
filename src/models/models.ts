@@ -86,6 +86,7 @@ export enum Subtopic {
 	algaeBarge = 'Algae Barge',
 	driverAbility = 'Driver Ability',
 	hpAtProcessor = 'HP at Processor',
+	hpAtFeeder = 'HP at Feeder',
 	climbSkill = 'Climb Skill',
 	defenseDriverSkill = 'Driver Defense Skill',
 	defenseType = 'Defense Type',

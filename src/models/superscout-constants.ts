@@ -97,8 +97,8 @@ export const AlgaeGroundCollection: ISuperMatch[] = [
 		score: 2
 	},
 	{
-		key: 'PUSHES_IT',
-		name: 'Pushes it',
+		key: 'PUSHES_IT', // TODO: Rename to match text
+		name: 'Multiple pickup attempts',
 		score: 1
 	},
 	{
@@ -182,20 +182,38 @@ export const DriverAbility: ISuperMatch[] = [
 
 export const HpAtProcessor: ISuperMatch[] = [
 	{
-		key: 'MICHAEL_JORDAN',
-		name: Math.random() < 0.05 ? 'KOBE' : 'MICHAEL JORDAN',
+		key: 'MICHAEL_JORDAN', // Might keep this as an Easter egg
+		name: 'Basketball pro',
 		score: 2
 	},
 	{
-		key: 'MEDIOCRE',
-		name: 'Mediocre',
+		key: 'MEDIOCRE', // TODO: Rename to match text
+		name: 'Misses some shots',
 		score: 1
 	},
 	{
-		key: 'NOT_AT_PROCESSOR',
-		name: 'Not at processor',
+		key: 'NOT_AT_PROCESSOR', // TODO: Rename to match text
+		name: 'Misses almost all',
 		score: 0
 	},
+];
+
+export const HpAtFeeder: ISuperMatch[] = [
+	{
+		key: 'INSTANT_FEEDER',
+		name: 'Instant feeder',
+		score: 2
+	},
+	{
+		key: 'SLOW_OR_HESITANT',
+		name: 'Slow or hesitant',
+		score: 1
+	},
+	{
+		key: 'MISSES_ROBOT',
+		name: 'Misses the robot',
+		score: 0
+	}
 ];
 
 export const ClimbSkill: ISuperMatch[] = [
@@ -265,6 +283,7 @@ export const SubtopicToOptionMap: ISubtopicToOptionMap = {
 	[Subtopic.algaeBarge]: AlgaeBarge,
 	[Subtopic.driverAbility]: DriverAbility,
 	[Subtopic.hpAtProcessor]: HpAtProcessor,
+	[Subtopic.hpAtFeeder]: HpAtFeeder,
 	[Subtopic.climbSkill]: ClimbSkill,
 	[Subtopic.defenseDriverSkill]: DefenseDriverSkill,
 	[Subtopic.defenseType]: DefenseType

@@ -96,7 +96,10 @@ export default function DataCollectionPage() {
 			dispatch(submitSuperNotes(superNotes));
 		}
 
-		dispatch(submitMatch(match));
+		if (match.comments.length > 0) {
+			dispatch(submitMatch(match));
+		}
+
 		dispatch(clearNotes());
 		setRobotNumber('');
 		setMatchNumber('');

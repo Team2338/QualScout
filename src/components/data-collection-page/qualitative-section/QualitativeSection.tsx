@@ -17,7 +17,7 @@ import {
 	DefenseDriverSkill,
 	DefenseType,
 	DriverAbility,
-	DriverPathing,
+	DriverPathing, HpAtFeeder,
 	HpAtProcessor
 } from '../../../models/superscout-constants';
 
@@ -139,12 +139,20 @@ export default function QualitativeSection() {
 				)}
 
 				{ selectedCategory === Topic.hp && (
-					<Dropdown
-						id="human-player-dropdown"
-						label="Human Player"
-						subtopic={ Subtopic.hpAtProcessor }
-						options={ HpAtProcessor }
-					/>
+					<div className="dropdown-buttons">
+						<Dropdown
+							id="hp-feeder-dropdown"
+							label="HP at Feeder"
+							subtopic={ Subtopic.hpAtFeeder }
+							options={ HpAtFeeder }
+						/>
+						<Dropdown
+							id="hp-processor-dropdown"
+							label="HP at Processor"
+							subtopic={ Subtopic.hpAtProcessor }
+							options={ HpAtProcessor }
+						/>
+					</div>
 				)}
 
 				{ selectedCategory === Topic.drivers && (
@@ -233,14 +241,14 @@ function Dropdown(props: IDropdownProps) {
 				labelId={ labelId }
 				value={ value }
 				label={ props.label }
-				style={{ color: '#babfb7' }}
 				variant="outlined"
 				fullWidth={ true }
 				onChange={ (event) => dispatch(setSuperNote(props.subtopic, event.target.value)) }
 			>
+				<MenuItem value="" style={{ fontStyle: 'italic', color: '#707070' }}>Do not report</MenuItem>
 				{
 					props.options.map(option => (
-						<MenuItem key={ option.key } value={ option.key }>{ option.name }</MenuItem>
+						<MenuItem key={ option.key } value={ option.key } style={{ color: '#000' }}>{ option.name }</MenuItem>
 					))
 				}
 			</Select>

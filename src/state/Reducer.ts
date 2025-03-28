@@ -37,6 +37,7 @@ const INITIAL_STATE: IAppState = {
 		[Subtopic.algaeBarge]: '',
 		[Subtopic.driverAbility]: '',
 		[Subtopic.hpAtProcessor]: '',
+		[Subtopic.hpAtFeeder]: '',
 		[Subtopic.climbSkill]: '',
 		[Subtopic.defenseDriverSkill]: '',
 		[Subtopic.defenseType]: ''
