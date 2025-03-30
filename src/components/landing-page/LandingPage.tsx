@@ -9,6 +9,31 @@ import { useAppDispatch, useAppSelector } from '../../state/Hooks';
 
 
 export default function LandingPage() {
+	const query = new URLSearchParams(window.location.search);
+	const initialTeamNumber = query.get('team');
+	const initialEventCode = query.get('event');
+	const initialSecretCode = query.get('secret');
+	const initialTbaCode = query.get('tba');
+
+	if (initialTeamNumber ?? initialEventCode ?? initialSecretCode ?? initialTbaCode) {
+		// set initial values from query string and clear
+		if (initialTeamNumber) {
+			localStorage.setItem('teamNumber', initialTeamNumber);
+		}
+		if (initialEventCode) {
+			localStorage.setItem('eventCode', initialEventCode);
+		}
+		if (initialSecretCode) {
+			localStorage.setItem('secretCode', initialSecretCode);
+		}
+		if (initialTbaCode) {
+			localStorage.setItem('tbaCode', initialTbaCode);
+		}
+		const urlPieces = [location.protocol, '//', location.host, location.pathname];
+		let url = urlPieces.join('');
+		window.location.replace(url);
+	}
+
 	const dispatch = useAppDispatch();
 	const numOfflineMatches: number = useAppSelector(state => state.cache.matches.length);
 	const numOfflineSuperNotes: number = useAppSelector(state => state.cache.superNotes.length);
