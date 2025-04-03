@@ -18,6 +18,31 @@ export default function LandingPage() {
 	const [scouterName, setScouterName] = useState<string>('');
 
 	useEffect(() => {
+		const query = new URLSearchParams(window.location.search);
+		const initialTeamNumber = query.get('team');
+		const initialEventCode = query.get('event');
+		const initialSecretCode = query.get('secret');
+		const initialTbaCode = query.get('tba');
+
+		// set initial values from query string and clear
+		if (initialTeamNumber ?? initialEventCode ?? initialSecretCode ?? initialTbaCode) {
+			if (initialTeamNumber) {
+				localStorage.setItem('teamNumber', initialTeamNumber);
+			}
+			if (initialEventCode) {
+				localStorage.setItem('eventCode', initialEventCode);
+			}
+			if (initialSecretCode) {
+				localStorage.setItem('secretCode', initialSecretCode);
+			}
+			if (initialTbaCode) {
+				localStorage.setItem('tbaCode', initialTbaCode);
+			}
+			const urlPieces = [location.protocol, '//', location.host, location.pathname];
+			let url = urlPieces.join('');
+			window.location.replace(url);
+		}
+
 		setTeamNumber(localStorage.getItem('teamNumber') ?? '');
 		setEventCode(localStorage.getItem('eventCode') ?? '');
 		setSecretCode(localStorage.getItem('secretCode') ?? '');
