@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import './LandingPage.scss';
-import { sendOfflineRequests, sendOfflineSuperNotesRequests } from '../../state/Effects';
+import { fetchEventSchedule, sendOfflineRequests, sendOfflineSuperNotesRequests } from '../../state/Effects';
 import { loginSuccess } from '../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../state/Hooks';
 
@@ -65,6 +65,7 @@ export default function LandingPage() {
 			secretCode: secretCode,
 			scouterName: scouterName
 		}));
+		dispatch(fetchEventSchedule(new Date().getFullYear(), tbaCode));
 	};
 
 	const handleSendOfflineRequests = (): void => {

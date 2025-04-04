@@ -74,6 +74,16 @@ export interface IUser {
 	eventCode: string;
 }
 
+export interface IMatchLineup {
+	matchNumber: number;
+	red1: number;
+	red2: number;
+	red3: number;
+	blue1: number;
+	blue2: number;
+	blue3: number;
+}
+
 export enum Subtopic {
 	autoPlacementAccuracy = 'Auto Placement Accuracy',
 	pathingDrivers = 'Pathing Drivers',

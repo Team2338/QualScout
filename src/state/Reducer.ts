@@ -1,5 +1,5 @@
 import { Subtopic, Topic } from '../models/models';
-import { IAppState } from '../models/state';
+import { IAppState, LoadStatus } from '../models/state';
 import { ActionTypes, IAction } from './Actions';
 
 
@@ -8,6 +8,10 @@ const INITIAL_STATE: IAppState = {
 	serviceWorker: {
 		updated: false,
 		sw: null
+	},
+	schedule: {
+		loadStatus: LoadStatus.none,
+		data: null
 	},
 	cache: {
 		matches: [],

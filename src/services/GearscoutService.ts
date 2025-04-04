@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { IMatch, ISuperNoteRequest } from '../models/models';
+import { IMatch, IMatchLineup, ISuperNoteRequest } from '../models/models';
 
 type GearscoutResponse<T> = Promise<AxiosResponse<T>>;
 
@@ -29,6 +29,16 @@ class GearscoutService {
 		};
 
 		return this.service.post(url, quant, config);
+	};
+
+	getEventSchedule = (gameYear: number, tbaCode: string): GearscoutResponse<IMatchLineup[]> => {
+		const url: string = `/v2/schedule/gameYear/${gameYear}/event/${tbaCode}`;
+		const timeout: number = 10_000;
+		const config: AxiosRequestConfig = {
+			timeout: timeout,
+			signal: AbortSignal.timeout(timeout)
+		};
+		return this.service.get(url, config);
 	};
 }
 
