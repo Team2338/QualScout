@@ -78,7 +78,7 @@ function RobotDropdownWrapper(props: {
 	children: React.ReactNode;
 }) {
 	return (
-		<FormControl margin="normal">
+		<FormControl margin="dense">
 			<InputLabel id="robot-number-label" style={{ opacity: (props.disabled ? 0.6 : 1) }}>Robot Number</InputLabel>
 			<Select
 				id="robot-number-dropdown"
@@ -88,7 +88,7 @@ function RobotDropdownWrapper(props: {
 				value={ props.value }
 				disabled={ props.disabled }
 				onChange={ (event: SelectChangeEvent) => props.onChange(event.target.value) }
-				sx={{ width: 'calc(10em + 28px)', opacity: (props.disabled ? 0.6 : 1) }}
+				sx={{ width: 'calc(10em + 35px)', opacity: (props.disabled ? 0.6 : 1) }}
 			>
 				{ props.children }
 			</Select>
@@ -104,6 +104,7 @@ function ManualRobotNumber(props: {
 		<TextField
 			label="Robot Number"
 			variant="outlined"
+			margin="dense"
 			type="number"
 			inputMode="numeric"
 			placeholder="Robot Number"

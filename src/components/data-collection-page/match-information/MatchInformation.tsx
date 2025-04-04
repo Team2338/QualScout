@@ -19,11 +19,15 @@ function MatchInformation(props: IProps) {
 				<TextField
 					label="Match Number"
 					variant="outlined"
+					margin="dense"
 					type="number"
 					inputMode="tel"
 					placeholder="Match Number"
 					value={ props.matchNumber }
-					onChange={ (event) => props.setMatchNumber(event.target.value) }
+					onChange={ (event) => {
+						props.setMatchNumber(event.target.value);
+						props.setRobotNumber('');
+					}}
 				/>
 				<RobotNumberInput
 					matchNumber={ props.matchNumber }

@@ -74,12 +74,20 @@ export const themeOptions = {
 			styleOverrides: {
 				root: {
 					color: GRAY,
+					['text-align']: 'left'
 				},
 				icon: {
 					color: GRAY,
 					'&.Mui-disabled': {
 						color: GRAY
 					}
+				}
+			}
+		},
+		MuiMenuItem: {
+			styleOverrides: {
+				root: {
+					color: '#000000'
 				}
 			}
 		},
