@@ -7,8 +7,11 @@ import store from './state/Store';
 import './index.scss';
 import { register } from './ServiceWorkerRegistration';
 import { serviceWorkerInstalled } from './state/Actions';
+import { outlinedInputClasses } from '@mui/material';
 
 const GRAY = '#BABFB7';
+const ORANGE = '#FE5000';
+const ORANGE_HOVER = '#FE5000DD';
 
 export const themeOptions = {
 	palette: {
@@ -34,6 +37,32 @@ export const themeOptions = {
 				}
 			}
 		},
+		MuiOutlinedInput: {
+			styleOverrides: {
+				notchedOutline: {
+					borderColor: GRAY
+				},
+				root: {
+					[`&:hover .${outlinedInputClasses.notchedOutline}`]: {
+						borderColor: ORANGE_HOVER
+					},
+					[`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
+						borderColor: ORANGE
+					},
+					[`&.Mui-disabled .${outlinedInputClasses.notchedOutline}`]: {
+						borderColor: GRAY,
+						opacity: 0.6
+					}
+				}
+			}
+		},
+		MuiInputLabel: {
+			styleOverrides: {
+				root: {
+					color: GRAY
+				}
+			}
+		},
 		MuiFormHelperText: {
 			styleOverrides: {
 				root: {
@@ -41,6 +70,28 @@ export const themeOptions = {
 				}
 			}
 		},
+		MuiSelect: {
+			styleOverrides: {
+				root: {
+					color: GRAY,
+				},
+				icon: {
+					color: GRAY,
+					'&.Mui-disabled': {
+						color: GRAY
+					}
+				}
+			}
+		},
+		MuiFormLabel: {
+			styleOverrides: {
+				root: {
+					'&.Mui-focused': {
+						color: ORANGE
+					}
+				}
+			}
+		}
 	}
 };
 

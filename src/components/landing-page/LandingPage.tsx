@@ -6,6 +6,7 @@ import './LandingPage.scss';
 import { fetchEventSchedule, sendOfflineRequests, sendOfflineSuperNotesRequests } from '../../state/Effects';
 import { loginSuccess } from '../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../state/Hooks';
+import { CURRENT_YEAR } from '../../models/models';
 
 
 export default function LandingPage() {
@@ -65,7 +66,7 @@ export default function LandingPage() {
 			secretCode: secretCode,
 			scouterName: scouterName
 		}));
-		dispatch(fetchEventSchedule(new Date().getFullYear(), tbaCode));
+		dispatch(fetchEventSchedule(CURRENT_YEAR, tbaCode));
 	};
 
 	const handleSendOfflineRequests = (): void => {

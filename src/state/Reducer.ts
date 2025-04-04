@@ -118,6 +118,15 @@ export function reducer(state: IAppState = INITIAL_STATE, action: IAction): IApp
 					[action.payload.subtopic]: action.payload.key
 				}
 			};
+		case ActionTypes.UPDATE_SCHEDULE:
+			return {
+				...state,
+				schedule: {
+					...state.schedule,
+					loadStatus: action.payload.loadStatus,
+					data: action.payload.schedule
+				}
+			};
 		default:
 			return state;
 	}

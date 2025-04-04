@@ -1,3 +1,5 @@
+export const CURRENT_YEAR = 2025;
+
 export interface IMatch {
 	gameYear: number;
 	eventCode: string;
