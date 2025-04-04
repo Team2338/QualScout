@@ -34,6 +34,13 @@ export const themeOptions = {
 				}
 			}
 		},
+		MuiFormHelperText: {
+			styleOverrides: {
+				root: {
+					['text-align']: 'right'
+				}
+			}
+		},
 	}
 };
 
