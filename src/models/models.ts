@@ -1,3 +1,5 @@
+export const CURRENT_YEAR = 2025;
+
 export interface IMatch {
 	gameYear: number;
 	eventCode: string;
@@ -72,6 +74,16 @@ export interface IUser {
 	scouterName: string;
 	secretCode: string;
 	eventCode: string;
+}
+
+export interface IMatchLineup {
+	matchNumber: number;
+	red1: number;
+	red2: number;
+	red3: number;
+	blue1: number;
+	blue2: number;
+	blue3: number;
 }
 
 export enum Subtopic {

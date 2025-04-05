@@ -1,5 +1,5 @@
 import { Subtopic, Topic } from '../models/models';
-import { IAppState } from '../models/state';
+import { IAppState, LoadStatus } from '../models/state';
 import { ActionTypes, IAction } from './Actions';
 
 
@@ -8,6 +8,10 @@ const INITIAL_STATE: IAppState = {
 	serviceWorker: {
 		updated: false,
 		sw: null
+	},
+	schedule: {
+		loadStatus: LoadStatus.none,
+		data: null
 	},
 	cache: {
 		matches: [],
@@ -112,6 +116,15 @@ export function reducer(state: IAppState = INITIAL_STATE, action: IAction): IApp
 				superNotes: {
 					...state.superNotes,
 					[action.payload.subtopic]: action.payload.key
+				}
+			};
+		case ActionTypes.UPDATE_SCHEDULE:
+			return {
+				...state,
+				schedule: {
+					...state.schedule,
+					loadStatus: action.payload.loadStatus,
+					data: action.payload.schedule
 				}
 			};
 		default:

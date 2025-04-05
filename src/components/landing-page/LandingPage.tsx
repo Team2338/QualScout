@@ -3,9 +3,10 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import './LandingPage.scss';
-import { sendOfflineRequests, sendOfflineSuperNotesRequests } from '../../state/Effects';
+import { fetchEventSchedule, sendOfflineRequests, sendOfflineSuperNotesRequests } from '../../state/Effects';
 import { loginSuccess } from '../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../state/Hooks';
+import { CURRENT_YEAR } from '../../models/models';
 
 
 export default function LandingPage() {
@@ -16,6 +17,7 @@ export default function LandingPage() {
 	const [eventCode, setEventCode] = useState<string>('');
 	const [secretCode, setSecretCode] = useState<string>('');
 	const [scouterName, setScouterName] = useState<string>('');
+	const [tbaCode, setTbaCode] = useState<string>('');
 
 	useEffect(() => {
 		const query = new URLSearchParams(window.location.search);
@@ -39,7 +41,7 @@ export default function LandingPage() {
 				localStorage.setItem('tbaCode', initialTbaCode);
 			}
 			const urlPieces = [location.protocol, '//', location.host, location.pathname];
-			let url = urlPieces.join('');
+			const url = urlPieces.join('');
 			window.location.replace(url);
 		}
 
@@ -47,6 +49,7 @@ export default function LandingPage() {
 		setEventCode(localStorage.getItem('eventCode') ?? '');
 		setSecretCode(localStorage.getItem('secretCode') ?? '');
 		setScouterName(localStorage.getItem('scouterName') ?? '');
+		setTbaCode(localStorage.getItem('tbaCode') ?? '');
 	}, []);
 
 	const handleSubmit = (event): void => {
@@ -55,12 +58,18 @@ export default function LandingPage() {
 		localStorage.setItem('eventCode', eventCode);
 		localStorage.setItem('secretCode', secretCode);
 		localStorage.setItem('scouterName', scouterName);
+		localStorage.setItem('tbaCode', tbaCode);
+
 		dispatch(loginSuccess({
 			teamNumber: teamNumber,
 			eventCode: eventCode,
 			secretCode: secretCode,
 			scouterName: scouterName
 		}));
+
+		if (tbaCode.trim()) {
+			dispatch(fetchEventSchedule(CURRENT_YEAR, tbaCode));
+		}
 	};
 
 	const handleSendOfflineRequests = (): void => {
@@ -89,9 +98,7 @@ export default function LandingPage() {
 				</div>
 			</div>
 
-			<form
-				className="login-form"
-			>
+			<form className="login-form">
 				<h1 className="login-form-title">Sign In:</h1>
 				<TextField
 					id="team-number"
@@ -113,21 +120,6 @@ export default function LandingPage() {
 					}}
 				/>
 				<TextField
-					id="event-code"
-					name="eventCode"
-					label="Event Code"
-					type="text"
-					margin="dense"
-					variant="filled"
-					value={ eventCode }
-					onChange={ (event) => setEventCode(event.target.value) }
-					slotProps={{
-						htmlInput: {
-							maxLength: 32
-						}
-					}}
-				/>
-				<TextField
 					id="scouter-name"
 					name="scouterName"
 					label="Scouter Name"
@@ -136,6 +128,21 @@ export default function LandingPage() {
 					variant="filled"
 					value={ scouterName }
 					onChange={ (event) => setScouterName(event.target.value) }
+					slotProps={{
+						htmlInput: {
+							maxLength: 32
+						}
+					}}
+				/>
+				<TextField
+					id="event-code"
+					name="eventCode"
+					label="Event Code"
+					type="text"
+					margin="dense"
+					variant="filled"
+					value={ eventCode }
+					onChange={ (event) => setEventCode(event.target.value) }
 					slotProps={{
 						htmlInput: {
 							maxLength: 32
@@ -154,6 +161,24 @@ export default function LandingPage() {
 					slotProps={{
 						htmlInput: {
 							maxLength: 32
+						}
+					}}
+				/>
+				<TextField
+					id="tba-code-input"
+					name="tbaCode"
+					label="TBA code (optional)"
+					helperText="The Blue Alliance event ID"
+					type="text"
+					margin="dense"
+					variant="filled"
+					autoComplete="off"
+					value={ tbaCode }
+					onChange={ (event) => setTbaCode(event.target.value) }
+					required={ false }
+					slotProps={{
+						htmlInput: {
+							maxLength: 6,
 						}
 					}}
 				/>

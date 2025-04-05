@@ -2,6 +2,7 @@ import './DataCollectionPage.scss';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
 import {
+	CURRENT_YEAR,
 	Gamemode,
 	IMatch,
 	INote,
@@ -75,7 +76,7 @@ export default function DataCollectionPage() {
 		}
 
 		const match: IMatch = {
-			gameYear: 2025,
+			gameYear: CURRENT_YEAR,
 			creator: user.scouterName,
 			eventCode: user.eventCode,
 			matchNumber: matchNumber,
@@ -84,7 +85,7 @@ export default function DataCollectionPage() {
 		};
 
 		const superNotes: ISuperNoteRequest = {
-			gameYear: 2025,
+			gameYear: CURRENT_YEAR,
 			creator: user.scouterName,
 			eventCode: user.eventCode,
 			matchNumber: matchNumber,

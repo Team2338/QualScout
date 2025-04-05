@@ -1,4 +1,5 @@
-import { ICachedMatch, ICachedSuperNoteRequest, IUser, Subtopic, Topic } from '../models/models';
+import { ICachedMatch, ICachedSuperNoteRequest, IMatchLineup, IUser, Subtopic, Topic } from '../models/models';
+import { LoadStatus } from '../models/state';
 
 export interface IAction {
 	type: string;
@@ -15,7 +16,8 @@ export const ActionTypes = {
 	CLEAR_OFFLINE_SUPER_NOTES: '[CACHE] Clear super notes',
 	CLEAR_NOTES: '[NOTE] Clear notes',
 	SAVE_NOTE: '[NOTE] Save note',
-	SET_SUPER_NOTE: '[SUPER] Set super note'
+	SET_SUPER_NOTE: '[SUPER] Set super note',
+	UPDATE_SCHEDULE: '[SCHEDULE] Update',
 };
 
 export const serviceWorkerInstalled = (sw: ServiceWorker): IAction => ({
@@ -63,5 +65,13 @@ export const setSuperNote = (subtopic: Subtopic, key: string): IAction => ({
 	payload: {
 		subtopic: subtopic,
 		key: key
+	}
+});
+
+export const updateSchedule = (loadStatus: LoadStatus, schedule: IMatchLineup[] = null): IAction => ({
+	type: ActionTypes.UPDATE_SCHEDULE,
+	payload: {
+		loadStatus: loadStatus,
+		schedule: schedule
 	}
 });

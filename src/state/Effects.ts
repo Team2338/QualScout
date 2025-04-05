@@ -1,11 +1,20 @@
-import { ICachedMatch, IMatch, IUser, ISuperNoteRequest, ICachedSuperNoteRequest } from '../models/models';
-import { IAppState } from '../models/state';
+import {
+	ICachedMatch,
+	ICachedSuperNoteRequest,
+	IMatch,
+	IMatchLineup,
+	ISuperNoteRequest,
+	IUser
+} from '../models/models';
+import { IAppState, LoadStatus } from '../models/state';
 import GearscoutService from '../services/GearscoutService';
+import gearscoutService from '../services/GearscoutService';
 import {
 	clearOfflineMatches,
 	clearOfflineSuperNotes,
 	getOfflineMatchesSuccess,
-	getOfflineSuperNotesSuccess
+	getOfflineSuperNotesSuccess,
+	updateSchedule
 } from './Actions';
 import { AppDispatch } from './Store';
 
@@ -47,7 +56,7 @@ export const saveOfflineSuperNotesRequest = (teamNumber: string, secretCode: str
 
 	localStorage.setItem(OFFLINE_SUPER_NOTE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
 	dispatch(getOfflineSuperNotesSuccess(offlineRequests));
-}
+};
 
 export const sendOfflineRequests = () => async (dispatch: AppDispatch, getState: GetState) => {
 	const offlineRequests: ICachedMatch[] = getState().cache.matches;
@@ -138,7 +147,18 @@ export const submitSuperNotes = (notes: ISuperNoteRequest) => async (dispatch: A
 
 			alert('There was a problem submitting the data!');
 		});
-}
+};
+
+export const fetchEventSchedule = (gameYear: number, tbaCode: string) => async (dispatch: AppDispatch, getState: GetState) => {
+	dispatch(updateSchedule(LoadStatus.loading));
+	try {
+		const result = await gearscoutService.getEventSchedule(gameYear, tbaCode);
+		const schedule: IMatchLineup[] = result.data;
+		dispatch(updateSchedule(LoadStatus.success, schedule));
+	} catch (error) {
+		dispatch(updateSchedule(LoadStatus.fail));
+	}
+};
 
 /*
 	#########################
