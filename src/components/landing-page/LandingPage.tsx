@@ -66,7 +66,10 @@ export default function LandingPage() {
 			secretCode: secretCode,
 			scouterName: scouterName
 		}));
-		dispatch(fetchEventSchedule(CURRENT_YEAR, tbaCode));
+
+		if (tbaCode.trim()) {
+			dispatch(fetchEventSchedule(CURRENT_YEAR, tbaCode));
+		}
 	};
 
 	const handleSendOfflineRequests = (): void => {

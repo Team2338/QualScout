@@ -1,14 +1,14 @@
 .robot-number-loader {
 	display: flex;
 	position: relative;
-	margin: 16px 0 8px;
+	margin: 8px 0 4px;
 
 	.textbox-placeholder {
 		$side-padding: 14px;
 		display: flex;
 		align-items: center;
 		box-sizing: border-box;
-		width: calc(10em + (2 * $side-padding)); // Match the MUI text box
+		width: calc(10em + (2 * $side-padding) + 7px); // Match the MUI text box
 		height: 56px;
 		border-radius: 4px;
 		border: 1px solid #faf9f6;

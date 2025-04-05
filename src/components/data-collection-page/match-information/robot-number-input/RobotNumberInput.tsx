@@ -22,7 +22,7 @@ export default function RobotNumberInput(props: {
 	const scheduleLoadStatus: LoadStatus = useAppSelector(state => state.schedule.loadStatus);
 	const schedule: IMatchLineup[] = useAppSelector(state => state.schedule.data);
 
-	if (scheduleLoadStatus === LoadStatus.none || scheduleLoadStatus === LoadStatus.loading) {
+	if (scheduleLoadStatus === LoadStatus.loading) {
 		return (
 			<div className="robot-number-loader">
 				<div className="textbox-placeholder">Robot Number</div>
@@ -31,7 +31,7 @@ export default function RobotNumberInput(props: {
 		);
 	}
 
-	if (scheduleLoadStatus === LoadStatus.fail) {
+	if (scheduleLoadStatus === LoadStatus.none || scheduleLoadStatus === LoadStatus.fail) {
 		return <ManualRobotNumber {...props} />
 	}
 
