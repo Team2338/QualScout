@@ -59,8 +59,8 @@ export enum AllianceColor {
 export enum Topic {
 	auto = 'Auto',
 	pathing = 'Pathing',
-	coral = 'Coral',
-	algae = 'Algae',
+	collection = 'Collection',
+	scoring = 'Scoring',
 	drivers = 'Drivers',
 	hp = 'Human Player',
 	penalties = 'Penalties',

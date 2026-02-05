@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import { InputAdornment } from '@mui/material';
+import React, { useEffect, useState, FormEvent } from 'react';
 import './LandingPage.scss';
 import { fetchEventSchedule, sendOfflineRequests, sendOfflineSuperNotesRequests } from '../../state/Effects';
 import { loginSuccess } from '../../state/Actions';
@@ -18,6 +15,8 @@ export default function LandingPage() {
 	const [secretCode, setSecretCode] = useState<string>('');
 	const [scouterName, setScouterName] = useState<string>('');
 	const [tbaCode, setTbaCode] = useState<string>('');
+	const [isValid, setIsValid] = useState<boolean>(false);
+	const version = import.meta.env.VITE_APP_VERSION || '2026.0.1';
 
 	useEffect(() => {
 		const query = new URLSearchParams(window.location.search);
@@ -52,8 +51,23 @@ export default function LandingPage() {
 		setTbaCode(localStorage.getItem('tbaCode') ?? '');
 	}, []);
 
-	const handleSubmit = (event): void => {
+	useEffect(() => {
+		const valid = Boolean(
+			teamNumber.trim() &&
+			scouterName.trim() &&
+			eventCode.trim() &&
+			secretCode.trim()
+		);
+		setIsValid(valid);
+	}, [teamNumber, scouterName, eventCode, secretCode]);
+
+	const handleSubmit = (event: FormEvent): void => {
 		event.preventDefault();
+		
+		if (!isValid) {
+			return;
+		}
+
 		localStorage.setItem('teamNumber', teamNumber);
 		localStorage.setItem('eventCode', eventCode);
 		localStorage.setItem('secretCode', secretCode);
@@ -77,139 +91,102 @@ export default function LandingPage() {
 		dispatch(sendOfflineSuperNotesRequests());
 	};
 
-	const isSubmitDisabled = (
-		teamNumber.trim().length === 0
-		|| eventCode.trim().length === 0
-		|| secretCode.trim().length === 0
-		|| scouterName.trim().length === 0
-	);
-
 	return (
-		<div className="landing-page">
-			<div className="header">
-				<img
-					src="2338-logo.png"
-					alt="2338 logo"
-					height="100"
-				/>
-				<div className="title-and-version">
-					<h1 className="title">QualScout</h1>
-					<div className="version">v{ import.meta.env.VITE_APP_VERSION }</div>
+		<main className="page login-page">
+			<div className="title">
+				<div className="app-name">QualScout</div>
+				<div className="version">v{version}</div>
+			</div>
+			<form className="login-form" id="login-form" aria-labelledby="login-form-header" onSubmit={handleSubmit}>
+				<h1 id="login-form-header">Sign in</h1>
+				
+				<div className={`form-field with-prefix ${teamNumber ? 'has-value' : ''}`}>
+					<input
+						id="team-number-input"
+						name="teamNumber"
+						type="number"
+						min="0"
+						max="99999"
+						autoComplete="off"
+						required
+						value={teamNumber}
+						onChange={(e) => setTeamNumber(e.target.value)}
+					/>
+					<span className="input-prefix">#</span>
+					<label htmlFor="team-number-input">Team number</label>
 				</div>
-			</div>
 
-			<form className="login-form">
-				<h1 className="login-form-title">Sign In:</h1>
-				<TextField
-					id="team-number"
-					name="teamNumber"
-					label="Your Team Number"
-					type="number"
-					margin="dense"
-					variant="filled"
-					value={ teamNumber }
-					onChange={ (event) => setTeamNumber(event.target.value) }
-					slotProps={{
-						input: {
-							startAdornment: <InputAdornment position="start">#</InputAdornment>
-						},
-						htmlInput: {
-							min: 0,
-							max: 10999
-						}
-					}}
-				/>
-				<TextField
-					id="scouter-name"
-					name="scouterName"
-					label="Scouter Name"
-					type="text"
-					margin="dense"
-					variant="filled"
-					value={ scouterName }
-					onChange={ (event) => setScouterName(event.target.value) }
-					slotProps={{
-						htmlInput: {
-							maxLength: 32
-						}
-					}}
-				/>
-				<TextField
-					id="event-code"
-					name="eventCode"
-					label="Event Code"
-					type="text"
-					margin="dense"
-					variant="filled"
-					value={ eventCode }
-					onChange={ (event) => setEventCode(event.target.value) }
-					slotProps={{
-						htmlInput: {
-							maxLength: 32
-						}
-					}}
-				/>
-				<TextField
-					id="secret-code"
-					name="secretCode"
-					label="Secret Code"
-					type="text"
-					margin="dense"
-					variant="filled"
-					value={ secretCode }
-					onChange={ (event) => setSecretCode(event.target.value) }
-					slotProps={{
-						htmlInput: {
-							maxLength: 32
-						}
-					}}
-				/>
-				<TextField
-					id="tba-code-input"
-					name="tbaCode"
-					label="TBA code (optional)"
-					helperText="The Blue Alliance event ID"
-					type="text"
-					margin="dense"
-					variant="filled"
-					autoComplete="off"
-					value={ tbaCode }
-					onChange={ (event) => setTbaCode(event.target.value) }
-					required={ false }
-					slotProps={{
-						htmlInput: {
-							maxLength: 6,
-						}
-					}}
-				/>
-				<ul className="directions-area">
-					<span className="note">Note:</span>
-					<li className="direction">Enter a team-specific "secret code" to store data</li>
-					<li className="direction">This code will be needed to view your data in the analytics app</li>
-					<li className="direction">All scouters from the same team should use the same code</li>
-				</ul>
-				<Button
-					id="submit-button"
-					variant="contained"
-					type="submit"
-					size="medium"
-					onClick={ handleSubmit }
-					disabled={ isSubmitDisabled }
-				>
+				<div className={`form-field ${scouterName ? 'has-value' : ''}`}>
+					<input
+						id="scouter-name-input"
+						name="scouterName"
+						type="text"
+						maxLength={32}
+						autoComplete="off"
+						required
+						value={scouterName}
+						onChange={(e) => setScouterName(e.target.value)}
+					/>
+					<label htmlFor="scouter-name-input">Scouter name</label>
+				</div>
+
+				<div className={`form-field ${eventCode ? 'has-value' : ''}`}>
+					<input
+						id="event-code-input"
+						name="eventCode"
+						type="text"
+						maxLength={32}
+						autoComplete="off"
+						required
+						value={eventCode}
+						onChange={(e) => setEventCode(e.target.value)}
+					/>
+					<label htmlFor="event-code-input">Event code</label>
+				</div>
+
+				<div className={`form-field ${secretCode ? 'has-value' : ''}`}>
+					<input
+						id="secret-code-input"
+						name="secretCode"
+						type="text"
+						maxLength={32}
+						autoComplete="off"
+						required
+						value={secretCode}
+						onChange={(e) => setSecretCode(e.target.value)}
+					/>
+					<label htmlFor="secret-code-input">Secret code</label>
+				</div>
+
+				<div className={`form-field ${tbaCode ? 'has-value' : ''}`}>
+					<input
+						id="tba-code-input"
+						name="tbaCode"
+						type="text"
+						maxLength={6}
+						autoComplete="off"
+						value={tbaCode}
+						onChange={(e) => setTbaCode(e.target.value)}
+					/>
+					<label htmlFor="tba-code-input">TBA code (optional)</label>
+					<div className="helper-text">The Blue Alliance event ID</div>
+				</div>
+
+				<button id="login-submit-button" type="submit" disabled={!isValid}>
 					Submit
-				</Button>
+				</button>
 			</form>
-			<div className="retry-send-button-wrapper">
-				<Button
-					variant="contained"
-					size="medium"
-					color="primary"
-					onClick={ handleSendOfflineRequests }
-					disabled={ numOfflineMatches === 0 && numOfflineSuperNotes === 0 }
-				>
-					Retry saved matches
-				</Button>
-			</div>
-		</div>
+			
+			{(numOfflineMatches > 0 || numOfflineSuperNotes > 0) && (
+				<div className="retry-send-button-wrapper">
+					<button
+						className="retry-button"
+						onClick={handleSendOfflineRequests}
+					>
+						Retry saved matches
+					</button>
+				</div>
+			)}
+		</main>
 	);
 }
