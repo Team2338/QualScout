@@ -92,7 +92,7 @@ export const sendOfflineSuperNotesRequests = () => async (dispatch: AppDispatch,
 
 	const requests: Promise<MatchResponseStatus>[] = offlineRequests.map(
 		(request: ICachedSuperNoteRequest)=> sendSuperNoteRequest(request.teamNumber, request.secretCode, request)
-	)
+	);
 
 	const results: PromiseSettledResult<MatchResponseStatus>[] = await Promise.allSettled(requests);
 	const nextOfflineRequests: ICachedSuperNoteRequest[] = [];
@@ -149,13 +149,13 @@ export const submitSuperNotes = (notes: ISuperNoteRequest) => async (dispatch: A
 		});
 };
 
-export const fetchEventSchedule = (gameYear: number, tbaCode: string) => async (dispatch: AppDispatch, getState: GetState) => {
+export const fetchEventSchedule = (gameYear: number, tbaCode: string) => async (dispatch: AppDispatch) => {
 	dispatch(updateSchedule(LoadStatus.loading));
 	try {
 		const result = await gearscoutService.getEventSchedule(gameYear, tbaCode);
 		const schedule: IMatchLineup[] = result.data;
 		dispatch(updateSchedule(LoadStatus.success, schedule));
-	} catch (error) {
+	} catch {
 		dispatch(updateSchedule(LoadStatus.fail));
 	}
 };
@@ -172,7 +172,7 @@ const readOfflineRequestsFromStorage = (): ICachedMatch[] => {
 };
 
 const readOfflineSuperNotesFromStorage = (): ICachedSuperNoteRequest[] => {
-	const serializedOfflineRequests = localStorage.getItem(OFFLINE_REQUEST_LOCATION) ?? '[]';
+	const serializedOfflineRequests = localStorage.getItem(OFFLINE_SUPER_NOTE_REQUEST_LOCATION) ?? '[]';
 	return JSON.parse(serializedOfflineRequests);
 };
 

@@ -4,15 +4,10 @@ import { saveNote, setSuperNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
 import {
-	AlgaeBarge,
-	AlgaeGroundCollection,
-	AlgaeProcessor,
-	AlgaeReefCollection,
-	AutoPlacementAccuracy,
+	AutoScoringAccuracy,
 	ClimbSkill,
-	CoralGroundCollection,
-	CoralScoring,
-	CoralStationCollection,
+	GroundCollection,
+	StationCollection,
 	DefenseDriverSkill,
 	DefenseType,
 	DriverAbility,
@@ -26,7 +21,7 @@ export default function QualitativeSection() {
 	const [noteContent, setNoteContent] = useState<string>('');
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
 
-	const submit = (event) => {
+	const submit = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		if (selectedCategory !== null) {
 			dispatch(saveNote(selectedCategory, noteContent));
@@ -72,7 +67,7 @@ export default function QualitativeSection() {
 						id="placement-accuracy"
 						label="Placement Accuracy"
 						subtopic={Subtopic.autoPlacementAccuracy}
-						options={AutoPlacementAccuracy}
+						options={AutoScoringAccuracy}
 					/>
 				)}
 
@@ -90,21 +85,15 @@ export default function QualitativeSection() {
 						<Dropdown
 							id="field-collection"
 							label="Field Collection"
-							subtopic={Subtopic.coralGroundCollection}
-							options={CoralGroundCollection}
+							subtopic={Subtopic.groundCollection}
+							options={GroundCollection}
 						/>
 						<Dropdown
 							id="goal-collection"
 							label="Goal Collection"
-							subtopic={Subtopic.coralStationCollection}
-							options={CoralStationCollection}
+							subtopic={Subtopic.stationCollection}
+							options={StationCollection}
 						/>
-					</div>
-				)}
-
-				{selectedCategory === Topic.scoring && (
-					<div className="dropdown-group">
-						{/* No subcategories for scoring */}
 					</div>
 				)}
 
@@ -191,7 +180,6 @@ interface IDropdownProps {
 function Dropdown(props: IDropdownProps) {
 	const dispatch = useAppDispatch();
 	const value = useAppSelector(state => state.superNotes[props.subtopic]);
-	const labelId = props.id + '__label';
 	
 	return (
 		<div className="form-field">

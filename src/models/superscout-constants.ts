@@ -1,6 +1,6 @@
 import { ISuperMatch, Subtopic } from './models';
 
-export const AutoPlacementAccuracy: ISuperMatch[] = [
+export const AutoScoringAccuracy: ISuperMatch[] = [
 	{
 		key: 'NEVER_MISSED',
 		name: 'Never miss',
@@ -36,7 +36,7 @@ export const DriverPathing: ISuperMatch[] = [
 	}
 ];
 
-export const CoralGroundCollection: ISuperMatch[] = [
+export const GroundCollection: ISuperMatch[] = [
 	{
 		key: 'QUICK_SNAG',
 		name: 'Quick snag',
@@ -54,7 +54,7 @@ export const CoralGroundCollection: ISuperMatch[] = [
 	}
 ];
 
-export const CoralStationCollection: ISuperMatch[] = [
+export const StationCollection: ISuperMatch[] = [
 	{
 		key: 'QUICK_COLLECTION',
 		name: 'Quick collection',
@@ -72,7 +72,7 @@ export const CoralStationCollection: ISuperMatch[] = [
 	}
 ];
 
-export const CoralScoring: ISuperMatch[] = [
+export const Scoring: ISuperMatch[] = [
 	{
 		key: 'INSTANT_PLACE',
 		name: 'Instant place',
@@ -90,7 +90,7 @@ export const CoralScoring: ISuperMatch[] = [
 	}
 ];
 
-export const AlgaeGroundCollection: ISuperMatch[] = [
+export const OtherGroundCollection: ISuperMatch[] = [
 	{
 		key: 'GOOD_PICK_UP',
 		name: 'Good pick up',
@@ -108,7 +108,7 @@ export const AlgaeGroundCollection: ISuperMatch[] = [
 	},
 ];
 
-export const AlgaeReefCollection: ISuperMatch[] = [
+export const ReefCollection: ISuperMatch[] = [
 	{
 		key: 'GOOD_PICK_UP',
 		name: 'Good pick up',
@@ -126,7 +126,7 @@ export const AlgaeReefCollection: ISuperMatch[] = [
 	},
 ];
 
-export const AlgaeProcessor: ISuperMatch[] = [
+export const Processor: ISuperMatch[] = [
 	{
 		key: 'INSTANT_PLACEMENT',
 		name: 'Instant placement',
@@ -144,7 +144,7 @@ export const AlgaeProcessor: ISuperMatch[] = [
 	},
 ];
 
-export const AlgaeBarge: ISuperMatch[] = [
+export const Barge: ISuperMatch[] = [
 	{
 		key: 'INSTANT_SCORE',
 		name: 'Instant score',
@@ -272,19 +272,18 @@ export const DefenseType: ISuperMatch[] = [
 
 type ISubtopicToOptionMap = Record<Subtopic, ISuperMatch[]>;
 export const SubtopicToOptionMap: ISubtopicToOptionMap = {
-	[Subtopic.autoPlacementAccuracy]: AutoPlacementAccuracy,
+	[Subtopic.autoPlacementAccuracy]: AutoScoringAccuracy,
 	[Subtopic.pathingDrivers]: DriverPathing,
-	[Subtopic.coralGroundCollection]: CoralGroundCollection,
-	[Subtopic.coralStationCollection]: CoralStationCollection,
-	[Subtopic.coralScoring]: CoralScoring,
-	[Subtopic.algaeGroundCollection]: AlgaeGroundCollection,
-	[Subtopic.algaeReefCollection]: AlgaeReefCollection,
-	[Subtopic.algaeProcessor]: AlgaeProcessor,
-	[Subtopic.algaeBarge]: AlgaeBarge,
+	[Subtopic.groundCollection]: GroundCollection,
+	[Subtopic.stationCollection]: StationCollection,
+	[Subtopic.scoring]: Scoring,
+	[Subtopic.reefCollection]: ReefCollection,
+	[Subtopic.processor]: Processor,
+	[Subtopic.barge]: Barge,
 	[Subtopic.driverAbility]: DriverAbility,
 	[Subtopic.hpAtProcessor]: HpAtProcessor,
 	[Subtopic.hpAtFeeder]: HpAtFeeder,
 	[Subtopic.climbSkill]: ClimbSkill,
 	[Subtopic.defenseDriverSkill]: DefenseDriverSkill,
 	[Subtopic.defenseType]: DefenseType
-}
+};
