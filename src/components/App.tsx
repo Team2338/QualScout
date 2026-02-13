@@ -8,7 +8,7 @@ import LandingPage from './landing-page/LandingPage';
 
 function App() {
 	const dispatch = useAppDispatch();
-	const user: IUser = useAppSelector(state => state.user);
+	const user: IUser | null = useAppSelector(state => state.user);
 	const hasLoggedIn: boolean = !!user;
 
 	useEffect(

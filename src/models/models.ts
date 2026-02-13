@@ -1,4 +1,6 @@
-export const CURRENT_YEAR = 2025;
+import { APP_CONFIG } from '../config/app.config';
+
+export const CURRENT_YEAR = APP_CONFIG.CURRENT_YEAR;
 
 export interface IMatch {
 	gameYear: number;
@@ -92,9 +94,6 @@ export enum Subtopic {
 	groundCollection = 'Ground Collection',
 	stationCollection = 'Station Collection',
 	scoring = 'Scoring',
-	reefCollection = 'Reef Collection',
-	processor = 'Processor',
-	barge = 'Barge',
 	driverAbility = 'Driver Ability',
 	hpAtProcessor = 'HP at Processor',
 	hpAtFeeder = 'HP at Feeder',

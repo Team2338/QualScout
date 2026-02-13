@@ -3,17 +3,17 @@ import { ISuperMatch, Subtopic } from './models';
 export const AutoScoringAccuracy: ISuperMatch[] = [
 	{
 		key: 'NEVER_MISSED',
-		name: 'Never miss',
+		name: 'Highly accurate',
 		score: 2
 	},
 	{
 		key: 'MINIMAL_MISSED',
-		name: 'Minimal missed',
+		name: 'Mostly accurate',
 		score: 1
 	},
 	{
 		key: 'MANY_MISSED',
-		name: 'Many missed',
+		name: 'Frequently inaccurate',
 		score: 0
 	}
 ];
@@ -21,17 +21,17 @@ export const AutoScoringAccuracy: ISuperMatch[] = [
 export const DriverPathing: ISuperMatch[] = [
 	{
 		key: 'NO_COLLISIONS',
-		name: 'No collisions',
+		name: 'Clean navigation',
 		score: 2
 	},
 	{
 		key: 'MINIMAL_COLLISIONS',
-		name: 'Minimal collisions',
+		name: 'Occasional contact',
 		score: 1
 	},
 	{
 		key: 'MANY_COLLISIONS',
-		name: 'Many collisions',
+		name: 'Frequent collisions',
 		score: 0
 	}
 ];
@@ -39,17 +39,17 @@ export const DriverPathing: ISuperMatch[] = [
 export const GroundCollection: ISuperMatch[] = [
 	{
 		key: 'QUICK_SNAG',
-		name: 'Quick snag',
+		name: 'Rapid pickup',
 		score: 2
 	},
 	{
 		key: 'ALIGN',
-		name: 'Align',
+		name: 'Requires alignment',
 		score: 1
 	},
 	{
 		key: 'DROP_PIECE',
-		name: 'Drop piece',
+		name: 'Frequently drops',
 		score: 0
 	}
 ];
@@ -57,17 +57,17 @@ export const GroundCollection: ISuperMatch[] = [
 export const StationCollection: ISuperMatch[] = [
 	{
 		key: 'QUICK_COLLECTION',
-		name: 'Quick collection',
+		name: 'Efficient collection',
 		score: 2
 	},
 	{
 		key: 'ALIGN',
-		name: 'Align',
+		name: 'Requires alignment',
 		score: 1
 	},
 	{
 		key: 'DROP_PIECE',
-		name: 'Drop piece',
+		name: 'Frequently drops',
 		score: 0
 	}
 ];
@@ -75,17 +75,17 @@ export const StationCollection: ISuperMatch[] = [
 export const Scoring: ISuperMatch[] = [
 	{
 		key: 'INSTANT_PLACE',
-		name: 'Instant place',
+		name: 'Quick Shots',
 		score: 2
 	},
 	{
 		key: 'LONG_LINEUP',
-		name: 'Long lineup',
+		name: 'Slow alignment',
 		score: 1
 	},
 	{
 		key: 'CANNOT_PLACE',
-		name: 'Cannot place',
+		name: 'Unable to score',
 		score: 0
 	}
 ];
@@ -93,71 +93,17 @@ export const Scoring: ISuperMatch[] = [
 export const OtherGroundCollection: ISuperMatch[] = [
 	{
 		key: 'GOOD_PICK_UP',
-		name: 'Good pick up',
+		name: 'Reliable pickup',
 		score: 2
 	},
 	{
 		key: 'PUSHES_IT', // TODO: Rename to match text
-		name: 'Multiple pickup attempts',
+		name: 'Requires multiple attempts',
 		score: 1
 	},
 	{
 		key: 'CANNOT_PICK_IT_UP',
-		name: 'Cannot pick it up',
-		score: 0
-	},
-];
-
-export const ReefCollection: ISuperMatch[] = [
-	{
-		key: 'GOOD_PICK_UP',
-		name: 'Good pick up',
-		score: 2
-	},
-	{
-		key: 'LONG_ALIGNMENT',
-		name: 'Long alignment',
-		score: 1
-	},
-	{
-		key: 'KNOCKS_IT_DOWN',
-		name: 'Knocks it down',
-		score: 0
-	},
-];
-
-export const Processor: ISuperMatch[] = [
-	{
-		key: 'INSTANT_PLACEMENT',
-		name: 'Instant placement',
-		score: 2
-	},
-	{
-		key: 'LONG_ALIGNMENT',
-		name: 'Long alignment',
-		score: 1
-	},
-	{
-		key: 'NO_MECHANISM_TO_SCORE',
-		name: 'No mechanism to score',
-		score: 0
-	},
-];
-
-export const Barge: ISuperMatch[] = [
-	{
-		key: 'INSTANT_SCORE',
-		name: 'Instant score',
-		score: 2
-	},
-	{
-		key: 'NEEDS_TO_LINE_UP',
-		name: 'Needs to line up',
-		score: 1
-	},
-	{
-		key: 'CANNOT_SCORE',
-		name: 'Cannot score',
+		name: 'Unable to pickup',
 		score: 0
 	},
 ];
@@ -165,17 +111,17 @@ export const Barge: ISuperMatch[] = [
 export const DriverAbility: ISuperMatch[] = [
 	{
 		key: 'SMOOTH_OPERATOR',
-		name: 'Smooth operator',
+		name: 'Highly skilled',
 		score: 2
 	},
 	{
 		key: 'SLOW_DECISIONS',
-		name: 'Slow decisions',
+		name: 'Hesitant operation',
 		score: 1
 	},
 	{
 		key: 'LACK_OF_DRIVE',
-		name: 'Lack of drive',
+		name: 'Limited aggressiveness',
 		score: 0
 	},
 ];
@@ -183,17 +129,17 @@ export const DriverAbility: ISuperMatch[] = [
 export const HpAtProcessor: ISuperMatch[] = [
 	{
 		key: 'MICHAEL_JORDAN', // Might keep this as an Easter egg
-		name: 'Basketball pro',
+		name: 'Highly accurate',
 		score: 2
 	},
 	{
 		key: 'MEDIOCRE', // TODO: Rename to match text
-		name: 'Misses some shots',
+		name: 'Moderately accurate',
 		score: 1
 	},
 	{
 		key: 'NOT_AT_PROCESSOR', // TODO: Rename to match text
-		name: 'Misses almost all',
+		name: 'Frequently inaccurate',
 		score: 0
 	},
 ];
@@ -201,17 +147,17 @@ export const HpAtProcessor: ISuperMatch[] = [
 export const HpAtFeeder: ISuperMatch[] = [
 	{
 		key: 'INSTANT_FEEDER',
-		name: 'Instant feeder',
+		name: 'Quick feeding',
 		score: 2
 	},
 	{
 		key: 'SLOW_OR_HESITANT',
-		name: 'Slow or hesitant',
+		name: 'Slow feeding',
 		score: 1
 	},
 	{
 		key: 'MISSES_ROBOT',
-		name: 'Misses the robot',
+		name: 'Inaccurate feeding',
 		score: 0
 	}
 ];
@@ -219,17 +165,17 @@ export const HpAtFeeder: ISuperMatch[] = [
 export const ClimbSkill: ISuperMatch[] = [
 	{
 		key: 'FAST_OR_STURDY_CLIMB',
-		name: 'Fast or sturdy climb',
+		name: 'Strong climb performance',
 		score: 2
 	},
 	{
 		key: 'SLOW_OR_WOBBLY_CLIMB',
-		name: 'Slow or wobbly climb',
+		name: 'Unstable climb',
 		score: 1
 	},
 	{
 		key: 'THAT_BOT_SHOULD_NOT_BE_HANGING',
-		name: 'That bot should not be hanging',
+		name: 'Should avoid climbing',
 		score: 0
 	},
 ];
@@ -237,17 +183,17 @@ export const ClimbSkill: ISuperMatch[] = [
 export const DefenseDriverSkill: ISuperMatch[] = [
 	{
 		key: 'EFFECTIVE_DEFENSE',
-		name: 'Effective defense',
+		name: 'Highly effective',
 		score: 2
 	},
 	{
 		key: 'NOT_VERY_GOOD',
-		name: 'Not very good',
+		name: 'Minimally effective',
 		score: 1
 	},
 	{
 		key: 'DEFENSE_NOT_PLAYED',
-		name: 'Defense not played',
+		name: 'No defense played',
 		score: 0
 	},
 ];
@@ -265,7 +211,7 @@ export const DefenseType: ISuperMatch[] = [
 	},
 	{
 		key: 'NO_DEFENSE',
-		name: 'No Defense',
+		name: 'No defense played',
 		score: 0
 	},
 ];
@@ -277,9 +223,6 @@ export const SubtopicToOptionMap: ISubtopicToOptionMap = {
 	[Subtopic.groundCollection]: GroundCollection,
 	[Subtopic.stationCollection]: StationCollection,
 	[Subtopic.scoring]: Scoring,
-	[Subtopic.reefCollection]: ReefCollection,
-	[Subtopic.processor]: Processor,
-	[Subtopic.barge]: Barge,
 	[Subtopic.driverAbility]: DriverAbility,
 	[Subtopic.hpAtProcessor]: HpAtProcessor,
 	[Subtopic.hpAtFeeder]: HpAtFeeder,

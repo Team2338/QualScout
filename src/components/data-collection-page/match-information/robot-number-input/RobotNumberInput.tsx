@@ -20,7 +20,7 @@ export default function RobotNumberInput(props: {
 	setRobotNumber: (robotNumber: string) => void;
 }) {
 	const scheduleLoadStatus: LoadStatus = useAppSelector(state => state.schedule.loadStatus);
-	const schedule: IMatchLineup[] = useAppSelector(state => state.schedule.data);
+	const schedule: IMatchLineup[] | null = useAppSelector(state => state.schedule.data);
 
 	if (scheduleLoadStatus === LoadStatus.loading) {
 		return (
@@ -42,6 +42,10 @@ export default function RobotNumberInput(props: {
 				<MenuItem value="">None</MenuItem>
 			</RobotDropdownWrapper>
 		);
+	}
+
+	if (!schedule) {
+		return <ManualRobotNumber {...props} />;
 	}
 
 	const isValidMatchNumber: boolean = (
@@ -87,7 +91,7 @@ function RobotDropdownWrapper(props: {
 				variant="outlined"
 				value={ props.value }
 				disabled={ props.disabled }
-				onChange={ (event: SelectChangeEvent) => props.onChange(event.target.value) }
+				onChange={ (event: SelectChangeEvent) => props.onChange?.(event.target.value) }
 				sx={{ width: 'calc(10em + 35px)', opacity: (props.disabled ? 0.6 : 1) }}
 			>
 				{ props.children }

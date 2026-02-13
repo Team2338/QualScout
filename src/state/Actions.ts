@@ -68,7 +68,7 @@ export const setSuperNote = (subtopic: Subtopic, key: string): IAction => ({
 	}
 });
 
-export const updateSchedule = (loadStatus: LoadStatus, schedule: IMatchLineup[] = null): IAction => ({
+export const updateSchedule = (loadStatus: LoadStatus, schedule: IMatchLineup[] | null = null): IAction => ({
 	type: ActionTypes.UPDATE_SCHEDULE,
 	payload: {
 		loadStatus: loadStatus,

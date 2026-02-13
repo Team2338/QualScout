@@ -8,6 +8,7 @@ import './index.scss';
 import { register } from './ServiceWorkerRegistration';
 import { serviceWorkerInstalled } from './state/Actions';
 import { outlinedInputClasses } from '@mui/material';
+import { ErrorBoundary } from './components/common/ErrorBoundary';
 
 const GRAY = '#BABFB7';
 const ORANGE = '#FE5000';
@@ -105,13 +106,18 @@ export const themeOptions = {
 
 const theme = createTheme(themeOptions);
 const container = document.getElementById('root');
+if (!container) {
+	throw new Error('Root element not found');
+}
 const root = createRoot(container);
 root.render(
-	<Provider store={ store }>
-		<ThemeProvider theme={ theme }>
-			<App />
-		</ThemeProvider>
-	</Provider>
+	<ErrorBoundary>
+		<Provider store={ store }>
+			<ThemeProvider theme={ theme }>
+				<App />
+			</ThemeProvider>
+		</Provider>
+	</ErrorBoundary>
 );
 
 register({

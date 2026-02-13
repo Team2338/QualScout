@@ -49,7 +49,14 @@ export default tseslint.config(
       ],
       '@typescript-eslint/no-inferrable-types': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_'
+        }
+      ],
       'no-array-constructor': 'off', // Disable base rule - let TS plugin handle it
       '@typescript-eslint/no-array-constructor': 'error'
     },

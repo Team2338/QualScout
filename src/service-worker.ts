@@ -5,7 +5,7 @@ declare let self: ServiceWorkerGlobalScope;
 
 const precacheManifest = self.__WB_MANIFEST;
 console.log('precache', precacheManifest);
-const precacheUrls: string[] = precacheManifest
+const precacheUrls: string[] = (precacheManifest as PrecacheEntry[])
 	.map((x: PrecacheEntry) => '/' + x.url)
 	.concat('/');
 
@@ -74,7 +74,7 @@ self.addEventListener('message', (event: ExtendableMessageEvent) => {
 const cacheFirstThenNetworkAndSave = async (event: FetchEvent): Promise<Response> => {
 	const request: Request = event.request.clone();
 	const cache: Cache = await caches.open(cacheName);
-	const cacheResponse: Response = await cache.match(event.request);
+	const cacheResponse: Response | undefined = await cache.match(event.request);
 
 	if (cacheResponse) return cacheResponse;
 

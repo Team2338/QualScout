@@ -17,11 +17,10 @@ import {
 	updateSchedule
 } from './Actions';
 import { AppDispatch } from './Store';
+import { APP_CONFIG } from '../config/app.config';
 
 type GetState = () => IAppState;
 type MatchResponseStatus = 'SUCCESS' | 'OFFLINE' | 'FAIL';
-const OFFLINE_REQUEST_LOCATION: string = 'offlineRequests';
-const OFFLINE_SUPER_NOTE_REQUEST_LOCATION: string = 'offlineSuperNotes';
 
 export const fetchOfflineRequests = () => async (dispatch: AppDispatch) => {
 	const offlineRequests: ICachedMatch[] = readOfflineRequestsFromStorage();
@@ -42,7 +41,7 @@ export const saveOfflineRequest = (teamNumber: string, secretCode: string, match
 	const offlineRequests: ICachedMatch[] = getState().cache.matches
 		.concat(request);
 
-	localStorage.setItem(OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
+	localStorage.setItem(APP_CONFIG.OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
 	dispatch(getOfflineMatchesSuccess(offlineRequests));
 };
 
@@ -54,13 +53,13 @@ export const saveOfflineSuperNotesRequest = (teamNumber: string, secretCode: str
 	};
 	const offlineRequests: ICachedSuperNoteRequest[] = getState().cache.superNotes.concat(request);
 
-	localStorage.setItem(OFFLINE_SUPER_NOTE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
+	localStorage.setItem(APP_CONFIG.OFFLINE_SUPER_NOTE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
 	dispatch(getOfflineSuperNotesSuccess(offlineRequests));
 };
 
 export const sendOfflineRequests = () => async (dispatch: AppDispatch, getState: GetState) => {
 	const offlineRequests: ICachedMatch[] = getState().cache.matches;
-	localStorage.setItem(OFFLINE_REQUEST_LOCATION, '[]');
+	localStorage.setItem(APP_CONFIG.OFFLINE_REQUEST_LOCATION, '[]');
 	dispatch(clearOfflineMatches());
 
 	const requests: Promise<MatchResponseStatus>[] = offlineRequests.map(
@@ -80,14 +79,14 @@ export const sendOfflineRequests = () => async (dispatch: AppDispatch, getState:
 		return;
 	}
 
-	localStorage.setItem(OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
+	localStorage.setItem(APP_CONFIG.OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
 	dispatch(getOfflineMatchesSuccess(nextOfflineRequests));
 	alert(`Failed to send ${nextOfflineRequests.length} qualitative matches`);
 };
 
 export const sendOfflineSuperNotesRequests = () => async (dispatch: AppDispatch, getState: GetState) => {
 	const offlineRequests: ICachedSuperNoteRequest[] = getState().cache.superNotes;
-	localStorage.setItem(OFFLINE_SUPER_NOTE_REQUEST_LOCATION, '[]');
+	localStorage.setItem(APP_CONFIG.OFFLINE_SUPER_NOTE_REQUEST_LOCATION, '[]');
 	dispatch(clearOfflineSuperNotes());
 
 	const requests: Promise<MatchResponseStatus>[] = offlineRequests.map(
@@ -107,46 +106,37 @@ export const sendOfflineSuperNotesRequests = () => async (dispatch: AppDispatch,
 		return;
 	}
 
-	localStorage.setItem(OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
+	localStorage.setItem(APP_CONFIG.OFFLINE_REQUEST_LOCATION, JSON.stringify(offlineRequests));
 	dispatch(getOfflineSuperNotesSuccess(nextOfflineRequests));
 	alert(`Failed to send ${nextOfflineRequests.length} superscout matches`);
 };
 
 export const submitMatch = (match: IMatch) => async (dispatch: AppDispatch, getState: GetState) => {
-	const user: IUser = getState().user;
-	sendRequest(user.teamNumber, user.secretCode, match)
-		.then((result: MatchResponseStatus) => {
-			if (result === 'SUCCESS') {
-				alert('Data Submitted!');
-				return;
-			}
-
-			if (result === 'OFFLINE') {
-				dispatch(saveOfflineRequest(user.teamNumber, user.secretCode, match));
-				alert('You are offline! Saving request for later.');
-				return;
-			}
-
-			alert('There was a problem submitting the data!');
-		});
+	const user: IUser | null = getState().user;
+	if (!user) {
+		throw new Error('User not logged in!');
+	}
+	const result: MatchResponseStatus = await sendRequest(user.teamNumber, user.secretCode, match);
+	if (result === 'OFFLINE') {
+		dispatch(saveOfflineRequest(user.teamNumber, user.secretCode, match));
+	}
+	if (result === 'FAIL') {
+		throw new Error('Failed to submit data');
+	}
 };
 
 export const submitSuperNotes = (notes: ISuperNoteRequest) => async (dispatch: AppDispatch, getState: GetState) => {
-	const user: IUser = getState().user;
-	sendSuperNoteRequest(user.teamNumber, user.secretCode, notes)
-		.then((result: MatchResponseStatus) => {
-			if (result === 'SUCCESS') {
-				alert('Data Submitted!');
-				return;
-			}
-
-			if (result === 'OFFLINE') {
-				dispatch(saveOfflineSuperNotesRequest(user.teamNumber, user.secretCode, notes));
-				return;
-			}
-
-			alert('There was a problem submitting the data!');
-		});
+	const user: IUser | null = getState().user;
+	if (!user) {
+		throw new Error('User not logged in!');
+	}
+	const result: MatchResponseStatus = await sendSuperNoteRequest(user.teamNumber, user.secretCode, notes);
+	if (result === 'OFFLINE') {
+		dispatch(saveOfflineSuperNotesRequest(user.teamNumber, user.secretCode, notes));
+	}
+	if (result === 'FAIL') {
+		throw new Error('Failed to submit data');
+	}
 };
 
 export const fetchEventSchedule = (gameYear: number, tbaCode: string) => async (dispatch: AppDispatch) => {
@@ -167,12 +157,12 @@ export const fetchEventSchedule = (gameYear: number, tbaCode: string) => async (
  */
 
 const readOfflineRequestsFromStorage = (): ICachedMatch[] => {
-	const serializedOfflineRequests: string = localStorage.getItem(OFFLINE_REQUEST_LOCATION) ?? '[]';
+	const serializedOfflineRequests: string = localStorage.getItem(APP_CONFIG.OFFLINE_REQUEST_LOCATION) ?? '[]';
 	return JSON.parse(serializedOfflineRequests);
 };
 
 const readOfflineSuperNotesFromStorage = (): ICachedSuperNoteRequest[] => {
-	const serializedOfflineRequests = localStorage.getItem(OFFLINE_SUPER_NOTE_REQUEST_LOCATION) ?? '[]';
+	const serializedOfflineRequests = localStorage.getItem(APP_CONFIG.OFFLINE_SUPER_NOTE_REQUEST_LOCATION) ?? '[]';
 	return JSON.parse(serializedOfflineRequests);
 };
 
@@ -182,7 +172,7 @@ const sendRequest = async (teamNumber: string, secretCode: string, match: IMatch
 		return Promise.resolve('SUCCESS');
 	} catch (error) {
 		console.log(error);
-		if (error.code === 'ERR_NETWORK') {
+		if (error && typeof error === 'object' && 'code' in error && error.code === 'ERR_NETWORK') {
 			return Promise.resolve('OFFLINE');
 		}
 
@@ -196,7 +186,7 @@ const sendSuperNoteRequest = async (teamNumber: string, secretCode: string, quan
 		return Promise.resolve('SUCCESS');
 	} catch (error) {
 		console.log(error);
-		if (error.code === 'ERR_NETWORK') {
+		if (error && typeof error === 'object' && 'code' in error && error.code === 'ERR_NETWORK') {
 			return Promise.resolve('OFFLINE');
 		}
 

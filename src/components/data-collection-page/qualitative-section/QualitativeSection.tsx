@@ -17,7 +17,7 @@ import {
 export default function QualitativeSection() {
 	const dispatch = useAppDispatch();
 
-	const [selectedCategory, setSelectedCategory] = useState<Topic>(null);
+	const [selectedCategory, setSelectedCategory] = useState<Topic | null>(null);
 	const [noteContent, setNoteContent] = useState<string>('');
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
 
