@@ -20,7 +20,7 @@ const INITIAL_STATE: IAppState = {
 	notes: {
 		[Topic.auto]: '',
 		[Topic.pathing]: '',
-		[Topic.coral]: '',
+		[Topic.fuel]: '',
 		[Topic.algae]: '',
 		[Topic.drivers]: '',
 		[Topic.hp]: '',
@@ -34,7 +34,7 @@ const INITIAL_STATE: IAppState = {
 		[Subtopic.pathingDrivers]: '',
 		[Subtopic.coralGroundCollection]: '',
 		[Subtopic.coralStationCollection]: '',
-		[Subtopic.coralScoring]: '',
+		[Subtopic.scoringAccuracy]: '',
 		[Subtopic.algaeGroundCollection]: '',
 		[Subtopic.algaeReefCollection]: '',
 		[Subtopic.algaeProcessor]: '',

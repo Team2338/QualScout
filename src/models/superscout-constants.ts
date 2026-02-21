@@ -1,6 +1,6 @@
 import { ISuperMatch, Subtopic } from './models';
 
-export const AutoPlacementAccuracy: ISuperMatch[] = [
+export const AutoShootingAccuracy: ISuperMatch[] = [
 	{
 		key: 'NEVER_MISSED',
 		name: 'Never miss',
@@ -36,130 +36,63 @@ export const DriverPathing: ISuperMatch[] = [
 	}
 ];
 
-export const CoralGroundCollection: ISuperMatch[] = [
+export const GroundCollection: ISuperMatch[] = [
 	{
 		key: 'QUICK_SNAG',
-		name: 'Quick snag',
+		name: 'Quick collect',
 		score: 2
 	},
 	{
 		key: 'ALIGN',
-		name: 'Align',
+		name: 'Adjustment necessary',
 		score: 1
 	},
 	{
 		key: 'DROP_PIECE',
-		name: 'Drop piece',
+		name: 'Pushes out of way',
 		score: 0
 	}
 ];
 
-export const CoralStationCollection: ISuperMatch[] = [
+export const HopperFullness: ISuperMatch[] = [
 	{
-		key: 'QUICK_COLLECTION',
-		name: 'Quick collection',
-		score: 2
+		key: '100',
+		name: '100%',
+		score: 100
 	},
 	{
-		key: 'ALIGN',
-		name: 'Align',
-		score: 1
+		key: '75',
+		name: '75%',
+		score: 75
 	},
 	{
-		key: 'DROP_PIECE',
-		name: 'Drop piece',
-		score: 0
-	}
-];
+		key: '50',
+		name: '50%',
+		score: 50
+	},
+	{
+		key: '25',
+		name: '25%',
+		score: 25
+	},
+]
 
-export const CoralScoring: ISuperMatch[] = [
+export const ScoringAccuracy: ISuperMatch[] = [
 	{
 		key: 'INSTANT_PLACE',
-		name: 'Instant place',
+		name: 'Never miss',
 		score: 2
 	},
 	{
 		key: 'LONG_LINEUP',
-		name: 'Long lineup',
+		name: 'Sometimes miss',
 		score: 1
 	},
 	{
 		key: 'CANNOT_PLACE',
-		name: 'Cannot place',
+		name: 'Frequently miss',
 		score: 0
 	}
-];
-
-export const AlgaeGroundCollection: ISuperMatch[] = [
-	{
-		key: 'GOOD_PICK_UP',
-		name: 'Good pick up',
-		score: 2
-	},
-	{
-		key: 'PUSHES_IT', // TODO: Rename to match text
-		name: 'Multiple pickup attempts',
-		score: 1
-	},
-	{
-		key: 'CANNOT_PICK_IT_UP',
-		name: 'Cannot pick it up',
-		score: 0
-	},
-];
-
-export const AlgaeReefCollection: ISuperMatch[] = [
-	{
-		key: 'GOOD_PICK_UP',
-		name: 'Good pick up',
-		score: 2
-	},
-	{
-		key: 'LONG_ALIGNMENT',
-		name: 'Long alignment',
-		score: 1
-	},
-	{
-		key: 'KNOCKS_IT_DOWN',
-		name: 'Knocks it down',
-		score: 0
-	},
-];
-
-export const AlgaeProcessor: ISuperMatch[] = [
-	{
-		key: 'INSTANT_PLACEMENT',
-		name: 'Instant placement',
-		score: 2
-	},
-	{
-		key: 'LONG_ALIGNMENT',
-		name: 'Long alignment',
-		score: 1
-	},
-	{
-		key: 'NO_MECHANISM_TO_SCORE',
-		name: 'No mechanism to score',
-		score: 0
-	},
-];
-
-export const AlgaeBarge: ISuperMatch[] = [
-	{
-		key: 'INSTANT_SCORE',
-		name: 'Instant score',
-		score: 2
-	},
-	{
-		key: 'NEEDS_TO_LINE_UP',
-		name: 'Needs to line up',
-		score: 1
-	},
-	{
-		key: 'CANNOT_SCORE',
-		name: 'Cannot score',
-		score: 0
-	},
 ];
 
 export const DriverAbility: ISuperMatch[] = [
@@ -180,56 +113,51 @@ export const DriverAbility: ISuperMatch[] = [
 	},
 ];
 
-export const HpAtProcessor: ISuperMatch[] = [
+export const YesNo: ISuperMatch[] = [
 	{
-		key: 'MICHAEL_JORDAN', // Might keep this as an Easter egg
-		name: 'Basketball pro',
-		score: 2
-	},
-	{
-		key: 'MEDIOCRE', // TODO: Rename to match text
-		name: 'Misses some shots',
+		key: 'YES',
+		name: 'Yes',
 		score: 1
 	},
 	{
-		key: 'NOT_AT_PROCESSOR', // TODO: Rename to match text
-		name: 'Misses almost all',
+		key: 'NO',
+		name: 'No',
 		score: 0
 	},
 ];
 
-export const HpAtFeeder: ISuperMatch[] = [
+export const ClimbStability: ISuperMatch[] = [
 	{
-		key: 'INSTANT_FEEDER',
-		name: 'Instant feeder',
+		key: 'STURDY',
+		name: 'Sturdy climb',
 		score: 2
 	},
 	{
-		key: 'SLOW_OR_HESITANT',
-		name: 'Slow or hesitant',
+		key: 'WEAK',
+		name: 'Weak climb',
 		score: 1
 	},
 	{
-		key: 'MISSES_ROBOT',
-		name: 'Misses the robot',
+		key: 'SHOULD_NOT_CLIMB',
+		name: 'Should not climb',
 		score: 0
-	}
-];
+	},
+]
 
-export const ClimbSkill: ISuperMatch[] = [
+export const ClimbSpeed: ISuperMatch[] = [
 	{
-		key: 'FAST_OR_STURDY_CLIMB',
-		name: 'Fast or sturdy climb',
+		key: 'FAST',
+		name: 'Fast',
 		score: 2
 	},
 	{
-		key: 'SLOW_OR_WOBBLY_CLIMB',
-		name: 'Slow or wobbly climb',
+		key: 'MODERATE',
+		name: 'Moderate',
 		score: 1
 	},
 	{
-		key: 'THAT_BOT_SHOULD_NOT_BE_HANGING',
-		name: 'That bot should not be hanging',
+		key: 'SLOW',
+		name: 'Slow',
 		score: 0
 	},
 ];
@@ -241,13 +169,13 @@ export const DefenseDriverSkill: ISuperMatch[] = [
 		score: 2
 	},
 	{
-		key: 'NOT_VERY_GOOD',
-		name: 'Not very good',
+		key: 'MODERATE',
+		name: 'Moderate',
 		score: 1
 	},
 	{
-		key: 'DEFENSE_NOT_PLAYED',
-		name: 'Defense not played',
+		key: 'POOR_DEFENSE',
+		name: 'Poor defense',
 		score: 0
 	},
 ];
@@ -272,19 +200,15 @@ export const DefenseType: ISuperMatch[] = [
 
 type ISubtopicToOptionMap = Record<Subtopic, ISuperMatch[]>;
 export const SubtopicToOptionMap: ISubtopicToOptionMap = {
-	[Subtopic.autoPlacementAccuracy]: AutoPlacementAccuracy,
+	[Subtopic.autoShootingAccuracy]: AutoShootingAccuracy,
 	[Subtopic.pathingDrivers]: DriverPathing,
-	[Subtopic.coralGroundCollection]: CoralGroundCollection,
-	[Subtopic.coralStationCollection]: CoralStationCollection,
-	[Subtopic.coralScoring]: CoralScoring,
-	[Subtopic.algaeGroundCollection]: AlgaeGroundCollection,
-	[Subtopic.algaeReefCollection]: AlgaeReefCollection,
-	[Subtopic.algaeProcessor]: AlgaeProcessor,
-	[Subtopic.algaeBarge]: AlgaeBarge,
+	[Subtopic.groundCollection]: GroundCollection,
+	[Subtopic.hopperFullness]: HopperFullness,
+	[Subtopic.scoringAccuracy]: ScoringAccuracy,
 	[Subtopic.driverAbility]: DriverAbility,
-	[Subtopic.hpAtProcessor]: HpAtProcessor,
-	[Subtopic.hpAtFeeder]: HpAtFeeder,
-	[Subtopic.climbSkill]: ClimbSkill,
+	[Subtopic.didSurf]: YesNo,
+	[Subtopic.climbStability]: ClimbStability,
+	[Subtopic.climbSpeed]: ClimbSpeed,
 	[Subtopic.defenseDriverSkill]: DefenseDriverSkill,
 	[Subtopic.defenseType]: DefenseType
 };

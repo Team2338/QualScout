@@ -5,20 +5,17 @@ import { saveNote, setSuperNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
 import {
-	AlgaeBarge,
-	AlgaeGroundCollection,
-	AlgaeProcessor,
-	AlgaeReefCollection,
-	AutoPlacementAccuracy,
-	ClimbSkill,
-	CoralGroundCollection,
-	CoralScoring,
-	CoralStationCollection,
+	AutoShootingAccuracy,
+	GroundCollection,
+	ScoringAccuracy,
 	DefenseDriverSkill,
 	DefenseType,
 	DriverAbility,
-	DriverPathing, HpAtFeeder,
-	HpAtProcessor
+	DriverPathing,
+	HopperFullness,
+	YesNo,
+	ClimbSpeed,
+	ClimbStability
 } from '../../../models/superscout-constants';
 
 export default function QualitativeSection() {
@@ -69,12 +66,14 @@ export default function QualitativeSection() {
 
 			<div className="dropdown-buttons">
 				{ selectedCategory === Topic.auto && (
-					<Dropdown
-						id="placement-accuracy"
-						label="Placement Accuracy"
-						subtopic={ Subtopic.autoPlacementAccuracy }
-						options={ AutoPlacementAccuracy }
-					/>
+					<div className="dropdown-buttons">
+						<Dropdown
+							id="auto-accuracy"
+							label="Shooting Accuracy"
+							subtopic={ Subtopic.autoShootingAccuracy }
+							options={ AutoShootingAccuracy }
+						/>
+					</div>
 				)}
 
 				{ selectedCategory === Topic.pathing && (
@@ -86,91 +85,66 @@ export default function QualitativeSection() {
 					/>
 				)}
 
-				{ selectedCategory === Topic.coral && (
+				{ selectedCategory === Topic.collector && (
 					<div className="dropdown-buttons">
 						<Dropdown
 							id="coral-ground-collection"
 							label="Ground Collection"
-							subtopic={ Subtopic.coralGroundCollection }
-							options={ CoralGroundCollection }
+							subtopic={ Subtopic.groundCollection }
+							options={ GroundCollection }
 						/>
 						<Dropdown
-							id="station-collection"
-							label="Station Collection"
-							subtopic={ Subtopic.coralStationCollection}
-							options={ CoralStationCollection }
-						/>
-						<Dropdown
-							id="scoring"
-							label="Scoring"
-							subtopic={ Subtopic.coralScoring }
-							options={ CoralScoring }
+							id="hopper-fullness"
+							label="Hopper Fullness"
+							subtopic={ Subtopic.hopperFullness }
+							options={ HopperFullness }
 						/>
 					</div>
 				)}
 
-				{ selectedCategory === Topic.algae && (
+				{ selectedCategory === Topic.shooter && (
 					<div className="dropdown-buttons">
 						<Dropdown
-							id="algae-ground-collection"
-							label="Ground Collection"
-							subtopic={ Subtopic.algaeGroundCollection }
-							options={ AlgaeGroundCollection }
-						/>
-						<Dropdown
-							id="algae-reef-collection"
-							label="Reef Collection"
-							subtopic={ Subtopic.algaeReefCollection }
-							options={ AlgaeReefCollection }
-						/>
-						<Dropdown
-							id="algae-processor"
-							label="Processor"
-							subtopic={ Subtopic.algaeProcessor}
-							options={ AlgaeProcessor }
-						/>
-						<Dropdown
-							id="algae-barge"
-							label="Barge"
-							subtopic={ Subtopic.algaeBarge }
-							options={ AlgaeBarge }
-						/>
-					</div>
-				)}
-
-				{ selectedCategory === Topic.hp && (
-					<div className="dropdown-buttons">
-						<Dropdown
-							id="hp-feeder-dropdown"
-							label="HP at Feeder"
-							subtopic={ Subtopic.hpAtFeeder }
-							options={ HpAtFeeder }
-						/>
-						<Dropdown
-							id="hp-processor-dropdown"
-							label="HP at Processor"
-							subtopic={ Subtopic.hpAtProcessor }
-							options={ HpAtProcessor }
+							id="shooter-accuracy"
+							label="Accuracy"
+							subtopic={ Subtopic.scoringAccuracy }
+							options={ ScoringAccuracy }
 						/>
 					</div>
 				)}
 
 				{ selectedCategory === Topic.drivers && (
-					<Dropdown
-						id="driver-skill-dropdown"
-						label="Driver Skill"
-						subtopic={ Subtopic.driverAbility }
-						options={ DriverAbility }
-					/>
+					<div className="dropdown-buttons">
+						<Dropdown
+							id="driver-skill-dropdown"
+							label="Driver Skill"
+							subtopic={ Subtopic.driverAbility }
+							options={ DriverAbility }
+						/>
+						<Dropdown
+							id="did-surf-dropdown"
+							label="Did Surf"
+							subtopic={ Subtopic.didSurf }
+							options={ YesNo }
+						/>
+					</div>
 				)}
 
 				{ selectedCategory === Topic.climb && (
-					<Dropdown
-						id="climb-dropdown"
-						label="Climb"
-						subtopic={ Subtopic.climbSkill }
-						options={ ClimbSkill }
-					/>
+					<div className="dropdown-buttons">
+						<Dropdown
+							id="climb-stability-dropdown"
+							label="Climb Stability"
+							subtopic={ Subtopic.climbStability }
+							options={ ClimbStability }
+						/>
+						<Dropdown
+							id="climb-speed-dropdown"
+							label="Climb Speed"
+							subtopic={ Subtopic.climbSpeed }
+							options={ ClimbSpeed }
+						/>
+					</div>
 				)}
 
 				{ selectedCategory === Topic.defense && (
