@@ -32,7 +32,7 @@ export default function RobotNumberInput(props: {
 	}
 
 	if (scheduleLoadStatus === LoadStatus.none || scheduleLoadStatus === LoadStatus.fail) {
-		return <ManualRobotNumber {...props} />
+		return <ManualRobotNumber {...props} />;
 	}
 
 	const matchIndex = Number.parseInt(props.matchNumber) - 1;

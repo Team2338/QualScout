@@ -287,4 +287,4 @@ export const SubtopicToOptionMap: ISubtopicToOptionMap = {
 	[Subtopic.climbSkill]: ClimbSkill,
 	[Subtopic.defenseDriverSkill]: DefenseDriverSkill,
 	[Subtopic.defenseType]: DefenseType
-}
+};
