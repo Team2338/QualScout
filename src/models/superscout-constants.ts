@@ -75,7 +75,7 @@ export const HopperFullness: ISuperMatch[] = [
 		name: '25%',
 		score: 25
 	},
-]
+];
 
 export const ScoringAccuracy: ISuperMatch[] = [
 	{
@@ -142,7 +142,7 @@ export const ClimbStability: ISuperMatch[] = [
 		name: 'Should not climb',
 		score: 0
 	},
-]
+];
 
 export const ClimbSpeed: ISuperMatch[] = [
 	{

@@ -92,7 +92,7 @@ export const sendOfflineSuperNotesRequests = () => async (dispatch: AppDispatch,
 
 	const requests: Promise<MatchResponseStatus>[] = offlineRequests.map(
 		(request: ICachedSuperNoteRequest)=> sendSuperNoteRequest(request.teamNumber, request.secretCode, request)
-	)
+	);
 
 	const results: PromiseSettledResult<MatchResponseStatus>[] = await Promise.allSettled(requests);
 	const nextOfflineRequests: ICachedSuperNoteRequest[] = [];
