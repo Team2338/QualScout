@@ -27,6 +27,21 @@ export default defineConfig({
 		reportCompressedSize: true,
 		commonjsOptions: {
 			transformMixedEsModules: true
+		},
+		rollupOptions: {
+			input: {
+				app: './index.html',
+				'service-worker': './src/service-worker.ts',
+			},
+			output: {
+				entryFileNames: (asset) => {
+					if (asset.name === 'service-worker') {
+						return '[name].js'
+					}
+
+					return 'assets/js/[name]-[hash].js'
+				}
+			}
 		}
 	}
 });
