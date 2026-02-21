@@ -16,7 +16,7 @@ export default function LandingPage() {
 	const [scouterName, setScouterName] = useState<string>('');
 	const [tbaCode, setTbaCode] = useState<string>('');
 	const [isValid, setIsValid] = useState<boolean>(false);
-	const version = import.meta.env.VITE_APP_VERSION || '2026.0.1';
+	const version = import.meta.env.VITE_APP_VERSION || '2026.1';
 
 	useEffect(() => {
 		const query = new URLSearchParams(window.location.search);
