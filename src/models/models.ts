@@ -1,4 +1,6 @@
-export const CURRENT_YEAR = 2025;
+import { APP_CONFIG } from '../config/app.config';
+
+export const CURRENT_YEAR = APP_CONFIG.CURRENT_YEAR;
 
 export interface IMatch {
 	gameYear: number;
@@ -59,8 +61,8 @@ export enum AllianceColor {
 export enum Topic {
 	auto = 'Auto',
 	pathing = 'Pathing',
-	coral = 'Coral',
-	algae = 'Algae',
+	collection = 'Collection',
+	scoring = 'Scoring',
 	drivers = 'Drivers',
 	hp = 'Human Player',
 	penalties = 'Penalties',
@@ -89,13 +91,9 @@ export interface IMatchLineup {
 export enum Subtopic {
 	autoPlacementAccuracy = 'Auto Placement Accuracy',
 	pathingDrivers = 'Pathing Drivers',
-	coralGroundCollection = 'Coral Ground Collection',
-	coralStationCollection = 'Coral Station Collection',
-	coralScoring = 'Coral Scoring',
-	algaeGroundCollection = 'Algae Ground Collection',
-	algaeReefCollection = 'Algae Reef Collection',
-	algaeProcessor = 'Algae Processor',
-	algaeBarge = 'Algae Barge',
+	groundCollection = 'Ground Collection',
+	stationCollection = 'Station Collection',
+	scoring = 'Scoring',
 	driverAbility = 'Driver Ability',
 	hpAtProcessor = 'HP at Processor',
 	hpAtFeeder = 'HP at Feeder',

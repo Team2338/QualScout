@@ -5,14 +5,14 @@ export enum LoadStatus {
 }
 
 export interface IAppState {
-	user: IUser;
+	user: IUser | null;
 	serviceWorker: {
 		updated: boolean;
 		sw: ServiceWorker | null;
 	};
 	schedule: {
 		loadStatus: LoadStatus;
-		data: IMatchLineup[];
+		data: IMatchLineup[] | null;
 	};
 	cache: {
 		matches: ICachedMatch[];

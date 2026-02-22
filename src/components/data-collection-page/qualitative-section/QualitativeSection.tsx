@@ -1,34 +1,27 @@
 import React, { useState } from 'react';
-import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { ISuperMatch, Subtopic, Topic } from '../../../models/models';
 import { saveNote, setSuperNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
 import {
-	AlgaeBarge,
-	AlgaeGroundCollection,
-	AlgaeProcessor,
-	AlgaeReefCollection,
-	AutoPlacementAccuracy,
+	AutoScoringAccuracy,
 	ClimbSkill,
-	CoralGroundCollection,
-	CoralScoring,
-	CoralStationCollection,
+	GroundCollection,
+	StationCollection,
 	DefenseDriverSkill,
 	DefenseType,
 	DriverAbility,
-	DriverPathing, HpAtFeeder,
-	HpAtProcessor
+	DriverPathing
 } from '../../../models/superscout-constants';
 
 export default function QualitativeSection() {
 	const dispatch = useAppDispatch();
 
-	const [selectedCategory, setSelectedCategory] = useState<Topic>(null);
+	const [selectedCategory, setSelectedCategory] = useState<Topic | null>(null);
 	const [noteContent, setNoteContent] = useState<string>('');
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
 
-	const submit = (event) => {
+	const submit = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		if (selectedCategory !== null) {
 			dispatch(saveNote(selectedCategory, noteContent));
@@ -47,13 +40,14 @@ export default function QualitativeSection() {
 			<div className="category-buttons">
 				{
 					Object.values(Topic).map((topic: Topic) => (
-						<Button
-							key={ topic }
-							variant="contained"
-							onClick={ () => handleButtonClick(topic) }
+						<button
+							key={topic}
+							className={`category-button ${selectedCategory === topic ? 'selected' : ''}`}
+							onClick={() => handleButtonClick(topic)}
+							type="button"
 						>
-							{ topic }
-						</Button>
+							{topic}
+						</button>
 					))
 				}
 			</div>
@@ -62,159 +56,113 @@ export default function QualitativeSection() {
 
 	return (
 		<div className="qualitative-section">
-			<h1>Categories</h1>
+			<h1 className="section-title">Categories</h1>
 			<NoteStatus/>
 
-			<p><strong>Selected Category:</strong> { selectedCategory ?? 'None' }</p>
+			<p className="selected-category"><strong>Selected Category:</strong> {selectedCategory ?? 'None'}</p>
 
 			<div className="dropdown-buttons">
-				{ selectedCategory === Topic.auto && (
+				{selectedCategory === Topic.auto && (
 					<Dropdown
 						id="placement-accuracy"
 						label="Placement Accuracy"
-						subtopic={ Subtopic.autoPlacementAccuracy }
-						options={ AutoPlacementAccuracy }
+						subtopic={Subtopic.autoPlacementAccuracy}
+						options={AutoScoringAccuracy}
 					/>
 				)}
 
-				{ selectedCategory === Topic.pathing && (
+				{selectedCategory === Topic.pathing && (
 					<Dropdown
 						id="pathing"
 						label="Pathing"
-						subtopic={ Subtopic.pathingDrivers }
-						options={ DriverPathing }
+						subtopic={Subtopic.pathingDrivers}
+						options={DriverPathing}
 					/>
 				)}
 
-				{ selectedCategory === Topic.coral && (
-					<div className="dropdown-buttons">
+				{selectedCategory === Topic.collection && (
+					<div className="dropdown-group">
 						<Dropdown
-							id="coral-ground-collection"
-							label="Ground Collection"
-							subtopic={ Subtopic.coralGroundCollection }
-							options={ CoralGroundCollection }
+							id="field-collection"
+							label="Field Collection"
+							subtopic={Subtopic.groundCollection}
+							options={GroundCollection}
 						/>
 						<Dropdown
-							id="station-collection"
-							label="Station Collection"
-							subtopic={ Subtopic.coralStationCollection}
-							options={ CoralStationCollection }
-						/>
-						<Dropdown
-							id="scoring"
-							label="Scoring"
-							subtopic={ Subtopic.coralScoring }
-							options={ CoralScoring }
+							id="goal-collection"
+							label="Goal Collection"
+							subtopic={Subtopic.stationCollection}
+							options={StationCollection}
 						/>
 					</div>
 				)}
 
-				{ selectedCategory === Topic.algae && (
-					<div className="dropdown-buttons">
-						<Dropdown
-							id="algae-ground-collection"
-							label="Ground Collection"
-							subtopic={ Subtopic.algaeGroundCollection }
-							options={ AlgaeGroundCollection }
-						/>
-						<Dropdown
-							id="algae-reef-collection"
-							label="Reef Collection"
-							subtopic={ Subtopic.algaeReefCollection }
-							options={ AlgaeReefCollection }
-						/>
-						<Dropdown
-							id="algae-processor"
-							label="Processor"
-							subtopic={ Subtopic.algaeProcessor}
-							options={ AlgaeProcessor }
-						/>
-						<Dropdown
-							id="algae-barge"
-							label="Barge"
-							subtopic={ Subtopic.algaeBarge }
-							options={ AlgaeBarge }
-						/>
-					</div>
-				)}
-
-				{ selectedCategory === Topic.hp && (
-					<div className="dropdown-buttons">
-						<Dropdown
-							id="hp-feeder-dropdown"
-							label="HP at Feeder"
-							subtopic={ Subtopic.hpAtFeeder }
-							options={ HpAtFeeder }
-						/>
-						<Dropdown
-							id="hp-processor-dropdown"
-							label="HP at Processor"
-							subtopic={ Subtopic.hpAtProcessor }
-							options={ HpAtProcessor }
-						/>
-					</div>
-				)}
-
-				{ selectedCategory === Topic.drivers && (
+				{selectedCategory === Topic.drivers && (
 					<Dropdown
 						id="driver-skill-dropdown"
 						label="Driver Skill"
-						subtopic={ Subtopic.driverAbility }
-						options={ DriverAbility }
+						subtopic={Subtopic.driverAbility}
+						options={DriverAbility}
 					/>
 				)}
 
-				{ selectedCategory === Topic.climb && (
+				{selectedCategory === Topic.climb && (
 					<Dropdown
 						id="climb-dropdown"
 						label="Climb"
-						subtopic={ Subtopic.climbSkill }
-						options={ ClimbSkill }
+						subtopic={Subtopic.climbSkill}
+						options={ClimbSkill}
 					/>
 				)}
 
-				{ selectedCategory === Topic.defense && (
-					<div className="dropdown-buttons">
+				{selectedCategory === Topic.defense && (
+					<div className="dropdown-group">
 						<Dropdown
 							id="defense-skill-dropdown"
 							label="Defense Skill"
-							subtopic={ Subtopic.defenseDriverSkill }
-							options={ DefenseDriverSkill }
+							subtopic={Subtopic.defenseDriverSkill}
+							options={DefenseDriverSkill}
 						/>
 						<Dropdown
 							id="defense-type-dropdown"
 							label="Defense Type"
-							subtopic={ Subtopic.defenseType }
-							options={ DefenseType }
+							subtopic={Subtopic.defenseType}
+							options={DefenseType}
 						/>
 					</div>
 				)}
 			</div>
 
-			<TextField
-				label="Enter your text here..."
-				value={ noteContent }
-				onChange={ (event) => setNoteContent(event.target.value) }
-				multiline
-				rows={ 10 }
-				variant="outlined"
-				fullWidth={ true }
-				sx={{
-					marginBottom: '16px'
-				}}
-				disabled={ selectedCategory === null }
-			/>
+			<div className="text-area-wrapper">
+				<textarea
+					className="note-textarea"
+					placeholder="Enter your text here..."
+					value={noteContent}
+					onChange={(event) => setNoteContent(event.target.value)}
+					rows={10}
+					disabled={selectedCategory === null}
+				/>
+			</div>
 
-			<Button variant="contained" onClick={ submit } disabled={ selectedCategory === null }>Save Note</Button>
+			<button 
+				className="save-button" 
+				onClick={submit} 
+				disabled={selectedCategory === null}
+				type="button"
+			>
+				Save Note
+			</button>
 
-			<h1>Saved Notes</h1>
+			<h2 className="section-title">Saved Notes</h2>
 			<ul className="submitted-notes">
 				{
 					Object.values(Topic).map((topic: Topic) => (
-						<li key={ topic }>
-							<strong>{ topic }:</strong>
-							<p>{ savedNotes[topic] }</p>
-						</li>
+						savedNotes[topic] && (
+							<li key={topic}>
+								<strong>{topic}:</strong>
+								<p>{savedNotes[topic]}</p>
+							</li>
+						)
 					))
 				}
 			</ul>
@@ -232,26 +180,24 @@ interface IDropdownProps {
 function Dropdown(props: IDropdownProps) {
 	const dispatch = useAppDispatch();
 	const value = useAppSelector(state => state.superNotes[props.subtopic]);
-	const labelId = props.id + '__label';
+	
 	return (
-		<FormControl className="dropdown-wrapper" margin="dense">
-			<InputLabel id={ labelId } style={{ color: '#babfb7' }}>{ props.label }</InputLabel>
-			<Select
-				id={ props.id }
-				labelId={ labelId }
-				value={ value }
-				label={ props.label }
-				variant="outlined"
-				fullWidth={ true }
-				onChange={ (event) => dispatch(setSuperNote(props.subtopic, event.target.value)) }
+		<div className="form-field">
+			<select
+				id={props.id}
+				value={value}
+				onChange={(event) => dispatch(setSuperNote(props.subtopic, event.target.value))}
 			>
-				<MenuItem value="" style={{ fontStyle: 'italic', color: '#707070' }}>Do not report</MenuItem>
+				<option value="">Do not report</option>
 				{
 					props.options.map(option => (
-						<MenuItem key={ option.key } value={ option.key } style={{ color: '#000' }}>{ option.name }</MenuItem>
+						<option key={option.key} value={option.key}>
+							{option.name}
+						</option>
 					))
 				}
-			</Select>
-		</FormControl>
+			</select>
+			<label htmlFor={props.id}>{props.label}</label>
+		</div>
 	);
 }

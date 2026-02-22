@@ -1,42 +1,147 @@
-$tangaroa: rgb(2, 36, 62);
+$blue: #02243e;
+$orange: #fe5000;
+$brightBlue: #1976d2;
+$offwhite: #FAF9F6;
 
 .match-information {
-	display: grid;
-	grid-template-columns: auto 1fr auto;
-	grid-template-rows: auto;
-	grid-template-areas: "logo textboxes analytics";
+	display: flex;
+	flex-direction: column;
 	align-items: center;
+	padding: 16px 12px;
 	width: 100%;
-	row-gap: 8px;
-	padding: 16px;
-	box-sizing: border-box;
-	background-color: $tangaroa;
+	margin: 0 auto;
+	background-color: $blue;
+	position: relative;
 
-	@media only screen and (width < 520px) {
-		grid-template-areas:
-			"logo . analytics"
-			"textboxes textboxes textboxes";
+	@media (max-width: 768px) {
+		padding: 20px 0;
+	}
+
+	.header-main {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 16px;
+
+		@media (max-width: 768px) {
+			justify-content: center;
+		}
 	}
 
 	.logo {
-		grid-area: logo;
+		display: flex;
+		align-items: center;
+
+		img {
+			height: 100px;
+		}
 	}
 
 	.textboxes {
-		grid-area: textboxes;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		row-gap: 8px;
+		gap: 30px;
 		width: 100%;
-		min-width: 10rem;
-		box-sizing: border-box;
+		max-width: 220px;
+
+		// Style MUI TextFields to match reference implementation
+		.MuiTextField-root {
+			width: 12em;
+
+			// Input field
+			.MuiOutlinedInput-root {
+				color: white;
+				font-size: 15px;
+				background-color: transparent;
+
+				// Border styling
+				.MuiOutlinedInput-notchedOutline {
+					border-color: white;
+					border-width: 1px;
+				}
+
+				// Hover state
+				&:hover:not(.Mui-focused) .MuiOutlinedInput-notchedOutline {
+					border-color: #fe7755;
+				}
+
+				// Focused state
+				&.Mui-focused .MuiOutlinedInput-notchedOutline {
+					border-color: $orange;
+					border-width: 2px;
+				}
+
+				// Input element
+				input {
+					padding: 16px 12px;
+					color: white;
+
+					// Remove number spinner arrows
+					&::-webkit-outer-spin-button,
+					&::-webkit-inner-spin-button {
+						-webkit-appearance: none;
+						margin: 0;
+					}
+
+					&[type=number] {
+						-moz-appearance: textfield;
+						appearance: textfield;
+					}
+				}
+			}
+
+			// Label styling
+			.MuiInputLabel-root {
+				color: white;
+				font-size: 15px;
+				background-color: transparent;
+
+				&.Mui-focused {
+					color: $orange;
+					font-weight: 600;
+					background-color: transparent;
+				}
+
+				&.MuiInputLabel-shrink {
+					background-color: $blue;
+					padding: 0 4px;
+					font-size: 12px;
+					
+					&.Mui-focused {
+						background-color: $blue;
+					}
+				}
+			}
+		}
 	}
 
 	.analytics {
 		display: flex;
-		grid-area: analytics;
-		width: fit-content;
+		align-items: center;
+		padding-right: 30px;
+
+		@media (max-width: 768px) {
+			display: none;
+		}
+
+		.analytics-button {
+			padding: 9.5px 15px;
+			background-color: $brightBlue;
+			color: white;
+			text-decoration: none;
+			border-radius: 4px;
+			font-weight: 300;
+			font-size: 14px;
+			letter-spacing: 0.5px;
+			transition: background-color 0.2s;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+			&:hover {
+				background-color: #4da6ff;
+			}
+		}
 	}
 }
 
