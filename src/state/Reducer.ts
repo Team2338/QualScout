@@ -34,6 +34,7 @@ const INITIAL_STATE: IAppState = {
 		[Subtopic.groundCollection]: '',
 		[Subtopic.hopperFullness]: '',
 		[Subtopic.scoringAccuracy]: '',
+		[Subtopic.scoringMobility]: '',
 		[Subtopic.driverAbility]: '',
 		[Subtopic.didSurf]: '',
 		[Subtopic.climbStability]: '',

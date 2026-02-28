@@ -90,6 +90,7 @@ export enum Subtopic {
 	pathingDrivers = 'Pathing Drivers',
 	groundCollection = 'Coral Ground Collection',
 	hopperFullness = 'Hopper Fullness',
+	scoringMobility = 'Scoring Mobility',
 	scoringAccuracy = 'Scoring Accuracy',
 	driverAbility = 'Driver Ability',
 	didSurf = 'Did Surf',

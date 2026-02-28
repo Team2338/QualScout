@@ -95,6 +95,24 @@ export const ScoringAccuracy: ISuperMatch[] = [
 	}
 ];
 
+export const ScoringMobility: ISuperMatch[] = [
+	{
+		key: 'FAST_MOVE_AND_SHOOT',
+		name: 'Fires at full speed',
+		score: 2
+	},
+	{
+		key: 'SLOW_MOVE_AND_SHOOT',
+		name: 'Fires at reduced speed',
+		score: 1
+	},
+	{
+		key: 'CANNOT_MOVE_AND_SHOOT',
+		name: 'Cannot move while shooting',
+		score: 0
+	}
+]
+
 export const DriverAbility: ISuperMatch[] = [
 	{
 		key: 'SMOOTH_OPERATOR',
@@ -205,6 +223,7 @@ export const SubtopicToOptionMap: ISubtopicToOptionMap = {
 	[Subtopic.groundCollection]: GroundCollection,
 	[Subtopic.hopperFullness]: HopperFullness,
 	[Subtopic.scoringAccuracy]: ScoringAccuracy,
+	[Subtopic.scoringMobility]: ScoringMobility,
 	[Subtopic.driverAbility]: DriverAbility,
 	[Subtopic.didSurf]: YesNo,
 	[Subtopic.climbStability]: ClimbStability,

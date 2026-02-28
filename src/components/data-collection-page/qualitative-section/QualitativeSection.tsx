@@ -15,7 +15,8 @@ import {
 	HopperFullness,
 	YesNo,
 	ClimbSpeed,
-	ClimbStability
+	ClimbStability,
+	ScoringMobility
 } from '../../../models/superscout-constants';
 
 export default function QualitativeSection() {
@@ -109,6 +110,12 @@ export default function QualitativeSection() {
 							label="Accuracy"
 							subtopic={ Subtopic.scoringAccuracy }
 							options={ ScoringAccuracy }
+						/>
+						<Dropdown
+							id="shooter-mobility"
+							label="Mobility while shooting"
+							subtopic={ Subtopic.scoringMobility }
+							options={ ScoringMobility }
 						/>
 					</div>
 				)}
