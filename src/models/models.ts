@@ -1,4 +1,4 @@
-export const CURRENT_YEAR = 2025;
+export const CURRENT_YEAR = 2026;
 
 export interface IMatch {
 	gameYear: number;
