@@ -31,6 +31,8 @@ export interface IObjective {
 }
 
 export enum Gamemode {
+	auto = 'AUTO',
+	teleop = 'TELEOP',
 	superscout = 'SUPERSCOUT'
 }
 
