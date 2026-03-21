@@ -105,11 +105,17 @@ function ManualRobotNumber(props: {
 			label="Robot Number"
 			variant="outlined"
 			margin="dense"
-			type="number"
+			type="text"
 			inputMode="numeric"
 			placeholder="Robot Number"
 			value={ props.robotNumber }
 			onChange={ (event) => props.setRobotNumber(event.target.value) }
+			slotProps={{
+				htmlInput: {
+					pattern: '[0-9]*',
+					maxLength: 5
+				}
+			}}
 		/>
 	);
 }
