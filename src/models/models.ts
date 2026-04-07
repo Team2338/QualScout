@@ -1,4 +1,4 @@
-export const CURRENT_YEAR = 2025;
+export const CURRENT_YEAR = 2026;
 
 export interface IMatch {
 	gameYear: number;
@@ -31,6 +31,8 @@ export interface IObjective {
 }
 
 export enum Gamemode {
+	auto = 'AUTO',
+	teleop = 'TELEOP',
 	superscout = 'SUPERSCOUT'
 }
 
@@ -59,10 +61,9 @@ export enum AllianceColor {
 export enum Topic {
 	auto = 'Auto',
 	pathing = 'Pathing',
-	coral = 'Coral',
-	algae = 'Algae',
+	collector = 'Collector',
+	shooter = 'Shooter',
 	drivers = 'Drivers',
-	hp = 'Human Player',
 	penalties = 'Penalties',
 	climb = 'Climb',
 	defense = 'Defense',
@@ -87,19 +88,14 @@ export interface IMatchLineup {
 }
 
 export enum Subtopic {
-	autoPlacementAccuracy = 'Auto Placement Accuracy',
 	pathingDrivers = 'Pathing Drivers',
-	coralGroundCollection = 'Coral Ground Collection',
-	coralStationCollection = 'Coral Station Collection',
-	coralScoring = 'Coral Scoring',
-	algaeGroundCollection = 'Algae Ground Collection',
-	algaeReefCollection = 'Algae Reef Collection',
-	algaeProcessor = 'Algae Processor',
-	algaeBarge = 'Algae Barge',
+	groundCollection = 'Ground Collection',
+	hopperFullness = 'Hopper Fullness',
+	scoringMobility = 'Scoring Mobility',
 	driverAbility = 'Driver Ability',
-	hpAtProcessor = 'HP at Processor',
-	hpAtFeeder = 'HP at Feeder',
-	climbSkill = 'Climb Skill',
+	didSurf = 'Did Surf',
+	climbStability = 'Climb Stability',
+	climbSpeed = 'Climb Speed',
 	defenseDriverSkill = 'Driver Defense Skill',
 	defenseType = 'Defense Type',
 }

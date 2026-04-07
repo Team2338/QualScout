@@ -23,6 +23,14 @@ $pumice: rgb(186, 191, 183);
 		column-gap: 8px;
 	}
 
+	.accuracy-wrapper {
+		width: 60vw;
+		max-width: 100%;
+		align-self: flex-start;
+		margin-left: 16px;
+		margin-right: 16px;
+	}
+
 	.MuiTextField-root {
 		.MuiFormLabel-root {
 			color: $pumice;

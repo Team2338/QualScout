@@ -20,13 +20,19 @@ function MatchInformation(props: IProps) {
 					label="Match Number"
 					variant="outlined"
 					margin="dense"
-					type="number"
-					inputMode="tel"
+					type="text"
+					inputMode="numeric"
 					placeholder="Match Number"
 					value={ props.matchNumber }
 					onChange={ (event) => {
 						props.setMatchNumber(event.target.value);
 						props.setRobotNumber('');
+					}}
+					slotProps={{
+						htmlInput: {
+							pattern: '[0-9]*',
+							maxLength: 3
+						}
 					}}
 				/>
 				<RobotNumberInput

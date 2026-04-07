@@ -19,8 +19,10 @@ import MatchInformation from './match-information/MatchInformation';
 import QualitativeSection from './qualitative-section/QualitativeSection';
 import { useAppDispatch, useAppSelector } from '../../state/Hooks';
 import { SubtopicToOptionMap } from '../../models/superscout-constants';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const MAX_MATCH_NUMBER = 200;
+const ACCURACY_OPTIONS: string[] = ['0', '25', '50', '75', '95', '100'];
 
 export default function DataCollectionPage() {
 	const dispatch = useAppDispatch();
@@ -29,6 +31,8 @@ export default function DataCollectionPage() {
 	const superNotes: Record<Subtopic, string> = useAppSelector(state => state.superNotes);
 	const [robotNumber, setRobotNumber] = useState<string>('');
 	const [matchNumber, setMatchNumber] = useState<string>('');
+	const [autoAccuracy, setAutoAccuracy] = useState<string>('');
+	const [teleopAccuracy, setTeleopAccuracy] = useState<string>('');
 
 	const generateComments = (): INote[] => {
 		return Object.values(Topic)
@@ -93,6 +97,14 @@ export default function DataCollectionPage() {
 			objectives: generateSuperObjectives()
 		};
 
+		if (autoAccuracy !== '') {
+			superNotes.objectives.push({ gamemode: Gamemode.auto, objective: 'ACCURACY', count: Number(autoAccuracy) });
+		}
+
+		if (teleopAccuracy !== '') {
+			superNotes.objectives.push({ gamemode: Gamemode.teleop, objective: 'ACCURACY', count: Number(teleopAccuracy) });
+		}
+
 		if (superNotes.objectives.length > 0) {
 			dispatch(submitSuperNotes(superNotes));
 		}
@@ -104,6 +116,8 @@ export default function DataCollectionPage() {
 		dispatch(clearNotes());
 		setRobotNumber('');
 		setMatchNumber('');
+		setAutoAccuracy('');
+		setTeleopAccuracy('');
 	};
 
 	return (
@@ -114,6 +128,43 @@ export default function DataCollectionPage() {
 				setRobotNumber={ setRobotNumber }
 				setMatchNumber={ setMatchNumber }
 			/>
+
+			<FormControl className="accuracy-wrapper" margin="dense">
+				<InputLabel id="auto-avg-accuracy-label">Auto Average Accuracy</InputLabel>
+				<Select
+					id="auto-avg-accuracy-dropdown"
+					labelId="auto-avg-accuracy-label"
+					label="Auto Average Accuracy"
+					value={ autoAccuracy }
+					variant="outlined"
+					onChange={ event => setAutoAccuracy(event.target.value) }
+				>
+					<MenuItem value={ '' } style={{ fontStyle: 'italic', color: '#707070' }}>Do not report</MenuItem>
+					{
+						ACCURACY_OPTIONS.map(option => (
+							<MenuItem key={ option } value={ option } style={{ color: '#000' }}>{ option }</MenuItem>
+						))
+					}
+				</Select>
+			</FormControl>
+			<FormControl className="accuracy-wrapper" margin="dense">
+				<InputLabel id="teleop-avg-accuracy-label">Teleop Average Accuracy</InputLabel>
+				<Select
+					id="teleop-avg-accuracy-dropdown"
+					labelId="teleop-avg-accuracy-label"
+					label="Teleop Average Accuracy"
+					value={ teleopAccuracy }
+					variant="outlined"
+					onChange={ event => setTeleopAccuracy(event.target.value) }
+				>
+					<MenuItem value={ '' } style={{ fontStyle: 'italic', color: '#707070' }}>Do not report</MenuItem>
+					{
+						ACCURACY_OPTIONS.map(option => (
+							<MenuItem key={ option } value={ option } style={{ color: '#000' }}>{ option }</MenuItem>
+						))
+					}
+				</Select>
+			</FormControl>
 			<QualitativeSection />
 			<div className='action-buttons'>
 				<Button sx={{ m: 0.5 }} variant='outlined' href='/'>Back</Button>
