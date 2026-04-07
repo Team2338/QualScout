@@ -5,9 +5,7 @@ import { saveNote, setSuperNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
 import {
-	AutoShootingAccuracy,
 	GroundCollection,
-	ScoringAccuracy,
 	DefenseDriverSkill,
 	DefenseType,
 	DriverAbility,
@@ -26,7 +24,7 @@ export default function QualitativeSection() {
 	const [noteContent, setNoteContent] = useState<string>('');
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
 
-	const submit = (event) => {
+	const submit = (event): void => {
 		event.preventDefault();
 		if (selectedCategory !== null) {
 			dispatch(saveNote(selectedCategory, noteContent));
@@ -35,47 +33,30 @@ export default function QualitativeSection() {
 		}
 	};
 
-	function NoteStatus() {
-		const handleButtonClick = (topic: Topic) => {
-			setNoteContent(savedNotes[topic]);
-			setSelectedCategory(topic);
-		};
 
-		return (
+	return (
+		<div className="qualitative-section">
+			<h1>Categories</h1>
 			<div className="category-buttons">
 				{
 					Object.values(Topic).map((topic: Topic) => (
 						<Button
 							key={ topic }
 							variant="contained"
-							onClick={ () => handleButtonClick(topic) }
+							onClick={ () => {
+								setNoteContent(savedNotes[topic]);
+								setSelectedCategory(topic);
+							}}
 						>
 							{ topic }
 						</Button>
 					))
 				}
 			</div>
-		);
-	}
-
-	return (
-		<div className="qualitative-section">
-			<h1>Categories</h1>
-			<NoteStatus/>
 
 			<p><strong>Selected Category:</strong> { selectedCategory ?? 'None' }</p>
 
 			<div className="dropdown-buttons">
-				{ selectedCategory === Topic.auto && (
-					<div className="dropdown-buttons">
-						<Dropdown
-							id="auto-accuracy"
-							label="Shooting Accuracy"
-							subtopic={ Subtopic.autoShootingAccuracy }
-							options={ AutoShootingAccuracy }
-						/>
-					</div>
-				)}
 
 				{ selectedCategory === Topic.pathing && (
 					<Dropdown
@@ -105,12 +86,6 @@ export default function QualitativeSection() {
 
 				{ selectedCategory === Topic.shooter && (
 					<div className="dropdown-buttons">
-						<Dropdown
-							id="shooter-accuracy"
-							label="Accuracy"
-							subtopic={ Subtopic.scoringAccuracy }
-							options={ ScoringAccuracy }
-						/>
 						<Dropdown
 							id="shooter-mobility"
 							label="Mobility while shooting"
@@ -214,6 +189,7 @@ function Dropdown(props: IDropdownProps) {
 	const dispatch = useAppDispatch();
 	const value = useAppSelector(state => state.superNotes[props.subtopic]);
 	const labelId = props.id + '__label';
+
 	return (
 		<FormControl className="dropdown-wrapper" margin="dense">
 			<InputLabel id={ labelId } style={{ color: '#babfb7' }}>{ props.label }</InputLabel>

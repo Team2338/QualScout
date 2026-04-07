@@ -1,23 +1,5 @@
 import { ISuperMatch, Subtopic } from './models';
 
-export const AutoShootingAccuracy: ISuperMatch[] = [
-	{
-		key: 'NEVER_MISSED',
-		name: 'Never miss',
-		score: 2
-	},
-	{
-		key: 'MINIMAL_MISSED',
-		name: 'Minimal missed',
-		score: 1
-	},
-	{
-		key: 'MANY_MISSED',
-		name: 'Many missed',
-		score: 0
-	}
-];
-
 export const DriverPathing: ISuperMatch[] = [
 	{
 		key: 'NO_COLLISIONS',
@@ -111,7 +93,7 @@ export const ScoringMobility: ISuperMatch[] = [
 		name: 'Cannot move while shooting',
 		score: 0
 	}
-]
+];
 
 export const DriverAbility: ISuperMatch[] = [
 	{
@@ -218,11 +200,9 @@ export const DefenseType: ISuperMatch[] = [
 
 type ISubtopicToOptionMap = Record<Subtopic, ISuperMatch[]>;
 export const SubtopicToOptionMap: ISubtopicToOptionMap = {
-	[Subtopic.autoShootingAccuracy]: AutoShootingAccuracy,
 	[Subtopic.pathingDrivers]: DriverPathing,
 	[Subtopic.groundCollection]: GroundCollection,
 	[Subtopic.hopperFullness]: HopperFullness,
-	[Subtopic.scoringAccuracy]: ScoringAccuracy,
 	[Subtopic.scoringMobility]: ScoringMobility,
 	[Subtopic.driverAbility]: DriverAbility,
 	[Subtopic.didSurf]: YesNo,

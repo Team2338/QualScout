@@ -19,7 +19,7 @@ export default function LandingPage() {
 	const [scouterName, setScouterName] = useState<string>('');
 	const [tbaCode, setTbaCode] = useState<string>('');
 
-	useEffect(() => {
+	useEffect(() => { /* eslint-disable react-hooks/set-state-in-effect */
 		const query = new URLSearchParams(window.location.search);
 		const initialTeamNumber = query.get('team');
 		const initialEventCode = query.get('event');

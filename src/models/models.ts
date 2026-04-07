@@ -88,12 +88,10 @@ export interface IMatchLineup {
 }
 
 export enum Subtopic {
-	autoShootingAccuracy = 'Auto Shooting Accuracy',
 	pathingDrivers = 'Pathing Drivers',
-	groundCollection = 'Coral Ground Collection',
+	groundCollection = 'Ground Collection',
 	hopperFullness = 'Hopper Fullness',
 	scoringMobility = 'Scoring Mobility',
-	scoringAccuracy = 'Scoring Accuracy',
 	driverAbility = 'Driver Ability',
 	didSurf = 'Did Surf',
 	climbStability = 'Climb Stability',
