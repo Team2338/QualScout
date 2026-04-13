@@ -7,14 +7,11 @@ import './QualitativeSection.scss';
 import {
 	GroundCollection,
 	DefenseDriverSkill,
-	DefenseType,
 	DriverAbility,
 	DriverPathing,
 	HopperFullness,
-	YesNo,
 	ClimbSpeed,
 	ClimbStability,
-	ScoringMobility
 } from '../../../models/superscout-constants';
 
 export default function QualitativeSection() {
@@ -58,19 +55,10 @@ export default function QualitativeSection() {
 
 			<div className="dropdown-buttons">
 
-				{ selectedCategory === Topic.pathing && (
-					<Dropdown
-						id="pathing"
-						label="Pathing"
-						subtopic={ Subtopic.pathingDrivers }
-						options={ DriverPathing }
-					/>
-				)}
-
 				{ selectedCategory === Topic.collector && (
 					<div className="dropdown-buttons">
 						<Dropdown
-							id="coral-ground-collection"
+							id="ground-collection"
 							label="Ground Collection"
 							subtopic={ Subtopic.groundCollection }
 							options={ GroundCollection }
@@ -84,17 +72,6 @@ export default function QualitativeSection() {
 					</div>
 				)}
 
-				{ selectedCategory === Topic.shooter && (
-					<div className="dropdown-buttons">
-						<Dropdown
-							id="shooter-mobility"
-							label="Mobility while shooting"
-							subtopic={ Subtopic.scoringMobility }
-							options={ ScoringMobility }
-						/>
-					</div>
-				)}
-
 				{ selectedCategory === Topic.drivers && (
 					<div className="dropdown-buttons">
 						<Dropdown
@@ -104,27 +81,10 @@ export default function QualitativeSection() {
 							options={ DriverAbility }
 						/>
 						<Dropdown
-							id="did-surf-dropdown"
-							label="Did Surf"
-							subtopic={ Subtopic.didSurf }
-							options={ YesNo }
-						/>
-					</div>
-				)}
-
-				{ selectedCategory === Topic.climb && (
-					<div className="dropdown-buttons">
-						<Dropdown
-							id="climb-stability-dropdown"
-							label="Climb Stability"
-							subtopic={ Subtopic.climbStability }
-							options={ ClimbStability }
-						/>
-						<Dropdown
-							id="climb-speed-dropdown"
-							label="Climb Speed"
-							subtopic={ Subtopic.climbSpeed }
-							options={ ClimbSpeed }
+							id="pathing"
+							label="Pathing"
+							subtopic={ Subtopic.pathingDrivers }
+							options={ DriverPathing }
 						/>
 					</div>
 				)}
@@ -137,11 +97,22 @@ export default function QualitativeSection() {
 							subtopic={ Subtopic.defenseDriverSkill }
 							options={ DefenseDriverSkill }
 						/>
+					</div>
+				)}
+
+				{ selectedCategory === Topic.other && (
+					<div className="dropdown-buttons">
 						<Dropdown
-							id="defense-type-dropdown"
-							label="Defense Type"
-							subtopic={ Subtopic.defenseType }
-							options={ DefenseType }
+							id="climb-stability-dropdown"
+							label="Climb Stability"
+							subtopic={ Subtopic.climbStability }
+							options={ ClimbStability }
+						/>
+						<Dropdown
+							id="climb-speed-dropdown"
+							label="Climb Speed"
+							subtopic={ Subtopic.climbSpeed }
+							options={ ClimbSpeed }
 						/>
 					</div>
 				)}

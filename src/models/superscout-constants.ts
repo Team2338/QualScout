@@ -59,24 +59,6 @@ export const HopperFullness: ISuperMatch[] = [
 	},
 ];
 
-export const ScoringAccuracy: ISuperMatch[] = [
-	{
-		key: 'INSTANT_PLACE',
-		name: 'Never miss',
-		score: 2
-	},
-	{
-		key: 'LONG_LINEUP',
-		name: 'Sometimes miss',
-		score: 1
-	},
-	{
-		key: 'CANNOT_PLACE',
-		name: 'Frequently miss',
-		score: 0
-	}
-];
-
 export const ScoringMobility: ISuperMatch[] = [
 	{
 		key: 'FAST_MOVE_AND_SHOOT',
@@ -203,11 +185,8 @@ export const SubtopicToOptionMap: ISubtopicToOptionMap = {
 	[Subtopic.pathingDrivers]: DriverPathing,
 	[Subtopic.groundCollection]: GroundCollection,
 	[Subtopic.hopperFullness]: HopperFullness,
-	[Subtopic.scoringMobility]: ScoringMobility,
 	[Subtopic.driverAbility]: DriverAbility,
-	[Subtopic.didSurf]: YesNo,
 	[Subtopic.climbStability]: ClimbStability,
 	[Subtopic.climbSpeed]: ClimbSpeed,
 	[Subtopic.defenseDriverSkill]: DefenseDriverSkill,
-	[Subtopic.defenseType]: DefenseType
 };
