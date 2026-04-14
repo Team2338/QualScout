@@ -60,13 +60,10 @@ export enum AllianceColor {
 
 export enum Topic {
 	auto = 'Auto',
-	pathing = 'Pathing',
 	collector = 'Collector',
 	shooter = 'Shooter',
 	drivers = 'Drivers',
-	penalties = 'Penalties',
-	climb = 'Climb',
-	defense = 'Defense',
+	support = 'Support',
 	other = 'Other'
 }
 
@@ -91,11 +88,9 @@ export enum Subtopic {
 	pathingDrivers = 'Pathing Drivers',
 	groundCollection = 'Ground Collection',
 	hopperFullness = 'Hopper Fullness',
-	scoringMobility = 'Scoring Mobility',
 	driverAbility = 'Driver Ability',
-	didSurf = 'Did Surf',
 	climbStability = 'Climb Stability',
 	climbSpeed = 'Climb Speed',
 	defenseDriverSkill = 'Driver Defense Skill',
-	defenseType = 'Defense Type',
+	passingSkill = 'Passing Skill'
 }

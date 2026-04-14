@@ -7,14 +7,12 @@ import './QualitativeSection.scss';
 import {
 	GroundCollection,
 	DefenseDriverSkill,
-	DefenseType,
 	DriverAbility,
 	DriverPathing,
 	HopperFullness,
-	YesNo,
 	ClimbSpeed,
 	ClimbStability,
-	ScoringMobility
+	PassingSkill,
 } from '../../../models/superscout-constants';
 
 export default function QualitativeSection() {
@@ -58,19 +56,10 @@ export default function QualitativeSection() {
 
 			<div className="dropdown-buttons">
 
-				{ selectedCategory === Topic.pathing && (
-					<Dropdown
-						id="pathing"
-						label="Pathing"
-						subtopic={ Subtopic.pathingDrivers }
-						options={ DriverPathing }
-					/>
-				)}
-
 				{ selectedCategory === Topic.collector && (
 					<div className="dropdown-buttons">
 						<Dropdown
-							id="coral-ground-collection"
+							id="ground-collection"
 							label="Ground Collection"
 							subtopic={ Subtopic.groundCollection }
 							options={ GroundCollection }
@@ -84,35 +73,41 @@ export default function QualitativeSection() {
 					</div>
 				)}
 
-				{ selectedCategory === Topic.shooter && (
-					<div className="dropdown-buttons">
-						<Dropdown
-							id="shooter-mobility"
-							label="Mobility while shooting"
-							subtopic={ Subtopic.scoringMobility }
-							options={ ScoringMobility }
-						/>
-					</div>
-				)}
-
 				{ selectedCategory === Topic.drivers && (
 					<div className="dropdown-buttons">
 						<Dropdown
 							id="driver-skill-dropdown"
-							label="Driver Skill"
+							label="Gameplay"
 							subtopic={ Subtopic.driverAbility }
 							options={ DriverAbility }
 						/>
 						<Dropdown
-							id="did-surf-dropdown"
-							label="Did Surf"
-							subtopic={ Subtopic.didSurf }
-							options={ YesNo }
+							id="pathing"
+							label="Robot control"
+							subtopic={ Subtopic.pathingDrivers }
+							options={ DriverPathing }
 						/>
 					</div>
 				)}
 
-				{ selectedCategory === Topic.climb && (
+				{ selectedCategory === Topic.support && (
+					<div className="dropdown-buttons">
+						<Dropdown
+							id="passing-skill-dropdown"
+							label="Passing Skill"
+							subtopic={ Subtopic.passingSkill }
+							options={ PassingSkill }
+						/>
+						<Dropdown
+							id="defense-skill-dropdown"
+							label="Defense Skill"
+							subtopic={ Subtopic.defenseDriverSkill }
+							options={ DefenseDriverSkill }
+						/>
+					</div>
+				)}
+
+				{ selectedCategory === Topic.other && (
 					<div className="dropdown-buttons">
 						<Dropdown
 							id="climb-stability-dropdown"
@@ -125,23 +120,6 @@ export default function QualitativeSection() {
 							label="Climb Speed"
 							subtopic={ Subtopic.climbSpeed }
 							options={ ClimbSpeed }
-						/>
-					</div>
-				)}
-
-				{ selectedCategory === Topic.defense && (
-					<div className="dropdown-buttons">
-						<Dropdown
-							id="defense-skill-dropdown"
-							label="Defense Skill"
-							subtopic={ Subtopic.defenseDriverSkill }
-							options={ DefenseDriverSkill }
-						/>
-						<Dropdown
-							id="defense-type-dropdown"
-							label="Defense Type"
-							subtopic={ Subtopic.defenseType }
-							options={ DefenseType }
 						/>
 					</div>
 				)}
@@ -205,7 +183,13 @@ function Dropdown(props: IDropdownProps) {
 				<MenuItem value="" style={{ fontStyle: 'italic', color: '#707070' }}>Do not report</MenuItem>
 				{
 					props.options.map(option => (
-						<MenuItem key={ option.key } value={ option.key } style={{ color: '#000' }}>{ option.name }</MenuItem>
+						<MenuItem
+							key={ option.key }
+							value={ option.key }
+							style={{ color: '#000' }}
+						>
+							{ option.name }
+						</MenuItem>
 					))
 				}
 			</Select>

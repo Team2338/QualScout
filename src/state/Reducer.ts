@@ -19,26 +19,21 @@ const INITIAL_STATE: IAppState = {
 	},
 	notes: {
 		[Topic.auto]: '',
-		[Topic.pathing]: '',
 		[Topic.collector]: '',
 		[Topic.shooter]: '',
 		[Topic.drivers]: '',
-		[Topic.penalties]: '',
-		[Topic.climb]: '',
-		[Topic.defense]: '',
+		[Topic.support]: '',
 		[Topic.other]: '',
 	},
 	superNotes: {
 		[Subtopic.groundCollection]: '',
 		[Subtopic.hopperFullness]: '',
-		[Subtopic.scoringMobility]: '',
 		[Subtopic.driverAbility]: '',
 		[Subtopic.pathingDrivers]: '',
-		[Subtopic.didSurf]: '',
 		[Subtopic.climbStability]: '',
 		[Subtopic.climbSpeed]: '',
 		[Subtopic.defenseDriverSkill]: '',
-		[Subtopic.defenseType]: ''
+		[Subtopic.passingSkill]: ''
 	}
 };
 
