@@ -85,12 +85,12 @@ export interface IMatchLineup {
 }
 
 export enum Subtopic {
-	pathingDrivers = 'Pathing Drivers',
-	groundCollection = 'Ground Collection',
-	hopperFullness = 'Hopper Fullness',
-	driverAbility = 'Driver Ability',
-	climbStability = 'Climb Stability',
-	climbSpeed = 'Climb Speed',
-	defenseDriverSkill = 'Driver Defense Skill',
-	passingSkill = 'Passing Skill'
+	pathingDrivers = 'Driver control',
+	groundCollection = 'Collection',
+	hopperFullness = 'Hopper fullness',
+	driverAbility = 'Driver gameplay',
+	climbStability = 'Climb stability',
+	climbSpeed = 'Climb speed',
+	defenseDriverSkill = 'Defense skill',
+	passingSkill = 'Passing skill'
 }
