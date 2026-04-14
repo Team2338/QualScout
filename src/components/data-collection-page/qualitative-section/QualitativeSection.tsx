@@ -12,6 +12,7 @@ import {
 	HopperFullness,
 	ClimbSpeed,
 	ClimbStability,
+	PassingSkill,
 } from '../../../models/superscout-constants';
 
 export default function QualitativeSection() {
@@ -76,21 +77,27 @@ export default function QualitativeSection() {
 					<div className="dropdown-buttons">
 						<Dropdown
 							id="driver-skill-dropdown"
-							label="Driver Skill"
+							label="Gameplay"
 							subtopic={ Subtopic.driverAbility }
 							options={ DriverAbility }
 						/>
 						<Dropdown
 							id="pathing"
-							label="Pathing"
+							label="Robot control"
 							subtopic={ Subtopic.pathingDrivers }
 							options={ DriverPathing }
 						/>
 					</div>
 				)}
 
-				{ selectedCategory === Topic.defense && (
+				{ selectedCategory === Topic.support && (
 					<div className="dropdown-buttons">
+						<Dropdown
+							id="passing-skill-dropdown"
+							label="Passing Skill"
+							subtopic={ Subtopic.passingSkill }
+							options={ PassingSkill }
+						/>
 						<Dropdown
 							id="defense-skill-dropdown"
 							label="Defense Skill"
@@ -176,7 +183,13 @@ function Dropdown(props: IDropdownProps) {
 				<MenuItem value="" style={{ fontStyle: 'italic', color: '#707070' }}>Do not report</MenuItem>
 				{
 					props.options.map(option => (
-						<MenuItem key={ option.key } value={ option.key } style={{ color: '#000' }}>{ option.name }</MenuItem>
+						<MenuItem
+							key={ option.key }
+							value={ option.key }
+							style={{ color: '#000' }}
+						>
+							{ option.name }
+						</MenuItem>
 					))
 				}
 			</Select>

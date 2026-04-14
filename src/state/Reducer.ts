@@ -22,8 +22,7 @@ const INITIAL_STATE: IAppState = {
 		[Topic.collector]: '',
 		[Topic.shooter]: '',
 		[Topic.drivers]: '',
-		[Topic.penalties]: '',
-		[Topic.defense]: '',
+		[Topic.support]: '',
 		[Topic.other]: '',
 	},
 	superNotes: {
@@ -34,6 +33,7 @@ const INITIAL_STATE: IAppState = {
 		[Subtopic.climbStability]: '',
 		[Subtopic.climbSpeed]: '',
 		[Subtopic.defenseDriverSkill]: '',
+		[Subtopic.passingSkill]: ''
 	}
 };
 

@@ -63,8 +63,7 @@ export enum Topic {
 	collector = 'Collector',
 	shooter = 'Shooter',
 	drivers = 'Drivers',
-	penalties = 'Penalties',
-	defense = 'Defense',
+	support = 'Support',
 	other = 'Other'
 }
 
@@ -93,5 +92,5 @@ export enum Subtopic {
 	climbStability = 'Climb Stability',
 	climbSpeed = 'Climb Speed',
 	defenseDriverSkill = 'Driver Defense Skill',
-	// defenseType = 'Defense Type',
+	passingSkill = 'Passing Skill'
 }
