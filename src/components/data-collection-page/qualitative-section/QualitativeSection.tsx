@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-import { ISuperMatch, Subtopic, Topic } from '../../../models/models';
+import { ISuperMatch, INote, Subtopic, Topic } from '../../../models/models';
 import { saveNote, setSuperNote } from '../../../state/Actions';
 import { useAppDispatch, useAppSelector } from '../../../state/Hooks';
 import './QualitativeSection.scss';
@@ -20,7 +20,32 @@ export default function QualitativeSection() {
 
 	const [selectedCategory, setSelectedCategory] = useState<Topic>(null);
 	const [noteContent, setNoteContent] = useState<string>('');
+	const [incompleteNotes, setIncompleteNotes] = useState<INote[]>([]);
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
+
+
+	const storeNote = (topic: Topic, note: string) => {
+		//First remove any notes of the same topic
+		let notes: INote[] = [];
+		incompleteNotes.forEach((note: INote) => {
+			if(note.topic != topic) notes.push(note);
+		});
+
+		//Then add the new notes
+		notes.push({topic: topic, content: note});
+		setIncompleteNotes(notes);
+	}
+
+	const recallNote = (topic: Topic) => {
+		const note = incompleteNotes.find((note: INote) =>  {
+			return note.topic == topic
+		});
+
+		if (note) {
+				setSelectedCategory(note.topic);
+				setNoteContent(note.content);
+		}
+	}
 
 	const submit = (event): void => {
 		event.preventDefault();
@@ -28,9 +53,9 @@ export default function QualitativeSection() {
 			dispatch(saveNote(selectedCategory, noteContent));
 			setNoteContent('');
 			setSelectedCategory(null);
+			storeNote(selectedCategory, '');
 		}
 	};
-
 
 	return (
 		<div className="qualitative-section">
@@ -42,8 +67,10 @@ export default function QualitativeSection() {
 							key={ topic }
 							variant="contained"
 							onClick={ () => {
+								if (noteContent != '') storeNote(selectedCategory, noteContent);
 								setNoteContent(savedNotes[topic]);
 								setSelectedCategory(topic);
+								recallNote(topic);
 							}}
 						>
 							{ topic }
