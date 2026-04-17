@@ -23,22 +23,17 @@ export default function QualitativeSection() {
 	const [incompleteNotes, setIncompleteNotes] = useState<INote[]>([]);
 	const savedNotes: Record<Topic, string> = useAppSelector(state => state.notes);
 
-
 	const storeNote = (topic: Topic, note: string) => {
-		//First remove any notes of the same topic
-		let notes: INote[] = [];
-		incompleteNotes.forEach((note: INote) => {
-			if(note.topic != topic) notes.push(note);
+		setIncompleteNotes(prevNotes => {
+			let notes: INote[] = prevNotes.filter(note => note.topic !== topic);
+			notes.push({topic: topic, content: note});
+			return notes;
 		});
-
-		//Then add the new notes
-		notes.push({topic: topic, content: note});
-		setIncompleteNotes(notes);
 	}
 
 	const recallNote = (topic: Topic) => {
 		const note = incompleteNotes.find((note: INote) =>  {
-			return note.topic == topic
+			return note.topic === topic
 		});
 
 		if (note) {
