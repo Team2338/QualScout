@@ -25,9 +25,7 @@ export default function QualitativeSection() {
 
 	const storeNote = (topic: Topic, note: string) => {
 		setIncompleteNotes(prevNotes => {
-			let notes: INote[] = prevNotes.filter(note => note.topic !== topic);
-			notes.push({topic: topic, content: note});
-			return notes;
+			return prevNotes.filter(note => note.topic !== topic).concat([{topic: topic, content: note}]);
 		});
 	}
 
